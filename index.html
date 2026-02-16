@@ -4,17 +4,216 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lara Frias Cumella</title>
-  <meta name="description" content="Portfolio — Lara Frias Cumella" />
-  <link rel="stylesheet" href="./styles.css" />
+
+  <style>
+    :root{
+      --bg:#efefef;
+      --card: rgba(255,255,255,0.70);
+      --border: rgba(0,0,0,0.14);
+      --shadow: 0 22px 70px rgba(0,0,0,0.16);
+      --muted: rgba(0,0,0,0.45);
+      --ink: rgba(0,0,0,0.78);
+      --blue:#1f36ff;
+      --r:16px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                   "Liberation Mono","Courier New", monospace;
+      overflow:hidden; /* scroll SOLO dentro del collage */
+    }
+    .stage{
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+    .card{
+      width:min(1200px, 100%);
+      height:min(760px, 86vh);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:14px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 420px 1fr;
+    }
+
+    /* LEFT fijo + watermark */
+    .left{
+      position:relative;
+      padding:28px 18px 28px 28px;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+    }
+    .left__watermark{
+      position:absolute;
+      inset:0;
+      background-image: url("/images/signature_01.jpeg");
+      background-repeat:no-repeat;
+      background-size: 220px auto;
+      background-position: 28px 360px;
+      opacity:0.10;
+      pointer-events:none;
+      z-index:0;
+    }
+    .left > *{ position:relative; z-index:1; }
+
+    .brand__stack{
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-size:58px;
+      font-weight:300;
+      line-height:.78; /* superposición */
+    }
+    .brand__line--2{ margin-top:-8px; }
+    .brand__line--3{ margin-top:-8px; }
+
+    .menu{ margin-top:26px; }
+    .menu__list{
+      margin:0;
+      padding-left:18px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .menu__list li{ margin:0 0 6px 0; }
+
+    .footer{
+      margin-top:auto;
+      font-size:12px;
+      color:var(--muted);
+      display:grid;
+      gap:10px;
+    }
+    .footer__links{ display:grid; gap:6px; }
+    .footer a{ color:var(--muted); text-decoration:none; }
+    .footer a:hover{ color:var(--ink); text-decoration:underline; }
+    .footer__cv{ color:var(--ink); text-decoration:none; }
+
+    /* RIGHT */
+    .right{
+      position:relative;
+      padding:28px 28px 28px 18px;
+      overflow:hidden;
+    }
+    .home{
+      position:absolute;
+      top:20px;
+      right:28px;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      color:var(--blue);
+      text-decoration:none;
+      font-size:14px;
+      font-style:italic;
+      z-index:10;
+    }
+    .home__dot{ font-style:normal; font-weight:700; }
+
+    .work{
+      height:100%;
+      overflow:auto; /* scroll interno */
+      padding-top:20px;
+      padding-right:6px;
+    }
+
+    /* HERO: firma 02 izquierda + primera imagen derecha */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:22px;
+      align-items:center;
+      min-height:420px; /* “aire” arriba antes del collage */
+      margin-top:10px;
+      margin-bottom:12px;
+    }
+    .hero__sig{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .hero__sig img{
+      width:min(420px, 92%);
+      height:auto;
+      display:block;
+      opacity:0.22;
+    }
+    .hero__image{
+      margin:0;
+      text-align:center;
+    }
+    .hero__image img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:var(--r);
+    }
+    .hero__image figcaption{
+      margin-top:10px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    /* GRID collage */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:22px;
+      padding-bottom:40px;
+    }
+    figure{ margin:0; }
+    .tile img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:var(--r);
+      background:#ddd;
+    }
+    .tile figcaption{
+      margin-top:10px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .tile figcaption.blue{
+      color:var(--blue);
+      text-decoration:underline;
+    }
+
+    /* colocación inicial (tipo Cargo) */
+    .tile--tall{ grid-column: 1 / span 5; }
+    .tile--small{ grid-column: 7 / span 3; }
+    .tile--small2{ grid-column: 10 / span 3; }
+    .tile--wide{ grid-column: 1 / span 12; }
+
+    @media (max-width: 980px){
+      body{ overflow:auto; }
+      .card{ grid-template-columns: 1fr; height:auto; }
+      .right{ padding:18px; }
+      .work{ height:auto; }
+      .hero{ grid-template-columns: 1fr; min-height:auto; }
+      .grid{ grid-template-columns: repeat(6, 1fr); }
+      .tile--tall{ grid-column: 1 / span 6; }
+      .tile--small{ grid-column: 1 / span 3; }
+      .tile--small2{ grid-column: 4 / span 3; }
+      .tile--wide{ grid-column: 1 / span 6; }
+    }
+  </style>
 </head>
 
 <body>
   <main class="stage">
     <div class="card">
 
-      <!-- LEFT (FIJO) -->
+      <!-- LEFT fijo -->
       <aside class="left">
-        <!-- Fondo watermark firma 01 -->
         <div class="left__watermark" aria-hidden="true"></div>
 
         <header class="brand" aria-label="Name">
@@ -48,128 +247,42 @@
         </footer>
       </aside>
 
-      <!-- RIGHT (SCROLL INTERNO) -->
+      <!-- RIGHT -->
       <section class="right" aria-label="Work">
         <a class="home" href="#top" aria-label="Home">
-          <span class="home__dot">:</span>
-          <span class="home__text">HOME</span>
+          <span class="home__dot">:</span><span class="home__text">HOME</span>
         </a>
 
         <div class="work" id="workScroll">
-          <!-- HERO ARRIBA: firma 02 izquierda + primera imagen derecha -->
+          <!-- Arriba: firma 02 + primera imagen -->
           <div class="hero" id="top">
             <div class="hero__sig" aria-hidden="true">
-              <img src="./images/signature_02.jpeg" alt="" />
+              <img src="/images/signature_02.jpeg" alt="" />
             </div>
 
             <figure class="hero__image">
-              <img src="./images/Diplopia_01.jpg" alt="Double collar jacket" />
+              <img src="/images/Diplopia_01.jpg" alt="Diplopia" />
               <figcaption>Double collar jacket. Diplopía collection</figcaption>
             </figure>
           </div>
 
-          <!-- COLLAGE (aparece al hacer scroll) -->
+          <!-- Collage al hacer scroll -->
           <div class="grid">
-
-            <!-- DIPLOPIA -->
-            <figure class="tile tile--tall">
-              <img src="./images/Diplopia_04.jpg" alt="Diplopia" />
-            </figure>
-
             <figure class="tile tile--small">
-              <img src="./images/Diplopia_02.jpg" alt="Diplopia" />
+              <img src="/images/Diplopia_02.jpg" alt="Diplopia" />
               <figcaption>double leather bag</figcaption>
             </figure>
 
             <figure class="tile tile--small2">
-              <img src="./images/Diplopia_03.jpg" alt="Diplopia" />
+              <img src="/images/Diplopia_03.jpg" alt="Diplopia" />
               <figcaption class="blue">DIPLOPIA COLLECTION<br/>2023</figcaption>
             </figure>
 
-            <!-- OTHER PROJECTS (Opjects_XX) -->
-            <figure class="tile tile--wide">
-              <img src="./images/Opjects_01.jpg" alt="Other projects" />
-            </figure>
-
-            <figure class="tile tile--small">
-              <img src="./images/Opjects_02.jpg" alt="Other projects" />
-            </figure>
-
-            <figure class="tile tile--small2">
-              <img src="./images/Opjects_03.jpg" alt="Other projects" />
-            </figure>
-
-            <figure class="tile tile--wide">
-              <img src="./images/Opjects_04.jpg" alt="Other projects" />
-            </figure>
-
-            <figure class="tile tile--small">
-              <img src="./images/Opjects_05.jpg" alt="Other projects" />
-            </figure>
-
-            <figure class="tile tile--small2">
-              <img src="./images/Opjects_06.jpg" alt="Other projects" />
-            </figure>
-
-            <figure class="tile tile--wide">
-              <img src="./images/Opjects_07.jpg" alt="Other projects" />
-            </figure>
-
-            <!-- ARTISAN -->
-            <figure class="tile tile--wide">
-              <img src="./images/Artisan_01.jpg" alt="Artisan tailoring" />
-            </figure>
-
-            <figure class="tile tile--small">
-              <img src="./images/Artisan_02.jpg" alt="Artisan tailoring" />
-            </figure>
-
-            <figure class="tile tile--small2">
-              <img src="./images/Artisan_03.jpg" alt="Artisan tailoring" />
-            </figure>
-
-            <figure class="tile tile--wide">
-              <img src="./images/Artisan_04.jpg" alt="Artisan tailoring" />
-            </figure>
-
-            <!-- COLLABORATIONS -->
-            <figure class="tile tile--small">
-              <img src="./images/colaborati_01.jpg" alt="Collaborations" />
-            </figure>
-
-            <figure class="tile tile--small2">
-              <img src="./images/colaborati_02.jpg" alt="Collaborations" />
-            </figure>
-
-            <!-- BTS (Swim) -->
-            <figure class="tile tile--wide">
-              <img src="./images/Swim_01.png" alt="BTS" />
-            </figure>
-
-            <figure class="tile tile--small">
-              <img src="./images/Swim_02.png" alt="BTS" />
-            </figure>
-
-            <figure class="tile tile--small2">
-              <img src="./images/Swim_03.png" alt="BTS" />
-            </figure>
-
-            <figure class="tile tile--wide">
-              <img src="./images/Swim_04.png" alt="BTS" />
-            </figure>
-
-            <figure class="tile tile--small">
-              <img src="./images/Swim_05.png" alt="BTS" />
-            </figure>
-
-            <figure class="tile tile--small2">
-              <img src="./images/Swim_06.png" alt="BTS" />
-            </figure>
-
+            <!-- añade el resto luego, primero dejemos la base clavada -->
           </div>
 
-          <section id="about" class="textblock"></section>
-          <section id="contact" class="textblock"></section>
+          <section id="about"></section>
+          <section id="contact"></section>
         </div>
       </section>
 
