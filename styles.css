@@ -1,116 +1,220 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lara Frias Cumella</title>
-  <meta name="description" content="Portfolio — Lara Frias Cumella" />
-  <link rel="stylesheet" href="./styles.css" />
-</head>
+:root{
+  --bg:#efefef;
+  --card: rgba(255,255,255,0.70);
+  --border: rgba(0,0,0,0.14);
+  --shadow: 0 22px 70px rgba(0,0,0,0.16);
+  --muted: rgba(0,0,0,0.45);
+  --ink: rgba(0,0,0,0.78);
+  --blue:#1f36ff;
+  --r:16px;
+}
 
-<body>
-  <main class="stage">
-    <div class="card">
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono","Courier New", monospace;
+  overflow:hidden; /* scroll solo dentro del collage */
+}
 
-      <!-- LEFT -->
-      <aside class="left">
-        <header class="brand" aria-label="Name">
-          <div class="brand__stack">
-            <div class="brand__line brand__line--1">LARA</div>
-            <div class="brand__line brand__line--2">FRIAS</div>
-            <div class="brand__line brand__line--3">CUMELLA</div>
-          </div>
-        </header>
+.stage{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+}
 
-        <nav class="menu" aria-label="Index">
-          <ol class="menu__list">
-            <li>DIPLOPÍA COLLECTION</li>
-            <li>ARTISAN TAILORING</li>
-            <li>COLLABORATIONS</li>
-            <li>OTHER PROJECTS</li>
-            <li>BTS</li>
-            <li>WORK AT :</li>
-            <li>KIDS</li>
-            <li>BAGS</li>
-          </ol>
-        </nav>
+.card{
+  width:min(1200px, 100%);
+  height:min(760px, 86vh);
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
 
-        <!-- Firma fija del menú -->
-        <div class="sig-fixed" aria-hidden="true">
-          <img src="./images/signature_01.jpeg" alt="" />
-        </div>
+  display:grid;
+  grid-template-columns: 420px 1fr;
+}
 
-        <footer class="footer">
-          <div class="footer__links">
-            <a href="#about">ABOUT ME</a>
-            <a href="#contact">CONTACT</a>
-            <a href="https://instagram.com/" target="_blank" rel="noopener">INSTAGRAM</a>
-          </div>
-          <a class="footer__cv" href="#" target="_blank" rel="noopener">:CV</a>
-        </footer>
-      </aside>
+/* LEFT fijo */
+.left{
+  position:relative;
+  padding:28px 18px 28px 28px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
 
-      <!-- RIGHT -->
-      <section class="right" aria-label="Work">
-        <a class="home" href="#top" aria-label="Home">
-          <span class="home__dot">:</span>
-          <span class="home__text">HOME</span>
-        </a>
+/* firma 01 como fondo (watermark) */
+.left__watermark{
+  position:absolute;
+  inset:0;
+  background-image: url("./images/signature_01.jpeg");
+  background-repeat:no-repeat;
+  background-size: 220px auto;
+  background-position: 30px 360px; /* ajusta si quieres */
+  opacity:0.10;
+  pointer-events:none;
+  z-index:0;
+}
+.left > *{ position:relative; z-index:1; }
 
-        <!-- SCROLL INTERNO -->
-        <div class="work" id="workScroll">
+/* Nombre superpuesto */
+.brand__stack{
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-size:58px;
+  font-weight:300;
+  line-height:.78;
+}
+.brand__line--2{ margin-top:-8px; }
+.brand__line--3{ margin-top:-8px; }
 
-          <!-- CABECERA (aire + etiqueta + foto grande a la derecha) -->
-          <div class="heroHead" id="top">
-            <div class="sig-float" id="sigFloat" aria-hidden="true">
-              <img src="./images/signature_02.jpeg" alt="" />
-            </div>
+.menu{ margin-top:26px; }
+.menu__list{
+  margin:0;
+  padding-left:18px;
+  font-size:13px;
+  color:var(--muted);
+}
+.menu__list li{ margin:0 0 6px 0; }
 
-            <figure class="heroRight">
-              <img src="./images/Diplopia_01.jpg" alt="Double collar jacket" />
-              <figcaption>Double collar jacket. Diplopía collection</figcaption>
-            </figure>
-          </div>
+.footer{
+  margin-top:auto;
+  font-size:12px;
+  color:var(--muted);
+  display:grid;
+  gap:10px;
+}
+.footer__links{ display:grid; gap:6px; }
+.footer a{ color:var(--muted); text-decoration:none; }
+.footer a:hover{ color:var(--ink); text-decoration:underline; }
+.footer__cv{ color:var(--ink); }
 
-          <!-- GRID empieza después, como en la original -->
-          <div class="grid">
-            <figure class="tile tile--small">
-              <img src="./images/Diplopia_02.jpg" alt="Work image" />
-              <figcaption>double leather bag</figcaption>
-            </figure>
+/* RIGHT */
+.right{
+  position:relative;
+  padding:28px 28px 28px 18px;
+  overflow:hidden;
+}
 
-            <figure class="tile tile--small">
-              <img src="./images/Diplopia_03.jpg" alt="Work image" />
-              <figcaption class="blue">DIPLOPIA COLLECTION<br/>2023</figcaption>
-            </figure>
+.home{
+  position:absolute;
+  top:20px;
+  right:28px;
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  color:var(--blue);
+  text-decoration:none;
+  font-size:14px;
+  font-style:italic;
+  z-index:10;
+}
+.home__dot{ font-style:normal; font-weight:700; }
 
-            <!-- Ejemplo extra (si existe) -->
-            <figure class="tile tile--wide">
-              <img src="./images/Swim_01.png" alt="Work image" />
-            </figure>
-          </div>
+.work{
+  height:100%;
+  overflow:auto; /* scroll interno */
+  padding-top:20px;
+  padding-right:6px;
+}
 
-          <section id="about" class="textblock"></section>
-          <section id="contact" class="textblock"></section>
-        </div>
-      </section>
+/* HERO: firma 02 izquierda + imagen derecha */
+.hero{
+  display:grid;
+  grid-template-columns: 1fr 420px;
+  gap:22px;
+  align-items:center;
+  min-height: 420px; /* crea el “aire” antes del collage */
+  margin-top:10px;
+  margin-bottom: 12px;
+}
 
-    </div>
-  </main>
+.hero__sig{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero__sig img{
+  width:min(420px, 92%);
+  height:auto;
+  display:block;
+  opacity:0.22;  /* visible pero suave */
+}
 
-  <script>
-    // Oculta signature_02 al empezar a scrollear dentro del marco (como Cargo)
-    (function(){
-      const scroller = document.getElementById("workScroll");
-      const floatSig = document.getElementById("sigFloat");
-      if (!scroller || !floatSig) return;
+.hero__image{
+  margin:0;
+  text-align:center;
+}
+.hero__image img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:var(--r);
+}
+.hero__image figcaption{
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+}
 
-      function onScroll(){
-        floatSig.classList.toggle("is-hidden", scroller.scrollTop > 20);
-      }
-      scroller.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
-    })();
-  </script>
-</body>
-</html>
+/* GRID collage */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap:22px;
+  padding-bottom:40px;
+}
+
+.tile{ margin:0; }
+.tile img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:var(--r);
+  background:#ddd;
+}
+.tile figcaption{
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+}
+.tile figcaption.blue{
+  color:var(--blue);
+  text-decoration:underline;
+}
+
+/* Colocación (estética tipo Cargo, adaptable) */
+.tile--tall{ grid-column: 1 / span 5; }
+.tile--small{ grid-column: 7 / span 3; }
+.tile--small2{ grid-column: 10 / span 3; }
+.tile--wide{ grid-column: 1 / span 12; }
+
+.textblock{
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  body{ overflow:auto; }
+  .card{ grid-template-columns: 1fr; height:auto; }
+  .right{ padding:18px; }
+  .work{ height:auto; }
+  .hero{ grid-template-columns: 1fr; min-height:auto; }
+  .grid{ grid-template-columns: repeat(6, 1fr); }
+  .tile--tall{ grid-column: 1 / span 6; }
+  .tile--small{ grid-column: 1 / span 3; }
+  .tile--small2{ grid-column: 4 / span 3; }
+  .tile--wide{ grid-column: 1 / span 6; }
+}
