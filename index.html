@@ -3,203 +3,123 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lara Frias Cumella — Portfolio</title>
+  <title>Lara Frias Cumella</title>
   <meta name="description" content="Portfolio — Lara Frias Cumella" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
-  <main class="canvas" id="home">
+  <main class="stage">
     <div class="card">
-      <!-- LEFT -->
-      <aside class="left" aria-label="Navigation">
-        <header class="logo" aria-label="Name">
-          <div class="logo__stack">
-            <span>LARA</span>
-            <span>FRIAS</span>
-            <span>CUMELLA</span>
+      <!-- LEFT (STICKY) -->
+      <aside class="left">
+        <header class="brand" aria-label="Name">
+          <div class="brand__stack">
+            <div class="brand__line">LARA</div>
+            <div class="brand__line">FRIAS</div>
+            <div class="brand__line">CUMELLA</div>
           </div>
         </header>
 
-        <nav class="menu" aria-label="Work categories">
-          <ol>
-            <li>
-              <button class="menu__btn is-active"
-                data-title="DIPLOPÍA COLLECTION"
-                data-images="Diplopia_01.jpg,Diplopia_02.jpg,Diplopia_03.jpg,Diplopia_04.jpg"
-                data-captions="Diplopía — Look 01,Diplopía — Look 02,Diplopía — Look 03,Diplopía — Look 04">
-                DIPLOPÍA COLLECTION
-              </button>
-            </li>
-
-            <li>
-              <button class="menu__btn"
-                data-title="ARTISAN TAILORING"
-                data-images="Artisan_01.jpg,Artisan_02.jpg,Artisan_03.jpg,Artisan_04.jpg"
-                data-captions="Artisan Tailoring — 01,Artisan Tailoring — 02,Artisan Tailoring — 03,Artisan Tailoring — 04">
-                ARTISAN TAILORING
-              </button>
-            </li>
-
-            <li>
-              <button class="menu__btn"
-                data-title="COLLABORATIONS"
-                data-images="colaborati_01.jpg,colaborati_02.jpg"
-                data-captions="Collaborations — 01,Collaborations — 02">
-                COLLABORATIONS
-              </button>
-            </li>
-
-            <li>
-              <button class="menu__btn"
-                data-title="OTHER PROJECTS"
-                data-images="Oprojects_01.jpg,Oprojects_02.jpg,Oprojects_03.jpg,Oprojects_04.jpg,Oprojects_05.jpg,Oprojects_06.jpg,Oprojects_07.jpg"
-                data-captions="Other Projects — 01,Other Projects — 02,Other Projects — 03,Other Projects — 04,Other Projects — 05,Other Projects — 06,Other Projects — 07">
-                OTHER PROJECTS
-              </button>
-            </li>
-
-            <li>
-              <button class="menu__btn"
-                data-title="BTS"
-                data-images="Swim_01.png,Swim_02.png,Swim_03.png,Swim_04.png,Swim_05.png,Swim_06.png"
-                data-captions="BTS — 01,BTS — 02,BTS — 03,BTS — 04,BTS — 05,BTS — 06">
-                BTS
-              </button>
-            </li>
-
-            <li class="menu__static">WORK AT :</li>
-            <li class="menu__static">KIDS</li>
-            <li class="menu__static">BAGS</li>
+        <!-- Esto es visual, no navegación real -->
+        <nav class="menu" aria-label="Index">
+          <ol class="menu__list">
+            <li>DIPLOPÍA COLLECTION</li>
+            <li>ARTISAN TAILORING</li>
+            <li>COLLABORATIONS</li>
+            <li>OTHER PROJECTS</li>
+            <li>BTS</li>
+            <li>WORK AT :</li>
+            <li>KIDS</li>
+            <li>BAGS</li>
           </ol>
         </nav>
 
+        <!-- Firma fija (01) -->
+        <div class="sig-fixed" aria-hidden="true">
+          <img src="./images/signature_01.png" alt="" />
+        </div>
+
         <footer class="footer">
           <div class="footer__links">
-            <a href="#about" class="softlink">ABOUT ME</a>
-            <a href="#contact" class="softlink">CONTACT</a>
-            <!-- cambia el href por el instagram real -->
-            <a href="#" target="_blank" rel="noopener" class="softlink">INSTAGRAM</a>
+            <a href="#about">ABOUT ME</a>
+            <a href="#contact">CONTACT</a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener">INSTAGRAM</a>
           </div>
-
-          <!-- cambia el href por el pdf real si lo subes -->
-          <a href="#" target="_blank" rel="noopener" class="footer__cv softlink">:CV</a>
+          <a class="footer__cv" href="#" target="_blank" rel="noopener">:CV</a>
         </footer>
       </aside>
 
-      <!-- RIGHT -->
-      <section class="right" aria-label="Featured work">
-        <a class="home-link" href="#home" aria-label="Home">
-          <span class="home-dot">:</span>
-          <span class="home-text">HOME</span>
+      <!-- RIGHT (SCROLLING CONTENT) -->
+      <section class="right" aria-label="Work">
+        <a class="home" href="#top" aria-label="Home">
+          <span class="home__dot">:</span>
+          <span class="home__text">HOME</span>
         </a>
 
-        <div class="viewer" aria-live="polite">
-          <div class="viewer__meta">
-            <div class="viewer__title" id="viewerTitle">DIPLOPÍA COLLECTION</div>
-
-            <div class="viewer__controls">
-              <button id="prevBtn" class="ctrl" aria-label="Previous image">‹</button>
-              <span class="viewer__count" id="viewerCount">1 / 4</span>
-              <button id="nextBtn" class="ctrl" aria-label="Next image">›</button>
-            </div>
-          </div>
-
-          <figure class="hero">
-            <img id="heroImg" src="./images/Diplopia_01.jpg" alt="Featured work image" />
-            <figcaption id="heroCap">Diplopía — Look 01</figcaption>
-          </figure>
+        <!-- Etiqueta/firma flotante (02) visible solo arriba -->
+        <div class="sig-float" id="sigFloat" aria-hidden="true">
+          <img src="./images/signature_02.png" alt="" />
         </div>
+
+        <!-- GRID / COMPOSICIÓN -->
+        <div class="grid" id="top">
+
+          <!-- Sustituye src por tus imágenes reales -->
+          <figure class="tile tile--tall">
+            <img src="./images/hero.jpg" alt="Work image" />
+          </figure>
+
+          <figure class="tile tile--small">
+            <img src="./images/image00001.jpg" alt="Work image" />
+            <figcaption>double leather bag</figcaption>
+          </figure>
+
+          <figure class="tile tile--wide">
+            <img src="./images/image00003.jpg" alt="Work image" />
+            <figcaption class="blue">DIPLOPIA COLLECTION 2023</figcaption>
+          </figure>
+
+          <figure class="tile tile--wide2">
+            <img src="./images/image00006.jpg" alt="Work image" />
+          </figure>
+
+          <figure class="tile tile--small2">
+            <img src="./images/image00007.jpg" alt="Work image" />
+          </figure>
+
+          <figure class="tile tile--small3">
+            <img src="./images/image00008.jpg" alt="Work image" />
+          </figure>
+
+          <!-- Añade más <figure class="tile ..."> según necesites -->
+        </div>
+
+        <!-- Secciones footer (pueden ser texto simple) -->
+        <section id="about" class="textblock">
+          <!-- Pega aquí el texto de ABOUT -->
+        </section>
+
+        <section id="contact" class="textblock">
+          <!-- Pega aquí email / contacto -->
+        </section>
       </section>
     </div>
   </main>
 
-  <!-- About / Contact (puedes rellenar luego) -->
-  <section id="about" class="panel">
-    <div class="panel__inner">
-      <h2>About</h2>
-      <p>Add a short bio here.</p>
-      <p><a href="#home" class="softlink">Back to Home</a></p>
-    </div>
-  </section>
-
-  <section id="contact" class="panel">
-    <div class="panel__inner">
-      <h2>Contact</h2>
-      <p>Email: <a class="softlink" href="mailto:hello@example.com">hello@example.com</a></p>
-      <p><a href="#home" class="softlink">Back to Home</a></p>
-    </div>
-  </section>
-
   <script>
-    // --- DATA + VIEWER LOGIC (simple + maintainable) ---
-    const heroImg = document.getElementById("heroImg");
-    const heroCap = document.getElementById("heroCap");
-    const viewerTitle = document.getElementById("viewerTitle");
-    const viewerCount = document.getElementById("viewerCount");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
+    // Oculta la firma flotante cuando bajas
+    (function () {
+      const el = document.getElementById("sigFloat");
+      if (!el) return;
 
-    const buttons = Array.from(document.querySelectorAll(".menu__btn"));
-
-    let activeSet = {
-      title: "DIPLOPÍA COLLECTION",
-      images: ["Diplopia_01.jpg","Diplopia_02.jpg","Diplopia_03.jpg","Diplopia_04.jpg"],
-      captions: ["Diplopía — Look 01","Diplopía — Look 02","Diplopía — Look 03","Diplopía — Look 04"]
-    };
-    let idx = 0;
-
-    function setActiveButton(btn){
-      buttons.forEach(b => b.classList.remove("is-active"));
-      btn.classList.add("is-active");
-    }
-
-    function parseBtnData(btn){
-      const title = (btn.dataset.title || "").trim();
-      const images = (btn.dataset.images || "").split(",").map(s => s.trim()).filter(Boolean);
-      const captions = (btn.dataset.captions || "").split(",").map(s => s.trim());
-
-      return { title, images, captions };
-    }
-
-    function render(){
-      const total = activeSet.images.length || 1;
-      idx = ((idx % total) + total) % total;
-
-      const file = activeSet.images[idx] || activeSet.images[0];
-      const cap = activeSet.captions[idx] || activeSet.captions[0] || "";
-
-      heroImg.src = "./images/" + file;
-      heroImg.alt = (activeSet.title ? activeSet.title + " — " : "") + (cap || "image");
-      heroCap.textContent = cap;
-      viewerTitle.textContent = activeSet.title || "";
-      viewerCount.textContent = `${idx + 1} / ${total}`;
-    }
-
-    function setSetFromButton(btn){
-      const data = parseBtnData(btn);
-      if(!data.images.length) return;
-
-      activeSet = data;
-      idx = 0;
-      setActiveButton(btn);
-      render();
-    }
-
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => setSetFromButton(btn));
-    });
-
-    prevBtn.addEventListener("click", () => { idx -= 1; render(); });
-    nextBtn.addEventListener("click", () => { idx += 1; render(); });
-
-    // Keyboard: left/right
-    window.addEventListener("keydown", (e) => {
-      if(e.key === "ArrowLeft") { idx -= 1; render(); }
-      if(e.key === "ArrowRight") { idx += 1; render(); }
-    });
-
-    render();
+      function onScroll() {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        el.classList.toggle("is-hidden", y > 30);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    })();
   </script>
 </body>
 </html>
