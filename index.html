@@ -11,17 +11,17 @@
 <body>
   <main class="stage">
     <div class="card">
-      <!-- LEFT (STICKY) -->
+
+      <!-- LEFT -->
       <aside class="left">
         <header class="brand" aria-label="Name">
           <div class="brand__stack">
-            <div class="brand__line">LARA</div>
-            <div class="brand__line">FRIAS</div>
-            <div class="brand__line">CUMELLA</div>
+            <div class="brand__line brand__line--1">LARA</div>
+            <div class="brand__line brand__line--2">FRIAS</div>
+            <div class="brand__line brand__line--3">CUMELLA</div>
           </div>
         </header>
 
-        <!-- Esto es visual, no navegación real -->
         <nav class="menu" aria-label="Index">
           <ol class="menu__list">
             <li>DIPLOPÍA COLLECTION</li>
@@ -35,9 +35,9 @@
           </ol>
         </nav>
 
-        <!-- Firma fija (01) -->
+        <!-- Firma fija del menú (01) -->
         <div class="sig-fixed" aria-hidden="true">
-          <img src="./images/signature_01.png" alt="" />
+          <img src="./images/signature_01.jpeg" alt="" />
         </div>
 
         <footer class="footer">
@@ -50,77 +50,82 @@
         </footer>
       </aside>
 
-      <!-- RIGHT (SCROLLING CONTENT) -->
+      <!-- RIGHT -->
       <section class="right" aria-label="Work">
         <a class="home" href="#top" aria-label="Home">
           <span class="home__dot">:</span>
           <span class="home__text">HOME</span>
         </a>
 
-        <!-- Etiqueta/firma flotante (02) visible solo arriba -->
+        <!-- Firma flotante (02) - NO forma parte del scroll -->
         <div class="sig-float" id="sigFloat" aria-hidden="true">
-          <img src="./images/signature_02.png" alt="" />
+          <img src="./images/signature_02.jpeg" alt="" />
         </div>
 
-        <!-- GRID / COMPOSICIÓN -->
-        <div class="grid" id="top">
+        <!-- ESTE es el único scroll -->
+        <div class="work" id="workScroll">
+          <div class="grid" id="top">
 
-          <!-- Sustituye src por tus imágenes reales -->
-          <figure class="tile tile--tall">
-            <img src="./images/hero.jpg" alt="Work image" />
-          </figure>
+            <!-- Usa nombres reales (ojo mayúsculas) -->
+            <figure class="tile tile--tall">
+              <img src="./images/Diplopia_01.jpg" alt="Work image" />
+            </figure>
 
-          <figure class="tile tile--small">
-            <img src="./images/image00001.jpg" alt="Work image" />
-            <figcaption>double leather bag</figcaption>
-          </figure>
+            <figure class="tile tile--small">
+              <img src="./images/Diplopia_02.jpg" alt="Work image" />
+              <figcaption>double leather bag</figcaption>
+            </figure>
 
-          <figure class="tile tile--wide">
-            <img src="./images/image00003.jpg" alt="Work image" />
-            <figcaption class="blue">DIPLOPIA COLLECTION 2023</figcaption>
-          </figure>
+            <figure class="tile tile--wide">
+              <img src="./images/Diplopia_03.jpg" alt="Work image" />
+              <figcaption class="blue">DIPLOPIA COLLECTION 2023</figcaption>
+            </figure>
 
-          <figure class="tile tile--wide2">
-            <img src="./images/image00006.jpg" alt="Work image" />
-          </figure>
+            <figure class="tile tile--wide2">
+              <img src="./images/Opjects_01.jpg" alt="Work image" />
+            </figure>
 
-          <figure class="tile tile--small2">
-            <img src="./images/image00007.jpg" alt="Work image" />
-          </figure>
+            <figure class="tile tile--small2">
+              <img src="./images/Opjects_02.jpg" alt="Work image" />
+            </figure>
 
-          <figure class="tile tile--small3">
-            <img src="./images/image00008.jpg" alt="Work image" />
-          </figure>
+            <figure class="tile tile--small3">
+              <img src="./images/Opjects_03.jpg" alt="Work image" />
+            </figure>
 
-          <!-- Añade más <figure class="tile ..."> según necesites -->
+            <!-- Ejemplo de capturas Swim (si quieres incluirlas) -->
+            <figure class="tile tile--wide2">
+              <img src="./images/Swim_01.png" alt="Work image" />
+            </figure>
+
+          </div>
+
+          <section id="about" class="textblock">
+            <!-- About text -->
+          </section>
+
+          <section id="contact" class="textblock">
+            <!-- Contact -->
+          </section>
         </div>
-
-        <!-- Secciones footer (pueden ser texto simple) -->
-        <section id="about" class="textblock">
-          <!-- Pega aquí el texto de ABOUT -->
-        </section>
-
-        <section id="contact" class="textblock">
-          <!-- Pega aquí email / contacto -->
-        </section>
       </section>
+
     </div>
   </main>
 
   <script>
-    // Oculta la firma flotante cuando bajas
-    (function () {
-      const el = document.getElementById("sigFloat");
-      if (!el) return;
+    // Oculta signature_02 cuando empieza el scroll del collage
+    (function(){
+      const scroller = document.getElementById("workScroll");
+      const floatSig = document.getElementById("sigFloat");
+      if (!scroller || !floatSig) return;
 
-      function onScroll() {
-        const y = window.scrollY || document.documentElement.scrollTop;
-        el.classList.toggle("is-hidden", y > 30);
+      function onScroll(){
+        floatSig.classList.toggle("is-hidden", scroller.scrollTop > 20);
       }
-      window.addEventListener("scroll", onScroll, { passive: true });
+      scroller.addEventListener("scroll", onScroll, { passive: true });
       onScroll();
     })();
   </script>
 </body>
 </html>
-
