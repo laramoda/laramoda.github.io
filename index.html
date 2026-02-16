@@ -12,8 +12,11 @@
   <main class="stage">
     <div class="card">
 
-      <!-- LEFT -->
+      <!-- LEFT (FIJO) -->
       <aside class="left">
+        <!-- Fondo watermark firma 01 -->
+        <div class="left__watermark" aria-hidden="true"></div>
+
         <header class="brand" aria-label="Name">
           <div class="brand__stack">
             <div class="brand__line brand__line--1">LARA</div>
@@ -35,11 +38,6 @@
           </ol>
         </nav>
 
-        <!-- Firma fija del menú (01) -->
-        <div class="sig-fixed" aria-hidden="true">
-          <img src="./images/signature_01.jpeg" alt="" />
-        </div>
-
         <footer class="footer">
           <div class="footer__links">
             <a href="#about">ABOUT ME</a>
@@ -50,83 +48,132 @@
         </footer>
       </aside>
 
-      <!-- RIGHT -->
+      <!-- RIGHT (SCROLL INTERNO) -->
       <section class="right" aria-label="Work">
         <a class="home" href="#top" aria-label="Home">
           <span class="home__dot">:</span>
           <span class="home__text">HOME</span>
         </a>
 
-        <!-- Firma flotante (02) - NO forma parte del scroll -->
-        <div class="sig-float" id="sigFloat" aria-hidden="true">
-          <img src="./images/signature_02.jpeg" alt="" />
-        </div>
-
-        <!-- ESTE es el único scroll -->
         <div class="work" id="workScroll">
-          <div class="grid" id="top">
+          <!-- HERO ARRIBA: firma 02 izquierda + primera imagen derecha -->
+          <div class="hero" id="top">
+            <div class="hero__sig" aria-hidden="true">
+              <img src="./images/signature_02.jpeg" alt="" />
+            </div>
 
-            <!-- Usa nombres reales (ojo mayúsculas) -->
+            <figure class="hero__image">
+              <img src="./images/Diplopia_01.jpg" alt="Double collar jacket" />
+              <figcaption>Double collar jacket. Diplopía collection</figcaption>
+            </figure>
+          </div>
+
+          <!-- COLLAGE (aparece al hacer scroll) -->
+          <div class="grid">
+
+            <!-- DIPLOPIA -->
             <figure class="tile tile--tall">
-              <img src="./images/Diplopia_01.jpg" alt="Work image" />
+              <img src="./images/Diplopia_04.jpg" alt="Diplopia" />
             </figure>
 
             <figure class="tile tile--small">
-              <img src="./images/Diplopia_02.jpg" alt="Work image" />
+              <img src="./images/Diplopia_02.jpg" alt="Diplopia" />
               <figcaption>double leather bag</figcaption>
             </figure>
 
-            <figure class="tile tile--wide">
-              <img src="./images/Diplopia_03.jpg" alt="Work image" />
-              <figcaption class="blue">DIPLOPIA COLLECTION 2023</figcaption>
+            <figure class="tile tile--small2">
+              <img src="./images/Diplopia_03.jpg" alt="Diplopia" />
+              <figcaption class="blue">DIPLOPIA COLLECTION<br/>2023</figcaption>
             </figure>
 
-            <figure class="tile tile--wide2">
-              <img src="./images/Opjects_01.jpg" alt="Work image" />
+            <!-- OTHER PROJECTS (Opjects_XX) -->
+            <figure class="tile tile--wide">
+              <img src="./images/Opjects_01.jpg" alt="Other projects" />
+            </figure>
+
+            <figure class="tile tile--small">
+              <img src="./images/Opjects_02.jpg" alt="Other projects" />
             </figure>
 
             <figure class="tile tile--small2">
-              <img src="./images/Opjects_02.jpg" alt="Work image" />
+              <img src="./images/Opjects_03.jpg" alt="Other projects" />
             </figure>
 
-            <figure class="tile tile--small3">
-              <img src="./images/Opjects_03.jpg" alt="Work image" />
+            <figure class="tile tile--wide">
+              <img src="./images/Opjects_04.jpg" alt="Other projects" />
             </figure>
 
-            <!-- Ejemplo de capturas Swim (si quieres incluirlas) -->
-            <figure class="tile tile--wide2">
-              <img src="./images/Swim_01.png" alt="Work image" />
+            <figure class="tile tile--small">
+              <img src="./images/Opjects_05.jpg" alt="Other projects" />
+            </figure>
+
+            <figure class="tile tile--small2">
+              <img src="./images/Opjects_06.jpg" alt="Other projects" />
+            </figure>
+
+            <figure class="tile tile--wide">
+              <img src="./images/Opjects_07.jpg" alt="Other projects" />
+            </figure>
+
+            <!-- ARTISAN -->
+            <figure class="tile tile--wide">
+              <img src="./images/Artisan_01.jpg" alt="Artisan tailoring" />
+            </figure>
+
+            <figure class="tile tile--small">
+              <img src="./images/Artisan_02.jpg" alt="Artisan tailoring" />
+            </figure>
+
+            <figure class="tile tile--small2">
+              <img src="./images/Artisan_03.jpg" alt="Artisan tailoring" />
+            </figure>
+
+            <figure class="tile tile--wide">
+              <img src="./images/Artisan_04.jpg" alt="Artisan tailoring" />
+            </figure>
+
+            <!-- COLLABORATIONS -->
+            <figure class="tile tile--small">
+              <img src="./images/colaborati_01.jpg" alt="Collaborations" />
+            </figure>
+
+            <figure class="tile tile--small2">
+              <img src="./images/colaborati_02.jpg" alt="Collaborations" />
+            </figure>
+
+            <!-- BTS (Swim) -->
+            <figure class="tile tile--wide">
+              <img src="./images/Swim_01.png" alt="BTS" />
+            </figure>
+
+            <figure class="tile tile--small">
+              <img src="./images/Swim_02.png" alt="BTS" />
+            </figure>
+
+            <figure class="tile tile--small2">
+              <img src="./images/Swim_03.png" alt="BTS" />
+            </figure>
+
+            <figure class="tile tile--wide">
+              <img src="./images/Swim_04.png" alt="BTS" />
+            </figure>
+
+            <figure class="tile tile--small">
+              <img src="./images/Swim_05.png" alt="BTS" />
+            </figure>
+
+            <figure class="tile tile--small2">
+              <img src="./images/Swim_06.png" alt="BTS" />
             </figure>
 
           </div>
 
-          <section id="about" class="textblock">
-            <!-- About text -->
-          </section>
-
-          <section id="contact" class="textblock">
-            <!-- Contact -->
-          </section>
+          <section id="about" class="textblock"></section>
+          <section id="contact" class="textblock"></section>
         </div>
       </section>
 
     </div>
   </main>
-
-  <script>
-    // Oculta signature_02 cuando empieza el scroll del collage
-    (function(){
-      const scroller = document.getElementById("workScroll");
-      const floatSig = document.getElementById("sigFloat");
-      if (!scroller || !floatSig) return;
-
-      function onScroll(){
-        floatSig.classList.toggle("is-hidden", scroller.scrollTop > 20);
-      }
-      scroller.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
-    })();
-  </script>
 </body>
 </html>
-
