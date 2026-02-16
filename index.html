@@ -164,32 +164,42 @@
 
     function render(){
       const total = activeSet.images.length || 1;
-      idx = ((idx % total) +
+      idx = ((idx % total) + total) % total;
 
-        <a class="home-link" href="#home" aria-label="Home">
-          <span class="home-dot">:</span>
-          <span class="home-text">HOME</span>
-        </a>
+      const file = activeSet.images[idx] || activeSet.images[0];
+      const cap = activeSet.captions[idx] || activeSet.captions[0] || "";
 
-        <figure class="hero">
-          <img src="./images/hero.jpg" alt="Featured work image" />
-          <figcaption>Double collar jacket. Diplopía collection</figcaption>
-        </figure>
-      </section>
-    </div>
-  </main>
+      heroImg.src = "./images/" + file;
+      heroImg.alt = (activeSet.title ? activeSet.title + " — " : "") + (cap || "image");
+      heroCap.textContent = cap;
+      viewerTitle.textContent = activeSet.title || "";
+      viewerCount.textContent = `${idx + 1} / ${total}`;
+    }
 
-  <!-- Placeholder sections (we'll fill these later) -->
-  <section id="home" class="section"></section>
-  <section id="diplopia" class="section"></section>
-  <section id="artisan" class="section"></section>
-  <section id="collaborations" class="section"></section>
-  <section id="other" class="section"></section>
-  <section id="bts" class="section"></section>
-  <section id="workat" class="section"></section>
-  <section id="kids" class="section"></section>
-  <section id="bags" class="section"></section>
-  <section id="about" class="section"></section>
-  <section id="contact" class="section"></section>
+    function setSetFromButton(btn){
+      const data = parseBtnData(btn);
+      if(!data.images.length) return;
+
+      activeSet = data;
+      idx = 0;
+      setActiveButton(btn);
+      render();
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => setSetFromButton(btn));
+    });
+
+    prevBtn.addEventListener("click", () => { idx -= 1; render(); });
+    nextBtn.addEventListener("click", () => { idx += 1; render(); });
+
+    // Keyboard: left/right
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "ArrowLeft") { idx -= 1; render(); }
+      if(e.key === "ArrowRight") { idx += 1; render(); }
+    });
+
+    render();
+  </script>
 </body>
 </html>
