@@ -2,81 +2,117 @@
     --bg: #efefef;
     --card: #ffffff;
     --ink: #1a1a1a;
-    --muted: #999;
+    --muted: #a0a0a0;
     --blue: #1f36ff;
 }
 
 * { box-sizing: border-box; }
 body, html { 
     margin: 0; padding: 0; height: 100%; 
-    background-color: var(--bg); 
-    font-family: "Courier New", Courier, monospace; /* Fuente base monospaced */
+    background-color: var(--bg);
+    font-family: "Courier New", Courier, monospace;
 }
 
-.stage { 
-    height: 100vh; display: flex; align-items: center; justify-content: center; padding: 25px; 
+.stage {
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 30px;
 }
 
 .card {
     width: min(1380px, 98%);
     height: 90vh;
     background: var(--card);
+    border: 1px solid rgba(0,0,0,0.08);
     border-radius: 24px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.06);
     display: grid;
-    grid-template-columns: 420px 1fr;
+    grid-template-columns: 400px 1fr;
     overflow: hidden;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.08);
 }
 
-/* --- LOGO REFINADO (HAIRLINE SERIF) --- */
+/* --- LOGO: Hairline Serif con Superposición --- */
 .logo-hairline {
-    font-family: "Times New Roman", Times, serif; /* O "Playfair Display" */
-    font-size: 78px;
-    font-weight: 100; /* Peso extra fino */
-    line-height: 0.65; /* Superposición vertical */
-    letter-spacing: -6px; /* Superposición horizontal */
+    font-family: "Times New Roman", Times, serif;
+    font-size: 76px;
+    font-weight: 100;
+    line-height: 0.62;
+    letter-spacing: -5px;
     margin: 0 0 40px 0;
     color: var(--ink);
     opacity: 0.85;
 }
-.l2 { position: relative; left: -2px; }
-.l3 { position: relative; left: -4px; }
 
-/* --- SIDEBAR --- */
-.sidebar { padding: 50px; border-right: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; }
-.nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 13px; color: var(--muted); line-height: 1.8; }
+.sidebar {
+    padding: 50px;
+    border-right: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
 
-.signature-fixed { margin: 35px 0; width: 140px; opacity: 0.7; }
-.signature-fixed img { width: 100%; filter: grayscale(1); }
+.nav-menu ol {
+    list-style: none; padding: 0; margin: 0;
+    font-size: 13px; color: var(--muted);
+    line-height: 1.8;
+}
 
-.footer-links { margin-top: auto; font-size: 11px; color: var(--muted); }
+/* Firma 01: Pequeña y centrada en su espacio */
+.sig-one-wrap {
+    margin: 40px 0;
+    width: 120px;
+}
+.sig-one-wrap img { width: 100%; opacity: 0.7; }
+
+.sidebar-footer { margin-top: auto; font-size: 11px; color: var(--muted); }
 .footer-links a { color: inherit; text-decoration: none; display: inline-block; }
-.contact-row { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
-.cv-label { margin-top: 15px; font-weight: bold; color: var(--ink); }
+.contact-row { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+.cv-label { margin-top: 15px; color: var(--ink); font-weight: bold; }
 
 /* --- CONTENIDO --- */
 .main-view { position: relative; overflow: hidden; }
-.home-sticky { 
+.home-fixed { 
     position: absolute; top: 35px; right: 50px; z-index: 100;
-    color: var(--blue); text-decoration: none; font-size: 14px; font-weight: bold; font-style: italic;
+    color: var(--blue); text-decoration: none; font-size: 13px; font-weight: bold; font-style: italic;
 }
-.blue-dots { font-style: normal; font-weight: 800; }
+.blue-dots { font-style: normal; font-weight: 900; }
 
-.scroll-area { height: 100%; overflow-y: auto; padding: 60px 50px; scrollbar-width: none; }
+.scroll-area {
+    height: 100%;
+    overflow-y: auto;
+    padding: 60px 50px;
+    scrollbar-width: none;
+}
 .scroll-area::-webkit-scrollbar { display: none; }
 
-/* Hero Section */
-.hero { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; min-height: 75vh; margin-bottom: 80px; }
-.hero-labels img { width: 100%; max-width: 320px; opacity: 0.9; }
-.hero-image img { width: 100%; border-radius: 20px; }
-.hero-image figcaption { font-size: 11px; color: var(--muted); text-align: right; margin-top: 12px; }
+/* Hero: Firma 02 + Diplopia_01 */
+.hero-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    min-height: 75vh;
+    margin-bottom: 80px;
+}
 
-/* Collage Grid */
-.collage-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 30px; }
-.tile img { width: 100%; border-radius: 16px; display: block; }
-.t-left { grid-column: 1 / span 5; }
-.t-center { grid-column: 7 / span 3; align-self: center; }
-.t-blue-info { grid-column: 10 / span 3; color: var(--blue); font-weight: bold; font-size: 12px; padding-top: 20px; }
-.t-full-width { grid-column: 1 / span 12; margin-top: 50px; }
+.hero-sig img { width: 100%; max-width: 320px; opacity: 0.15; }
+.hero-image-wrap img { width: 100%; border-radius: 18px; }
+.hero-image-wrap figcaption { font-size: 11px; color: var(--muted); text-align: right; margin-top: 10px; }
 
-.scroll-footer { margin-top: 100px; padding-bottom: 40px; display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
+/* Collage */
+.collage {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+}
+
+.tile img { width: 100%; border-radius: 14px; display: block; }
+.t-left-high { grid-column: 1 / span 5; }
+.t-right-center { grid-column: 7 / span 3; align-self: center; }
+.t-blue-info { grid-column: 10 / span 3; color: var(--blue); font-weight: bold; font-size: 11px; padding-top: 30px; }
+.t-full-width { grid-column: 1 / span 12; margin-top: 60px; }
+
+.main-footer {
+    margin-top: 120px; padding-bottom: 40px;
+    display: flex; justify-content: space-between;
+    font-size: 11px; color: var(--muted);
+}
