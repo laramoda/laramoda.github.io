@@ -32,6 +32,7 @@
             grid-template-columns: 320px 1fr;
             overflow: hidden;
             box-shadow: 0 40px 100px rgba(0,0,0,0.08);
+            position: relative;
         }
 
         /* --- SIDEBAR --- */
@@ -45,8 +46,8 @@
         .nav-menu li { cursor: pointer; transition: color 0.3s; }
         .nav-menu li:hover { color: var(--ink); }
 
-        /* Firma en el menú lateral */
-        .sig-sidebar { margin: 25px 0; width: 110px; }
+        /* Firma del menú lateral (signature_01) - Ahora más grande */
+        .sig-sidebar { margin: 25px 0; width: 140px; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
 
         .footer-sidebar { margin-top: auto; font-size: 11px; color: var(--muted); }
@@ -65,38 +66,64 @@
         .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; display: block; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* --- HERO (PORTADA LIMPIA) --- */
-        .hero { 
-            display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; height: 100%; padding: 60px; background: #fff; position: relative; z-index: 10;
+        /* --- ABOUT ME (MAQUETACIÓN FINAL) --- */
+        #about-view { 
+            display: block; 
+            padding: 40px 60px; 
+            height: 100%; 
+            overflow-y: auto; 
+            position: relative;
         }
-        /* Firma central como fondo */
-        .hero-labels { display: flex; justify-content: center; }
-        .hero-labels img { width: 380px; opacity: 1; }
-        .hero-main { position: relative; }
-        .hero-main img { width: 100%; border-radius: 20px; }
-        .caption-hero { position: absolute; bottom: -25px; right: 0; font-size: 10px; color: var(--muted); }
-
-        /* --- ABOUT ME (IDÉNTICO AL ORIGINAL) --- */
-        #about-view { display: block; padding: 40px 60px; height: 100%; overflow-y: auto; }
         
-        .about-header { display: flex; justify-content: space-between; margin-bottom: 20px; align-items: baseline; }
+        /* Fondo signature_02 al 50% de opacidad */
+        #about-view::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background-image: url('images/signature_02.jpeg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.5;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .about-content-wrapper { position: relative; z-index: 1; }
+
+        .about-header { display: flex; justify-content: space-between; margin-bottom: 15px; align-items: baseline; }
         .about-header .title { font-weight: normal; font-size: 14px; }
         .about-header .author { color: var(--muted); font-size: 11px; text-transform: uppercase; }
 
         .about-grid { display: grid; grid-template-columns: 1.5fr 320px; gap: 50px; align-items: start; }
         
-        .about-text { font-size: 13px; line-height: 1.6; color: var(--ink); }
-        .about-text p { margin: 0 0 25px 0; text-align: justify; }
+        .about-text { font-size: 13px; line-height: 1.5; color: var(--ink); }
+        .about-text p { margin: 0 0 20px 0; text-align: justify; }
 
-        /* Columna derecha con foto y agradecimiento debajo */
-        .about-right-col { display: flex; flex-direction: column; gap: 25px; }
-        .about-image img { width: 100%; border-radius: 15px; filter: grayscale(1); display: block; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .about-right-col { display: flex; flex-direction: column; gap: 20px; }
+        .about-image img { 
+            width: 100%; 
+            border-radius: 15px; 
+            filter: grayscale(1); 
+            display: block; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+        }
         
-        .thank-you-note { font-size: 13px; line-height: 1.5; color: var(--ink); }
-        .location { margin-top: 25px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; line-height: 1.4; }
+        .thank-you-note { font-size: 13px; line-height: 1.4; color: var(--ink); }
+        .location { margin-top: 15px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; line-height: 1.4; }
 
-        /* Footer con créditos */
-        .bottom-credits { position: absolute; bottom: 20px; left: 60px; width: calc(100% - 120px); display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); }
+        /* Pie de página con créditos */
+        .bottom-credits { 
+            margin-top: 40px;
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 10px; 
+            color: var(--muted); 
+        }
 
         #home-view { display: none; }
     </style>
@@ -138,47 +165,40 @@
                 <div class="scroll-wrapper" id="scroll-container">
                     
                     <div id="about-view">
-                        <div class="about-header">
-                            <span class="title">: About me</span>
-                            <span class="author">BY LARA</span>
-                        </div>
-                        <div class="about-grid">
-                            <div class="about-text">
-                                <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
-                                
-                                <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
-                                
-                                <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience. This innovative approach has not only shaped my design methodology but has also become a hallmark of my personal style.</p>
-                                
-                                <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression. Each piece I create tells a story of resilience and transformation, offering a fresh perspective on timeless fashion.</p>
+                        <div class="about-content-wrapper">
+                            <div class="about-header">
+                                <span class="title">: About me</span>
+                                <span class="author">BY LARA</span>
                             </div>
-                            
-                            <div class="about-right-col">
-                                <div class="about-image">
-                                    <img src="images/Lara.jpg" alt="Lara Frias Portrait">
+                            <div class="about-grid">
+                                <div class="about-text">
+                                    <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
+                                    
+                                    <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
+                                    
+                                    <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience. This innovative approach has not only shaped my design methodology but has also become a hallmark of my personal style.</p>
+                                    
+                                    <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression. Each piece I create tells a story of resilience and transformation, offering a fresh perspective on timeless fashion.</p>
                                 </div>
-                                <div class="thank-you-note">
-                                    <p>Thank you for exploring my work, and I hope my designs inspire and resonate with you as much as they do with me.</p>
-                                    <div class="location">Barcelona<br>SPAIN</div>
+                                
+                                <div class="about-right-col">
+                                    <div class="about-image">
+                                        <img src="images/Lara.jpg" alt="Lara Frias Portrait">
+                                    </div>
+                                    <div class="thank-you-note">
+                                        <p>Thank you for exploring my work, and I hope my designs inspire and resonate with you as much as they do with me.</p>
+                                        <div class="location">Barcelona<br>SPAIN</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="bottom-credits">
-                            <span>@bylara.frias</span>
-                            <span>larafc@hotmail.es</span>
+                            <div class="bottom-credits">
+                                <span>@bylara.frias</span>
+                                <span>larafc@hotmail.es</span>
+                            </div>
                         </div>
                     </div>
 
                     <div id="home-view">
-                        <div class="hero">
-                            <div class="hero-labels">
-                                <img src="images/signature_02.jpeg" alt="Firma fondo">
-                            </div>
-                            <div class="hero-main">
-                                <img src="images/Diplopia_01.jpg" alt="Diplopia Collection">
-                                <span class="caption-hero">Double collar jacket. Diplopia collection</span>
-                            </div>
-                        </div>
                         </div>
 
                 </div>
