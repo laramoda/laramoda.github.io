@@ -19,46 +19,51 @@
 
         /* SIDEBAR */
         .sidebar { padding: 40px; border-right: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; background: #fff; z-index: 100; }
-        .logo-hairline { font-family: serif; font-size: 58px; font-weight: 100; line-height: 0.75; letter-spacing: -3px; margin-bottom: 35px; text-transform: uppercase; }
+        .logo-hairline { font-family: serif; font-size: 58px; font-weight: 100; line-height: 0.75; letter-spacing: -3px; margin-bottom: 35px; text-transform: uppercase; color: var(--ink); }
         .nav-menu ol { list-style: none; padding: 0; font-size: 11px; color: var(--muted); line-height: 2.2; }
-        .nav-menu li { cursor: pointer; }
+        .nav-menu li { cursor: pointer; transition: color 0.3s; }
+        .nav-menu li:hover { color: var(--ink); }
         .sig-sidebar { margin: 30px 0; width: 300px; align-self: center; } 
-        .sig-sidebar img { width: 100%; }
+        .sig-sidebar img { width: 100%; opacity: 0.9; }
+        
         .footer-sidebar { margin-top: auto; font-size: 11px; color: var(--muted); }
         .about-link { color: var(--blue); font-weight: bold; cursor: pointer; text-decoration: none; display: block; margin-bottom: 5px; }
 
-        /* CONTENIDO PRINCIPAL */
+        /* CONTENIDO */
         .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
         .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; position: relative; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* VISTA HOME */
+        /* HERO FIJA CON FONDO BLANCO */
         .hero-block { 
-            min-height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; 
-            padding: 40px; background: #fff;
+            height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; 
+            background: #fff; position: sticky; top: 0; z-index: 10;
         }
         .hero-inner { width: 90%; display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; gap: 40px; }
         .hero-labels img { width: 320px; }
-        .hero-main img { width: 100%; border-radius: 20px; }
+        .hero-main img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
-        /* COLLAGE CON SEPARACIÓN REAL */
-        .collage-block { padding: 100px 40px; background: #fff; }
+        /* COLLAGE CON DESPLAZAMIENTO INFERIOR */
+        .collage-block { 
+            position: relative; z-index: 20; background: #fff;
+            margin-top: 0; padding: 100px 40px;
+        }
         .collage-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; align-items: end; }
         .tile img { width: 100%; border-radius: 12px; display: block; }
         
-        /* Ajuste 3 primeras fotos según tu imagen */
-        .t-left { grid-column: span 5; margin-right: 15px; }
-        .t-center { grid-column: span 2; z-index: 10; margin-left: -35px; margin-bottom: 40px; text-align: center; }
-        .t-right { grid-column: span 5; margin-left: 15px; }
+        .t-left { grid-column: span 5; }
+        .t-center { grid-column: span 2; z-index: 30; margin-left: -40px; margin-bottom: 50px; text-align: center; }
+        .t-right { grid-column: span 5; }
 
         .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 12px; display: block; }
         .caption-gray { font-size: 9px; color: var(--muted); margin-top: 10px; display: block; }
 
-        /* VISTA ABOUT */
-        #about-view { display: none; padding: 60px; min-height: 100%; background: #fff; }
+        /* ABOUT VIEW */
+        #about-view { display: none; padding: 60px; height: 100%; overflow-y: auto; background: #fff; position: relative; z-index: 50; }
         .about-grid { display: grid; grid-template-columns: 1.5fr 300px; gap: 50px; }
         .about-text { font-size: 13px; line-height: 1.6; text-align: justify; }
         .about-image img { width: 100%; border-radius: 15px; filter: grayscale(1); }
+        .thank-you { font-size: 13px; line-height: 1.4; color: var(--ink); margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -71,6 +76,7 @@
                     <li onclick="showSection('home')">1. DIPLOPIA COLLECTION</li>
                     <li>2. ARTISAN TAILORING</li>
                     <li>3. COLLABORATIONS</li>
+                    <li>4. OTHER PROJECTS</li>
                 </ol>
             </nav>
             <div class="sig-sidebar"><img src="images/signature_01.jpeg"></div>
@@ -96,14 +102,13 @@
                         <div class="collage-grid">
                             <div class="tile t-left"><img src="images/Diplopia_02.jpg"></div>
                             <div class="tile t-center">
-                                <img src="images/Diplopia_03.jpg" style="width: 170px; max-width: none;">
+                                <img src="images/Diplopia_03.jpg" style="width: 180px; max-width: none;">
                                 <span class="caption-gray">double leather bag</span>
                             </div>
                             <div class="tile t-right">
                                 <img src="images/Diplopia_04.jpg">
                                 <span class="blue-tag">DIPLOPÍA COLLECTION 2023</span>
                             </div>
-                            
                             <div class="tile" style="grid-column: span 8; margin-top: 80px;"><img src="images/Artisan_01.jpg"></div>
                             <div class="tile" style="grid-column: span 4; margin-top: 120px;"><img src="images/Artisan_02.jpg"><span class="blue-tag">ARTISAN TAILORING</span></div>
                         </div>
@@ -116,10 +121,12 @@
                             <p style="font-weight: bold; font-size: 18px; margin-bottom: 30px;">: About me</p>
                             <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
                             <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke, I chose to channel this unique perspective into my designs.</p>
+                            <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic.</p>
+                            <p style="margin-top: 40px; color: var(--muted); font-size: 10px;">Barcelona, SPAIN</p>
                         </div>
                         <div class="about-image">
                             <img src="images/Lara.jpg">
-                            <p style="font-size: 13px; margin-top: 20px;">Thank you for exploring my work.</p>
+                            <div class="thank-you">Thank you for exploring my work, and I hope my designs inspire you.</div>
                         </div>
                     </div>
                 </div>
