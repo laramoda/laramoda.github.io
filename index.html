@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,7 +44,7 @@
         .scroll-wrapper { position: relative; z-index: 10; height: 100%; overflow-y: auto; scrollbar-width: none; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* --- BLOQUE HERO (BLINDADO) --- */
+        /* --- BLOQUE HERO (BLINDADO 100% ALTO) --- */
         .hero-section { 
             height: 100%; 
             width: 100%; 
@@ -52,7 +53,7 @@
             justify-content: center; 
             background: #fff; 
             position: relative; 
-            z-index: 20; 
+            z-index: 50; 
         }
         .hero-inner { width: 90%; display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; gap: 40px; }
         .hero-labels img { width: 320px; }
@@ -66,9 +67,10 @@
             z-index: 10; 
             padding: 100px 40px; 
         }
-        .collage-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 25px; max-width: 1100px; margin: 0 auto; }
+        .collage-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; align-items: end; }
         .tile img { width: 100%; border-radius: 12px; display: block; }
-        .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 10px; display: block; }
+        .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 12px; display: block; }
+        .caption-gray { font-size: 9px; color: var(--muted); margin-top: 10px; display: block; }
 
         /* --- ABOUT ME --- */
         #about-view { display: none; padding: 60px; height: 100%; overflow-y: auto; }
@@ -118,9 +120,19 @@
 
                     <div class="collage-section">
                         <div class="collage-grid">
-                            <div class="tile" style="grid-column: span 5; margin-right: 20px;"><img src="images/Diplopia_02.jpg"></div>
-                            <div class="tile" style="grid-column: span 2; align-self: center; z-index: 10; margin-left: -10px;"><img src="images/Diplopia_03.jpg" style="width: 160px; max-width: none;"></div>
-                            <div class="tile" style="grid-column: span 5; margin-top: 40px;"><img src="images/Diplopia_04.jpg"><span class="blue-tag">DIPLOPÍA COLLECTION</span></div>
+                            <div class="tile" style="grid-column: span 5; margin-right: 10px;">
+                                <img src="images/Diplopia_02.jpg">
+                            </div>
+                            
+                            <div class="tile" style="grid-column: span 2; z-index: 10; margin-left: -25px; margin-bottom: 30px; text-align: center;">
+                                <img src="images/Diplopia_03.jpg" style="width: 160px; max-width: none;">
+                                <span class="caption-gray">double leather bag</span>
+                            </div>
+                            
+                            <div class="tile" style="grid-column: span 5; margin-left: 10px;">
+                                <img src="images/Diplopia_04.jpg">
+                                <span class="blue-tag">DIPLOPÍA COLLECTION 2023</span>
+                            </div>
                             
                             <div class="tile" style="grid-column: span 8; margin-top: 60px;"><img src="images/Artisan_01.jpg"></div>
                             <div class="tile" style="grid-column: span 4; margin-top: 100px;"><img src="images/Artisan_02.jpg"><span class="blue-tag">ARTISAN TAILORING</span></div>
@@ -131,6 +143,7 @@
                             <div class="tile" style="grid-column: span 4; text-align: center;"><img src="images/Swim_03.png" style="width: 85%;"><span class="blue-tag">MOODBORED SWIM</span></div>
                             <div class="tile" style="grid-column: span 4; margin-top: 50px;"><img src="images/Swim_04.png"></div>
                         </div>
+                        
                         <div style="padding: 100px 0 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted);">
                             <span>@bylara.frias</span>
                             <span>larafc@hotmail.es</span>
