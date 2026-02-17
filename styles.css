@@ -1,220 +1,273 @@
-:root{
-  --bg:#efefef;
-  --card: rgba(255,255,255,0.70);
-  --border: rgba(0,0,0,0.14);
-  --shadow: 0 22px 70px rgba(0,0,0,0.16);
-  --muted: rgba(0,0,0,0.45);
-  --ink: rgba(0,0,0,0.78);
-  --blue:#1f36ff;
-  --r:16px;
-}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lara Frias Cumella</title>
 
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--ink);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-               "Liberation Mono","Courier New", monospace;
-  overflow:hidden; /* scroll solo dentro del collage */
-}
+  <style>
+    :root {
+      --bg: #efefef;
+      --card: rgba(255, 255, 255, 0.85);
+      --border: rgba(0, 0, 0, 0.08);
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.12);
+      --muted: rgba(0, 0, 0, 0.45);
+      --ink: rgba(0, 0, 0, 0.85);
+      --blue: #1f36ff;
+      --r: 16px;
+    }
 
-.stage{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:28px;
-}
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      overflow: hidden; /* Bloquea el scroll general */
+    }
 
-.card{
-  width:min(1200px, 100%);
-  height:min(760px, 86vh);
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  box-shadow:var(--shadow);
-  overflow:hidden;
+    .stage {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-  display:grid;
-  grid-template-columns: 420px 1fr;
-}
+    .card {
+      width: min(1300px, 95%);
+      height: 88vh;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 380px 1fr; /* Proporción ideal para el menú */
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
 
-/* LEFT fijo */
-.left{
-  position:relative;
-  padding:28px 18px 28px 28px;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-}
+    /* --- SIDEBAR IZQUIERDO (FIJO) --- */
+    .left {
+      position: relative;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      z-index: 10;
+    }
 
-/* firma 01 como fondo (watermark) */
-.left__watermark{
-  position:absolute;
-  inset:0;
-  background-image: url("./images/signature_01.jpeg");
-  background-repeat:no-repeat;
-  background-size: 220px auto;
-  background-position: 30px 360px; /* ajusta si quieres */
-  opacity:0.10;
-  pointer-events:none;
-  z-index:0;
-}
-.left > *{ position:relative; z-index:1; }
+    /* Firma 01: Entre el menú y el contacto */
+    .left__watermark {
+      position: absolute;
+      bottom: 180px; /* Ajustado para quedar en el hueco visual */
+      left: 40px;
+      width: 200px;
+      height: auto;
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-/* Nombre superpuesto */
-.brand__stack{
-  text-transform:uppercase;
-  letter-spacing:.06em;
-  font-size:58px;
-  font-weight:300;
-  line-height:.78;
-}
-.brand__line--2{ margin-top:-8px; }
-.brand__line--3{ margin-top:-8px; }
+    .brand__stack {
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      font-size: 54px;
+      font-weight: 700;
+      line-height: 0.78;
+      margin-bottom: 40px;
+    }
 
-.menu{ margin-top:26px; }
-.menu__list{
-  margin:0;
-  padding-left:18px;
-  font-size:13px;
-  color:var(--muted);
-}
-.menu__list li{ margin:0 0 6px 0; }
+    .menu { margin-top: 10px; }
+    .menu__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .menu__list li { margin-bottom: 10px; cursor: pointer; transition: color 0.3s; }
+    .menu__list li:hover { color: var(--ink); }
 
-.footer{
-  margin-top:auto;
-  font-size:12px;
-  color:var(--muted);
-  display:grid;
-  gap:10px;
-}
-.footer__links{ display:grid; gap:6px; }
-.footer a{ color:var(--muted); text-decoration:none; }
-.footer a:hover{ color:var(--ink); text-decoration:underline; }
-.footer__cv{ color:var(--ink); }
+    .footer {
+      margin-top: auto;
+      font-size: 11px;
+      color: var(--muted);
+      display: grid;
+      gap: 8px;
+    }
+    .footer a { color: inherit; text-decoration: none; text-transform: uppercase; }
+    .footer a:hover { color: var(--ink); }
 
-/* RIGHT */
-.right{
-  position:relative;
-  padding:28px 28px 28px 18px;
-  overflow:hidden;
-}
+    /* --- CONTENIDO DERECHO (SCROLL) --- */
+    .right {
+      position: relative;
+      overflow: hidden; /* Contenedor padre limpio */
+    }
 
-.home{
-  position:absolute;
-  top:20px;
-  right:28px;
-  display:inline-flex;
-  gap:10px;
-  align-items:center;
-  color:var(--blue);
-  text-decoration:none;
-  font-size:14px;
-  font-style:italic;
-  z-index:10;
-}
-.home__dot{ font-style:normal; font-weight:700; }
+    .home-nav {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      z-index: 100;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.work{
-  height:100%;
-  overflow:auto; /* scroll interno */
-  padding-top:20px;
-  padding-right:6px;
-}
+    .work-scroll {
+      height: 100%;
+      overflow-y: scroll;
+      padding: 60px 40px;
+      scrollbar-width: none; /* Oculta scroll en Firefox */
+    }
+    .work-scroll::-webkit-scrollbar { display: none; } /* Oculta scroll en Chrome/Safari */
 
-/* HERO: firma 02 izquierda + imagen derecha */
-.hero{
-  display:grid;
-  grid-template-columns: 1fr 420px;
-  gap:22px;
-  align-items:center;
-  min-height: 420px; /* crea el “aire” antes del collage */
-  margin-top:10px;
-  margin-bottom: 12px;
-}
+    /* HERO: Firma 02 + Imagen 01 */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      min-height: 70vh;
+      align-items: center;
+      margin-bottom: 80px;
+    }
 
-.hero__sig{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.hero__sig img{
-  width:min(420px, 92%);
-  height:auto;
-  display:block;
-  opacity:0.22;  /* visible pero suave */
-}
+    .hero__sig {
+      opacity: 0.08;
+      text-align: center;
+      user-select: none;
+    }
+    .hero__sig img { width: 80%; }
 
-.hero__image{
-  margin:0;
-  text-align:center;
-}
-.hero__image img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:var(--r);
-}
-.hero__image figcaption{
-  margin-top:10px;
-  font-size:12px;
-  color:var(--muted);
-}
+    .hero__image figure { margin: 0; text-align: right; }
+    .hero__image img {
+      width: 100%;
+      border-radius: var(--r);
+      box-shadow: 0 15px 45px rgba(0,0,0,0.05);
+    }
+    .hero__image figcaption {
+      margin-top: 15px;
+      font-size: 11px;
+      color: var(--muted);
+    }
 
-/* GRID collage */
-.grid{
-  display:grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap:22px;
-  padding-bottom:40px;
-}
+    /* COLLAGE GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 30px;
+      padding-bottom: 100px;
+    }
 
-.tile{ margin:0; }
-.tile img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:var(--r);
-  background:#ddd;
-}
-.tile figcaption{
-  margin-top:10px;
-  font-size:12px;
-  color:var(--muted);
-}
-.tile figcaption.blue{
-  color:var(--blue);
-  text-decoration:underline;
-}
+    .tile { margin: 0; position: relative; }
+    .tile img { width: 100%; border-radius: var(--r); display: block; }
+    .tile figcaption { margin-top: 12px; font-size: 11px; color: var(--muted); }
+    .tile .blue-text { color: var(--blue); text-decoration: underline; text-transform: uppercase; font-weight: bold; }
 
-/* Colocación (estética tipo Cargo, adaptable) */
-.tile--tall{ grid-column: 1 / span 5; }
-.tile--small{ grid-column: 7 / span 3; }
-.tile--small2{ grid-column: 10 / span 3; }
-.tile--wide{ grid-column: 1 / span 12; }
+    /* Posicionamiento asimétrico (Tipo Cargo) */
+    .tile--left-mid { grid-column: 1 / span 5; margin-top: -40px; }
+    .tile--center-small { grid-column: 7 / span 3; align-self: center; }
+    .tile--right-info { grid-column: 10 / span 3; }
+    .tile--wide { grid-column: 2 / span 10; margin-top: 50px; }
 
-.textblock{
-  margin-top: 40px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(0,0,0,0.08);
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
-}
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .card { grid-template-columns: 1fr; height: auto; }
+      .left { border-right: none; border-bottom: 1px solid var(--border); height: auto; }
+      .left__watermark { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero__sig { display: none; }
+      .work-scroll { height: auto; overflow: visible; }
+    }
+  </style>
+</head>
 
-/* Responsive */
-@media (max-width: 980px){
-  body{ overflow:auto; }
-  .card{ grid-template-columns: 1fr; height:auto; }
-  .right{ padding:18px; }
-  .work{ height:auto; }
-  .hero{ grid-template-columns: 1fr; min-height:auto; }
-  .grid{ grid-template-columns: repeat(6, 1fr); }
-  .tile--tall{ grid-column: 1 / span 6; }
-  .tile--small{ grid-column: 1 / span 3; }
-  .tile--small2{ grid-column: 4 / span 3; }
-  .tile--wide{ grid-column: 1 / span 6; }
-}
+<body>
+  <main class="stage">
+    <div class="card">
+      
+      <aside class="left">
+        <header class="brand">
+          <div class="brand__stack">
+            LARA<br>FRIAS<br>CUMELLA
+          </div>
+        </header>
+
+        <nav class="menu">
+          <ol class="menu__list">
+            <li>01. DIPLOPÍA COLLECTION</li>
+            <li>02. ARTISAN TAILORING</li>
+            <li>03. COLLABORATIONS</li>
+            <li>04. OTHER PROJECTS</li>
+            <li>05. BTS</li>
+            <li>06. WORK AT :</li>
+            <li>07. KIDS</li>
+            <li>08. BAGS</li>
+          </ol>
+        </nav>
+
+        <img src="./images/signature_01.jpeg" class="left__watermark" alt="signature">
+
+        <footer class="footer">
+          <a href="#about">ABOUT ME</a>
+          <a href="#contact">CONTACT</a>
+          <a href="https://instagram.com/lara.frias" target="_blank">INSTAGRAM</a>
+          <div style="color: var(--ink); margin-top: 10px; font-weight: bold;">: CV</div>
+        </footer>
+      </aside>
+
+      <section class="right">
+        <a href="#" class="home-nav">
+          <span style="font-size: 10px;">■</span> HOME
+        </a>
+
+        <div class="work-scroll">
+          
+          <div class="hero">
+            <div class="hero__sig">
+              <img src="./images/signature_02.jpeg" alt="signature decor">
+            </div>
+            <div class="hero__image">
+              <figure>
+                <img src="./images/Diplopia_01.jpg" alt="Diplopia Collection">
+                <figcaption>Double collar jacket. Diplopía collection</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="grid">
+            
+            <figure class="tile tile--left-mid">
+              <img src="./images/Diplopia_02.jpg" alt="Detail">
+            </figure>
+
+            <figure class="tile tile--center-small">
+              <img src="./images/Diplopia_03.jpg" alt="Bag detail">
+              <figcaption>double leather bag</figcaption>
+            </figure>
+
+            <div class="tile tile--right-info">
+              <p class="blue-text">DIPLOPÍA COLLECTION<br>2023</p>
+            </div>
+
+            <figure class="tile tile--wide">
+              <img src="./images/Artisan_Tailoring_01.jpg" alt="Wide process">
+              <figcaption>Artisan tailoring process / Work at studio</figcaption>
+            </figure>
+
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>
