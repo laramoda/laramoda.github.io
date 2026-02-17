@@ -3,187 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lara Frias Cumella | Portfolio</title>
-
-  <style>
-    :root {
-      --bg: #efefef;
-      --card: rgba(255, 255, 255, 0.85);
-      --border: rgba(0, 0, 0, 0.08);
-      --shadow: 0 30px 100px rgba(0, 0, 0, 0.12);
-      --muted: #888;
-      --ink: #1a1a1a;
-      --blue: #1f36ff;
-      --r: 12px;
-    }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; padding: 0; }
-    
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "Courier New", Courier, monospace;
-      overflow: hidden; /* Mantiene el fondo estático */
-    }
-
-    /* Estructura Principal */
-    .stage {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .card {
-      width: min(1400px, 98%);
-      height: 90vh;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: 350px 1fr;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* BARRA IZQUIERDA (Inmóvil) */
-    .left {
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      border-right: 1px solid var(--border);
-      position: relative;
-      background: white;
-      z-index: 10;
-    }
-
-    .brand__stack {
-      font-size: 52px;
-      font-weight: 800;
-      line-height: 0.75;
-      letter-spacing: -2px;
-      margin-bottom: 40px;
-    }
-
-    .menu__list {
-      list-style: none;
-      padding: 0;
-      font-size: 11px;
-      letter-spacing: 1px;
-      color: var(--muted);
-    }
-    .menu__list li { margin-bottom: 8px; }
-
-    .left__watermark {
-      position: absolute;
-      bottom: 180px;
-      left: 40px;
-      width: 180px;
-      opacity: 0.1;
-      pointer-events: none;
-    }
-
-    .footer {
-      margin-top: auto;
-      font-size: 11px;
-      color: var(--muted);
-    }
-    .footer a { color: inherit; text-decoration: none; display: block; margin-top: 5px; }
-
-    /* SECCIÓN DERECHA (Con Scroll) */
-    .right {
-      position: relative;
-      overflow-y: auto;
-      scroll-behavior: smooth;
-      background: transparent;
-    }
-
-    /* Botón Home fijo en la esquina del scroll */
-    .home-nav {
-      position: sticky;
-      top: 20px;
-      right: 40px;
-      float: right;
-      z-index: 100;
-      color: var(--blue);
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 13px;
-    }
-
-    .work-container { padding: 40px; }
-
-    /* HERO (Primera imagen) */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 450px;
-      gap: 40px;
-      min-height: 80vh;
-      align-items: start;
-      margin-bottom: 100px;
-    }
-
-    .hero__sig-center {
-      align-self: center;
-      opacity: 0.05;
-      user-select: none;
-    }
-
-    .hero__image img {
-      width: 100%;
-      border-radius: var(--r);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-    }
-
-    .caption {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 15px;
-      text-align: right;
-    }
-
-    /* GRID COLLAGE ASIMÉTRICO */
-    .collage {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 30px;
-      align-items: start;
-    }
-
-    .tile { margin-bottom: 40px; }
-    .tile img { width: 100%; border-radius: var(--r); display: block; }
-    
-    /* Clases para posicionar como en tus capturas */
-    .pos-1 { grid-column: 1 / span 5; } /* Imagen alta izquierda */
-    .pos-2 { grid-column: 7 / span 3; margin-top: 50px; } /* Pequeña bolso */
-    .pos-3 { grid-column: 10 / span 3; } /* Diplopia Blue text */
-    .pos-4 { grid-column: 2 / span 6; margin-top: -100px; } /* Mesa corte negra */
-    .pos-5 { grid-column: 8 / span 4; } /* Artisan Tailoring */
-
-    .blue-tag {
-      color: var(--blue);
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 12px;
-      margin-top: 10px;
-      display: block;
-    }
-
-    /* Footer final dentro del scroll */
-    .final-footer {
-      margin-top: 100px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      font-size: 10px;
-      color: var(--muted);
-    }
-
-  </style>
+  <title>Lara Frias Cumella</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -191,78 +12,116 @@
     <div class="card">
       
       <aside class="left">
-        <div class="brand__stack">
-          LARA<br>FRIAS<br>COMELLA
-        </div>
+        <header class="brand">
+          <div class="brand__stack">
+            <div class="line">LARA</div>
+            <div class="line move-up-1">FRIAS</div>
+            <div class="line move-up-2">CUMELLA</div>
+          </div>
+        </header>
 
         <nav class="menu">
           <ol class="menu__list">
-            <li>01. DIPLOPÍA COLLECTION</li>
-            <li>02. ARTISAN TAILORING</li>
-            <li>03. COLLABORATIONS</li>
-            <li>04. OTHER PROJECTS</li>
-            <li>05. BTS</li>
-            <li>06. WORK AT :</li>
-            <li>07. KIDS</li>
-            <li>08. BAGS</li>
+            <li>1. DIPLOPÍA COLLECTION</li>
+            <li>2. ARTISAN TAILORING</li>
+            <li>3. COLLABORATIONS</li>
+            <li>4. OTHER PROJECTS</li>
+            <li>5. BTS</li>
+            <li>6. WORK AT :</li>
+            <li>7. KIDS</li>
+            <li>8. BAGS</li>
           </ol>
         </nav>
 
-        <img src="signature_01.png" class="left__watermark" alt="firma">
+        <div class="watermark-container">
+            <img src="images/signature_01.jpeg" class="left__signature" alt="">
+        </div>
 
         <footer class="footer">
-          <a href="#">ABOUT ME</a>
-          <a href="#">CONTACT</a>
-          <a href="#">INSTAGRAM</a>
-          <p style="color:var(--ink); margin-top:15px;">: CV</p>
+          <div class="footer__links">
+            <a href="#about">ABOUT ME</a>
+            <div class="contact-line">
+                <span class="icon">✉</span> <a href="mailto:larafc@hotmail.es">CONTACT</a>
+            </div>
+            <div class="contact-line">
+                <span class="icon"></span> <a href="https://instagram.com/bylara.frias" target="_blank">INSTAGRAM</a>
+            </div>
+          </div>
+          <div class="footer__cv">: CV</div>
         </footer>
       </aside>
 
       <section class="right">
-        <a href="#" class="home-nav">■ HOME</a>
+        <a href="#" class="home-button">: HOME</a>
         
-        <div class="work-container">
+        <div class="content-scroll">
+          
           <div class="hero">
-            <div class="hero__sig-center">
-              <img src="signature_02.png" style="width:300px;" alt="">
+            <div class="hero__signature">
+              <img src="images/signature_02.jpeg" alt="">
             </div>
-            <div class="hero__image">
-              <img src="Diplopia_01.jpg" alt="Jacket">
-              <p class="caption">Double collar jacket. Diplopía collection</p>
-            </div>
+            <figure class="hero__image">
+              <img src="images/Diplopia_01.jpg" alt="Diplopia Collection">
+              <figcaption>Double collar jacket. Diplopia collection</figcaption>
+            </figure>
           </div>
 
           <div class="collage">
             
-            <div class="tile pos-1">
-              <img src="Diplopia_02.jpg">
+            <figure class="tile t-left t-tall">
+              <img src="images/Diplopia_02.jpg">
+            </figure>
+
+            <figure class="tile t-right t-small">
+              <img src="images/Diplopia_03.jpg">
+              <figcaption>double leather bag</figcaption>
+            </figure>
+
+            <div class="tile t-right-text">
+              <p class="blue-label">DIPLOPÍA COLLECTION 2023</p>
             </div>
 
-            <div class="tile pos-2">
-              <img src="Diplopia_bag.jpg">
-              <p class="caption" style="text-align:left;">double leather bag</p>
-            </div>
+            <figure class="tile t-wide">
+              <img src="images/Artisan_01.jpg">
+            </figure>
 
-            <div class="tile pos-3">
-              <img src="Diplopia_group.jpg">
-              <span class="blue-tag">DIPLOPÍA COLLECTION<br>2023</span>
-            </div>
+            <figure class="tile t-center t-med">
+              <img src="images/Artisan_02.jpg">
+              <p class="blue-label">ARTISAN TAILORING 2023</p>
+            </figure>
 
-            <div class="tile pos-4">
-              <img src="Artisan_01.jpg">
-            </div>
+            <figure class="tile t-right t-med">
+              <img src="images/Artisan_03.jpg">
+            </figure>
 
-            <div class="tile pos-5">
-              <img src="Artisan_detail.jpg">
-              <span class="blue-tag">ARTISAN TAILORING<br>2023</span>
-            </div>
+            <figure class="tile t-left t-med">
+                <img src="images/Oprojects_01.jpg">
+            </figure>
+
+            <figure class="tile t-full-wide">
+                <img src="images/Oprojects_02.jpg">
+                <p class="blue-label">VILLAINS COLLECTION 2022</p>
+            </figure>
+
+            <figure class="tile t-small">
+                <img src="images/Swim_01.png">
+            </figure>
+            
+            <figure class="tile t-small">
+                <img src="images/Swim_02.png">
+            </figure>
+
+            <figure class="tile t-tall t-center">
+                <img src="images/Swim_03.png">
+                <p class="blue-label">MOODBORED SWIMWEAR COLLECTION</p>
+            </figure>
 
           </div>
 
-          <footer class="final-footer">
-            <div>@bylara.frias</div>
-            <div>Larafc@hotmail.es</div>
-          </footer>
+          <div class="scroll-footer">
+            <span>@bylara.frias</span>
+            <span>Larafc@hotmail.es</span>
+          </div>
 
         </div>
       </section>
