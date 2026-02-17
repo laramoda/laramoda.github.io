@@ -46,9 +46,9 @@
         .nav-menu li { cursor: pointer; transition: color 0.3s; }
         .nav-menu li:hover { color: var(--ink); }
 
-        /* Firma del menú lateral (signature_01) - Ahora más grande */
-        .sig-sidebar { margin: 25px 0; width: 140px; } 
-        .sig-sidebar img { width: 100%; opacity: 0.8; }
+        /* Firma del menú (signature_01) - 500% más grande */
+        .sig-sidebar { margin: 40px 0; width: 300px; align-self: center; } 
+        .sig-sidebar img { width: 100%; opacity: 0.9; }
 
         .footer-sidebar { margin-top: auto; font-size: 11px; color: var(--muted); }
         .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
@@ -56,74 +56,56 @@
         .about-link { color: var(--blue) !important; font-weight: bold; margin-bottom: 5px; display: block; }
         .cv-label { margin-top: 15px; font-weight: bold; color: var(--ink); }
 
-        /* --- ÁREA DE CONTENIDO --- */
-        .main-content { position: relative; height: 100%; overflow: hidden; background: #fff; }
-        .home-nav { 
-            position: absolute; top: 25px; right: 35px; z-index: 100;
-            color: var(--blue); text-decoration: none; font-size: 11px; font-weight: bold; font-style: italic; cursor: pointer;
-        }
-
-        .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; display: block; }
-        .scroll-wrapper::-webkit-scrollbar { display: none; }
-
-        /* --- ABOUT ME (MAQUETACIÓN FINAL) --- */
-        #about-view { 
-            display: block; 
-            padding: 40px 60px; 
+        /* --- ÁREA DE CONTENIDO CON MARCA DE AGUA --- */
+        .main-content { 
+            position: relative; 
             height: 100%; 
-            overflow-y: auto; 
-            position: relative;
+            overflow: hidden; 
+            background: #fff; 
         }
-        
-        /* Fondo signature_02 al 50% de opacidad */
-        #about-view::before {
+
+        /* Marca de agua global (signature_02) al 50% */
+        .main-content::before {
             content: "";
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
+            width: 70%;
+            height: 70%;
             background-image: url('images/signature_02.jpeg');
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 0.5;
+            opacity: 0.5; /* Opacidad al 50% como pediste */
             z-index: 0;
             pointer-events: none;
         }
-        
-        .about-content-wrapper { position: relative; z-index: 1; }
 
+        .home-nav { 
+            position: absolute; top: 25px; right: 35px; z-index: 100;
+            color: var(--blue); text-decoration: none; font-size: 11px; font-weight: bold; font-style: italic; cursor: pointer;
+        }
+
+        .scroll-wrapper { position: relative; z-index: 1; height: 100%; overflow-y: auto; scrollbar-width: none; display: block; }
+        .scroll-wrapper::-webkit-scrollbar { display: none; }
+
+        /* --- ABOUT ME --- */
+        #about-view { display: block; padding: 40px 60px; height: 100%; overflow-y: auto; }
         .about-header { display: flex; justify-content: space-between; margin-bottom: 15px; align-items: baseline; }
         .about-header .title { font-weight: normal; font-size: 14px; }
         .about-header .author { color: var(--muted); font-size: 11px; text-transform: uppercase; }
 
         .about-grid { display: grid; grid-template-columns: 1.5fr 320px; gap: 50px; align-items: start; }
-        
         .about-text { font-size: 13px; line-height: 1.5; color: var(--ink); }
         .about-text p { margin: 0 0 20px 0; text-align: justify; }
 
         .about-right-col { display: flex; flex-direction: column; gap: 20px; }
-        .about-image img { 
-            width: 100%; 
-            border-radius: 15px; 
-            filter: grayscale(1); 
-            display: block; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-        }
-        
+        .about-image img { width: 100%; border-radius: 15px; filter: grayscale(1); display: block; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .thank-you-note { font-size: 13px; line-height: 1.4; color: var(--ink); }
-        .location { margin-top: 15px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; line-height: 1.4; }
+        .location { margin-top: 15px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Pie de página con créditos */
-        .bottom-credits { 
-            margin-top: 40px;
-            display: flex; 
-            justify-content: space-between; 
-            font-size: 10px; 
-            color: var(--muted); 
-        }
+        .bottom-credits { margin-top: 40px; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); }
 
         #home-view { display: none; }
     </style>
@@ -148,7 +130,7 @@
                     </ol>
                 </nav>
                 <div class="sig-sidebar">
-                    <img src="images/signature_01.jpeg" alt="Lara Frias Signature">
+                    <img src="images/signature_01.jpeg" alt="Firma Grande">
                 </div>
                 <footer class="footer-sidebar">
                     <div class="footer-links">
@@ -165,36 +147,31 @@
                 <div class="scroll-wrapper" id="scroll-container">
                     
                     <div id="about-view">
-                        <div class="about-content-wrapper">
-                            <div class="about-header">
-                                <span class="title">: About me</span>
-                                <span class="author">BY LARA</span>
+                        <div class="about-header">
+                            <span class="title">: About me</span>
+                            <span class="author">BY LARA</span>
+                        </div>
+                        <div class="about-grid">
+                            <div class="about-text">
+                                <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
+                                <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
+                                <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience.</p>
+                                <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression.</p>
                             </div>
-                            <div class="about-grid">
-                                <div class="about-text">
-                                    <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
-                                    
-                                    <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
-                                    
-                                    <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience. This innovative approach has not only shaped my design methodology but has also become a hallmark of my personal style.</p>
-                                    
-                                    <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression. Each piece I create tells a story of resilience and transformation, offering a fresh perspective on timeless fashion.</p>
+                            
+                            <div class="about-right-col">
+                                <div class="about-image">
+                                    <img src="images/Lara.jpg" alt="Lara Portrait">
                                 </div>
-                                
-                                <div class="about-right-col">
-                                    <div class="about-image">
-                                        <img src="images/Lara.jpg" alt="Lara Frias Portrait">
-                                    </div>
-                                    <div class="thank-you-note">
-                                        <p>Thank you for exploring my work, and I hope my designs inspire and resonate with you as much as they do with me.</p>
-                                        <div class="location">Barcelona<br>SPAIN</div>
-                                    </div>
+                                <div class="thank-you-note">
+                                    <p>Thank you for exploring my work, and I hope my designs inspire and resonate with you as much as they do with me.</p>
+                                    <div class="location">Barcelona SPAIN</div>
                                 </div>
                             </div>
-                            <div class="bottom-credits">
-                                <span>@bylara.frias</span>
-                                <span>larafc@hotmail.es</span>
-                            </div>
+                        </div>
+                        <div class="bottom-credits">
+                            <span>@bylara.frias</span>
+                            <span>larafc@hotmail.es</span>
                         </div>
                     </div>
 
