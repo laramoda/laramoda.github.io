@@ -59,15 +59,23 @@
             color: var(--blue); text-decoration: none; font-size: 11px; font-weight: bold; font-style: italic; cursor: pointer;
         }
 
-        .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; }
+        /* Contenedor de scroll con flex para separar secciones */
+        .scroll-wrapper { 
+            height: 100%; 
+            overflow-y: auto; 
+            scrollbar-width: none; 
+            display: flex;
+            flex-direction: column;
+        }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* --- HERO: AISLAMIENTO TOTAL --- */
+        /* --- HERO: TOTALMENTE AISLADO --- */
         .hero { 
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
-            height: 100%; /* Ocupa exactamente el alto de la tarjeta */
+            height: 100%;        /* Alto total de la tarjeta */
+            flex-shrink: 0;     /* Prohíbe que se encoja */
             padding: 40px;
             position: relative;
             background: #fff;
@@ -79,14 +87,15 @@
         .hero-main img { width: 100%; border-radius: 20px; display: block; }
         .caption-hero { position: absolute; bottom: -30px; right: 0; font-size: 10px; color: var(--muted); }
 
-        /* --- COLLAGE: EMPIEZA CON ESPACIO --- */
+        /* --- COLLAGE: EMPIEZA SIN PISAR LA HERO --- */
         .collage-section { 
-            padding: 100px 40px; /* Margen superior para alejarlo de la Hero */
+            padding: 60px 40px; 
             display: flex; 
             flex-direction: column; 
             gap: 150px; 
             position: relative; 
             z-index: 1; 
+            background: #fff;
         }
         .section-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; position: relative; }
         .tile img { width: 100%; border-radius: 12px; display: block; }
@@ -100,7 +109,7 @@
         .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 12px; display: block; }
 
         /* --- ABOUT ME --- */
-        #about-view { display: none; padding: 60px; }
+        #about-view { display: none; padding: 60px; height: 100%; }
         .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: start; }
         .about-text { font-size: 13px; line-height: 1.8; color: var(--ink); white-space: pre-line; }
         .about-image img { 
@@ -147,7 +156,7 @@
                 <div onclick="showSection('home')" class="home-nav"><span>:</span> HOME</div>
                 <div class="scroll-wrapper" id="scroll-container">
                     
-                    <div id="home-view">
+                    <div id="home-view" style="height: 100%;">
                         <div class="hero">
                             <div class="hero-labels"><img src="images/signature_02.jpeg"></div>
                             <div class="hero-main">
@@ -159,7 +168,10 @@
                         <div class="collage-section">
                             <div class="section-grid">
                                 <div class="tile d2"><img src="images/Diplopia_02.jpg"></div>
-                                <div class="tile d3"><img src="images/Diplopia_03.jpg"><p style="font-size: 10px; color: var(--muted); margin-top: 8px;">double leather bag</p></div>
+                                <div class="tile d3">
+                                    <img src="images/Diplopia_03.jpg">
+                                    <p style="font-size: 10px; color: var(--muted); margin-top: 8px;">double leather bag</p>
+                                </div>
                                 <div class="tile d4"><img src="images/Diplopia_04.jpg"><span class="blue-tag">DIPLOPÍA COLLECTION 2023</span></div>
                             </div>
 
