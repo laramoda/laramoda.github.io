@@ -1,158 +1,81 @@
-:root {
-    --bg: #efefef;
-    --card: #ffffff;
-    --ink: #111111;
-    --muted: #a0a0a0;
-    --blue: #1f36ff;
-    --line: rgba(0, 0, 0, 0.08);
-}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lara Frias Cumella</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="stage">
+    <main class="card">
+      
+      <aside class="sidebar">
+        <header class="logo-box">
+          <h1 class="logo-graphic">
+            <span class="l1">LARA</span><br>
+            <span class="l2">FRIAS</span><br>
+            <span class="l3">CUMELLA</span>
+          </h1>
+        </header>
 
-* { box-sizing: border-box; }
+        <nav class="nav-menu">
+          <ol>
+            <li>1. DIPLOPÍA COLLECTION</li>
+            <li>2. ARTISAN TAILORING</li>
+            <li>3. COLLABORATIONS</li>
+            <li>4. OTHER PROJECTS</li>
+            <li>5. BTS</li>
+            <li>6. WORK AT :</li>
+            <li>7. KIDS</li>
+            <li>8. BAGS</li>
+          </ol>
+        </nav>
 
-body, html {
-    margin: 0; padding: 0; height: 100%;
-    background-color: var(--bg);
-    color: var(--ink);
-    font-family: ui-monospace, "Courier New", monospace; /* Tipografía monospaced para el UI */
-}
+        <div class="sig-container-01">
+          <img src="images/signature_01.jpeg" alt="">
+        </div>
 
-.stage {
-    height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 25px;
-}
+        <footer class="side-footer">
+          <div class="links">
+            <a href="#">ABOUT ME</a>
+            <div class="contact-line">✉ <a href="mailto:larafc@hotmail.es">CONTACT</a></div>
+            <div class="contact-line"> <a href="https://instagram.com/bylara.frias">INSTAGRAM</a></div>
+          </div>
+          <div class="cv-tag">: CV</div>
+        </footer>
+      </aside>
 
-.card {
-    width: min(1400px, 98%);
-    height: 90vh;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.1);
-    display: flex;
-    overflow: hidden;
-}
+      <section class="main-content">
+        <a href="#" class="home-btn">: HOME</a>
+        
+        <div class="scroll-wrapper">
+          <div class="hero">
+            <div class="sig-container-02">
+              <img src="images/signature_02.jpeg" alt="">
+            </div>
+            <figure class="hero-image">
+              <img src="images/Diplopia_01.jpg" alt="">
+              <figcaption>Double collar jacket. Diplopia collection</figcaption>
+            </figure>
+          </div>
 
-/* --- SIDEBAR IZQUIERDO --- */
-.sidebar {
-    width: 380px;
-    padding: 45px;
-    display: flex; flex-direction: column;
-    border-right: 1px solid var(--line);
-    flex-shrink: 0;
-}
+          <div class="collage">
+            <figure class="tile t-left"><img src="images/Diplopia_02.jpg"></figure>
+            <figure class="tile t-center"><img src="images/Diplopia_03.jpg"><figcaption>double leather bag</figcaption></figure>
+            <div class="tile t-label-blue">DIPLOPÍA COLLECTION 2023</div>
+            
+            <figure class="tile t-wide"><img src="images/Artisan_01.jpg"></figure>
+            </div>
 
-/* Logo con letras superpuestas/pisadas */
-.logo h1 {
-    font-family: sans-serif; /* Cambiar a una sans-serif bold similar a la imagen */
-    font-size: 68px;
-    font-weight: 900;
-    line-height: 0.68; /* Ajuste para que las líneas se pisen */
-    letter-spacing: -3.5px; /* Ajuste para letras muy juntas */
-    margin: 0 0 35px 0;
-    color: #111;
-}
+          <div class="end-footer">
+            <span>@bylara.frias</span>
+            <span>Larafc@hotmail.es</span>
+          </div>
+        </div>
+      </section>
 
-.menu ol {
-    list-style: none; padding: 0; margin: 0;
-    font-size: 13px; line-height: 1.8;
-}
-
-.menu li { color: var(--muted); }
-
-/* Firma 01 ajustada en tamaño */
-.signature-small { margin: 35px 0; }
-.signature-small img {
-    width: 130px; /* Tamaño reducido */
-    opacity: 0.7;
-}
-
-.footer { margin-top: auto; font-size: 12px; }
-.footer a { color: var(--muted); text-decoration: none; }
-.contact-row { margin-top: 5px; display: flex; align-items: center; gap: 10px; }
-.cv-tag { margin-top: 15px; font-weight: bold; color: var(--ink); }
-
-/* --- ÁREA DE CONTENIDO --- */
-.main-content {
-    flex-grow: 1;
-    position: relative;
-    display: flex; flex-direction: column;
-}
-
-.top-nav {
-    position: absolute; top: 35px; right: 45px; z-index: 10;
-}
-
-.home-link {
-    color: var(--blue); text-decoration: none;
-    font-size: 14px; font-weight: bold; font-style: italic;
-}
-
-.scroll-wrapper {
-    overflow-y: scroll;
-    height: 100%;
-    padding: 70px 50px;
-    scrollbar-width: thin; /* Para Firefox */
-}
-
-/* Estilo del scrollbar para Chrome/Safari */
-.scroll-wrapper::-webkit-scrollbar { width: 8px; }
-.scroll-wrapper::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
-
-/* HERO: Firma y Diplopia_01 */
-.hero-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 50/50 para que la imagen sea protagonista */
-    gap: 40px;
-    align-items: center;
-    min-height: 75vh;
-    margin-bottom: 100px;
-}
-
-.hero-signature img {
-    width: 100%; max-width: 320px;
-    opacity: 0.15; /* Sutil como marca de agua */
-}
-
-.hero-image img {
-    width: 100%;
-    border-radius: 18px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-}
-
-.hero-image figcaption {
-    font-size: 11px; color: var(--muted);
-    text-align: right; margin-top: 12px;
-}
-
-/* COLLAGE */
-.collage {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 30px;
-    align-items: start;
-}
-
-.item img { width: 100%; border-radius: 15px; display: block; }
-.item figcaption { font-size: 11px; color: var(--muted); margin-top: 10px; }
-.blue { color: var(--blue); font-weight: bold; font-size: 12px; text-transform: uppercase; }
-
-/* Posiciones asimétricas del collage */
-.pos-left-mid { grid-column: 1 / span 5; }
-.pos-right-center { grid-column: 7 / span 3; align-self: center; }
-.pos-label { grid-column: 10 / span 3; padding-top: 30px; }
-.pos-full { grid-column: 1 / span 12; margin: 50px 0; }
-.pos-center-text { grid-column: 4 / span 6; }
-
-.scroll-footer {
-    margin-top: 120px;
-    display: flex; justify-content: space-between;
-    font-size: 11px; color: var(--muted);
-    padding-bottom: 40px;
-}
-
-@media (max-width: 1100px) {
-    .card { grid-template-columns: 1fr; height: auto; }
-    .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--line); }
-    .hero-section { grid-template-columns: 1fr; }
-}
+    </main>
+  </div>
+</body>
+</html>
