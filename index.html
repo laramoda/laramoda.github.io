@@ -36,7 +36,7 @@
             box-shadow: 0 40px 100px rgba(0,0,0,0.08);
         }
 
-        /* --- SIDEBAR FIJO --- */
+        /* --- SIDEBAR --- */
         .sidebar { padding: 35px; border-right: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; }
         .logo-hairline {
             font-family: serif; font-size: 72px; font-weight: 100; 
@@ -61,7 +61,7 @@
         .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* HERO: Ocupa el 100% de la tarjeta para que el collage esté oculto al inicio */
+        /* HERO: Altura 100% para ocultar el collage al inicio */
         .hero { 
             display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; 
             align-items: center; height: 100%; padding: 40px;
@@ -71,41 +71,44 @@
         .hero-img-wrap img { width: 100%; border-radius: 18px; }
         .hero-img-wrap figcaption { font-size: 11px; color: var(--muted); margin-top: 8px; }
 
-        /* --- COLLAGE COMPACTO --- */
+        /* --- COLLAGE DENSO (CSS Corregido) --- */
         .collage { 
-            display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; 
-            padding: 40px; align-items: start; 
+            display: grid; 
+            grid-template-columns: repeat(12, 1fr); 
+            gap: 20px; /* Espaciado uniforme y compacto */
+            padding: 40px; 
+            align-items: start; 
         }
         .tile img { width: 100%; border-radius: 14px; display: block; }
         .blue-tag { color: var(--blue); font-weight: bold; font-size: 11px; text-transform: uppercase; margin: 8px 0; display: block; }
         .caption { font-size: 11px; color: var(--muted); margin-top: 6px; }
 
-        /* DIPLOPIA (image_062a83, image_070b7d) */
+        /* DIPLOPIA */
         .pos-d-02 { grid-column: 1 / span 5; }
         .pos-d-mid { grid-column: 7 / span 2; display: flex; flex-direction: column; align-items: center; align-self: center; text-align: center; }
         .pos-d-mid img { width: 90px; }
         .pos-d-04 { grid-column: 10 / span 3; }
 
-        /* ARTISAN (image_068480) */
-        .pos-a-01 { grid-column: 1 / span 5; margin-top: 50px; }
-        .pos-a-stack { grid-column: 7 / span 2; display: flex; flex-direction: column; gap: 20px; margin-top: 50px; }
-        .pos-a-03 { grid-column: 10 / span 3; margin-top: 50px; }
+        /* ARTISAN (Sin margen superior extra) */
+        .pos-a-01 { grid-column: 1 / span 6; }
+        .pos-a-stack { grid-column: 7 / span 3; display: flex; flex-direction: column; gap: 20px; }
+        .pos-a-03 { grid-column: 10 / span 3; }
 
-        /* VILLAINS (image_052b1e, image_068b9f) */
-        .pos-v-02 { grid-column: 1 / span 2; margin-top: 60px; }
-        .pos-v-runway { grid-column: 1 / span 9; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
-        .pos-v-07 { grid-column: 10 / span 3; margin-top: 30px; }
+        /* VILLAINS (Estructura corregida) */
+        .pos-v-top-left { grid-column: 1 / span 3; }
+        .pos-v-07-big { grid-column: 9 / span 4; grid-row: span 2; } /* Ocupa 2 filas */
+        .pos-v-runway { grid-column: 1 / span 8; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
-        /* COLABORATI & VILLAINS STACKS (image_052b60) */
-        .pos-c-stack { grid-column: 1 / span 4; display: flex; flex-direction: column; gap: 25px; margin-top: 60px; }
-        .pos-v-right-stack { grid-column: 7 / span 6; display: flex; flex-direction: column; gap: 25px; margin-top: 60px; }
+        /* COLLAB & VILLAINS END */
+        .pos-c-stack { grid-column: 1 / span 4; display: flex; flex-direction: column; gap: 20px; }
+        .pos-v-stack-right { grid-column: 5 / span 8; display: flex; flex-direction: column; gap: 20px; }
 
-        /* SWIMWEAR (image_052bc0) */
-        .pos-s-left { grid-column: 1 / span 4; display: flex; flex-direction: column; gap: 20px; margin-top: 70px; }
-        .pos-s-mid { grid-column: 5 / span 4; display: flex; flex-direction: column; gap: 20px; margin-top: 70px; text-align: center; }
-        .pos-s-right { grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 20px; margin-top: 70px; }
+        /* SWIMWEAR (3 Columnas balanceadas) */
+        .pos-s-left { grid-column: 1 / span 4; display: flex; flex-direction: column; gap: 20px; }
+        .pos-s-mid { grid-column: 5 / span 4; display: flex; flex-direction: column; gap: 20px; text-align: center; }
+        .pos-s-right { grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 20px; }
 
-        .final-footer { margin-top: 80px; padding-bottom: 30px; display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); grid-column: 1 / span 12; }
+        .final-footer { margin-top: 60px; padding-bottom: 30px; display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); grid-column: 1 / span 12; }
     </style>
 </head>
 <body>
@@ -142,7 +145,7 @@
             </aside>
 
             <section class="main-content">
-                <a href="#" class="home-nav"><span>:</span> HOME</a>
+                <a href="#" class="home-nav"><span class="blue-dots">:</span> HOME</a>
                 <div class="scroll-wrapper">
                     <div class="hero">
                         <div class="hero-sig"><img src="images/signature_02.jpeg" alt=""></div>
@@ -154,66 +157,9 @@
 
                     <div class="collage">
                         <figure class="tile pos-d-02"><img src="images/Diplopia_02.jpg"></figure>
-                        <div class="pos-d-mid">
-                            <img src="images/Diplopia_03.jpg">
-                            <p class="caption">double leather bag</p>
-                        </div>
-                        <div class="tile pos-d-04">
-                            <img src="images/Diplopia_04.jpg">
-                            <span class="blue-tag">DIPLOPÍA COLLECTION 2023</span>
-                        </div>
+                        <div class="pos-d-mid"><img src="images/Diplopia_03.jpg"><p class="caption">double leather bag</p></div>
+                        <div class="tile pos-d-04"><img src="images/Diplopia_04.jpg"><span class="blue-tag">DIPLOPÍA COLLECTION 2023</span></div>
 
                         <figure class="tile pos-a-01"><img src="images/Artisan_01.jpg"></figure>
                         <div class="pos-a-stack">
-                            <div class="tile">
-                                <img src="images/Artisan_02.jpg">
-                                <span class="blue-tag">ARTISAN TAILORING 2023</span>
-                            </div>
-                            <div class="tile"><img src="images/Artisan_04.jpg"></div>
-                        </div>
-                        <figure class="tile pos-a-03"><img src="images/Artisan_03.jpg"></figure>
-
-                        <div class="pos-v-02"><img src="images/Oprojects_02.jpg" style="width: 120px; border-radius: 12px;"></div>
-                        <div class="pos-v-runway">
-                            <div class="tile"><img src="images/Oprojects_03.jpg"></div>
-                            <div class="tile"><img src="images/Oprojects_04.jpg"></div>
-                            <div class="tile"><img src="images/Oprojects_05.jpg"></div>
-                        </div>
-                        <figure class="tile pos-v-07"><img src="images/Oprojects_07.jpg"></figure>
-
-                        <div class="pos-collab-stack">
-                            <div class="tile"><img src="images/colaborati_01.jpg"></div>
-                            <div class="tile"><img src="images/colaborati_02.jpg"></div>
-                        </div>
-                        <div class="pos-v-stack-right">
-                            <div class="tile">
-                                <img src="images/Oprojects_06.jpg">
-                                <span class="blue-tag">VILLAINS COLLECTION 2022</span>
-                            </div>
-                            <div class="tile"><img src="images/Oprojects_01.jpg"></div>
-                        </div>
-
-                        <div class="pos-s-left">
-                            <div class="tile"><img src="images/Swim_04.jpg"></div>
-                            <div class="tile"><img src="images/Swim_06.png"></div>
-                        </div>
-                        <div class="pos-s-mid">
-                            <div class="tile">
-                                <img src="images/Swim_03.png">
-                                <span class="blue-tag">MOODBORED SWIMWEAR COLLECTION</span>
-                            </div>
-                            <div class="tile"><img src="images/Swim_05.png"></div>
-                        </div>
-                        <div class="pos-s-right">
-                            <div class="tile"><img src="images/Swim_01.png"></div>
-                            <div class="tile"><img src="images/Swim_02.png"></div>
-                        </div>
-
-                        <footer class="final-footer"><span>@bylara.frias</span><span>Larafc@hotmail.es</span></footer>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
-</body>
-</html>
+                            <div class="tile"><img src="images/Artisan_02.jpg"><span class="blue-tag">ARTISAN TAILORING 2023</span></div>
