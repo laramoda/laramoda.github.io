@@ -18,15 +18,15 @@
             margin: 0; padding: 0; height: 100%; 
             background-color: var(--bg); 
             font-family: ui-monospace, "Courier New", monospace;
+            overflow: hidden;
         }
 
         .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
 
         .card {
             width: min(1380px, 98%);
-            height: min(760px, 88vh);
+            height: min(820px, 92vh);
             background: var(--card);
-            border: 1px solid rgba(0,0,0,0.08);
             border-radius: 24px;
             display: grid;
             grid-template-columns: 320px 1fr;
@@ -38,11 +38,10 @@
         .sidebar { padding: 40px; border-right: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; z-index: 10; background: #fff; }
         .logo-hairline {
             font-family: "Times New Roman", serif;
-            font-size: 58px; font-weight: 100; 
-            line-height: 0.75; letter-spacing: -3px; margin: 0 0 35px 0;
+            font-size: 58px; font-weight: 100; line-height: 0.75; letter-spacing: -3px; margin: 0 0 35px 0;
             color: var(--ink); text-transform: uppercase;
         }
-        .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 11px; color: var(--muted); line-height: 1.8; }
+        .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 11px; color: var(--muted); line-height: 2; }
         .nav-menu li { cursor: pointer; transition: color 0.3s; }
         .nav-menu li:hover { color: var(--ink); }
 
@@ -52,58 +51,59 @@
         .footer-sidebar { margin-top: auto; font-size: 11px; color: var(--muted); }
         .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
         .footer-sidebar a { color: inherit; text-decoration: none; }
-        .cv-label { margin-top: 15px; font-weight: bold; color: var(--ink); cursor: pointer; }
+        .cv-label { margin-top: 15px; font-weight: bold; color: var(--ink); }
 
-        /* --- CONTENIDO --- */
+        /* --- CONTENIDO PRINCIPAL --- */
         .main-content { position: relative; overflow: hidden; background: #fff; }
         .home-nav { 
             position: absolute; top: 25px; right: 35px; z-index: 100;
-            color: var(--blue); text-decoration: none; font-size: 11px; font-weight: bold; font-style: italic;
-            cursor: pointer;
+            color: var(--blue); text-decoration: none; font-size: 11px; font-weight: bold; font-style: italic; cursor: pointer;
         }
 
         .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* --- COLLAGE REESTRUCTURADO --- */
-        .collage-container { padding: 40px; position: relative; min-height: 2000px; } /* Altura mínima para permitir scroll */
+        /* --- COLLAGE EDITORIAL (22 IMÁGENES) --- */
+        .collage-section { padding: 40px; }
 
-        .hero-block { display: flex; justify-content: space-between; align-items: center; height: 600px; margin-bottom: 100px; }
-        .hero-sig { width: 40%; }
-        .hero-sig img { width: 100%; max-width: 350px; } /* Ajustado para que no se vea gigante */
-        .hero-img { width: 55%; position: relative; }
-        .hero-img img { width: 100%; border-radius: 20px; }
-        .caption-hero { position: absolute; bottom: -30px; right: 0; font-size: 10px; color: var(--muted); }
+        /* Hero */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; min-height: 700px; margin-bottom: 80px; }
+        .hero-sig img { width: 100%; max-width: 320px; display: block; margin: 0 auto; }
+        .hero-img img { width: 100%; border-radius: 15px; }
+        .caption { font-size: 10px; color: var(--muted); margin-top: 10px; text-transform: uppercase; }
 
-        /* Bloques de Colección con Posiciones Fijas */
-        .collection-block { position: relative; width: 100%; height: 700px; margin-top: 100px; }
+        /* Rejilla de Collage */
+        .grid-collage { 
+            display: grid; 
+            grid-template-columns: repeat(12, 1fr); 
+            gap: 20px; 
+            align-items: start;
+        }
 
-        .tile { position: absolute; transition: transform 0.4s; }
-        .tile img { width: 100%; border-radius: 12px; display: block; }
-        .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 10px; display: block; }
+        .item { position: relative; margin-bottom: 40px; }
+        .item img { width: 100%; border-radius: 10px; display: block; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
 
-        /* DIPLOPIA POSITIONS */
-        .d-img-1 { width: 400px; top: 0; left: 0; z-index: 1; }
-        .d-img-2 { width: 120px; top: 250px; left: 360px; z-index: 10; } /* El bolso que solapa */
-        .d-img-3 { width: 350px; top: 50px; right: 20px; z-index: 2; }
+        /* Clases de Posicionamiento Editorial */
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+        .col-3 { grid-column: span 3; }
+        .col-8 { grid-column: span 8; }
+        
+        .offset-up { margin-top: -80px; }
+        .offset-down { margin-top: 80px; }
+        .overlap { z-index: 5; transform: scale(1.1); }
+        .small-center { width: 60%; margin: 0 auto; }
 
-        /* ARTISAN POSITIONS */
-        .a-img-1 { width: 500px; top: 0; left: 50px; z-index: 1; }
-        .a-img-2 { width: 280px; top: -50px; right: 50px; z-index: 5; }
-        .a-img-3 { width: 250px; top: 350px; right: 150px; z-index: 8; }
+        .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 10px; display: block; letter-spacing: 1px; }
 
-        /* VILLAINS POSITIONS */
-        .v-grid { position: absolute; top: 0; left: 0; width: 100%; display: flex; gap: 20px; align-items: flex-end; }
-        .v-grid .tile { position: relative; width: 30%; }
-        .v-grid .tile:nth-child(2) { transform: translateY(-60px); }
+        /* --- VISTA ABOUT ME (CORREGIDA) --- */
+        #about-view { display: none; padding: 60px; }
+        .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: start; }
+        .about-text { font-size: 13px; line-height: 1.8; color: var(--ink); }
+        .about-image { position: relative; }
+        .about-image img { width: 100%; border-radius: 15px; display: block; filter: grayscale(1); }
 
-        /* --- ABOUT ME --- */
-        #about-view { display: none; padding: 80px 60px; }
-        .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; }
-        .about-text { font-size: 13px; line-height: 1.8; color: var(--ink); text-align: justify; }
-        .about-image img { width: 100%; border-radius: 15px; filter: grayscale(1); }
-
-        .footer-collage { margin-top: 200px; border-top: 1px solid #eee; padding: 40px 0; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); }
+        .footer-collage { grid-column: span 12; margin-top: 100px; padding: 40px 0; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); }
     </style>
 </head>
 <body>
@@ -140,47 +140,57 @@
                 <div onclick="showSection('home')" class="home-nav"><span>:</span> HOME</div>
                 <div class="scroll-wrapper" id="scroll-container">
                     
-                    <div id="home-view">
-                        <div class="collage-container">
-                            
-                            <div class="hero-block">
-                                <div class="hero-sig">
-                                    <img src="images/signature_02.jpeg" alt="labels">
-                                </div>
-                                <div class="hero-img">
-                                    <img src="images/Diplopia_01.jpg" alt="">
-                                    <span class="caption-hero">Double collar jacket. Diplopia collection</span>
-                                </div>
+                    <div id="home-view" class="collage-section">
+                        <div class="hero">
+                            <div class="hero-sig"><img src="images/signature_02.jpeg" alt=""></div>
+                            <div class="hero-img">
+                                <img src="images/Diplopia_01.jpg">
+                                <p class="caption">Double collar jacket. Diplopia collection</p>
+                            </div>
+                        </div>
+
+                        <div class="grid-collage">
+                            <div class="item col-6"><img src="images/Diplopia_02.jpg"></div>
+                            <div class="item col-3 offset-down overlap small-center">
+                                <img src="images/Diplopia_03.jpg">
+                                <p class="caption">double leather bag</p>
+                            </div>
+                            <div class="item col-3">
+                                <img src="images/Diplopia_04.jpg">
+                                <span class="blue-tag">DIPLOPÍA COLLECTION 2023</span>
                             </div>
 
-                            <div class="collection-block">
-                                <div class="tile d-img-1"><img src="images/Diplopia_02.jpg"></div>
-                                <div class="tile d-img-2">
-                                    <img src="images/Diplopia_03.jpg">
-                                    <span style="font-size: 9px; color: var(--muted); text-align: center; display: block;">double leather bag</span>
-                                </div>
-                                <div class="tile d-img-3">
-                                    <img src="images/Diplopia_04.jpg">
-                                    <span class="blue-tag">DIPLOPÍA COLLECTION 2023</span>
-                                </div>
+                            <div class="item col-8"><img src="images/Artisan_01.jpg"></div>
+                            <div class="item col-4 offset-up">
+                                <img src="images/Artisan_02.jpg">
+                                <span class="blue-tag">ARTISAN TAILORING 2023</span>
                             </div>
+                            <div class="item col-4 offset-down"><img src="images/Artisan_03.jpg"></div>
+                            <div class="item col-4"><img src="images/Artisan_04.jpg"></div>
 
-                            <div class="collection-block" style="height: 800px;">
-                                <div class="tile a-img-1"><img src="images/Artisan_01.jpg"></div>
-                                <div class="tile a-img-2">
-                                    <img src="images/Artisan_02.jpg">
-                                    <span class="blue-tag">ARTISAN TAILORING 2023</span>
-                                </div>
-                                <div class="tile a-img-3"><img src="images/Artisan_04.jpg"></div>
+                            <div class="item col-3"><img src="images/Oprojects_01.jpg"></div>
+                            <div class="item col-3 offset-up"><img src="images/Oprojects_02.jpg"></div>
+                            <div class="item col-6">
+                                <img src="images/Oprojects_03.jpg">
+                                <span class="blue-tag">VILLAINS COLLECTION 2022</span>
                             </div>
+                            <div class="item col-4"><img src="images/Oprojects_04.jpg"></div>
+                            <div class="item col-4 offset-down"><img src="images/Oprojects_05.jpg"></div>
+                            <div class="item col-4"><img src="images/Oprojects_06.jpg"></div>
+                            <div class="item col-12"><img src="images/Oprojects_07.jpg"></div>
 
-                            <div class="collection-block" style="height: 600px;">
-                                <div class="v-grid">
-                                    <div class="tile"><img src="images/Oprojects_03.jpg"></div>
-                                    <div class="tile"><img src="images/Oprojects_04.jpg"></div>
-                                    <div class="tile"><img src="images/Oprojects_05.jpg"></div>
-                                </div>
+                            <div class="item col-6 offset-up"><img src="images/colaborati_01.jpg"></div>
+                            <div class="item col-6"><img src="images/colaborati_02.jpg"></div>
+
+                            <div class="item col-4"><img src="images/Swim_01.png"></div>
+                            <div class="item col-4 offset-down">
+                                <img src="images/Swim_03.png">
+                                <span class="blue-tag">MOODBORED SWIMWEAR</span>
                             </div>
+                            <div class="item col-4"><img src="images/Swim_02.png"></div>
+                            <div class="item col-6 offset-up"><img src="images/Swim_04.png"></div>
+                            <div class="item col-6"><img src="images/Swim_05.png"></div>
+                            <div class="item col-12 small-center"><img src="images/Swim_06.png"></div>
 
                             <footer class="footer-collage">
                                 <span>@bylara.frias</span>
@@ -192,15 +202,15 @@
                     <div id="about-view">
                         <div class="about-grid">
                             <div class="about-text">
-                                <p style="font-weight: bold; font-size: 16px; margin-bottom: 40px; font-family: 'Times New Roman', serif;">: About me</p>
+                                <p style="font-weight: bold; font-size: 18px; margin-bottom: 30px; font-family: 'Times New Roman', serif;">: About me</p>
                                 <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
                                 <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
                                 <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience.</p>
-                                <p>Each piece I create tells a story of resilience and transformation, offering a fresh perspective on timeless fashion.</p>
-                                <div style="margin-top: 60px; color: var(--muted); font-size: 10px; letter-spacing: 2px;">BARCELONA, SPAIN</div>
+                                <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression. Each piece I create tells a story of resilience and transformation.</p>
+                                <div style="margin-top: 50px; color: var(--muted); font-size: 10px; letter-spacing: 1px;">BARCELONA, SPAIN</div>
                             </div>
                             <div class="about-image">
-                                <img src="images/lara.jpg" alt="Lara">
+                                <img src="images/lara.jpg" alt="Lara Frias Portrait">
                             </div>
                         </div>
                     </div>
