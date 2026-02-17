@@ -4,180 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lara Frias Cumella</title>
-  <style>
-    :root {
-      --bg: #efefef;
-      --card: #ffffff;
-      --border: rgba(0,0,0,0.12);
-      --muted: rgba(0,0,0,0.45);
-      --ink: rgba(0,0,0,0.85);
-      --blue: #1f36ff;
-    }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; padding: 0; }
-    
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* CONTENEDOR TIPO CARD */
-    .card {
-      width: min(1300px, 95%);
-      height: 88vh;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: 0 30px 100px rgba(0,0,0,0.1);
-      display: grid;
-      grid-template-columns: 380px 1fr;
-      overflow: hidden;
-    }
-
-    /* --- COLUMNA IZQUIERDA (FIJA) --- */
-    .left {
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      border-right: 1px solid var(--border);
-    }
-
-    /* El Logo: Superposición extrema */
-    .brand__stack {
-      text-transform: uppercase;
-      font-size: 62px;
-      font-weight: 800;
-      line-height: 0.7; /* Crucial para el efecto */
-      letter-spacing: -3px;
-      margin-bottom: 30px;
-    }
-
-    .menu { margin-top: 10px; }
-    .menu__list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 13px;
-      color: var(--muted);
-      letter-spacing: 0.5px;
-    }
-    .menu__list li { margin-bottom: 8px; }
-
-    /* Firma 01: Pequeña y entre menú y About Me */
-    .sig-01-wrap {
-      margin: 40px 0;
-      text-align: left;
-    }
-    .sig-01-wrap img {
-      width: 140px; /* Tamaño reducido según tu indicación */
-      height: auto;
-      opacity: 0.6;
-    }
-
-    .footer {
-      margin-top: auto;
-      font-size: 12px;
-      color: var(--muted);
-      display: grid;
-      gap: 6px;
-    }
-    .footer a { color: inherit; text-decoration: none; }
-    .footer .cv { color: var(--ink); font-weight: bold; margin-top: 10px; }
-
-    /* --- COLUMNA DERECHA (SCROLL) --- */
-    .right {
-      position: relative;
-      overflow-y: auto;
-      scroll-behavior: smooth;
-    }
-
-    .home-nav {
-      position: sticky;
-      top: 30px;
-      right: 40px;
-      float: right;
-      z-index: 100;
-      color: var(--blue);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
-      font-style: italic;
-    }
-
-    .work-content { padding: 40px 60px; clear: both; }
-
-    /* HERO: Firma 02 al lado de Diplopia_01 */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr; /* Lado a lado */
-      gap: 30px;
-      align-items: center;
-      min-height: 70vh;
-      margin-bottom: 80px;
-    }
-
-    .hero__sig img {
-      width: 100%;
-      max-width: 320px;
-      opacity: 0.2; /* Sutil */
-    }
-
-    .hero__img-wrap figure { margin: 0; text-align: right; }
-    .hero__img-wrap img {
-      width: 100%;
-      border-radius: 14px;
-    }
-    .hero__img-wrap figcaption {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 10px;
-    }
-
-    /* COLLAGE */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 25px;
-      padding-bottom: 60px;
-    }
-
-    .tile img { width: 100%; border-radius: 12px; display: block; }
-    .tile figcaption { margin-top: 8px; font-size: 11px; color: var(--muted); }
-    .blue-tag { color: var(--blue); font-weight: bold; font-size: 12px; text-transform: uppercase; }
-
-    /* Posicionamiento asimétrico */
-    .t-left { grid-column: 1 / span 5; }
-    .t-right-small { grid-column: 7 / span 3; align-self: center; }
-    .t-right-info { grid-column: 10 / span 3; padding-top: 20px; }
-    .t-wide { grid-column: 2 / span 10; margin-top: 50px; }
-
-    .bottom-info {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: var(--muted);
-      padding: 40px 0;
-      border-top: 1px solid var(--border);
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
   <main class="card">
     
-    <aside class="left">
-      <div class="brand__stack">
-        LARA<br>FRIAS<br>CUMELLA
+    <aside class="sidebar">
+      <div class="logo-stack">
+        <div class="logo-line">LARA</div>
+        <div class="logo-line">FRIAS</div>
+        <div class="logo-line">CUMELLA</div>
       </div>
 
-      <nav class="menu">
-        <ol class="menu__list">
+      <nav class="main-nav">
+        <ol>
           <li>1. DIPLOPÍA COLLECTION</li>
           <li>2. ARTISAN TAILORING</li>
           <li>3. COLLABORATIONS</li>
@@ -189,55 +29,54 @@
         </ol>
       </nav>
 
-      <div class="sig-01-wrap">
-        <img src="./images/signature_01.jpeg" alt="signature">
+      <div class="sig-01-container">
+        <img src="images/signature_01.jpeg" alt="signature">
       </div>
 
-      <footer class="footer">
-        <a href="#about">ABOUT ME</a>
-        <a href="mailto:larafc@hotmail.es">CONTACT</a>
-        <a href="https://instagram.com/bylara.frias" target="_blank">INSTAGRAM</a>
-        <div class="cv">: CV</div>
+      <footer class="sidebar-footer">
+        <a href="#">ABOUT ME</a>
+        <div class="contact-item">
+          <span class="icon">✉</span> <a href="mailto:larafc@hotmail.es">CONTACT</a>
+        </div>
+        <div class="contact-item">
+          <span class="icon"></span> <a href="https://instagram.com/bylara.frias" target="_blank">INSTAGRAM</a>
+        </div>
+        <div class="cv-link">: CV</div>
       </footer>
     </aside>
 
-    <section class="right">
-      <a href="#" class="home-nav">■ HOME</a>
+    <section class="content-view">
+      <a href="#" class="home-sticky">■ HOME</a>
       
-      <div class="work-content">
-        <div class="hero">
-          <div class="hero__sig">
-            <img src="./images/signature_02.jpeg" alt="firma hero">
+      <div class="scroll-area">
+        <div class="hero-fold">
+          <div class="watermark-tags">
+            <img src="images/signature_02.jpeg" alt="labels">
           </div>
-          <div class="hero__img-wrap">
-            <figure>
-              <img src="./images/Diplopia_01.jpg" alt="Diplopia 01">
-              <figcaption>Double collar jacket. Diplopia collection</figcaption>
-            </figure>
-          </div>
+          <figure class="main-hero-image">
+            <img src="images/Diplopia_01.jpg" alt="Diplopia Collection">
+            <figcaption>Double collar jacket. Diplopia collection</figcaption>
+          </figure>
         </div>
 
-        <div class="grid">
-          <figure class="tile t-left">
-            <img src="./images/Diplopia_02.jpg">
+        <div class="collage-grid">
+          <figure class="item item-tall">
+            <img src="images/Diplopia_02.jpg">
           </figure>
-
-          <figure class="tile t-right-small">
-            <img src="./images/Diplopia_03.jpg">
+          <figure class="item item-small">
+            <img src="images/Diplopia_03.jpg">
             <figcaption>double leather bag</figcaption>
           </figure>
-
-          <div class="tile t-right-info">
-            <p class="blue-tag">DIPLOPÍA COLLECTION 2023</p>
+          <div class="item label-blue">
+            <p>DIPLOPÍA COLLECTION<br>2023</p>
           </div>
 
-          <figure class="tile t-wide">
-            <img src="./images/Artisan_01.jpg">
-            <figcaption>Artisan tailoring process</figcaption>
+          <figure class="item item-wide">
+            <img src="images/Artisan_01.jpg">
           </figure>
-        </div>
+          </div>
 
-        <div class="bottom-info">
+        <div class="final-footer">
           <span>@bylara.frias</span>
           <span>Larafc@hotmail.es</span>
         </div>
@@ -245,6 +84,5 @@
     </section>
 
   </main>
-
 </body>
 </html>
