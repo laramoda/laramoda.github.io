@@ -46,38 +46,31 @@
         .nav-menu li { cursor: pointer; transition: color 0.3s; }
         .nav-menu li:hover { color: var(--ink); }
 
-        /* AJUSTE: Firma del menú lateral mucho más grande */
+        /* Firma lateral GIGANTE */
         .sig-sidebar { margin: 30px 0; width: 280px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.9; }
 
         .footer-sidebar { margin-top: auto; font-size: 11px; color: var(--muted); }
         .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
         .footer-sidebar a { color: inherit; text-decoration: none; }
-        .about-link { color: var(--blue) !important; font-weight: bold; margin-bottom: 5px; display: block; }
+        .about-link { color: var(--blue) !important; font-weight: bold; margin-bottom: 5px; display: block; cursor: pointer; }
         .cv-label { margin-top: 15px; font-weight: bold; color: var(--ink); }
 
-        /* --- ÁREA DE CONTENIDO CON MARCA DE AGUA SUTIL --- */
-        .main-content { 
-            position: relative; 
-            height: 100%; 
-            overflow: hidden; 
-            background: #fff; 
-        }
+        /* --- ÁREA DE CONTENIDO CON MARCA DE AGUA --- */
+        .main-content { position: relative; height: 100%; overflow: hidden; background: #fff; }
 
-        /* AJUSTE: Marca de agua global al 5% de opacidad */
+        /* Marca de agua signature_02 sutil al 5% */
         .main-content::before {
             content: "";
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
+            width: 80%; height: 80%;
             background-image: url('images/signature_02.jpeg');
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 0.05; /* Casi invisible para no ensuciar el texto */
+            opacity: 0.05; 
             z-index: 0;
             pointer-events: none;
             filter: grayscale(1);
@@ -91,37 +84,47 @@
         .scroll-wrapper { position: relative; z-index: 1; height: 100%; overflow-y: auto; scrollbar-width: none; display: block; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* --- ABOUT ME --- */
-        #about-view { display: block; padding: 40px 60px; height: 100%; overflow-y: auto; }
+        /* --- HERO (PORTADA LIMPIA) --- */
+        .hero { 
+            display: flex; align-items: center; justify-content: space-between; 
+            height: 100%; padding: 40px; position: relative; background: #fff; z-index: 10;
+        }
+        .hero-labels { width: 45%; display: flex; justify-content: center; }
+        .hero-labels img { width: 350px; opacity: 0.9; }
+        .hero-main { width: 50%; position: relative; }
+        .hero-main img { width: 100%; border-radius: 20px; display: block; }
+        .caption-hero { position: absolute; bottom: -30px; right: 0; font-size: 10px; color: var(--muted); }
+
+        /* --- COLLAGE --- */
+        .collage-section { padding: 100px 40px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; position: relative; z-index: 1; }
+        .tile img { width: 100%; border-radius: 12px; display: block; }
         
-        /* AJUSTE: Texto más cerca del título */
+        .d2 { grid-column: 1 / span 5; }
+        .d3 { grid-column: 6 / span 2; margin-top: 180px; z-index: 15; margin-left: -30px; }
+        .d3 img { width: 120px !important; }
+        .d4 { grid-column: 8 / span 5; }
+        
+        .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 10px; display: block; }
+
+        /* --- VISTAS: ESTADO INICIAL --- */
+        #home-view { display: block; } /* Ahora se muestra por defecto */
+        #about-view { display: none; padding: 40px 60px; height: 100%; overflow-y: auto; }
+
+        /* Estilos About Me */
         .about-header { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: baseline; }
         .about-header .title { font-weight: normal; font-size: 14px; }
         .about-header .author { color: var(--muted); font-size: 11px; text-transform: uppercase; }
 
         .about-grid { display: grid; grid-template-columns: 1.5fr 300px; gap: 50px; align-items: start; }
-        
-        /* AJUSTE: Párrafos más compactos */
         .about-text { font-size: 13px; line-height: 1.5; color: var(--ink); }
         .about-text p { margin: 0 0 15px 0; text-align: justify; }
 
         .about-right-col { display: flex; flex-direction: column; gap: 15px; }
-        
-        /* AJUSTE: Foto más pequeña para dejar espacio al texto inferior */
-        .about-image img { 
-            width: 80%; 
-            border-radius: 15px; 
-            filter: grayscale(1); 
-            display: block; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-        }
-        
+        .about-image img { width: 80%; border-radius: 15px; filter: grayscale(1); display: block; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .thank-you-note { font-size: 13px; line-height: 1.4; color: var(--ink); }
         .location { margin-top: 15px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
 
         .bottom-credits { margin-top: 40px; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); }
-
-        #home-view { display: none; }
     </style>
 </head>
 <body>
@@ -133,7 +136,7 @@
                 </header>
                 <nav class="nav-menu">
                     <ol>
-                        <li>1. DIPLOPIA COLLECTION</li>
+                        <li onclick="showSection('home')">1. DIPLOPIA COLLECTION</li>
                         <li>2. ARTISAN TAILORING</li>
                         <li>3. COLLABORATIONS</li>
                         <li>4. OTHER PROJECTS</li>
@@ -148,7 +151,7 @@
                 </div>
                 <footer class="footer-sidebar">
                     <div class="footer-links">
-                        <a href="#" class="about-link" onclick="showSection('about')">ABOUT ME</a>
+                        <a class="about-link" onclick="showSection('about')">ABOUT ME</a>
                         <div class="contact-row"><span>✉</span> <a href="mailto:larafc@hotmail.es">CONTACT</a></div>
                         <div class="contact-row"><span></span> <a href="https://www.instagram.com/bylara.frias" target="_blank">INSTAGRAM</a></div>
                     </div>
@@ -160,6 +163,29 @@
                 <div onclick="showSection('home')" class="home-nav"><span>:</span> HOME</div>
                 <div class="scroll-wrapper" id="scroll-container">
                     
+                    <div id="home-view">
+                        <div class="hero">
+                            <div class="hero-labels">
+                                <img src="images/signature_02.jpeg" alt="labels">
+                            </div>
+                            <div class="hero-main">
+                                <img src="images/Diplopia_01.jpg" alt="Diplopia 01">
+                                <span class="caption-hero">Double collar jacket. Diplopia collection</span>
+                            </div>
+                        </div>
+                        <div class="collage-section">
+                            <div class="tile d2"><img src="images/Diplopia_02.jpg"></div>
+                            <div class="tile d3">
+                                <img src="images/Diplopia_03.jpg">
+                                <p style="font-size: 9px; color: var(--muted); margin-top: 8px; text-align: center;">double leather bag</p>
+                            </div>
+                            <div class="tile d4">
+                                <img src="images/Diplopia_04.jpg">
+                                <span class="blue-tag">DIPLOPÍA COLLECTION 2023</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="about-view">
                         <div class="about-header">
                             <span class="title">: About me</span>
@@ -168,14 +194,10 @@
                         <div class="about-grid">
                             <div class="about-text">
                                 <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
-                                
                                 <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
-                                
-                                <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience. This innovative approach has not only shaped my design methodology but has also become a hallmark of my personal style.</p>
-                                
-                                <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression. Each piece I create tells a story of resilience and transformation, offering a fresh perspective on timeless fashion.</p>
+                                <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience.</p>
+                                <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression.</p>
                             </div>
-                            
                             <div class="about-right-col">
                                 <div class="about-image">
                                     <img src="images/Lara.jpg" alt="Lara Portrait">
@@ -192,9 +214,6 @@
                         </div>
                     </div>
 
-                    <div id="home-view">
-                        </div>
-
                 </div>
             </section>
         </main>
@@ -204,6 +223,7 @@
         function showSection(section) {
             document.getElementById('home-view').style.display = (section === 'home' ? 'block' : 'none');
             document.getElementById('about-view').style.display = (section === 'about' ? 'block' : 'none');
+            // Reiniciar el scroll al cambiar de sección
             document.getElementById('scroll-container').scrollTop = 0;
         }
     </script>
