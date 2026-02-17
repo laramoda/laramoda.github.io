@@ -84,19 +84,28 @@
         .scroll-wrapper { position: relative; z-index: 1; height: 100%; overflow-y: auto; scrollbar-width: none; display: block; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* --- HERO (PORTADA LIMPIA) --- */
+        /* --- HERO (PORTADA BLINDADA) --- */
+        /* Se usa display: grid y min-height: 100% para forzar que ocupe todo el espacio */
         .hero { 
-            display: flex; align-items: center; justify-content: space-between; 
-            height: 100%; padding: 40px; position: relative; background: #fff; z-index: 10;
+            display: grid; 
+            grid-template-columns: 1fr 1.2fr; /* Estructura de dos columnas */
+            align-items: center;
+            height: 100%; 
+            min-height: 100%; /* El candado: asegura que no se encoja */
+            padding: 60px; 
+            position: relative; 
+            background: #fff; /* Fondo opaco */
+            z-index: 10;
         }
-        .hero-labels { width: 45%; display: flex; justify-content: center; }
+        .hero-labels { display: flex; justify-content: center; }
         .hero-labels img { width: 350px; opacity: 0.9; }
-        .hero-main { width: 50%; position: relative; }
+        .hero-main { position: relative; }
         .hero-main img { width: 100%; border-radius: 20px; display: block; }
         .caption-hero { position: absolute; bottom: -30px; right: 0; font-size: 10px; color: var(--muted); }
 
         /* --- COLLAGE --- */
-        .collage-section { padding: 100px 40px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; position: relative; z-index: 1; }
+        /* Se añade margen superior extra para asegurar separación */
+        .collage-section { padding: 120px 40px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; position: relative; z-index: 1; }
         .tile img { width: 100%; border-radius: 12px; display: block; }
         
         .d2 { grid-column: 1 / span 5; }
@@ -106,8 +115,8 @@
         
         .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 10px; display: block; }
 
-        /* --- VISTAS: ESTADO INICIAL --- */
-        #home-view { display: block; } /* Ahora se muestra por defecto */
+        /* --- VISTAS --- */
+        #home-view { display: block; } 
         #about-view { display: none; padding: 40px 60px; height: 100%; overflow-y: auto; }
 
         /* Estilos About Me */
@@ -223,7 +232,6 @@
         function showSection(section) {
             document.getElementById('home-view').style.display = (section === 'home' ? 'block' : 'none');
             document.getElementById('about-view').style.display = (section === 'about' ? 'block' : 'none');
-            // Reiniciar el scroll al cambiar de sección
             document.getElementById('scroll-container').scrollTop = 0;
         }
     </script>
