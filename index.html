@@ -36,7 +36,7 @@
         }
 
         /* --- SIDEBAR --- */
-        .sidebar { padding: 40px; border-right: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; z-index: 20; background: #fff; }
+        .sidebar { padding: 40px; border-right: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; z-index: 30; background: #fff; }
         .logo-hairline {
             font-family: "Times New Roman", serif;
             font-size: 58px; font-weight: 100; line-height: 0.75; letter-spacing: -3px; margin: 0 0 35px 0;
@@ -46,19 +46,15 @@
         .nav-menu li { cursor: pointer; transition: color 0.3s; }
         .nav-menu li:hover { color: var(--ink); }
 
-        /* Firma lateral GIGANTE */
-        .sig-sidebar { margin: 30px 0; width: 280px; align-self: center; } 
+        .sig-sidebar { margin: 30px 0; width: 300px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.9; }
 
         .footer-sidebar { margin-top: auto; font-size: 11px; color: var(--muted); }
-        .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
         .footer-sidebar a { color: inherit; text-decoration: none; }
         .about-link { color: var(--blue) !important; font-weight: bold; margin-bottom: 5px; display: block; cursor: pointer; }
 
-        /* --- ÁREA DE CONTENIDO CON MARCA DE AGUA --- */
+        /* --- CONTENIDO CON MARCA DE AGUA AL 5% --- */
         .main-content { position: relative; height: 100%; overflow: hidden; background: #fff; }
-
-        /* Marca de agua signature_02 al 5% sutil */
         .main-content::before {
             content: "";
             position: absolute;
@@ -75,65 +71,67 @@
             filter: grayscale(1);
         }
 
-        .home-nav { 
-            position: absolute; top: 25px; right: 35px; z-index: 100;
-            color: var(--blue); text-decoration: none; font-size: 11px; font-weight: bold; font-style: italic; cursor: pointer;
-        }
-
-        .scroll-wrapper { position: relative; z-index: 1; height: 100%; overflow-y: auto; scrollbar-width: none; display: flex; flex-direction: column; scroll-snap-type: y mandatory; }
+        .scroll-wrapper { position: relative; z-index: 1; height: 100%; overflow-y: auto; scrollbar-width: none; display: flex; flex-direction: column; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* --- HERO: AISLAMIENTO TOTAL --- */
+        /* --- HERO BLINDADA (100% ALTO) --- */
         .hero { 
             flex-shrink: 0;
             display: flex; align-items: center; justify-content: space-between; 
             height: 100%; padding: 40px; position: relative; background: #fff; z-index: 10;
-            scroll-snap-align: start;
         }
-        .hero-labels { width: 45%; display: flex; justify-content: center; }
-        .hero-labels img { width: 350px; opacity: 0.9; }
-        .hero-main { width: 50%; position: relative; }
-        .hero-main img { width: 100%; border-radius: 20px; display: block; }
-        .caption-hero { position: absolute; bottom: -30px; right: 0; font-size: 10px; color: var(--muted); }
+        .hero-labels { width: 40%; display: flex; justify-content: center; }
+        .hero-labels img { width: 350px; }
+        .hero-main { width: 55%; position: relative; text-align: right; }
+        .hero-main img { width: 90%; border-radius: 20px; }
+        .caption-hero { display: block; margin-top: 15px; font-size: 10px; color: var(--muted); text-align: right; width: 90%; margin-left: auto; }
 
-        /* --- COLLAGE SECCION --- */
-        .collage-container { flex-shrink: 0; background: #fff; position: relative; z-index: 1; scroll-snap-align: start; }
-        .collage-grid { padding: 100px 40px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+        /* --- COLLAGE DE 22 FOTOS --- */
+        .collage-container { flex-shrink: 0; background: #fff; position: relative; z-index: 1; padding: 120px 40px; }
+        .collage-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
         .tile img { width: 100%; border-radius: 12px; display: block; }
-        
+        .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 10px; display: block; }
+        .caption { font-size: 9px; color: var(--muted); margin-top: 8px; text-align: center; }
+
         /* Posiciones Diplopia */
         .d2 { grid-column: 1 / span 5; }
-        .d3 { grid-column: 6 / span 2; margin-top: 180px; z-index: 15; margin-left: -30px; }
-        .d3 img { width: 120px !important; }
-        .d4 { grid-column: 8 / span 5; }
-        
-        .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 10px; display: block; }
+        .d3 { grid-column: 6 / span 2; align-self: center; margin-left: -20px; z-index: 5; }
+        .d3 img { width: 130px !important; }
+        .d4 { grid-column: 8 / span 5; margin-top: 40px; }
+
+        /* Posiciones Artisan */
+        .a1 { grid-column: 1 / span 8; margin-top: 100px; }
+        .a2 { grid-column: 9 / span 4; margin-top: 140px; }
+        .a3 { grid-column: 2 / span 4; margin-top: -80px; z-index: 5; }
+        .a4 { grid-column: 7 / span 5; margin-top: 20px; }
+
+        /* Posiciones Oprojects / Villains */
+        .o1 { grid-column: 1 / span 4; margin-top: 100px; }
+        .o2 { grid-column: 5 / span 4; margin-top: 60px; }
+        .v-row { grid-column: 1 / span 9; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 80px; }
+        .o7 { grid-column: 10 / span 3; margin-top: 120px; }
+        .v-stack { grid-column: 1 / span 6; margin-top: 60px; }
+
+        /* Posiciones Swim */
+        .swim-grid { grid-column: 1 / span 12; display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 100px; }
+        .swim-center { text-align: center; margin-top: -30px; }
+        .swim-center img { width: 85% !important; margin: 0 auto; }
 
         /* --- ABOUT ME --- */
         #about-view { display: none; padding: 40px 60px; height: 100%; overflow-y: auto; }
-        .about-header { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: baseline; }
-        .about-header .title { font-weight: normal; font-size: 14px; }
-        .about-header .author { color: var(--muted); font-size: 11px; text-transform: uppercase; }
-
-        .about-grid { display: grid; grid-template-columns: 1.5fr 300px; gap: 50px; align-items: start; }
-        .about-text { font-size: 13px; line-height: 1.5; color: var(--ink); }
-        .about-text p { margin: 0 0 15px 0; text-align: justify; }
-
-        .about-right-col { display: flex; flex-direction: column; gap: 15px; }
-        .about-image img { width: 80%; border-radius: 15px; filter: grayscale(1); display: block; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .thank-you-note { font-size: 13px; line-height: 1.4; color: var(--ink); }
-        .location { margin-top: 15px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
-
-        .bottom-credits { margin-top: 40px; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); }
+        .about-header { display: flex; justify-content: space-between; margin-bottom: 15px; align-items: baseline; }
+        .about-grid { display: grid; grid-template-columns: 1.5fr 320px; gap: 50px; align-items: start; }
+        .about-text { font-size: 13px; line-height: 1.5; color: var(--ink); text-align: justify; }
+        .about-right-col { display: flex; flex-direction: column; gap: 20px; }
+        .about-image img { width: 85%; border-radius: 15px; filter: grayscale(1); display: block; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .final-footer { grid-column: span 12; padding: 80px 0 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); }
     </style>
 </head>
 <body>
     <div class="stage">
         <main class="card">
             <aside class="sidebar">
-                <header class="logo-container">
-                    <h1 class="logo-hairline">LARA<br>FRIAS<br>CUMELLA</h1>
-                </header>
+                <header class="logo-container"><h1 class="logo-hairline">LARA<br>FRIAS<br>CUMELLA</h1></header>
                 <nav class="nav-menu">
                     <ol>
                         <li onclick="showSection('home')">1. DIPLOPIA COLLECTION</li>
@@ -146,14 +144,12 @@
                         <li>8. BAGS</li>
                     </ol>
                 </nav>
-                <div class="sig-sidebar">
-                    <img src="images/signature_01.jpeg" alt="Signature 01">
-                </div>
+                <div class="sig-sidebar"><img src="images/signature_01.jpeg" alt="Signature"></div>
                 <footer class="footer-sidebar">
                     <div class="footer-links">
                         <a class="about-link" onclick="showSection('about')">ABOUT ME</a>
                         <div class="contact-row"><span>✉</span> <a href="mailto:larafc@hotmail.es">CONTACT</a></div>
-                        <div class="contact-row"><span></span> <a href="https://www.instagram.com/bylara.frias" target="_blank">INSTAGRAM</a></div>
+                        <div class="contact-row"><span></span> <a href="https://instagram.com/bylara.frias" target="_blank">INSTAGRAM</a></div>
                     </div>
                 </footer>
             </aside>
@@ -164,50 +160,64 @@
                     
                     <div id="home-view">
                         <div class="hero">
-                            <div class="hero-labels">
-                                <img src="images/signature_02.jpeg" alt="labels">
-                            </div>
+                            <div class="hero-labels"><img src="images/signature_02.jpeg" alt="labels"></div>
                             <div class="hero-main">
                                 <img src="images/Diplopia_01.jpg" alt="Diplopia 01">
                                 <span class="caption-hero">Double collar jacket. Diplopia collection</span>
                             </div>
                         </div>
-                        
+
                         <div class="collage-container">
                             <div class="collage-grid">
                                 <div class="tile d2"><img src="images/Diplopia_02.jpg"></div>
-                                <div class="tile d3">
-                                    <img src="images/Diplopia_03.jpg">
-                                    <p style="font-size: 9px; color: var(--muted); margin-top: 8px; text-align: center;">double leather bag</p>
+                                <div class="tile d3"><img src="images/Diplopia_03.jpg"><p class="caption">double leather bag</p></div>
+                                <div class="tile d4"><img src="images/Diplopia_04.jpg"><span class="blue-tag">DIPLOPÍA COLLECTION 2023</span></div>
+
+                                <div class="tile a1"><img src="images/Artisan_01.jpg"></div>
+                                <div class="tile a2"><img src="images/Artisan_02.jpg"><span class="blue-tag">ARTISAN TAILORING 2023</span></div>
+                                <div class="tile a3"><img src="images/Artisan_04.jpg"></div>
+                                <div class="tile a4"><img src="images/Artisan_03.jpg"></div>
+
+                                <div class="tile o1"><img src="images/Oprojects_01.jpg"></div>
+                                <div class="tile o2"><img src="images/Oprojects_02.jpg"></div>
+                                <div class="v-row">
+                                    <div class="tile"><img src="images/Oprojects_03.jpg"></div>
+                                    <div class="tile"><img src="images/Oprojects_04.jpg"></div>
+                                    <div class="tile"><img src="images/Oprojects_05.jpg"></div>
                                 </div>
-                                <div class="tile d4">
-                                    <img src="images/Diplopia_04.jpg">
-                                    <span class="blue-tag">DIPLOPÍA COLLECTION 2023</span>
+                                <div class="tile o7"><img src="images/Oprojects_07.jpg"><span class="blue-tag">VILLAINS COLLECTION 2022</span></div>
+                                <div class="v-stack"><div class="tile"><img src="images/Oprojects_06.jpg"></div></div>
+
+                                <div class="tile o1" style="grid-column: 1/span 6;"><img src="images/colaborati_01.jpg"></div>
+                                <div class="tile o2" style="grid-column: 7/span 6;"><img src="images/colaborati_02.jpg"></div>
+
+                                <div class="swim-grid">
+                                    <div class="tile"><img src="images/Swim_04.png"></div>
+                                    <div class="tile swim-center"><img src="images/Swim_03.png"><span class="blue-tag">MOODBORED SWIMWEAR</span></div>
+                                    <div class="tile"><img src="images/Swim_01.png"></div>
+                                    <div class="tile"><img src="images/Swim_02.png"></div>
+                                    <div class="tile"><img src="images/Swim_05.png"></div>
+                                    <div class="tile"><img src="images/Swim_06.png"></div>
                                 </div>
+
+                                <footer class="final-footer"><span>@bylara.frias</span><span>Larafc@hotmail.es</span></footer>
                             </div>
                         </div>
                     </div>
 
                     <div id="about-view">
-                        <div class="about-header">
-                            <span class="title">: About me</span>
-                            <span class="author">BY LARA</span>
-                        </div>
+                        <div class="about-header"><span style="font-size: 14px;">: About me</span><span style="color: var(--muted); font-size: 11px;">BY LARA</span></div>
                         <div class="about-grid">
                             <div class="about-text">
                                 <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
                                 <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
                                 <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic.</p>
                                 <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression.</p>
+                                <div style="margin-top: 50px; color: var(--muted); font-size: 10px; text-transform: uppercase;">Barcelona SPAIN</div>
                             </div>
                             <div class="about-right-col">
-                                <div class="about-image">
-                                    <img src="images/Lara.jpg" alt="Lara Portrait">
-                                </div>
-                                <div class="thank-you-note">
-                                    <p>Thank you for exploring my work, and I hope my designs inspire and resonate with you as much as they do with me.</p>
-                                    <div class="location">Barcelona SPAIN</div>
-                                </div>
+                                <div class="about-image"><img src="images/Lara.jpg" alt="Lara Portrait"></div>
+                                <div style="font-size: 13px; line-height: 1.4;">Thank you for exploring my work, and I hope my designs inspire and resonate with you as much as they do with me.</div>
                             </div>
                         </div>
                     </div>
