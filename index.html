@@ -18,12 +18,9 @@
             margin: 0; padding: 0; height: 100%; 
             background-color: var(--bg); 
             font-family: ui-monospace, "Courier New", monospace;
-            -webkit-font-smoothing: antialiased;
         }
 
-        .stage { 
-            height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; 
-        }
+        .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
 
         .card {
             width: min(1380px, 98%);
@@ -40,59 +37,93 @@
         /* --- SIDEBAR --- */
         .sidebar { padding: 40px; border-right: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; }
         .logo-hairline {
-            font-family: serif; font-size: 64px; font-weight: 100; 
-            line-height: 0.75; letter-spacing: -4px; margin: 0 0 35px 0;
+            font-family: "Times New Roman", serif; /* Fuente serif elegante como en tu captura */
+            font-size: 60px; font-weight: 100; 
+            line-height: 0.8; letter-spacing: -2px; margin: 0 0 30px 0;
             color: var(--ink); text-transform: uppercase;
         }
-        .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 12px; color: var(--muted); line-height: 1.8; }
+        .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 11px; color: var(--muted); line-height: 1.8; }
         .nav-menu li { cursor: pointer; transition: color 0.3s; }
         .nav-menu li:hover { color: var(--ink); }
 
-        .sig-one-wrap { margin: 40px 0; width: 120px; }
-        .sig-one-wrap img { width: 100%; opacity: 0.8; }
+        .sig-one-wrap { margin: 30px 0; width: 80px; }
+        .sig-one-wrap img { width: 100%; opacity: 0.6; }
 
         .footer-sidebar { margin-top: auto; font-size: 11px; color: var(--muted); }
         .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
-        .footer-sidebar a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; }
-        .footer-sidebar a:hover { border-bottom: 1px solid var(--muted); }
+        .footer-sidebar a { color: inherit; text-decoration: none; }
         .cv-label { margin-top: 15px; font-weight: bold; color: var(--ink); cursor: pointer; }
 
-        /* --- ÁREA DE CONTENIDO --- */
+        /* --- CONTENIDO --- */
         .main-content { position: relative; overflow: hidden; background: #fff; }
         .home-nav { 
-            position: absolute; top: 30px; right: 40px; z-index: 100;
-            color: var(--blue); text-decoration: none; font-size: 13px; font-weight: bold; font-style: italic;
+            position: absolute; top: 25px; right: 35px; z-index: 100;
+            color: var(--blue); text-decoration: none; font-size: 11px; font-weight: bold; font-style: italic;
             cursor: pointer;
         }
 
-        .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; scroll-behavior: smooth; }
+        .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* --- SECCIÓN ABOUT ME --- */
+        /* --- COLLAGE REPARADO --- */
+        .collage { 
+            display: grid; 
+            grid-template-columns: repeat(12, 1fr); 
+            gap: 0; 
+            padding: 40px; 
+            align-items: start;
+        }
+
+        .tile { position: relative; z-index: 1; margin-bottom: 40px; }
+        .tile img { width: 100%; border-radius: 12px; display: block; object-fit: cover; }
+        
+        .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 10px; display: block; }
+        .caption { font-size: 10px; color: var(--muted); margin-top: 5px; }
+
+        /* HERO: Corregido el tamaño de la firma */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 60px 40px; align-items: center; }
+        .hero-sig img { width: 200px; opacity: 0.8; } /* Firma central más pequeña para que no se coma la pantalla */
+        .hero-img-wrap img { border-radius: 18px; width: 100%; }
+
+        /* POSICIONES ESPECÍFICAS (Collage) */
+        
+        /* Diplopia Section */
+        .pos-d-02 { grid-column: 1 / span 5; margin-top: 40px; } /* Foto grande izquierda */
+        .pos-d-mid { 
+            grid-column: 6 / span 2; margin-top: 200px; z-index: 10; 
+            text-align: center; margin-left: -20px;
+        }
+        .pos-d-mid img { width: 110px !important; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        .pos-d-04 { grid-column: 8 / span 5; margin-top: 20px; margin-left: 20px; } /* Foto derecha alta */
+
+        /* Artisan Section */
+        .pos-a-01 { grid-column: 1 / span 7; margin-top: 80px; }
+        .pos-a-stack { 
+            grid-column: 8 / span 4; margin-top: -60px; z-index: 5;
+            display: flex; flex-direction: column; gap: 30px;
+        }
+        .pos-a-03 { grid-column: 10 / span 3; margin-top: -120px; z-index: 10; }
+
+        /* Villains Section */
+        .pos-v-02 { grid-column: 1 / span 3; margin-top: 60px; }
+        .pos-v-runway { 
+            grid-column: 4 / span 9; display: grid; grid-template-columns: repeat(3, 1fr); 
+            gap: 15px; margin-top: 100px; 
+        }
+        .pos-v-runway .tile:nth-child(2) { margin-top: 50px; } /* Desalineado editorial */
+
+        /* --- ABOUT ME (REPARADO) --- */
         #about-view { display: none; padding: 60px 40px; }
-        .about-header { display: flex; justify-content: space-between; margin-bottom: 40px; }
-        .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; }
-        .about-text { font-size: 14px; line-height: 1.6; color: var(--ink); }
-        .about-text p { margin-bottom: 25px; }
-        .about-image img { width: 100%; border-radius: 12px; filter: grayscale(1); }
-        .about-footer { margin-top: 40px; font-size: 13px; max-width: 400px; }
-        .location { margin-top: 20px; color: var(--muted); font-size: 11px; }
+        .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 50px; align-items: start; }
+        .about-text { font-size: 13px; line-height: 1.7; color: var(--ink); }
+        .about-image img { width: 100%; border-radius: 12px; filter: grayscale(1); opacity: 0.9; }
 
-        /* --- COLLAGE (TU DISEÑO ACTUAL) --- */
-        #home-view { display: block; }
-        .hero { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; align-items: center; height: 100%; padding: 60px; }
-        .hero-img-wrap img { width: 100%; border-radius: 4px; }
-        .collage { display: grid; grid-template-columns: repeat(12, 1fr); padding: 80px 40px; gap: 0; align-items: start; }
-        .tile { position: relative; z-index: 1; margin-bottom: 60px; }
-        .tile img { width: 100%; border-radius: 2px; display: block; }
-        .blue-tag { color: var(--blue); font-weight: bold; font-size: 11px; text-transform: uppercase; margin: 12px 0; display: block; }
-
-        /* Posicionamiento del Collage (Simplificado para el ejemplo) */
-        .pos-d-02 { grid-column: 1 / span 6; }
-        .pos-d-mid { grid-column: 7 / span 3; margin-top: 150px; text-align: center; }
-        .pos-d-mid img { width: 120px !important; margin: 0 auto; }
-        .pos-d-04 { grid-column: 10 / span 3; }
-        .final-footer { margin-top: 120px; padding: 40px 0; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); grid-column: 1 / span 12; }
+        .final-footer { 
+            grid-column: 1 / span 12; margin-top: 100px; padding: 30px 0; 
+            border-top: 1px solid #eee; display: flex; justify-content: space-between; 
+            font-size: 10px; color: var(--muted); 
+        }
     </style>
 </head>
 <body>
@@ -134,40 +165,60 @@
                             <div class="hero-sig"><img src="images/signature_02.jpeg" alt=""></div>
                             <figure class="hero-img-wrap">
                                 <img src="images/Diplopia_01.jpg" alt="">
-                                <figcaption style="font-size: 11px; color: var(--muted); margin-top: 10px; text-align: right;">Double collar jacket. Diplopia collection</figcaption>
+                                <figcaption class="caption" style="text-align: right;">Double collar jacket. Diplopia collection</figcaption>
                             </figure>
                         </div>
+
                         <div class="collage">
                             <figure class="tile pos-d-02"><img src="images/Diplopia_02.jpg"></figure>
-                            <div class="tile pos-d-mid"><img src="images/Diplopia_03.jpg"><p style="font-size: 10px; color: var(--muted); margin-top: 8px;">double leather bag</p></div>
-                            <div class="tile pos-d-04"><img src="images/Diplopia_04.jpg"><span class="blue-tag">DIPLOPÍA COLLECTION 2023</span></div>
-                            <footer class="final-footer"><span>@bylara.frias</span><span>Larafc@hotmail.es</span></footer>
+                            
+                            <div class="tile pos-d-mid">
+                                <img src="images/Diplopia_03.jpg">
+                                <p class="caption">double leather bag</p>
+                            </div>
+
+                            <div class="tile pos-d-04">
+                                <img src="images/Diplopia_04.jpg">
+                                <span class="blue-tag">DIPLOPÍA COLLECTION 2023</span>
+                            </div>
+
+                            <figure class="tile pos-a-01"><img src="images/Artisan_01.jpg"></figure>
+                            <div class="pos-a-stack">
+                                <div class="tile">
+                                    <img src="images/Artisan_02.jpg">
+                                    <span class="blue-tag">ARTISAN TAILORING 2023</span>
+                                </div>
+                                <div class="tile"><img src="images/Artisan_04.jpg"></div>
+                            </div>
+                            
+                            <div class="pos-v-runway">
+                                <div class="tile"><img src="images/Oprojects_03.jpg"></div>
+                                <div class="tile"><img src="images/Oprojects_04.jpg"></div>
+                                <div class="tile"><img src="images/Oprojects_05.jpg"></div>
+                            </div>
+
+                            <footer class="final-footer">
+                                <span>@bylara.frias</span>
+                                <span>Larafc@hotmail.es</span>
+                            </footer>
                         </div>
                     </div>
 
                     <div id="about-view">
-                        <div class="about-header">
-                            <span style="font-weight: bold;">: About me</span>
-                            <span style="color: var(--muted); font-size: 11px;">BY LARA</span>
-                        </div>
                         <div class="about-grid">
                             <div class="about-text">
+                                <p style="font-weight: bold; margin-bottom: 30px;">: About me</p>
                                 <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
                                 <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
-                                <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience. This innovative approach has not only shaped my design methodology but has also become a hallmark of my personal style.</p>
-                                <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression. Each piece I create tells a story of resilience and transformation, offering a fresh perspective on timeless fashion.</p>
-                                
-                                <div class="about-footer">
-                                    <p>Thank you for exploring my work, and I hope my designs inspire and resonate with you as much as they do with me.</p>
-                                    <div class="location">Barcelona<br>SPAIN</div>
-                                </div>
+                                <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience.</p>
+                                <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression.</p>
+                                <div style="margin-top: 40px; color: var(--muted); font-size: 10px;">Barcelona, SPAIN</div>
                             </div>
                             <div class="about-image">
-                                <img src="images/lara.jpg" alt="Lara Frias Portrait">
+                                <img src="images/lara.jpg" alt="Lara">
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
         </main>
@@ -175,19 +226,9 @@
 
     <script>
         function showSection(section) {
-            const home = document.getElementById('home-view');
-            const about = document.getElementById('about-view');
-            const scrollContainer = document.getElementById('scroll-container');
-            
-            if (section === 'about') {
-                home.style.display = 'none';
-                about.style.display = 'block';
-            } else {
-                home.style.display = 'block';
-                about.style.display = 'none';
-            }
-            // Resetear el scroll arriba al cambiar de sección
-            scrollContainer.scrollTop = 0;
+            document.getElementById('home-view').style.display = section === 'home' ? 'block' : 'none';
+            document.getElementById('about-view').style.display = section === 'about' ? 'block' : 'none';
+            document.getElementById('scroll-container').scrollTop = 0;
         }
     </script>
 </body>
