@@ -54,12 +54,11 @@
         .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
         .footer-sidebar a { color: inherit; text-decoration: none; }
         .about-link { color: var(--blue) !important; font-weight: bold; margin-bottom: 5px; display: block; cursor: pointer; }
-        .cv-label { margin-top: 15px; font-weight: bold; color: var(--ink); }
 
         /* --- ÁREA DE CONTENIDO CON MARCA DE AGUA --- */
         .main-content { position: relative; height: 100%; overflow: hidden; background: #fff; }
 
-        /* Marca de agua signature_02 sutil al 5% */
+        /* Marca de agua signature_02 al 5% sutil */
         .main-content::before {
             content: "";
             position: absolute;
@@ -81,33 +80,28 @@
             color: var(--blue); text-decoration: none; font-size: 11px; font-weight: bold; font-style: italic; cursor: pointer;
         }
 
-        .scroll-wrapper { position: relative; z-index: 1; height: 100%; overflow-y: auto; scrollbar-width: none; display: block; }
+        .scroll-wrapper { position: relative; z-index: 1; height: 100%; overflow-y: auto; scrollbar-width: none; display: flex; flex-direction: column; scroll-snap-type: y mandatory; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* --- HERO (PORTADA BLINDADA) --- */
-        /* Se usa display: grid y min-height: 100% para forzar que ocupe todo el espacio */
+        /* --- HERO: AISLAMIENTO TOTAL --- */
         .hero { 
-            display: grid; 
-            grid-template-columns: 1fr 1.2fr; /* Estructura de dos columnas */
-            align-items: center;
-            height: 100%; 
-            min-height: 100%; /* El candado: asegura que no se encoja */
-            padding: 60px; 
-            position: relative; 
-            background: #fff; /* Fondo opaco */
-            z-index: 10;
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: space-between; 
+            height: 100%; padding: 40px; position: relative; background: #fff; z-index: 10;
+            scroll-snap-align: start;
         }
-        .hero-labels { display: flex; justify-content: center; }
+        .hero-labels { width: 45%; display: flex; justify-content: center; }
         .hero-labels img { width: 350px; opacity: 0.9; }
-        .hero-main { position: relative; }
+        .hero-main { width: 50%; position: relative; }
         .hero-main img { width: 100%; border-radius: 20px; display: block; }
         .caption-hero { position: absolute; bottom: -30px; right: 0; font-size: 10px; color: var(--muted); }
 
-        /* --- COLLAGE --- */
-        /* Se añade margen superior extra para asegurar separación */
-        .collage-section { padding: 120px 40px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; position: relative; z-index: 1; }
+        /* --- COLLAGE SECCION --- */
+        .collage-container { flex-shrink: 0; background: #fff; position: relative; z-index: 1; scroll-snap-align: start; }
+        .collage-grid { padding: 100px 40px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
         .tile img { width: 100%; border-radius: 12px; display: block; }
         
+        /* Posiciones Diplopia */
         .d2 { grid-column: 1 / span 5; }
         .d3 { grid-column: 6 / span 2; margin-top: 180px; z-index: 15; margin-left: -30px; }
         .d3 img { width: 120px !important; }
@@ -115,11 +109,8 @@
         
         .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 10px; display: block; }
 
-        /* --- VISTAS --- */
-        #home-view { display: block; } 
+        /* --- ABOUT ME --- */
         #about-view { display: none; padding: 40px 60px; height: 100%; overflow-y: auto; }
-
-        /* Estilos About Me */
         .about-header { display: flex; justify-content: space-between; margin-bottom: 10px; align-items: baseline; }
         .about-header .title { font-weight: normal; font-size: 14px; }
         .about-header .author { color: var(--muted); font-size: 11px; text-transform: uppercase; }
@@ -156,7 +147,7 @@
                     </ol>
                 </nav>
                 <div class="sig-sidebar">
-                    <img src="images/signature_01.jpeg" alt="Firma GIGANTE">
+                    <img src="images/signature_01.jpeg" alt="Signature 01">
                 </div>
                 <footer class="footer-sidebar">
                     <div class="footer-links">
@@ -164,7 +155,6 @@
                         <div class="contact-row"><span>✉</span> <a href="mailto:larafc@hotmail.es">CONTACT</a></div>
                         <div class="contact-row"><span></span> <a href="https://www.instagram.com/bylara.frias" target="_blank">INSTAGRAM</a></div>
                     </div>
-                    <div class="cv-label">: CV</div>
                 </footer>
             </aside>
 
@@ -182,15 +172,18 @@
                                 <span class="caption-hero">Double collar jacket. Diplopia collection</span>
                             </div>
                         </div>
-                        <div class="collage-section">
-                            <div class="tile d2"><img src="images/Diplopia_02.jpg"></div>
-                            <div class="tile d3">
-                                <img src="images/Diplopia_03.jpg">
-                                <p style="font-size: 9px; color: var(--muted); margin-top: 8px; text-align: center;">double leather bag</p>
-                            </div>
-                            <div class="tile d4">
-                                <img src="images/Diplopia_04.jpg">
-                                <span class="blue-tag">DIPLOPÍA COLLECTION 2023</span>
+                        
+                        <div class="collage-container">
+                            <div class="collage-grid">
+                                <div class="tile d2"><img src="images/Diplopia_02.jpg"></div>
+                                <div class="tile d3">
+                                    <img src="images/Diplopia_03.jpg">
+                                    <p style="font-size: 9px; color: var(--muted); margin-top: 8px; text-align: center;">double leather bag</p>
+                                </div>
+                                <div class="tile d4">
+                                    <img src="images/Diplopia_04.jpg">
+                                    <span class="blue-tag">DIPLOPÍA COLLECTION 2023</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,7 +197,7 @@
                             <div class="about-text">
                                 <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
                                 <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
-                                <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience.</p>
+                                <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic.</p>
                                 <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression.</p>
                             </div>
                             <div class="about-right-col">
@@ -217,12 +210,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="bottom-credits">
-                            <span>@bylara.frias</span>
-                            <span>larafc@hotmail.es</span>
-                        </div>
                     </div>
-
                 </div>
             </section>
         </main>
