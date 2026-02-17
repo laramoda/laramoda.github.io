@@ -1,190 +1,250 @@
-:root {
-  --bg: #efefef;
-  --card-bg: #ffffff;
-  --border: rgba(0, 0, 0, 0.08);
-  --text-main: #1a1a1a;
-  --text-muted: #999;
-  --accent-blue: #1f36ff;
-  --radius: 18px;
-}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lara Frias Cumella</title>
+  <style>
+    :root {
+      --bg: #efefef;
+      --card: #ffffff;
+      --border: rgba(0,0,0,0.12);
+      --muted: rgba(0,0,0,0.45);
+      --ink: rgba(0,0,0,0.85);
+      --blue: #1f36ff;
+    }
 
-* { box-sizing: border-box; }
-body, html { 
-  margin: 0; padding: 0; height: 100%; 
-  background-color: var(--bg);
-  font-family: "Courier New", Courier, monospace;
-  overflow: hidden; 
-}
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-/* El Contenedor "Card" */
-.stage {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-}
+    /* CONTENEDOR TIPO CARD */
+    .card {
+      width: min(1300px, 95%);
+      height: 88vh;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 30px 100px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      overflow: hidden;
+    }
 
-.card {
-  width: min(1380px, 100%);
-  height: 88vh;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.12);
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  overflow: hidden;
-}
+    /* --- COLUMNA IZQUIERDA (FIJA) --- */
+    .left {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+    }
 
-/* SIDEBAR IZQUIERDO */
-.sidebar {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid var(--border);
-  position: relative;
-}
+    /* El Logo: Superposición extrema */
+    .brand__stack {
+      text-transform: uppercase;
+      font-size: 62px;
+      font-weight: 800;
+      line-height: 0.7; /* Crucial para el efecto */
+      letter-spacing: -3px;
+      margin-bottom: 30px;
+    }
 
-.logo {
-  font-size: 58px;
-  font-weight: 900;
-  line-height: 0.72;
-  letter-spacing: -3px;
-  margin: 0 0 30px 0;
-  color: var(--text-main);
-}
+    .menu { margin-top: 10px; }
+    .menu__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+    .menu__list li { margin-bottom: 8px; }
 
-.nav-menu ol {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.8;
-}
+    /* Firma 01: Pequeña y entre menú y About Me */
+    .sig-01-wrap {
+      margin: 40px 0;
+      text-align: left;
+    }
+    .sig-01-wrap img {
+      width: 140px; /* Tamaño reducido según tu indicación */
+      height: auto;
+      opacity: 0.6;
+    }
 
-.sidebar-signature {
-  width: 200px;
-  opacity: 0.08;
-  position: absolute;
-  bottom: 180px;
-  left: 40px;
-  pointer-events: none;
-}
+    .footer {
+      margin-top: auto;
+      font-size: 12px;
+      color: var(--muted);
+      display: grid;
+      gap: 6px;
+    }
+    .footer a { color: inherit; text-decoration: none; }
+    .footer .cv { color: var(--ink); font-weight: bold; margin-top: 10px; }
 
-.sidebar-footer {
-  margin-top: auto;
-  font-size: 11px;
-  color: var(--text-muted);
-}
+    /* --- COLUMNA DERECHA (SCROLL) --- */
+    .right {
+      position: relative;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
 
-.footer-links a {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  margin-bottom: 6px;
-}
+    .home-nav {
+      position: sticky;
+      top: 30px;
+      right: 40px;
+      float: right;
+      z-index: 100;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+    }
 
-.cv-link {
-  margin-top: 15px;
-  color: var(--text-main);
-  font-weight: bold;
-}
+    .work-content { padding: 40px 60px; clear: both; }
 
-/* CONTENIDO DERECHO */
-.main-content {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-}
+    /* HERO: Firma 02 al lado de Diplopia_01 */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr; /* Lado a lado */
+      gap: 30px;
+      align-items: center;
+      min-height: 70vh;
+      margin-bottom: 80px;
+    }
 
-.home-sticky {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  color: var(--accent-blue);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: bold;
-  z-index: 100;
-}
+    .hero__sig img {
+      width: 100%;
+      max-width: 320px;
+      opacity: 0.2; /* Sutil */
+    }
 
-.scroll-area {
-  height: 100%;
-  overflow-y: auto;
-  padding: 60px 50px;
-  scrollbar-width: none; /* Firefox */
-}
-.scroll-area::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+    .hero__img-wrap figure { margin: 0; text-align: right; }
+    .hero__img-wrap img {
+      width: 100%;
+      border-radius: 14px;
+    }
+    .hero__img-wrap figcaption {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
 
-/* Hero */
-.hero-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 70vh;
-  align-items: center;
-  margin-bottom: 100px;
-}
+    /* COLLAGE */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 25px;
+      padding-bottom: 60px;
+    }
 
-.hero-watermark img {
-  width: 280px;
-  opacity: 0.05;
-}
+    .tile img { width: 100%; border-radius: 12px; display: block; }
+    .tile figcaption { margin-top: 8px; font-size: 11px; color: var(--muted); }
+    .blue-tag { color: var(--blue); font-weight: bold; font-size: 12px; text-transform: uppercase; }
 
-.hero-image img {
-  width: 100%;
-  border-radius: var(--radius);
-}
+    /* Posicionamiento asimétrico */
+    .t-left { grid-column: 1 / span 5; }
+    .t-right-small { grid-column: 7 / span 3; align-self: center; }
+    .t-right-info { grid-column: 10 / span 3; padding-top: 20px; }
+    .t-wide { grid-column: 2 / span 10; margin-top: 50px; }
 
-.hero-image figcaption {
-  font-size: 11px;
-  color: var(--text-muted);
-  text-align: right;
-  margin-top: 12px;
-}
+    .bottom-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
 
-/* Collage */
-.collage-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 30px;
-  align-items: start;
-}
+  <main class="card">
+    
+    <aside class="left">
+      <div class="brand__stack">
+        LARA<br>FRIAS<br>CUMELLA
+      </div>
 
-.item img {
-  width: 100%;
-  border-radius: var(--radius);
-  display: block;
-}
+      <nav class="menu">
+        <ol class="menu__list">
+          <li>1. DIPLOPÍA COLLECTION</li>
+          <li>2. ARTISAN TAILORING</li>
+          <li>3. COLLABORATIONS</li>
+          <li>4. OTHER PROJECTS</li>
+          <li>5. BTS</li>
+          <li>6. WORK AT :</li>
+          <li>7. KIDS</li>
+          <li>8. BAGS</li>
+        </ol>
+      </nav>
 
-.item figcaption {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-top: 10px;
-}
+      <div class="sig-01-wrap">
+        <img src="./images/signature_01.jpeg" alt="signature">
+      </div>
 
-.blue-title {
-  color: var(--accent-blue);
-  font-weight: bold;
-  font-size: 12px;
-  text-transform: uppercase;
-}
+      <footer class="footer">
+        <a href="#about">ABOUT ME</a>
+        <a href="mailto:larafc@hotmail.es">CONTACT</a>
+        <a href="https://instagram.com/bylara.frias" target="_blank">INSTAGRAM</a>
+        <div class="cv">: CV</div>
+      </footer>
+    </aside>
 
-/* Helpers de posición */
-.col-3 { grid-column: span 3; }
-.col-4 { grid-column: span 4; }
-.col-5 { grid-column: span 5; }
-.col-6 { grid-column: span 6; }
-.col-7 { grid-column: span 7; }
-.col-12 { grid-column: span 12; }
-.offset-1 { margin-left: 20px; }
+    <section class="right">
+      <a href="#" class="home-nav">■ HOME</a>
+      
+      <div class="work-content">
+        <div class="hero">
+          <div class="hero__sig">
+            <img src="./images/signature_02.jpeg" alt="firma hero">
+          </div>
+          <div class="hero__img-wrap">
+            <figure>
+              <img src="./images/Diplopia_01.jpg" alt="Diplopia 01">
+              <figcaption>Double collar jacket. Diplopia collection</figcaption>
+            </figure>
+          </div>
+        </div>
 
-.main-footer {
-  margin-top: 120px;
-  padding-bottom: 40px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--text-muted);
-}
+        <div class="grid">
+          <figure class="tile t-left">
+            <img src="./images/Diplopia_02.jpg">
+          </figure>
+
+          <figure class="tile t-right-small">
+            <img src="./images/Diplopia_03.jpg">
+            <figcaption>double leather bag</figcaption>
+          </figure>
+
+          <div class="tile t-right-info">
+            <p class="blue-tag">DIPLOPÍA COLLECTION 2023</p>
+          </div>
+
+          <figure class="tile t-wide">
+            <img src="./images/Artisan_01.jpg">
+            <figcaption>Artisan tailoring process</figcaption>
+          </figure>
+        </div>
+
+        <div class="bottom-info">
+          <span>@bylara.frias</span>
+          <span>Larafc@hotmail.es</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
