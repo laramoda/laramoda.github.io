@@ -35,7 +35,7 @@
         }
 
         /* --- SIDEBAR --- */
-        .sidebar { padding: 40px; border-right: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; z-index: 10; background: #fff; }
+        .sidebar { padding: 40px; border-right: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; z-index: 20; background: #fff; }
         .logo-hairline {
             font-family: "Times New Roman", serif;
             font-size: 58px; font-weight: 100; line-height: 0.75; letter-spacing: -3px; margin: 0 0 35px 0;
@@ -50,36 +50,38 @@
 
         .footer-sidebar { margin-top: auto; font-size: 11px; color: var(--muted); }
         .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
-        .footer-sidebar a { color: inherit; text-decoration: none; }
 
         /* --- ÁREA DE CONTENIDO --- */
-        .main-content { position: relative; overflow: hidden; background: #fff; }
+        .main-content { position: relative; height: 100%; overflow: hidden; background: #fff; }
         .home-nav { 
             position: absolute; top: 25px; right: 35px; z-index: 100;
             color: var(--blue); text-decoration: none; font-size: 11px; font-weight: bold; font-style: italic; cursor: pointer;
         }
 
-        /* Contenedor de scroll con flex para separar secciones */
+        /* El secreto está en este contenedor */
         .scroll-wrapper { 
             height: 100%; 
             overflow-y: auto; 
             scrollbar-width: none; 
             display: flex;
             flex-direction: column;
+            scroll-snap-type: y proximity; /* Ayuda a que las secciones se "ajusten" */
         }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* --- HERO: TOTALMENTE AISLADO --- */
+        /* --- HERO: BLINDADA AL 100% --- */
         .hero { 
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
-            height: 100%;        /* Alto total de la tarjeta */
-            flex-shrink: 0;     /* Prohíbe que se encoja */
+            height: 100%;       /* Ocupa el 100% del alto de la tarjeta */
+            min-height: 100%;   /* Refuerzo */
+            flex: 0 0 100%;     /* Evita que se encoja o se mezcle */
             padding: 40px;
             position: relative;
             background: #fff;
-            z-index: 5;
+            z-index: 10;
+            scroll-snap-align: start;
         }
         .hero-labels { width: 45%; display: flex; justify-content: center; }
         .hero-labels img { width: 350px; opacity: 0.9; }
@@ -87,22 +89,23 @@
         .hero-main img { width: 100%; border-radius: 20px; display: block; }
         .caption-hero { position: absolute; bottom: -30px; right: 0; font-size: 10px; color: var(--muted); }
 
-        /* --- COLLAGE: EMPIEZA SIN PISAR LA HERO --- */
+        /* --- COLLAGE: TOTALMENTE SEPARADO --- */
         .collage-section { 
-            padding: 60px 40px; 
+            padding: 120px 40px; /* Mucho aire arriba para que no asome nada */
             display: flex; 
             flex-direction: column; 
             gap: 150px; 
             position: relative; 
             z-index: 1; 
             background: #fff;
+            scroll-snap-align: start;
         }
         .section-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; position: relative; }
         .tile img { width: 100%; border-radius: 12px; display: block; }
 
-        /* Posiciones Diplopia */
+        /* Diplopia Positions */
         .d2 { grid-column: 1 / span 5; }
-        .d3 { grid-column: 6 / span 2; margin-top: 180px; z-index: 10; margin-left: -30px; text-align: center; }
+        .d3 { grid-column: 6 / span 2; margin-top: 180px; z-index: 15; margin-left: -30px; text-align: center; }
         .d3 img { width: 120px !important; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .d4 { grid-column: 8 / span 5; }
 
@@ -156,11 +159,13 @@
                 <div onclick="showSection('home')" class="home-nav"><span>:</span> HOME</div>
                 <div class="scroll-wrapper" id="scroll-container">
                     
-                    <div id="home-view" style="height: 100%;">
+                    <div id="home-view" style="display: flex; flex-direction: column;">
                         <div class="hero">
-                            <div class="hero-labels"><img src="images/signature_02.jpeg"></div>
+                            <div class="hero-labels">
+                                <img src="images/signature_02.jpeg" alt="labels">
+                            </div>
                             <div class="hero-main">
-                                <img src="images/Diplopia_01.jpg">
+                                <img src="images/Diplopia_01.jpg" alt="Diplopia 01">
                                 <span class="caption-hero">Double collar jacket. Diplopia collection</span>
                             </div>
                         </div>
@@ -172,7 +177,10 @@
                                     <img src="images/Diplopia_03.jpg">
                                     <p style="font-size: 10px; color: var(--muted); margin-top: 8px;">double leather bag</p>
                                 </div>
-                                <div class="tile d4"><img src="images/Diplopia_04.jpg"><span class="blue-tag">DIPLOPÍA COLLECTION 2023</span></div>
+                                <div class="tile d4">
+                                    <img src="images/Diplopia_04.jpg">
+                                    <span class="blue-tag">DIPLOPÍA COLLECTION 2023</span>
+                                </div>
                             </div>
 
                             <footer class="final-footer">
@@ -207,7 +215,7 @@
 
     <script>
         function showSection(section) {
-            document.getElementById('home-view').style.display = (section === 'home' ? 'block' : 'none');
+            document.getElementById('home-view').style.display = (section === 'home' ? 'flex' : 'none');
             document.getElementById('about-view').style.display = (section === 'about' ? 'block' : 'none');
             document.getElementById('scroll-container').scrollTop = 0;
         }
