@@ -1,137 +1,158 @@
 :root {
-  --bg: #efefef;
-  --card: #ffffff;
-  --ink: #1a1a1a;
-  --muted: #888;
-  --blue: #1f36ff;
-  --radius: 18px;
+    --bg: #efefef;
+    --card: #ffffff;
+    --ink: #111111;
+    --muted: #a0a0a0;
+    --blue: #1f36ff;
+    --line: rgba(0, 0, 0, 0.08);
 }
 
 * { box-sizing: border-box; }
-body, html { 
-  margin: 0; padding: 0; height: 100%; 
-  background-color: var(--bg);
-  font-family: ui-monospace, "Courier New", monospace;
-  color: var(--ink);
-  overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
+
+body, html {
+    margin: 0; padding: 0; height: 100%;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: ui-monospace, "Courier New", monospace; /* Tipografía monospaced para el UI */
+}
+
+.stage {
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 25px;
 }
 
 .card {
-  width: min(1340px, 98%);
-  height: 92vh;
-  background: var(--card);
-  border-radius: 24px;
-  display: grid;
-  grid-template-columns: 400px 1fr;
-  overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+    width: min(1400px, 98%);
+    height: 90vh;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+    display: flex;
+    overflow: hidden;
 }
 
-/* --- SIDEBAR --- */
+/* --- SIDEBAR IZQUIERDO --- */
 .sidebar {
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid rgba(0,0,0,0.05);
+    width: 380px;
+    padding: 45px;
+    display: flex; flex-direction: column;
+    border-right: 1px solid var(--line);
+    flex-shrink: 0;
 }
 
-/* Logo superpuesto: El secreto es el line-height y letter-spacing */
-.logo-stack {
-  font-size: 78px;
-  font-weight: 900;
-  line-height: 0.62; /* Letras una encima de otra */
-  letter-spacing: -4px; /* Letras pegadas lateralmente */
-  margin-bottom: 40px;
+/* Logo con letras superpuestas/pisadas */
+.logo h1 {
+    font-family: sans-serif; /* Cambiar a una sans-serif bold similar a la imagen */
+    font-size: 68px;
+    font-weight: 900;
+    line-height: 0.68; /* Ajuste para que las líneas se pisen */
+    letter-spacing: -3.5px; /* Ajuste para letras muy juntas */
+    margin: 0 0 35px 0;
+    color: #111;
 }
 
-.main-nav ol {
-  list-style: none; padding: 0; margin: 0;
-  font-size: 13px; color: var(--muted);
-  line-height: 1.8;
+.menu ol {
+    list-style: none; padding: 0; margin: 0;
+    font-size: 13px; line-height: 1.8;
 }
 
-/* Firma 01: Pequeña y posicionada */
-.sig-01-container {
-  margin: 30px 0;
-}
-.sig-01-container img {
-  width: 120px;
-  opacity: 0.8;
-}
+.menu li { color: var(--muted); }
 
-.sidebar-footer {
-  margin-top: auto;
-  font-size: 12px;
-  color: var(--muted);
-}
-.sidebar-footer a { color: inherit; text-decoration: none; display: inline-block; }
-.contact-item { margin-top: 6px; display: flex; align-items: center; gap: 8px; }
-.cv-link { margin-top: 15px; color: var(--ink); font-weight: bold; }
-
-/* --- CONTENIDO --- */
-.content-view { position: relative; overflow: hidden; }
-
-.home-sticky {
-  position: absolute;
-  top: 35px; right: 50px;
-  color: var(--blue);
-  text-decoration: none;
-  font-size: 14px; font-weight: bold; font-style: italic;
-  z-index: 10;
+/* Firma 01 ajustada en tamaño */
+.signature-small { margin: 35px 0; }
+.signature-small img {
+    width: 130px; /* Tamaño reducido */
+    opacity: 0.7;
 }
 
-.scroll-area {
-  height: 100%;
-  overflow-y: auto;
-  padding: 0 50px 50px 0;
-  scrollbar-width: none;
-}
-.scroll-area::-webkit-scrollbar { display: none; }
+.footer { margin-top: auto; font-size: 12px; }
+.footer a { color: var(--muted); text-decoration: none; }
+.contact-row { margin-top: 5px; display: flex; align-items: center; gap: 10px; }
+.cv-tag { margin-top: 15px; font-weight: bold; color: var(--ink); }
 
-/* Hero Section */
-.hero-fold {
-  display: grid;
-  grid-template-columns: 1fr 480px; /* Imagen grande a la derecha */
-  gap: 40px;
-  align-items: center;
-  min-height: 80vh;
-  padding-top: 60px;
+/* --- ÁREA DE CONTENIDO --- */
+.main-content {
+    flex-grow: 1;
+    position: relative;
+    display: flex; flex-direction: column;
 }
 
-.watermark-tags img {
-  width: 100%;
-  max-width: 250px;
-  opacity: 0.8;
+.top-nav {
+    position: absolute; top: 35px; right: 45px; z-index: 10;
 }
 
-.main-hero-image img {
-  width: 100%;
-  border-radius: var(--radius);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+.home-link {
+    color: var(--blue); text-decoration: none;
+    font-size: 14px; font-weight: bold; font-style: italic;
 }
 
-.main-hero-image figcaption {
-  font-size: 11px; color: var(--muted);
-  text-align: right; margin-top: 12px;
+.scroll-wrapper {
+    overflow-y: scroll;
+    height: 100%;
+    padding: 70px 50px;
+    scrollbar-width: thin; /* Para Firefox */
 }
 
-/* Collage */
-.collage-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 30px;
-  margin-top: 50px;
+/* Estilo del scrollbar para Chrome/Safari */
+.scroll-wrapper::-webkit-scrollbar { width: 8px; }
+.scroll-wrapper::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
+
+/* HERO: Firma y Diplopia_01 */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 50/50 para que la imagen sea protagonista */
+    gap: 40px;
+    align-items: center;
+    min-height: 75vh;
+    margin-bottom: 100px;
 }
 
-.item img { width: 100%; border-radius: var(--radius); }
-.item-tall { grid-column: 1 / span 5; }
-.item-small { grid-column: 7 / span 3; align-self: center; }
-.label-blue { grid-column: 10 / span 3; color: var(--blue); font-weight: bold; font-size: 12px; }
-.item-wide { grid-column: 2 / span 10; margin-top: 40px; }
+.hero-signature img {
+    width: 100%; max-width: 320px;
+    opacity: 0.15; /* Sutil como marca de agua */
+}
 
-.final-footer {
-  margin-top: 100px;
-  display: flex; justify-content: space-between;
-  font-size: 11px; color: var(--muted);
+.hero-image img {
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+}
+
+.hero-image figcaption {
+    font-size: 11px; color: var(--muted);
+    text-align: right; margin-top: 12px;
+}
+
+/* COLLAGE */
+.collage {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+    align-items: start;
+}
+
+.item img { width: 100%; border-radius: 15px; display: block; }
+.item figcaption { font-size: 11px; color: var(--muted); margin-top: 10px; }
+.blue { color: var(--blue); font-weight: bold; font-size: 12px; text-transform: uppercase; }
+
+/* Posiciones asimétricas del collage */
+.pos-left-mid { grid-column: 1 / span 5; }
+.pos-right-center { grid-column: 7 / span 3; align-self: center; }
+.pos-label { grid-column: 10 / span 3; padding-top: 30px; }
+.pos-full { grid-column: 1 / span 12; margin: 50px 0; }
+.pos-center-text { grid-column: 4 / span 6; }
+
+.scroll-footer {
+    margin-top: 120px;
+    display: flex; justify-content: space-between;
+    font-size: 11px; color: var(--muted);
+    padding-bottom: 40px;
+}
+
+@media (max-width: 1100px) {
+    .card { grid-template-columns: 1fr; height: auto; }
+    .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--line); }
+    .hero-section { grid-template-columns: 1fr; }
 }
