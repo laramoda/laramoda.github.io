@@ -62,14 +62,15 @@
         .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* --- HERO (AISLADO) --- */
+        /* --- HERO (SECCIÓN 1 - BLINDADA) --- */
         .hero { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            height: 100%; /* Ocupa todo el alto inicial */
-            padding: 40px;
+            display: flex; align-items: center; justify-content: space-between; 
+            /* Altura mínima para obligar a que ocupe toda la pantalla inicial */
+            min-height: 800px; 
+            padding: 40px; 
             position: relative;
+            background-color: var(--card); /* Fondo opaco para evitar transparencias */
+            z-index: 2;
         }
         .hero-labels { width: 45%; display: flex; justify-content: center; }
         .hero-labels img { width: 350px; opacity: 0.9; }
@@ -77,41 +78,47 @@
         .hero-main img { width: 100%; border-radius: 20px; display: block; }
         .caption-hero { position: absolute; bottom: -30px; right: 0; font-size: 10px; color: var(--muted); }
 
-        /* --- COLLAGE --- */
-        .collage-section { padding: 80px 40px; display: flex; flex-direction: column; gap: 150px; }
+        /* --- COLLAGE (RESTO DE SECCIONES) --- */
+        .collage-container { 
+            padding: 40px; 
+            display: flex; flex-direction: column; gap: 150px; 
+            position: relative;
+            z-index: 1;
+            background-color: var(--card);
+        }
         .section-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; position: relative; }
         .tile img { width: 100%; border-radius: 12px; display: block; }
-
-        /* Diplopia Layout */
-        .d1 { grid-column: 1 / span 5; }
-        .d2 { grid-column: 6 / span 2; margin-top: 200px; z-index: 5; margin-left: -30px; }
-        .d2 img { width: 120px !important; }
-        .d3 { grid-column: 8 / span 5; }
-
-        /* Artisan Layout */
-        .a1 { grid-column: 1 / span 8; }
-        .a2 { grid-column: 9 / span 4; margin-top: -60px; }
-        .a3 { grid-column: 2 / span 4; margin-top: -100px; z-index: 5; }
-        .a4 { grid-column: 6 / span 5; }
-
-        /* Oprojects Layout */
-        .v-row { grid-column: 1 / span 9; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .v-row .tile:nth-child(2) { margin-top: 40px; }
-        .v-big { grid-column: 10 / span 3; margin-top: -40px; }
-
         .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 10px; display: block; }
+        .caption { font-size: 10px; color: var(--muted); margin-top: 8px; }
+
+        /* Diplopia (Continuación) */
+        .d2 { grid-column: 1 / span 5; }
+        .d3 { grid-column: 6 / span 2; margin-top: 180px; z-index: 5; margin-left: -20px; text-align: center; }
+        .d3 img { width: 100px !important; margin: 0 auto; }
+        .d4 { grid-column: 8 / span 5; }
+
+        /* Artisan Tailoring */
+        .a1 { grid-column: 1 / span 6; margin-top: 40px; }
+        .a2 { grid-column: 8 / span 2; margin-top: 100px; }
+        .a3 { grid-column: 10 / span 3; }
+        .a4 { grid-column: 7 / span 5; margin-top: -60px; z-index: 5; }
+
+        /* Villains (Runway) */
+        .runway-row { grid-column: 1 / span 9; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .v-main { grid-column: 10 / span 3; margin-top: -20px; }
+        .v-wide { grid-column: 4 / span 9; margin-top: 40px; }
+        .v-detail { grid-column: 1 / span 3; margin-top: -120px; }
+
+        /* Swimwear & Collaborations */
+        .swim-collage { grid-column: 1 / span 12; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .swim-center { text-align: center; margin-top: -40px; }
+        .swim-center img { width: 90% !important; margin: 0 auto; }
 
         /* --- ABOUT ME --- */
         #about-view { display: none; padding: 60px; }
         .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: start; }
         .about-text { font-size: 13px; line-height: 1.8; color: var(--ink); white-space: pre-line; }
-        .about-image img { 
-            width: 100%; 
-            border-radius: 15px; 
-            filter: grayscale(1); 
-            display: block; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
+        .about-image img { width: 100%; border-radius: 15px; filter: grayscale(1); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
         .final-footer { padding: 40px 0; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); }
     </style>
@@ -158,27 +165,47 @@
                             </div>
                         </div>
 
-                        <div class="collage-section">
+                        <div class="collage-container">
                             <div class="section-grid">
-                                <div class="tile d1"><img src="images/Diplopia_02.jpg"></div>
-                                <div class="tile d2"><img src="images/Diplopia_03.jpg"></div>
-                                <div class="tile d3"><img src="images/Diplopia_04.jpg"><span class="blue-tag">DIPLOPÍA COLLECTION 2023</span></div>
+                                <div class="tile d2"><img src="images/Diplopia_02.jpg"></div>
+                                <div class="tile d3"><img src="images/Diplopia_03.jpg"><p class="caption">double leather bag</p></div>
+                                <div class="tile d4"><img src="images/Diplopia_04.jpg"><span class="blue-tag">DIPLOPÍA COLLECTION 2023</span></div>
                             </div>
 
                             <div class="section-grid">
                                 <div class="tile a1"><img src="images/Artisan_01.jpg"></div>
-                                <div class="tile a2"><img src="images/Artisan_02.jpg"><span class="blue-tag">ARTISAN TAILORING 2023</span></div>
-                                <div class="tile a3"><img src="images/Artisan_04.jpg"></div>
-                                <div class="tile a4"><img src="images/Artisan_03.jpg"></div>
+                                <div class="tile a2"><img src="images/Artisan_02.jpg"></div>
+                                <div class="tile a3"><img src="images/Artisan_03.jpg"></div>
+                                <div class="tile a4"><img src="images/Artisan_04.jpg"><span class="blue-tag">ARTISAN TAILORING 2023</span></div>
                             </div>
 
                             <div class="section-grid">
-                                <div class="v-row">
+                                <div class="runway-row">
                                     <div class="tile"><img src="images/Oprojects_03.jpg"></div>
-                                    <div class="tile"><img src="images/Oprojects_04.jpg"></div>
+                                    <div class="tile" style="margin-top: 30px;"><img src="images/Oprojects_04.jpg"></div>
                                     <div class="tile"><img src="images/Oprojects_05.jpg"></div>
                                 </div>
-                                <div class="tile v-big"><img src="images/Oprojects_07.jpg"><span class="blue-tag">VILLAINS COLLECTION 2022</span></div>
+                                <div class="tile v-main"><img src="images/Oprojects_07.jpg"><span class="blue-tag">DIPLOPÍA COLLECTION 2023</span></div>
+                                <div class="tile v-wide"><img src="images/Oprojects_01.jpg"><span class="blue-tag">VILLAINS COLLECTION 2022</span></div>
+                                <div class="tile v-detail"><img src="images/Oprojects_02.jpg"></div>
+                                <div class="tile" style="grid-column: 1 / span 4; margin-top: 20px;"><img src="images/Oprojects_06.jpg"></div>
+                            </div>
+
+                            <div class="section-grid">
+                                <div class="tile span-6"><img src="images/colaborati_01.jpg"></div>
+                                <div class="tile span-6"><img src="images/colaborati_02.jpg"></div>
+                                
+                                <div class="swim-collage" style="margin-top: 100px;">
+                                    <div class="tile"><img src="images/Swim_04.png"></div>
+                                    <div class="tile swim-center">
+                                        <img src="images/Swim_03.png">
+                                        <span class="blue-tag">MOODBORED SWIMWEAR COLLECTION</span>
+                                    </div>
+                                    <div class="tile"><img src="images/Swim_01.png"></div>
+                                    <div class="tile"><img src="images/Swim_06.png"></div>
+                                    <div class="tile" style="margin-top: 40px;"><img src="images/Swim_05.png"></div>
+                                    <div class="tile"><img src="images/Swim_02.png"></div>
+                                </div>
                             </div>
 
                             <footer class="final-footer">
