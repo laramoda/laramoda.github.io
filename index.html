@@ -34,17 +34,24 @@
         .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; position: relative; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* HERO - BLINDADA */
+        /* HERO - AJUSTADA PARA BAJAR LA FOTO */
         .hero-block { 
-            height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; 
-            background: #fff; position: relative; z-index: 10;
+            height: 100%; width: 100%; display: flex; align-items: flex-start; justify-content: center; 
+            background: #fff; position: relative; z-index: 10; padding-top: 100px;
         }
-        .hero-inner { width: 90%; display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; gap: 40px; }
-        .hero-labels img { width: 320px; }
-        .hero-main img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .hero-inner { width: 90%; display: grid; grid-template-columns: 1fr 1.2fr; align-items: flex-start; gap: 40px; }
+        .hero-labels img { width: 320px; margin-top: 50px; }
+        
+        /* AQUÍ BAJAMOS LA CHAQUETA */
+        .hero-main img { 
+            width: 100%; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: 80px; 
+        }
 
-        /* EL MURO PARA QUE NO SUBA EL COLLAGE */
-        .muro-invisible { height: 600px; width: 100%; background: #fff; }
+        /* MURO PARA QUE EL COLLAGE NO SUBA */
+        .muro-invisible { height: 400px; width: 100%; background: #fff; }
 
         /* COLLAGE */
         .collage-block { padding: 0 40px 100px 40px; background: #fff; position: relative; z-index: 20; }
@@ -58,7 +65,7 @@
         .blue-tag { color: var(--blue); font-weight: bold; font-size: 10px; text-transform: uppercase; margin-top: 12px; display: block; }
         .caption-gray { font-size: 9px; color: var(--muted); margin-top: 10px; display: block; }
 
-        /* --- ABOUT ME --- */
+        /* --- ABOUT ME COMPLETO --- */
         #about-view { display: none; padding: 60px; min-height: 100%; background: #fff; position: relative; z-index: 200; }
         .about-grid { display: grid; grid-template-columns: 1.5fr 300px; gap: 50px; }
         .about-text { font-size: 13px; line-height: 1.6; text-align: justify; color: var(--ink); }
@@ -109,7 +116,7 @@
                                 <span class="caption-gray">double leather bag</span>
                             </div>
                             <div class="tile t-right"><img src="images/Diplopia_04.jpg"><span class="blue-tag">DIPLOPÍA COLLECTION 2023</span></div>
-
+                            
                             <div class="tile" style="grid-column: span 8; margin-top: 80px;"><img src="images/Artisan_01.jpg"></div>
                             <div class="tile" style="grid-column: span 4; margin-top: 120px;"><img src="images/Artisan_02.jpg"><span class="blue-tag">ARTISAN TAILORING</span></div>
                         </div>
