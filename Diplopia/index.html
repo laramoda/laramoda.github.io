@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diplopía Collection | Lara Frias Cumella</title>
+    <style>
+        :root { --bg: #ffffff; --ink: #1a1a1a; --muted: #a0a0a0; --blue: #1f36ff; }
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; background: var(--bg); font-family: ui-monospace, monospace; color: var(--ink); }
 
+        .container { padding: 40px; max-width: 1400px; margin: 0 auto; }
+        
+        /* HEADER NARRATIVO */
+        .header-section { display: grid; grid-template-columns: 320px 1fr; gap: 40px; margin-bottom: 60px; }
+        .title-block { font-size: 24px; line-height: 1.2; }
+        .intro-text { font-size: 14px; line-height: 1.6; max-width: 800px; text-align: justify; }
+
+        /* GALERÍA TIPO "LINEUP" */
+        .lineup-section { margin-top: 80px; text-align: center; }
+        .lineup-title { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; display: block; }
+        .lineup-grid { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
+        .lineup-grid::-webkit-scrollbar { display: none; }
+        .lineup-item { min-width: 200px; flex: 1; }
+        .lineup-item img { width: 100%; border: 1px solid #eee; border-radius: 4px; }
+
+        /* BLOQUES DE IMAGEN GRANDE */
+        .full-width-image { width: 100%; margin: 60px 0; border-radius: 8px; overflow: hidden; }
+        .full-width-image img { width: 100%; display: block; }
+
+        /* SECCIÓN DE INVESTIGACIÓN / SKETCHES */
+        .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 60px; }
+        .research-item img { width: 100%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        /* BOTONES DE ACCIÓN (PDF/BTS) */
+        .action-area { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 100px; padding-bottom: 100px; }
+        .btn-bts { 
+            background: #ff0055; color: white; padding: 15px 40px; border-radius: 30px; 
+            text-decoration: none; font-weight: bold; font-size: 12px; transition: transform 0.3s;
+        }
+        .btn-pdf { 
+            border: 2px solid var(--ink); color: var(--ink); padding: 12px 30px; border-radius: 30px; 
+            text-decoration: none; font-size: 11px; 
+        }
+        .btn-bts:hover, .btn-pdf:hover { transform: scale(1.05); }
+
+        /* NAVEGACIÓN INFERIOR */
+        .nav-footer { display: flex; justify-content: space-between; padding: 40px 0; border-top: 1px solid #eee; font-size: 12px; }
+        .nav-footer a { color: var(--ink); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .header-section { grid-template-columns: 1fr; }
+            .research-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="header-section">
+        <div class="title-block">
+            :My first collection/<br><strong>Diplopía</strong><br>
+            <span style="font-size: 12px; color: var(--muted);">Feb-Jul 2023</span>
+        </div>
+        <div class="intro-text">
+            In this section i am going to present and show what has been the end of my career, the most unique, personal and largest project that I have ever done and that perfectly summarizes my work. 
+            This project aims to explore double vision as a creative concept in fashion design.
+        </div>
+    </header>
+
+    <div class="full-width-image">
+        <img src="Images/Diplopia_main.jpg" alt="Diplopia Collection Group">
+    </div>
+
+    <div class="lineup-section">
+        <span class="lineup-title">Lineup Colección _ 6 Looks</span>
+        <div class="lineup-grid">
+            <div class="lineup-item"><img src="Images/Look1.jpg"></div>
+            <div class="lineup-item"><img src="Images/Look2.jpg"></div>
+            <div class="lineup-item"><img src="Images/Look3.jpg"></div>
+            <div class="lineup-item"><img src="Images/Look4.jpg"></div>
+            <div class="lineup-item"><img src="Images/Look5.jpg"></div>
+            <div class="lineup-item"><img src="Images/Look6.jpg"></div>
+        </div>
+    </div>
+
+    <div class="research-grid">
+        <div class="research-item"><img src="Images/Sketch1.jpg"></div>
+        <div class="research-item"><img src="Images/Sketch2.jpg"></div>
+        <div class="research-item"><img src="Images/Sketch3.jpg"></div>
+    </div>
+
+    <div class="full-width-image">
+        <img src="Images/Diplopia_wide.jpg" alt="Collection Detail">
+    </div>
+
+    <div class="action-area">
+        <a href="../BTS/index.html" class="btn-bts">BTS CLICK</a>
+        <a href="#" class="btn-pdf">PDF research memory</a>
+        <p style="font-size: 10px; color: var(--muted); margin-top: 20px;">Shot and edited: Júlia Gibert</p>
+    </div>
+
+    <footer class="nav-footer">
+        <a href="../index.html">← Index</a>
+        <a href="../Artisan/index.html">Next: Artisan Tailoring →</a>
+    </footer>
+</div>
+
+</body>
+</html>
