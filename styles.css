@@ -4,26 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lara Frias Cumella | Portfolio</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=JetBrains+Mono:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400&family=Inter:wght@100;200&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg: #efefef;
             --card: #ffffff;
             --ink: #1a1a1a;
-            --muted: #a0a0a0;
+            --muted: #b0b0b0; /* Gris más claro para el menú */
             --blue: #1f36ff;
         }
 
         * { box-sizing: border-box; }
-        body, html { 
-            margin: 0; padding: 0; height: 100%; 
-            background-color: var(--bg); 
-            font-family: 'JetBrains Mono', monospace;
-            overflow: hidden;
-        }
+        body, html { margin: 0; padding: 0; height: 100%; background-color: var(--bg); overflow: hidden; }
 
         .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
 
@@ -36,104 +32,51 @@
             grid-template-columns: 320px 1fr;
             overflow: hidden;
             box-shadow: 0 40px 100px rgba(0,0,0,0.08);
-            position: relative;
         }
 
-        /* --- SIDEBAR --- */
-        .sidebar { padding: 50px 40px; border-right: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; z-index: 20; background: #fff; }
+        /* --- SIDEBAR REVISADO PARA MÁXIMA FINURA --- */
+        .sidebar { padding: 60px 45px; border-right: 1px solid rgba(0,0,0,0.04); display: flex; flex-direction: column; background: #fff; }
         
+        /* LOGO: Serif con trazo muy fino */
         .logo-hairline {
-            font-family: 'Baskervville', serif;
-            font-size: 52px; 
+            font-family: 'Bodoni Moda', serif;
+            font-size: 48px; 
             font-weight: 400; 
-            line-height: 0.8; 
-            letter-spacing: -1.5px; 
-            margin: 0 0 40px 0;
+            line-height: 0.78; 
+            letter-spacing: -2px; 
+            margin: 0 0 50px 0;
             color: var(--ink); 
             text-transform: uppercase;
         }
 
+        /* MENÚ: Monospace extrafino y espaciado */
         .nav-menu ol { 
             list-style: none; 
             padding: 0; 
             margin: 0; 
             font-family: 'JetBrains Mono', monospace;
-            font-size: 10.5px; 
-            font-weight: 200; /* Peso extra fino para el menú */
+            font-size: 10px; 
+            font-weight: 100; /* Peso mínimo absoluto */
             color: var(--muted); 
-            line-height: 2.2; 
-            letter-spacing: 0.8px;
+            line-height: 2.6; 
+            letter-spacing: 1.2px; /* Más espacio entre letras para limpieza visual */
         }
         
         .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; }
         .nav-menu li:hover { color: var(--ink); }
 
-        .sig-sidebar { margin: 30px 0; width: 280px; align-self: center; } 
-        .sig-sidebar img { width: 100%; opacity: 0.9; }
+        .sig-sidebar { margin: 40px 0; width: 220px; align-self: center; } 
+        .sig-sidebar img { width: 100%; opacity: 0.7; }
 
-        .footer-sidebar { margin-top: auto; font-size: 10.5px; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-weight: 300; }
-        .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; text-transform: uppercase; }
+        .footer-sidebar { margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 200; color: var(--muted); }
+        .footer-links { margin-bottom: 20px; }
+        .about-link { color: var(--blue) !important; font-weight: 400; margin-bottom: 12px; display: block; font-size: 10px; letter-spacing: 1px; }
+        .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; text-transform: uppercase; }
         .footer-sidebar a { color: inherit; text-decoration: none; }
-        .about-link { color: var(--blue) !important; font-weight: 500; margin-bottom: 10px; display: block; }
-        .cv-label { margin-top: 20px; font-weight: 400; color: var(--ink); letter-spacing: 1px; }
+        .cv-label { margin-top: 25px; font-weight: 400; color: var(--ink); letter-spacing: 1.5px; font-size: 10px; }
 
-        /* --- ÁREA DE CONTENIDO --- */
-        .main-content { position: relative; height: 100%; overflow: hidden; background: #fff; }
-
-        .main-content::before {
-            content: "";
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%; height: 80%;
-            background-image: url('images/signature_02.jpeg');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            opacity: 0.05;
-            z-index: 0;
-            pointer-events: none;
-            filter: grayscale(1);
-        }
-
-        .home-nav { 
-            position: absolute; top: 30px; right: 40px; z-index: 100;
-            color: var(--blue); text-decoration: none; 
-            font-size: 11px; font-weight: 400; font-style: italic; cursor: pointer;
-            font-family: 'JetBrains Mono', monospace;
-            letter-spacing: 1px;
-        }
-
-        .scroll-wrapper { position: relative; z-index: 1; height: 100%; overflow-y: auto; scrollbar-width: none; }
-        .scroll-wrapper::-webkit-scrollbar { display: none; }
-
-        /* --- ABOUT ME --- */
-        #about-view { display: block; padding: 50px 60px; height: 100%; }
-        
-        .about-header { display: flex; justify-content: space-between; margin-bottom: 30px; align-items: baseline; }
-        .about-header .title { font-weight: 300; font-size: 14px; text-transform: lowercase; }
-        .about-header .author { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 2px; }
-
-        .about-grid { display: grid; grid-template-columns: 1.5fr 300px; gap: 50px; align-items: start; }
-        
-        .about-text { font-size: 12.5px; line-height: 1.7; color: var(--ink); font-weight: 300; }
-        .about-text p { margin: 0 0 20px 0; text-align: justify; }
-
-        .about-right-col { display: flex; flex-direction: column; gap: 20px; }
-        
-        .about-image img { 
-            width: 100%; 
-            border-radius: 12px; 
-            filter: grayscale(1); 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
-        }
-        
-        .thank-you-note { font-size: 12px; line-height: 1.5; color: var(--ink); font-weight: 300; }
-        .location { margin-top: 15px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 2px; }
-
-        .bottom-credits { margin-top: 60px; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-
-        #home-view { display: none; }
+        /* ÁREA DE CONTENIDO */
+        .main-content { background: #fff; position: relative; }
     </style>
 </head>
 <body>
@@ -157,60 +100,16 @@
                     <img src="images/signature_01.jpeg" alt="Signature">
                 </div>
                 <footer class="footer-sidebar">
-                    <a href="#" class="about-link" onclick="showSection('about')">ABOUT ME</a>
-                    <div class="contact-row"><span>✉</span> <a href="mailto:larafc@hotmail.es">CONTACT</a></div>
-                    <div class="contact-row"><span></span> <a href="https://www.instagram.com/bylara.frias" target="_blank">INSTAGRAM</a></div>
+                    <a href="#" class="about-link">ABOUT ME</a>
+                    <div class="footer-links">
+                        <div class="contact-row"><span>✉</span> <a href="mailto:larafc@hotmail.es">CONTACT</a></div>
+                        <div class="contact-row"><span></span> <a href="#">INSTAGRAM</a></div>
+                    </div>
                     <div class="cv-label">: CV</div>
                 </footer>
             </aside>
-
-            <section class="main-content">
-                <div onclick="showSection('home')" class="home-nav"><span>:</span> HOME</div>
-                <div class="scroll-wrapper" id="scroll-container">
-                    
-                    <div id="about-view">
-                        <div class="about-header">
-                            <span class="title">: about me</span>
-                            <span class="author">BY LARA</span>
-                        </div>
-                        <div class="about-grid">
-                            <div class="about-text">
-                                <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
-                                <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
-                                <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience. This innovative approach has not only shaped my design methodology but has also become a hallmark of my personal style.</p>
-                                <p>By turning a significant challenge into a creative strength, I've developed a distinctive approach to fashion that blends functionality with artistic expression. Each piece I create tells a story of resilience and transformation, offering a fresh perspective on timeless fashion.</p>
-                            </div>
-                            
-                            <div class="about-right-col">
-                                <div class="about-image">
-                                    <img src="images/Lara.jpg" alt="Lara Portrait">
-                                </div>
-                                <div class="thank-you-note">
-                                    <p>Thank you for exploring my work, and I hope my designs inspire and resonate with you as much as they do with me.</p>
-                                    <div class="location">Barcelona SPAIN</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bottom-credits">
-                            <span>@bylara.frias</span>
-                            <span>larafc@hotmail.es</span>
-                        </div>
-                    </div>
-
-                    <div id="home-view">
-                        </div>
-
-                </div>
-            </section>
+            <section class="main-content"></section>
         </main>
     </div>
-
-    <script>
-        function showSection(section) {
-            document.getElementById('home-view').style.display = (section === 'home' ? 'block' : 'none');
-            document.getElementById('about-view').style.display = (section === 'about' ? 'block' : 'none');
-            document.getElementById('scroll-container').scrollTop = 0;
-        }
-    </script>
 </body>
 </html>
