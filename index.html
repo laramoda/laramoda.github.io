@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lara Frias Cumella | Portfolio</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100&display=swap" rel="stylesheet">
     
     <style>
-        :root { 
-            --bg: #efefef; 
-            --card: #ffffff; 
-            --ink: #1a1a1a; 
-            --muted: #b5b5b5; 
-            --blue: #1f36ff; 
+        :root {
+            --bg: #efefef;
+            --card: #ffffff;
+            --ink: #1a1a1a;
+            --muted: #b5b5b5;
+            --blue: #1f36ff;
         }
 
-        /* Optimización de finura de letra */
+        /* RESET Y MEJORA DE RENDERIZADO PARA LETRAS FINAS */
         * { 
             box-sizing: border-box; 
             -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale; 
+            text-rendering: optimizeLegibility;
         }
 
         body, html { 
@@ -54,18 +56,19 @@
             z-index: 100; 
         }
 
-        /* LOGO: Recto, sin florituras, ultra fino */
+        /* LOGO: Líneas rectas, peso 100 y apilado visual */
         .logo-hairline { 
             font-family: 'Inter', sans-serif; 
-            font-size: 52px; 
-            font-weight: 100; 
-            line-height: 0.8; 
-            letter-spacing: -3.5px; 
-            margin: 0 0 45px 0; 
+            font-size: 54px; 
+            font-weight: 100 !important; /* Peso ultra-fino */
+            line-height: 0.72; /* Para que las líneas se toquen verticalmente */
+            letter-spacing: -3.5px; /* Para que las letras se toquen horizontalmente */
+            margin: 0 0 50px 0; 
             text-transform: uppercase; 
             color: var(--ink); 
         }
 
+        /* MENÚ: Monospace extra-fino y espaciado */
         .nav-menu ol { 
             list-style: none; 
             padding: 0; 
@@ -85,6 +88,7 @@
         
         .nav-menu li:hover { color: var(--ink); }
 
+        /* Firma en el menú lateral */
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
         
@@ -92,7 +96,7 @@
             margin-top: auto; 
             font-size: 10px; 
             color: var(--muted); 
-            font-weight: 200;
+            font-weight: 100;
         }
 
         .about-link { 
@@ -105,16 +109,23 @@
             letter-spacing: 1px;
         }
 
-        /* --- CONTENIDO --- */
+        /* --- ÁREA DE CONTENIDO (HERO) --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
-        .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; position: relative; }
+        .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* HERO HOME */
-        .hero-block { height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; background: #fff; }
+        .hero-block { height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; }
         .hero-inner { width: 90%; display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; gap: 40px; }
+        
+        /* Marca de agua / Firma secundaria */
         .hero-labels img { width: 300px; opacity: 0.15; }
-        .hero-main img { width: 100%; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.06); }
+        
+        /* Imagen principal de Diplopia */
+        .hero-main img { 
+            width: 100%; 
+            border-radius: 15px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06); 
+        }
 
     </style>
 </head>
@@ -156,7 +167,7 @@
                     <div class="hero-block">
                         <div class="hero-inner">
                             <div class="hero-labels"><img src="images/signature_02.jpeg"></div>
-                            <div class="hero-main"><img src="images/Diplopia_01.jpg"></div>
+                            <div class="hero-main"><img src="images/Diplopia_01.jpg" alt="Diplopia Collection"></div>
                         </div>
                     </div>
                 </div>
@@ -165,12 +176,5 @@
         </section>
     </main>
 </div>
-
-<script>
-    // Si necesitas que el scroll siempre empiece arriba al cargar
-    window.onload = function() {
-        document.getElementById('scroll-container').scrollTop = 0;
-    }
-</script>
 </body>
 </html>
