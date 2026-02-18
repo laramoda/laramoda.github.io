@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTS Process | Lara Frias Cumella</title>
+    <style>
+        :root { --bg: #ffffff; --ink: #1a1a1a; --muted: #a0a0a0; --blue: #1f36ff; }
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; background: var(--bg); font-family: ui-monospace, monospace; color: var(--ink); }
 
+        .container { padding: 40px; max-width: 1400px; margin: 0 auto; }
+        
+        /* HEADER */
+        .header-section { display: grid; grid-template-columns: 350px 1fr; gap: 60px; margin-bottom: 80px; }
+        .title-main { font-size: 24px; font-weight: normal; }
+        .intro-text { font-size: 14px; line-height: 1.6; text-align: justify; color: var(--muted); }
+
+        /* SECCIONES DE COLECCIÓN */
+        .bts-block { margin-top: 100px; position: relative; }
+        .collection-tag { font-size: 32px; text-transform: uppercase; margin-top: 20px; display: block; }
+        .collection-tag span { font-weight: lighter; font-style: italic; }
+
+        /* HERO IMAGES BTS */
+        .hero-bts { width: 100%; border-radius: 15px; overflow: hidden; margin-bottom: 30px; }
+        .hero-bts img { width: 100%; display: block; }
+
+        /* GRID DE PROCESO TÉCNICO */
+        .process-grid-header { font-size: 14px; margin: 80px 0 30px; text-transform: uppercase; }
+        .process-grid-header span { color: var(--muted); font-size: 12px; margin-left: 10px; }
+        
+        .grid-technical { 
+            display: grid; 
+            grid-template-columns: repeat(7, 1fr); 
+            gap: 10px; 
+            margin-bottom: 60px;
+        }
+        .tech-tile img { width: 100%; border-radius: 8px; aspect-ratio: 1/1.4; object-fit: cover; }
+
+        /* DETALLES DE CONFECCIÓN */
+        .details-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+        .detail-card img { width: 100%; border-radius: 12px; }
+
+        /* NAVEGACIÓN Y FOOTER */
+        .nav-footer { display: flex; justify-content: space-between; padding: 60px 0; border-top: 1px solid #eee; font-size: 12px; margin-top: 100px; }
+        .nav-footer a { color: var(--ink); text-decoration: none; text-transform: uppercase; }
+        .footer-credits { display: flex; justify-content: center; gap: 40px; font-size: 10px; color: var(--muted); padding-bottom: 20px; }
+
+        @media (max-width: 1000px) {
+            .header-section { grid-template-columns: 1fr; }
+            .grid-technical { grid-template-columns: repeat(4, 1fr); }
+            .details-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="header-section">
+        <h1 class="title-main">:Behind the scenes process</h1>
+        <p class="intro-text">
+            The record of the process is almost as important to me as the result, it explains my research and the purest reality of the work, it shows my involvement and creativity in the purest and most real way. It creates memories and highlights the work of everyone around me. In addition to adding value to it.
+        </p>
+    </header>
+
+    <section class="bts-block">
+        <div class="hero-bts"><img src="Images/5.1_shooting.jpg"></div>
+        <h2 class="collection-tag">:DIPLOPÍA <span>COLLECTION</span></h2>
+    </section>
+
+    <section class="bts-block">
+        <div class="hero-bts" style="max-width: 800px; margin: 0 auto;"><img src="Images/5.3_moodbored.jpg"></div>
+        <h2 class="collection-tag" style="text-align: right;">:MOOD_ BORED <span>SWIMWEAR COLLECTION</span></h2>
+    </section>
+
+    <section class="bts-block">
+        <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 20px; align-items: end;">
+            <img src="Images/5.4_contact_sheet.jpg" style="width: 100%; border-radius: 10px;">
+            <img src="Images/5.5_doberman.jpg" style="width: 100%; border-radius: 10px;">
+        </div>
+        <h2 class="collection-tag">:VILLAINS <span>COLLECTION</span></h2>
+    </section>
+
+    <h3 class="process-grid-header">PROCESS IN THE MAKING <span>(patterns, fittings, digital & more)</span></h3>
+    <div class="grid-technical">
+        <div class="tech-tile"><img src="Images/p1.jpg"></div>
+        <div class="tech-tile"><img src="Images/p2.jpg"></div>
+        <div class="tech-tile"><img src="Images/p3.jpg"></div>
+        <div class="tech-tile"><img src="Images/p4.jpg"></div>
+        <div class="tech-tile"><img src="Images/p5.jpg"></div>
+        <div class="tech-tile"><img src="Images/p6.jpg"></div>
+        <div class="tech-tile"><img src="Images/p7.jpg"></div>
+        </div>
+
+    <div class="details-row">
+        <div class="detail-card"><img src="Images/5.7_detail1.jpg"></div>
+        <div class="detail-card"><img src="Images/5.7_detail2.jpg"></div>
+        <div class="detail-card"><img src="Images/5.7_detail3.jpg"></div>
+    </div>
+
+    <footer class="nav-footer">
+        <a href="../Other/index.html">Index</a>
+        <a href="../Work/index.html">Next →</a>
+    </footer>
+
+    <div class="footer-credits">
+        <span>@bylara.frias</span>
+        <span>Larafc@hotmail.es</span>
+    </div>
+</div>
+
+</body>
+</html>
