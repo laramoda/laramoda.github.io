@@ -5,105 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diplopía Collection | Lara Frias Cumella</title>
     <style>
-        :root { --bg: #ffffff; --ink: #1a1a1a; --muted: #a0a0a0; --blue: #1f36ff; }
+        :root { --ink: #1a1a1a; --muted: #a0a0a0; --pink: #ff0055; }
         * { box-sizing: border-box; }
-        body, html { margin: 0; padding: 0; background: var(--bg); font-family: ui-monospace, monospace; color: var(--ink); }
+        body, html { margin: 0; padding: 0; background: #fff; font-family: ui-monospace, monospace; color: var(--ink); }
 
-        .container { padding: 40px; max-width: 1400px; margin: 0 auto; }
+        .container { padding: 40px; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 320px 1fr; gap: 40px; }
         
-        /* HEADER NARRATIVO */
-        .header-section { display: grid; grid-template-columns: 320px 1fr; gap: 40px; margin-bottom: 60px; }
-        .title-block { font-size: 24px; line-height: 1.2; }
-        .intro-text { font-size: 14px; line-height: 1.6; max-width: 800px; text-align: justify; }
+        /* SIDEBAR PERSISTENTE */
+        .sidebar { position: sticky; top: 40px; height: fit-content; }
+        .logo { font-size: 60px; line-height: 0.8; font-family: serif; margin-bottom: 40px; text-transform: uppercase; }
+        .nav-menu ol { list-style: none; padding: 0; font-size: 11px; line-height: 2; }
+        .nav-menu li { cursor: pointer; }
+        .nav-menu .active { font-weight: bold; }
+        .sig { margin: 40px 0; width: 180px; }
+        .footer-links { font-size: 11px; color: var(--muted); margin-top: 100px; }
 
-        /* GALERÍA TIPO "LINEUP" */
-        .lineup-section { margin-top: 80px; text-align: center; }
-        .lineup-title { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; display: block; }
-        .lineup-grid { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
-        .lineup-grid::-webkit-scrollbar { display: none; }
-        .lineup-item { min-width: 200px; flex: 1; }
-        .lineup-item img { width: 100%; border: 1px solid #eee; border-radius: 4px; }
+        /* CONTENIDO PRINCIPAL */
+        .main-content { padding-top: 10px; }
+        .header-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+        .section-title { font-size: 18px; }
+        .date-tag { font-size: 11px; color: var(--muted); }
+        .intro-p { font-size: 14px; line-height: 1.6; text-align: justify; margin-bottom: 60px; color: var(--muted); }
 
-        /* BLOQUES DE IMAGEN GRANDE */
-        .full-width-image { width: 100%; margin: 60px 0; border-radius: 8px; overflow: hidden; }
-        .full-width-image img { width: 100%; display: block; }
+        /* BLOQUES DE IMAGEN (VACÍOS) */
+        .img-placeholder { background: #f2f2f2; width: 100%; margin-bottom: 40px; border-radius: 12px; position: relative; }
+        .hero-img { aspect-ratio: 16 / 10; }
+        .lineup-img { aspect-ratio: 2 / 1; }
+        .square-img { aspect-ratio: 1 / 1; }
 
-        /* SECCIÓN DE INVESTIGACIÓN / SKETCHES */
-        .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 60px; }
-        .research-item img { width: 100%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        /* BLOQUES DE TEXTO NARRATIVO */
+        .quote-block { font-size: 14px; line-height: 1.8; font-style: italic; color: var(--muted); margin: 60px 0; }
+        .abstract-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 80px; font-size: 12px; line-height: 1.6; text-align: justify; }
+        .abstract-col h4 { font-size: 11px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
 
-        /* BOTONES DE ACCIÓN (PDF/BTS) */
-        .action-area { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 100px; padding-bottom: 100px; }
-        .btn-bts { 
-            background: #ff0055; color: white; padding: 15px 40px; border-radius: 30px; 
-            text-decoration: none; font-weight: bold; font-size: 12px; transition: transform 0.3s;
+        /* SECCIÓN HISTORIA PERSONAL */
+        .history-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 100px; font-size: 11px; line-height: 1.6; }
+        .history-text { columns: 2; column-gap: 30px; text-align: justify; }
+
+        /* CRÉDITOS Y BOTÓN BTS */
+        .credits-area { margin-top: 80px; border-top: 1px solid #eee; padding-top: 40px; }
+        .bts-btn { 
+            background: var(--pink); color: white; padding: 12px 30px; border-radius: 25px; 
+            text-decoration: none; font-weight: bold; font-size: 12px; display: inline-block;
+            box-shadow: 0 10px 20px rgba(255, 0, 85, 0.2); margin-bottom: 30px;
         }
-        .btn-pdf { 
-            border: 2px solid var(--ink); color: var(--ink); padding: 12px 30px; border-radius: 30px; 
-            text-decoration: none; font-size: 11px; 
-        }
-        .btn-bts:hover, .btn-pdf:hover { transform: scale(1.05); }
+        .credits-list { font-size: 13px; line-height: 1.8; color: var(--muted); }
 
-        /* NAVEGACIÓN INFERIOR */
-        .nav-footer { display: flex; justify-content: space-between; padding: 40px 0; border-top: 1px solid #eee; font-size: 12px; }
-        .nav-footer a { color: var(--ink); text-decoration: none; }
+        /* NAVEGACIÓN */
+        .page-nav { display: flex; justify-content: space-between; padding: 60px 0; border-top: 1px solid #eee; font-size: 14px; }
 
-        @media (max-width: 768px) {
-            .header-section { grid-template-columns: 1fr; }
-            .research-grid { grid-template-columns: 1fr; }
+        @media (max-width: 1000px) {
+            .container { grid-template-columns: 1fr; }
+            .abstract-grid, .history-section { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header class="header-section">
-        <div class="title-block">
-            :My first collection/<br><strong>Diplopía</strong><br>
-            <span style="font-size: 12px; color: var(--muted);">Feb-Jul 2023</span>
+    <aside class="sidebar">
+        <div class="logo">LARA<br>FRIAS<br>CUMELLA</div>
+        <nav class="nav-menu">
+            <ol>
+                <li class="active">1. DIPLOPIA COLLECTION</li>
+                <li>2. ARTISAN TAILORING</li>
+                <li>3. COLLABORATIONS</li>
+                <li>4. OTHER PROJECTS</li>
+                <li>5. BTS</li>
+                <li>6. WORK AT:</li>
+                <li>7. KIDS</li>
+                <li>8. BAGS</li>
+            </ol>
+        </nav>
+        <div class="sig">Firma_Lara</div>
+        <footer class="footer-links">
+            <p>ABOUT ME</p>
+            <p>CONTACT</p>
+            <p>INSTAGRAM</p>
+            <p><strong>: CV</strong></p>
+        </footer>
+    </aside>
+
+    <main class="main-content">
+        <header class="header-meta">
+            <h1 class="section-title">:My first collection/ <strong>Diplopía Creativa</strong></h1>
+            <span class="date-tag">Feb-Jul 2023</span>
+        </header>
+
+        <p class="intro-p">
+            In this section i am going to present and show what has been the end of my career, the most unique, personal and largest project that I have ever done and that perfectly summarizes my work, the projection of the future and justification of the past, this was my final project of university degree and I know that it will be a great tool in the future for my design.
+        </p>
+
+        <div class="img-placeholder hero-img"></div>
+
+        <div class="quote-block">
+            "This project aims to explore double vision as a creative concept in fashion design. The motivation behind this collection relies in the personal experience of the designer, who suffered a stroke five years ago and has managed to adapt and use her double vision as a creative tool in fashion..."
         </div>
-        <div class="intro-text">
-            In this section i am going to present and show what has been the end of my career, the most unique, personal and largest project that I have ever done and that perfectly summarizes my work. 
-            This project aims to explore double vision as a creative concept in fashion design.
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+            <div class="img-placeholder square-img"></div>
+            <div class="img-placeholder square-img"></div>
+            <div class="img-placeholder square-img"></div>
         </div>
-    </header>
 
-    <div class="full-width-image">
-        <img src="Images/Diplopia_main.jpg" alt="Diplopia Collection Group">
-    </div>
+        <h3 style="font-size: 11px; margin: 60px 0 20px; text-transform: uppercase;">LINEUP COLECCIÓN_ 6 LOOKS (Orden definitiivo)</h3>
+        <div class="img-placeholder lineup-img"></div>
 
-    <div class="lineup-section">
-        <span class="lineup-title">Lineup Colección _ 6 Looks</span>
-        <div class="lineup-grid">
-            <div class="lineup-item"><img src="Images/Look1.jpg"></div>
-            <div class="lineup-item"><img src="Images/Look2.jpg"></div>
-            <div class="lineup-item"><img src="Images/Look3.jpg"></div>
-            <div class="lineup-item"><img src="Images/Look4.jpg"></div>
-            <div class="lineup-item"><img src="Images/Look5.jpg"></div>
-            <div class="lineup-item"><img src="Images/Look6.jpg"></div>
+        <div class="abstract-grid">
+            <div class="abstract-col">
+                <h4>CAST</h4>
+                <p>Este proyecto tiene como objetivo principal explorar la visión doble como concepto creativo en el diseño de moda. La motivación detrás de esta colección se basa en la experiencia personal de la diseñadora, quien sufrió un derrame cerebral hace cinco años...</p>
+            </div>
+            <div class="abstract-col">
+                <h4>CAT</h4>
+                <p>Aquest projecte té com a objectiu principal explorar la visió doble com a concepte creatiu en el disseny de moda. La motivació darrere d'aquesta col·lecció rau en l'experiència personal de la dissenyadora...</p>
+            </div>
+            <div class="abstract-col">
+                <h4>ING</h4>
+                <p>This project aims to explore double vision as a creative concept in fashion design. The motivation behind this collection relies in the personal experience of the designer, who suffered a stroke five years ago...</p>
+            </div>
         </div>
-    </div>
 
-    <div class="research-grid">
-        <div class="research-item"><img src="Images/Sketch1.jpg"></div>
-        <div class="research-item"><img src="Images/Sketch2.jpg"></div>
-        <div class="research-item"><img src="Images/Sketch3.jpg"></div>
-    </div>
+        <section class="history-section">
+            <div class="history-block">
+                <h4 style="text-transform: uppercase; margin-bottom: 20px;">Mi historia: Qué pasó?</h4>
+                <div class="history-text">
+                    <p>Yo estaba en la playa de noche con unas amigas teniendo una charla nocturna, debían ser alrededor de las 22:00h y se dio un latigazo en la cabeza, desde la frente hasta la nuca. Yo no me imaginaba que sería nada grave ni mucho menos, como acabó siendo, de hecho, yo les dije a mis amigas que me dolía la cabeza y que me quería ir a casa, al levantarme, me desplomé e inmediatamente perdí el equilibrio y el control sobre mi propio cuerpo...</p>
+                </div>
+            </div>
+            <div class="img-placeholder hero-img"></div>
+        </section>
 
-    <div class="full-width-image">
-        <img src="Images/Diplopia_wide.jpg" alt="Collection Detail">
-    </div>
+        <section class="credits-area">
+            <a href="../BTS/index.html" class="bts-btn">BTS CLICK</a>
+            <div class="credits-list">
+                <p><strong>: MAGAZINE EDITORIAL</strong></p>
+                <p>Shot and edited: Júlia Gibert</p>
+                <p>Models: Anna Costal, Hannah Adib, Maria Ribas, Maria Gómez, Mariona Alcalde y Naiara Zunino</p>
+                <p>Art Director: Lara Frias</p>
+                <p>Garments designer: Lara Frias</p>
+            </div>
+        </section>
 
-    <div class="action-area">
-        <a href="../BTS/index.html" class="btn-bts">BTS CLICK</a>
-        <a href="#" class="btn-pdf">PDF research memory</a>
-        <p style="font-size: 10px; color: var(--muted); margin-top: 20px;">Shot and edited: Júlia Gibert</p>
-    </div>
-
-    <footer class="nav-footer">
-        <a href="../index.html">← Index</a>
-        <a href="../Artisan/index.html">Next: Artisan Tailoring →</a>
-    </footer>
+        <footer class="page-nav">
+            <a href="../index.html" style="text-decoration:none; color:inherit;">Index</a>
+            <a href="../Artisan/index.html" style="text-decoration:none; color:inherit;">Next →</a>
+        </footer>
+    </main>
 </div>
 
 </body>
