@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lara Frias Cumella | Portfolio</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg: #efefef;
             --card: #ffffff;
             --ink: #1a1a1a;
-            --muted: #a0a0a0;
+            --muted: #b5b5b5;
             --blue: #1f36ff;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        
         body, html { 
             margin: 0; padding: 0; height: 100%; 
             background-color: var(--bg); 
+            font-family: 'JetBrains Mono', monospace;
             overflow: hidden;
         }
 
@@ -35,99 +38,72 @@
             grid-template-columns: 320px 1fr;
             overflow: hidden;
             box-shadow: 0 40px 100px rgba(0,0,0,0.08);
-            position: relative;
         }
 
-        /* --- SIDEBAR: ESTILO EDITORIAL LIGERO --- */
-        .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.04); display: flex; flex-direction: column; z-index: 20; background: #fff; }
+        /* --- SIDEBAR --- */
+        .sidebar { padding: 60px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; }
         
-        /* LOGO: Sans-Serif Hairline con líneas rectas y superposición */
+        /* LOGO: Recto, sin florituras, ultra fino */
         .logo-hairline {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 64px; 
-            font-weight: 100; /* El trazo más fino posible */
-            line-height: 0.65; /* Crea el efecto de apilamiento del original */
-            letter-spacing: -3.5px; /* Letras muy juntas */
-            margin: 0 0 55px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 52px; 
+            font-weight: 100; /* El trazo más fino */
+            line-height: 0.8; /* Para que las líneas estén muy cerca */
+            letter-spacing: -3.5px; /* Para que las letras casi se toquen */
+            margin: 0 0 50px 0;
             color: var(--ink); 
             text-transform: uppercase;
         }
 
-        /* MENÚ: Monospace extra-fino */
+        /* MENÚ: Monospace técnico ultra ligero */
         .nav-menu ol { 
             list-style: none; 
             padding: 0; 
             margin: 0; 
             font-family: 'JetBrains Mono', monospace;
-            font-size: 10.5px; 
+            font-size: 10px; 
             font-weight: 100; 
             color: var(--muted); 
-            line-height: 2.3; 
-            letter-spacing: 0.8px;
+            line-height: 2.6; 
+            letter-spacing: 1px;
         }
         
         .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; }
         .nav-menu li:hover { color: var(--ink); }
 
-        /* Firma gigante del menú */
-        .sig-sidebar { margin: 40px 0; width: 250px; align-self: center; } 
+        .sig-sidebar { margin: 30px 0; width: 260px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
 
         .footer-sidebar { margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); font-weight: 200; }
         .footer-links { margin-bottom: 20px; }
-        .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; text-transform: uppercase; }
+        .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; text-transform: uppercase; }
         .footer-sidebar a { color: inherit; text-decoration: none; }
-        .about-link { color: var(--blue) !important; font-weight: 400; margin-bottom: 12px; display: block; font-size: 10px; }
-        .cv-label { margin-top: 20px; font-weight: 400; color: var(--ink); letter-spacing: 1.5px; font-size: 10px; }
+        .about-link { color: var(--blue) !important; font-weight: 400; margin-bottom: 12px; display: block; font-size: 10px; letter-spacing: 1px; }
+        .cv-label { margin-top: 25px; font-weight: 400; color: var(--ink); letter-spacing: 2px; font-size: 10px; }
 
         /* --- CONTENIDO --- */
-        .main-content { position: relative; height: 100%; overflow: hidden; background: #fff; }
-
-        /* Marca de agua sutil en el fondo */
-        .main-content::before {
-            content: "";
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%; height: 80%;
-            background-image: url('images/signature_02.jpeg');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            opacity: 0.04;
-            z-index: 0;
-            pointer-events: none;
-            filter: grayscale(1);
-        }
+        .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
 
         .home-nav { 
             position: absolute; top: 30px; right: 40px; z-index: 100;
             color: var(--blue); text-decoration: none; 
-            font-size: 11px; font-weight: 200; font-style: italic; cursor: pointer;
+            font-size: 11px; font-weight: 100; font-style: italic; cursor: pointer;
             font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 1.5px;
         }
 
-        .scroll-wrapper { position: relative; z-index: 1; height: 100%; overflow-y: auto; scrollbar-width: none; }
-        .scroll-wrapper::-webkit-scrollbar { display: none; }
+        /* --- ABOUT ME --- */
+        #about-view { padding: 50px 60px; }
+        .about-header { display: flex; justify-content: space-between; margin-bottom: 40px; align-items: baseline; }
+        .about-header .title { font-weight: 100; font-size: 16px; font-family: 'Inter', sans-serif; text-transform: lowercase; }
+        .about-header .author { color: var(--muted); font-size: 9px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- VISTA ABOUT ME --- */
-        #about-view { display: block; padding: 50px 60px; height: 100%; }
-        .about-header { display: flex; justify-content: space-between; margin-bottom: 30px; align-items: baseline; }
-        .about-header .title { font-weight: 100; font-size: 15px; font-family: 'Montserrat', sans-serif; text-transform: lowercase; }
-        .about-header .author { color: var(--muted); font-size: 10px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 2px; }
+        .about-grid { display: grid; grid-template-columns: 1.6fr 300px; gap: 60px; }
+        .about-text { font-size: 12px; line-height: 1.8; color: var(--ink); font-weight: 100; font-family: 'Inter', sans-serif; }
+        .about-text p { margin-bottom: 25px; text-align: justify; }
 
-        .about-grid { display: grid; grid-template-columns: 1.5fr 300px; gap: 50px; align-items: start; }
-        .about-text { font-size: 12.5px; line-height: 1.6; color: var(--ink); font-weight: 100; font-family: 'Montserrat', sans-serif; }
-        .about-text p { margin: 0 0 20px 0; text-align: justify; }
-
-        .about-right-col { display: flex; flex-direction: column; gap: 20px; }
-        .about-image img { width: 90%; border-radius: 12px; filter: grayscale(1); box-shadow: 0 15px 35px rgba(0,0,0,0.06); }
-        .thank-you-note { font-size: 12px; line-height: 1.5; color: var(--ink); font-weight: 100; }
-        .location { margin-top: 15px; color: var(--muted); font-size: 10px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 2px; }
-
-        .bottom-credits { margin-top: 60px; display: flex; justify-content: space-between; font-size: 9px; color: var(--muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
-
-        #home-view { display: none; }
+        .about-image img { width: 100%; border-radius: 4px; filter: grayscale(1); }
+        .location { margin-top: 20px; color: var(--muted); font-size: 9px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 3px; }
     </style>
 </head>
 <body>
@@ -151,7 +127,7 @@
                     <img src="images/signature_01.jpeg" alt="Firma">
                 </div>
                 <footer class="footer-sidebar">
-                    <a href="#" class="about-link" onclick="showSection('about')">ABOUT ME</a>
+                    <a href="#" class="about-link">ABOUT ME</a>
                     <div class="footer-links">
                         <div class="contact-row"><span>✉</span> <a href="mailto:larafc@hotmail.es">CONTACT</a></div>
                         <div class="contact-row"><span></span> <a href="https://www.instagram.com/bylara.frias" target="_blank">INSTAGRAM</a></div>
@@ -161,51 +137,26 @@
             </aside>
 
             <section class="main-content">
-                <div onclick="showSection('home')" class="home-nav"><span>:</span> HOME</div>
-                <div class="scroll-wrapper" id="scroll-container">
-                    
-                    <div id="about-view">
-                        <div class="about-header">
-                            <span class="title">: about me</span>
-                            <span class="author">BY LARA</span>
+                <div class="home-nav"><span>:</span> HOME</div>
+                <div id="about-view">
+                    <div class="about-header">
+                        <span class="title">: about me</span>
+                        <span class="author">BY LARA</span>
+                    </div>
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
+                            <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
+                            <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience.</p>
                         </div>
-                        <div class="about-grid">
-                            <div class="about-text">
-                                <p>It's Lara, and i am a fashion designer specializing in women's clothing.</p>
-                                <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
-                                <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience. This innovative approach has not only shaped my design methodology but has also become a hallmark of my personal style.</p>
-                            </div>
-                            
-                            <div class="about-right-col">
-                                <div class="about-image">
-                                    <img src="images/Lara.jpg" alt="Lara Portrait">
-                                </div>
-                                <div class="thank-you-note">
-                                    <p>Thank you for exploring my work, and I hope my designs inspire and resonate with you as much as they do with me.</p>
-                                    <div class="location">Barcelona SPAIN</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bottom-credits">
-                            <span>@bylara.frias</span>
-                            <span>larafc@hotmail.es</span>
+                        <div class="about-right-col">
+                            <div class="about-image"><img src="images/Lara.jpg"></div>
+                            <div class="location">Barcelona SPAIN</div>
                         </div>
                     </div>
-
-                    <div id="home-view">
-                        </div>
-
                 </div>
             </section>
         </main>
     </div>
-
-    <script>
-        function showSection(section) {
-            document.getElementById('home-view').style.display = (section === 'home' ? 'block' : 'none');
-            document.getElementById('about-view').style.display = (section === 'about' ? 'block' : 'none');
-            document.getElementById('scroll-container').scrollTop = 0;
-        }
-    </script>
 </body>
 </html>
