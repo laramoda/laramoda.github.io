@@ -18,7 +18,6 @@
             --blue: #1f36ff;
         }
 
-        /* RESET Y MEJORA DE RENDERIZADO PARA LETRAS FINAS */
         * { 
             box-sizing: border-box; 
             -webkit-font-smoothing: antialiased; 
@@ -56,19 +55,17 @@
             z-index: 100; 
         }
 
-        /* LOGO: Líneas rectas, peso 100 y apilado visual */
         .logo-hairline { 
             font-family: 'Inter', sans-serif; 
             font-size: 54px; 
-            font-weight: 100 !important; /* Peso ultra-fino */
-            line-height: 0.72; /* Para que las líneas se toquen verticalmente */
-            letter-spacing: -3.5px; /* Para que las letras se toquen horizontalmente */
+            font-weight: 100 !important; 
+            line-height: 0.72; 
+            letter-spacing: -3.5px; 
             margin: 0 0 50px 0; 
             text-transform: uppercase; 
             color: var(--ink); 
         }
 
-        /* MENÚ: Monospace extra-fino y espaciado */
         .nav-menu ol { 
             list-style: none; 
             padding: 0; 
@@ -88,7 +85,6 @@
         
         .nav-menu li:hover { color: var(--ink); }
 
-        /* Firma en el menú lateral */
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
         
@@ -109,22 +105,57 @@
             letter-spacing: 1px;
         }
 
-        /* --- ÁREA DE CONTENIDO (HERO) --- */
+        /* --- NUEVO SISTEMA DE SCROLL EDITORIAL --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
-        .scroll-wrapper { height: 100%; overflow-y: auto; scrollbar-width: none; }
+        
+        .scroll-wrapper { 
+            height: 100%; 
+            overflow-y: auto; 
+            scrollbar-width: none; 
+            display: grid;
+            grid-template-columns: repeat(12, 1fr); /* Cuadrícula de 12 */
+            grid-auto-rows: min-content;
+            gap: 80px 0; /* Espaciado entre bloques */
+            padding: 60px 0;
+        }
+        
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        .hero-block { height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; }
-        .hero-inner { width: 90%; display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; gap: 40px; }
+        /* Bloques de Imagen */
+        .img-block {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .img-block img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            /* Eliminamos el sombreado pesado para un look más limpio */
+        }
+
+        .caption {
+            font-size: 9px;
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+        }
+
+        .caption.blue { color: var(--blue); font-weight: 500; }
+
+        /* Clases de Posicionamiento Rápido */
+        .col-left   { grid-column: 2 / 7; }
+        .col-right  { grid-column: 7 / 12; }
+        .col-center { grid-column: 4 / 10; }
+        .col-wide   { grid-column: 2 / 12; }
         
-        /* Marca de agua / Firma secundaria */
-        .hero-labels img { width: 300px; opacity: 0.15; }
-        
-        /* Imagen principal de Diplopia */
-        .hero-main img { 
-            width: 100%; 
-            border-radius: 15px; 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.06); 
+        /* Ajuste manual para la firma flotante */
+        .floating-sig {
+            grid-column: 4 / 7;
+            opacity: 0.2;
+            align-self: center;
         }
 
     </style>
@@ -163,13 +194,55 @@
         <section class="main-content">
             <div class="scroll-wrapper" id="scroll-container">
                 
-                <div id="home-view">
-                    <div class="hero-block">
-                        <div class="hero-inner">
-                            <div class="hero-labels"><img src="images/signature_02.jpeg"></div>
-                            <div class="hero-main"><img src="images/Diplopia_01.jpg" alt="Diplopia Collection"></div>
-                        </div>
-                    </div>
+                <div class="floating-sig"><img src="images/signature_02.jpeg" style="width:100%;"></div>
+                <div class="img-block col-right">
+                    <img src="images/Diplopia_01.jpg" alt="Diplopia Collection">
+                    <p class="caption">Double collar jacket. Diplopia collection</p>
+                </div>
+
+                <div class="img-block col-left" style="margin-top: -100px;">
+                    <img src="images/image_02.jpg">
+                    <p class="caption">Detail 01 / Artisan process</p>
+                </div>
+
+                <div class="img-block col-wide">
+                    <img src="images/image_03.jpg">
+                    <p class="caption blue">Diplopia Collection 2023 — Editorial</p>
+                </div>
+
+                <div class="img-block col-center">
+                    <img src="images/image_04.jpg">
+                </div>
+
+                <div class="img-block col-right">
+                    <img src="images/image_05.jpg">
+                </div>
+
+                <div class="img-block col-left">
+                    <img src="images/image_06.jpg">
+                </div>
+
+                <div class="img-block col-center">
+                    <img src="images/image_07.jpg">
+                    <p class="caption blue">Villains Collection 2022</p>
+                </div>
+
+                <div class="img-block col-right"><img src="images/image_08.jpg"></div>
+                <div class="img-block col-left"><img src="images/image_09.jpg"></div>
+                <div class="img-block col-wide"><img src="images/image_10.jpg"></div>
+                <div class="img-block col-center"><img src="images/image_11.jpg"></div>
+                <div class="img-block col-right"><img src="images/image_12.jpg"></div>
+                <div class="img-block col-left"><img src="images/image_13.jpg"></div>
+                <div class="img-block col-center"><img src="images/image_14.jpg"></div>
+                <div class="img-block col-right"><img src="images/image_15.jpg"></div>
+                <div class="img-block col-left"><img src="images/image_16.jpg"></div>
+                <div class="img-block col-wide"><img src="images/image_17.jpg"></div>
+                <div class="img-block col-center"><img src="images/image_18.jpg"></div>
+                <div class="img-block col-right"><img src="images/image_19.jpg"></div>
+                <div class="img-block col-left"><img src="images/image_20.jpg"></div>
+                <div class="img-block col-center"><img src="images/image_21.jpg"></div>
+                <div class="img-block col-wide"><img src="images/image_22.jpg">
+                    <p class="caption">Moodbored Swimwear Collection</p>
                 </div>
 
             </div>
