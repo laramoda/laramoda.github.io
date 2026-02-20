@@ -4,92 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kids Capsule | Lara Frias Cumella</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --bg: #ffffff; --ink: #1a1a1a; --muted: #a0a0a0; --blue: #1f36ff; }
-        * { box-sizing: border-box; }
-        body, html { margin: 0; padding: 0; background: var(--bg); font-family: ui-monospace, monospace; color: var(--ink); }
+        :root { 
+            --bg: #efefef; 
+            --card: #ffffff; 
+            --ink: #1a1a1a; 
+            --muted: #b5b5b5; 
+            --blue: #1f36ff; 
+        }
 
-        .container { padding: 40px; max-width: 1400px; margin: 0 auto; }
+        * { 
+            box-sizing: border-box; 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale; 
+            text-rendering: optimizeLegibility;
+        }
+
+        body, html { 
+            margin: 0; padding: 0; height: 100%; 
+            background: var(--bg); 
+            font-family: 'JetBrains Mono', monospace; 
+            overflow: hidden; 
+        }
         
-        /* HEADER */
-        .header-section { margin-bottom: 50px; }
-        .breadcrumb { font-size: 14px; color: var(--muted); margin-bottom: 5px; display: block; }
-        .breadcrumb span { color: var(--ink); font-weight: normal; margin-left: 5px; }
-        .date { font-size: 10px; color: var(--muted); text-transform: uppercase; margin-bottom: 40px; display: block; }
+        .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        
+        .card { 
+            width: min(1380px, 98%); 
+            height: min(850px, 92vh); 
+            background: var(--card); 
+            border-radius: 24px; 
+            display: grid; 
+            grid-template-columns: 320px 1fr; 
+            overflow: hidden; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
+        }
 
-        /* CONTENT */
-        .project-title { font-size: 18px; font-weight: bold; margin-bottom: 30px; }
+        /* --- SIDEBAR UNIFICADO --- */
+        .sidebar { 
+            padding: 50px 45px; 
+            border-right: 1px solid rgba(0,0,0,0.05); 
+            display: flex; 
+            flex-direction: column; 
+            background: #fff; 
+            z-index: 100; 
+        }
+
+        .logo-hairline { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 54px; 
+            font-weight: 100 !important; 
+            line-height: 0.72; 
+            letter-spacing: -3.5px; 
+            margin: 0 0 50px 0; 
+            text-transform: uppercase; 
+            color: var(--ink); 
+        }
+
+        .nav-menu ol { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0;
+            font-size: 10.5px; 
+            font-weight: 100;
+            color: var(--muted); 
+            line-height: 2.4; 
+            letter-spacing: 1px;
+        }
+
+        .nav-menu li { 
+            cursor: pointer; 
+            transition: color 0.3s; 
+            text-transform: uppercase;
+        }
+        
+        .nav-menu li.active { color: var(--ink); font-weight: 400; }
+        .nav-menu li:hover { color: var(--ink); }
+
+        .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
+        .sig-sidebar img { width: 100%; opacity: 0.8; }
+        
+        .footer-sidebar { 
+            margin-top: auto; 
+            font-size: 10px; 
+            color: var(--muted); 
+            font-weight: 100;
+        }
+
+        .about-link { 
+            color: var(--blue); 
+            font-weight: 500; 
+            cursor: pointer; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* --- CONTENIDO KIDS --- */
+        .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
+        .scroll-wrapper { 
+            height: 100%; 
+            overflow-y: auto; 
+            scrollbar-width: none; 
+            padding: 60px 80px;
+        }
+        .scroll-wrapper::-webkit-scrollbar { display: none; }
+
+        .header-section { margin-bottom: 50px; }
+        .breadcrumb { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); display: block; margin-bottom: 10px; }
+        .breadcrumb span { color: var(--ink); }
+        .date { font-size: 10px; color: var(--muted); display: block; margin-bottom: 40px; }
+
+        .project-title { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 30px; }
         .intro-text { 
-            font-size: 14px; 
+            font-size: 12px; 
             line-height: 1.8; 
-            max-width: 900px; 
+            max-width: 850px; 
             color: var(--muted); 
             text-align: justify; 
             margin-bottom: 60px;
         }
 
-        /* KIDS GRID */
         .kids-grid { 
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
             gap: 20px; 
             margin-bottom: 40px;
         }
-        .grid-item { border-radius: 12px; overflow: hidden; background: #f9f9f9; }
-        .grid-item img { width: 100%; display: block; }
-        
-        /* Estilo para los placeholders vacíos que se ven en la imagen */
-        .placeholder { 
-            background-color: #efefef; 
-            aspect-ratio: 1 / 1.1; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-        }
+        .grid-item { border-radius: 12px; overflow: hidden; background: #f8f8f8; aspect-ratio: 1 / 1.1; }
+        .grid-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* NAVEGACIÓN */
-        .nav-footer { display: flex; justify-content: space-between; padding: 40px 0; border-top: 1px solid #eee; font-size: 12px; margin-top: 80px; }
-        .nav-footer a { color: var(--ink); text-decoration: none; text-transform: uppercase; }
+        .nav-footer { display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 80px; }
+        .nav-footer a { color: var(--muted); text-decoration: none; transition: color 0.3s; }
+        .nav-footer a:hover { color: var(--blue); }
 
-        @media (max-width: 900px) {
-            .kids-grid { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header class="header-section">
-        <span class="breadcrumb">:kids/ <span>kids garments</span></span>
-        <span class="date">NOV-DEC 2025</span>
-    </header>
+<div class="stage">
+    <main class="card">
+        <aside class="sidebar">
+            <h1 class="logo-hairline">LARA<br>FRIAS<br>CUMELLA</h1>
+            
+            <nav class="nav-menu">
+                <ol>
+                    <li onclick="location.href='../Diplopia/index.html'">1. DIPLOPIA COLLECTION</li>
+                    <li onclick="location.href='../Artisan/index.html'">2. ARTISAN TAILORING</li>
+                    <li onclick="location.href='../Collaborations/index.html'">3. COLLABORATIONS</li>
+                    <li onclick="location.href='../Other/index.html'">4. OTHER PROJECTS</li>
+                    <li onclick="location.href='../BTS/index.html'">5. BTS</li>
+                    <li onclick="location.href='../Work/index.html'">6. WORK AT :</li>
+                    <li class="active" onclick="location.href='index.html'">7. KIDS</li>
+                    <li onclick="location.href='../Bags/index.html'">8. BAGS</li>
+                </ol>
+            </nav>
 
-    <section>
-        <h1 class="project-title">Children's Capsule Pieces</h1>
-        <p class="intro-text">
-            I created two exclusive pieces for children from 3-5 years old, developing the entire process from the pattern design to material selection and final construction. Each piece reflects my dedication to detail, comfort, and timeless design — combining functionality with a refined aesthetic approach.
-        </p>
-    </section>
+            <div class="sig-sidebar">
+                <img src="../images/signature_01.jpeg" alt="Signature">
+            </div>
 
-    <div class="kids-grid">
-        <div class="grid-item">
-            <img src="Images/7.1_outfit.jpg" alt="Children Garment Detail">
-        </div>
-        
-        <div class="grid-item placeholder"></div>
-        <div class="grid-item placeholder"></div>
-        
-        <div class="grid-item placeholder"></div>
-        <div class="grid-item placeholder"></div>
-        <div class="grid-item placeholder"></div>
-    </div>
+            <footer class="footer-sidebar">
+                <a class="about-link" onclick="location.href='../Aboutme/index.html'">ABOUT ME</a>
+                <p>✉ <a href="mailto:larafc@hotmail.es" style="color:inherit;text-decoration:none;">larafc@hotmail.es</a></p>
+                <p> <a href="https://instagram.com/bylara.frias" target="_blank" style="color:inherit;text-decoration:none;">INSTAGRAM</a></p>
+                <p style="margin-top: 15px; color: var(--ink); font-weight: 400; letter-spacing: 2px;">: CV</p>
+            </footer>
+        </aside>
 
-    <footer class="nav-footer">
-        <a href="../Work/index.html">← Previous</a>
-        <a href="../index.html">Index</a>
-        <a href="../Bags/index.html">Next: Bags →</a>
-    </footer>
-</div>
-
-</body>
-</html>
+        <section class="main-content">
+            <div class="scroll-wrapper">
+                
+                <header class="header-section">
+                    <span class="breadcrumb">:kids/ <span>kids garments</span></span>
+                    <span class="date">NOV-DEC 2025</span>
