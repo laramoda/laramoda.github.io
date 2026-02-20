@@ -4,153 +4,260 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diplopía Collection | Lara Frias Cumella</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --ink: #1a1a1a; --muted: #a0a0a0; --pink: #ff0055; }
-        * { box-sizing: border-box; }
-        body, html { margin: 0; padding: 0; background: #fff; font-family: ui-monospace, monospace; color: var(--ink); }
+        :root {
+            --bg: #efefef;
+            --card: #ffffff;
+            --ink: #1a1a1a;
+            --muted: #b5b5b5;
+            --blue: #1f36ff;
+            --pink: #ff0055;
+        }
 
-        .container { padding: 40px; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 320px 1fr; gap: 40px; }
+        /* RESET Y MEJORA DE RENDERIZADO */
+        * { 
+            box-sizing: border-box; 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale; 
+            text-rendering: optimizeLegibility;
+        }
+
+        body, html { 
+            margin: 0; padding: 0; height: 100%; 
+            background: var(--bg); 
+            font-family: 'JetBrains Mono', monospace; 
+            overflow: hidden; 
+        }
         
-        /* SIDEBAR PERSISTENTE */
-        .sidebar { position: sticky; top: 40px; height: fit-content; }
-        .logo { font-size: 60px; line-height: 0.8; font-family: serif; margin-bottom: 40px; text-transform: uppercase; }
-        .nav-menu ol { list-style: none; padding: 0; font-size: 11px; line-height: 2; }
-        .nav-menu li { cursor: pointer; }
-        .nav-menu .active { font-weight: bold; }
-        .sig { margin: 40px 0; width: 180px; }
-        .footer-links { font-size: 11px; color: var(--muted); margin-top: 100px; }
+        .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        
+        .card { 
+            width: min(1380px, 98%); 
+            height: min(850px, 92vh); 
+            background: var(--card); 
+            border-radius: 24px; 
+            display: grid; 
+            grid-template-columns: 320px 1fr; 
+            overflow: hidden; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
+        }
 
-        /* CONTENIDO PRINCIPAL */
-        .main-content { padding-top: 10px; }
+        /* --- SIDEBAR (IDÉNTICO AL INDEX) --- */
+        .sidebar { 
+            padding: 50px 45px; 
+            border-right: 1px solid rgba(0,0,0,0.05); 
+            display: flex; 
+            flex-direction: column; 
+            background: #fff; 
+            z-index: 100; 
+        }
+
+        .logo-hairline { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 54px; 
+            font-weight: 100 !important; 
+            line-height: 0.72; 
+            letter-spacing: -3.5px; 
+            margin: 0 0 50px 0; 
+            text-transform: uppercase; 
+            color: var(--ink); 
+        }
+
+        .nav-menu ol { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0;
+            font-size: 10.5px; 
+            font-weight: 100;
+            color: var(--muted); 
+            line-height: 2.4; 
+            letter-spacing: 1px;
+        }
+
+        .nav-menu li { 
+            cursor: pointer; 
+            transition: color 0.3s; 
+            text-transform: uppercase;
+        }
+        
+        .nav-menu li.active { color: var(--ink); font-weight: 400; }
+        .nav-menu li:hover { color: var(--ink); }
+
+        .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
+        .sig-sidebar img { width: 100%; opacity: 0.8; }
+        
+        .footer-sidebar { 
+            margin-top: auto; 
+            font-size: 10px; 
+            color: var(--muted); 
+            font-weight: 100;
+        }
+
+        .about-link { 
+            color: var(--blue); 
+            font-weight: 500; 
+            cursor: pointer; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* --- CONTENIDO DE LA COLECCIÓN --- */
+        .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
+        .scroll-wrapper { 
+            height: 100%; 
+            overflow-y: auto; 
+            scrollbar-width: none; 
+            padding: 60px 80px;
+        }
+        .scroll-wrapper::-webkit-scrollbar { display: none; }
+
         .header-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-        .section-title { font-size: 18px; }
+        .section-title { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
         .date-tag { font-size: 11px; color: var(--muted); }
-        .intro-p { font-size: 14px; line-height: 1.6; text-align: justify; margin-bottom: 60px; color: var(--muted); }
+        
+        .intro-p { font-size: 13px; line-height: 1.8; text-align: justify; margin-bottom: 60px; color: var(--muted); max-width: 800px; }
 
-        /* BLOQUES DE IMAGEN (VACÍOS) */
-        .img-placeholder { background: #f2f2f2; width: 100%; margin-bottom: 40px; border-radius: 12px; position: relative; }
-        .hero-img { aspect-ratio: 16 / 10; }
+        /* BLOQUES DE IMAGEN */
+        .img-placeholder { background: #f8f8f8; width: 100%; margin-bottom: 40px; border-radius: 12px; }
+        .hero-img { aspect-ratio: 16 / 9; }
         .lineup-img { aspect-ratio: 2 / 1; }
         .square-img { aspect-ratio: 1 / 1; }
 
-        /* BLOQUES DE TEXTO NARRATIVO */
-        .quote-block { font-size: 14px; line-height: 1.8; font-style: italic; color: var(--muted); margin: 60px 0; }
-        .abstract-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 80px; font-size: 12px; line-height: 1.6; text-align: justify; }
-        .abstract-col h4 { font-size: 11px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .quote-block { font-size: 14px; line-height: 1.8; font-style: italic; color: var(--muted); margin: 80px 0; border-left: 1px solid var(--blue); padding-left: 30px; }
 
-        /* SECCIÓN HISTORIA PERSONAL */
-        .history-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 100px; font-size: 11px; line-height: 1.6; }
-        .history-text { columns: 2; column-gap: 30px; text-align: justify; }
+        .abstract-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 80px; font-size: 11px; line-height: 1.6; text-align: justify; color: var(--muted); }
+        .abstract-col h4 { font-size: 10px; color: var(--ink); margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; letter-spacing: 2px; }
 
-        /* CRÉDITOS Y BOTÓN BTS */
-        .credits-area { margin-top: 80px; border-top: 1px solid #eee; padding-top: 40px; }
+        .history-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 100px; font-size: 11px; line-height: 1.8; }
+        .history-text { columns: 1; text-align: justify; color: var(--muted); }
+        .history-text h4 { color: var(--ink); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+
+        /* CRÉDITOS Y BTS */
+        .credits-area { margin-top: 100px; border-top: 1px solid #eee; padding-top: 60px; }
         .bts-btn { 
-            background: var(--pink); color: white; padding: 12px 30px; border-radius: 25px; 
-            text-decoration: none; font-weight: bold; font-size: 12px; display: inline-block;
-            box-shadow: 0 10px 20px rgba(255, 0, 85, 0.2); margin-bottom: 30px;
+            background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; 
+            text-decoration: none; font-weight: 400; font-size: 10px; display: inline-block;
+            letter-spacing: 2px; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.15); margin-bottom: 40px;
+            transition: transform 0.3s;
         }
-        .credits-list { font-size: 13px; line-height: 1.8; color: var(--muted); }
+        .bts-btn:hover { transform: translateY(-3px); }
+        .credits-list { font-size: 11px; line-height: 2; color: var(--muted); }
+        .credits-list strong { color: var(--ink); font-weight: 400; letter-spacing: 1px; }
 
-        /* NAVEGACIÓN */
-        .page-nav { display: flex; justify-content: space-between; padding: 60px 0; border-top: 1px solid #eee; font-size: 14px; }
+        /* NAVEGACIÓN INFERIOR */
+        .page-nav { display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
+        .page-nav a { text-decoration: none; color: var(--muted); transition: color 0.3s; }
+        .page-nav a:hover { color: var(--blue); }
 
-        @media (max-width: 1000px) {
-            .container { grid-template-columns: 1fr; }
-            .abstract-grid, .history-section { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <aside class="sidebar">
-        <div class="logo">LARA<br>FRIAS<br>CUMELLA</div>
-        <nav class="nav-menu">
-            <ol>
-                <li class="active">1. DIPLOPIA COLLECTION</li>
-                <li>2. ARTISAN TAILORING</li>
-                <li>3. COLLABORATIONS</li>
-                <li>4. OTHER PROJECTS</li>
-                <li>5. BTS</li>
-                <li>6. WORK AT:</li>
-                <li>7. KIDS</li>
-                <li>8. BAGS</li>
-            </ol>
-        </nav>
-        <div class="sig">Firma_Lara</div>
-        <footer class="footer-links">
-            <p>ABOUT ME</p>
-            <p>CONTACT</p>
-            <p>INSTAGRAM</p>
-            <p><strong>: CV</strong></p>
-        </footer>
-    </aside>
+<div class="stage">
+    <main class="card">
+        <aside class="sidebar">
+            <h1 class="logo-hairline">LARA<br>FRIAS<br>CUMELLA</h1>
+            
+            <nav class="nav-menu">
+                <ol>
+                    <li class="active" onclick="location.href='index.html'">1. DIPLOPIA COLLECTION</li>
+                    <li onclick="location.href='../Artisan/index.html'">2. ARTISAN TAILORING</li>
+                    <li onclick="location.href='../Collaborations/index.html'">3. COLLABORATIONS</li>
+                    <li onclick="location.href='../Other/index.html'">4. OTHER PROJECTS</li>
+                    <li onclick="location.href='../BTS/index.html'">5. BTS</li>
+                    <li onclick="location.href='../Work/index.html'">6. WORK AT :</li>
+                    <li onclick="location.href='../Kids/index.html'">7. KIDS</li>
+                    <li onclick="location.href='../Bags/index.html'">8. BAGS</li>
+                </ol>
+            </nav>
 
-    <main class="main-content">
-        <header class="header-meta">
-            <h1 class="section-title">:My first collection/ <strong>Diplopía Creativa</strong></h1>
-            <span class="date-tag">Feb-Jul 2023</span>
-        </header>
-
-        <p class="intro-p">
-            In this section i am going to present and show what has been the end of my career, the most unique, personal and largest project that I have ever done and that perfectly summarizes my work, the projection of the future and justification of the past, this was my final project of university degree and I know that it will be a great tool in the future for my design.
-        </p>
-
-        <div class="img-placeholder hero-img"></div>
-
-        <div class="quote-block">
-            "This project aims to explore double vision as a creative concept in fashion design. The motivation behind this collection relies in the personal experience of the designer, who suffered a stroke five years ago and has managed to adapt and use her double vision as a creative tool in fashion..."
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-            <div class="img-placeholder square-img"></div>
-            <div class="img-placeholder square-img"></div>
-            <div class="img-placeholder square-img"></div>
-        </div>
-
-        <h3 style="font-size: 11px; margin: 60px 0 20px; text-transform: uppercase;">LINEUP COLECCIÓN_ 6 LOOKS (Orden definitiivo)</h3>
-        <div class="img-placeholder lineup-img"></div>
-
-        <div class="abstract-grid">
-            <div class="abstract-col">
-                <h4>CAST</h4>
-                <p>Este proyecto tiene como objetivo principal explorar la visión doble como concepto creativo en el diseño de moda. La motivación detrás de esta colección se basa en la experiencia personal de la diseñadora, quien sufrió un derrame cerebral hace cinco años...</p>
+            <div class="sig-sidebar">
+                <img src="../images/signature_01.jpeg" alt="Signature">
             </div>
-            <div class="abstract-col">
-                <h4>CAT</h4>
-                <p>Aquest projecte té com a objectiu principal explorar la visió doble com a concepte creatiu en el disseny de moda. La motivació darrere d'aquesta col·lecció rau en l'experiència personal de la dissenyadora...</p>
-            </div>
-            <div class="abstract-col">
-                <h4>ING</h4>
-                <p>This project aims to explore double vision as a creative concept in fashion design. The motivation behind this collection relies in the personal experience of the designer, who suffered a stroke five years ago...</p>
-            </div>
-        </div>
 
-        <section class="history-section">
-            <div class="history-block">
-                <h4 style="text-transform: uppercase; margin-bottom: 20px;">Mi historia: Qué pasó?</h4>
-                <div class="history-text">
-                    <p>Yo estaba en la playa de noche con unas amigas teniendo una charla nocturna, debían ser alrededor de las 22:00h y se dio un latigazo en la cabeza, desde la frente hasta la nuca. Yo no me imaginaba que sería nada grave ni mucho menos, como acabó siendo, de hecho, yo les dije a mis amigas que me dolía la cabeza y que me quería ir a casa, al levantarme, me desplomé e inmediatamente perdí el equilibrio y el control sobre mi propio cuerpo...</p>
+            <footer class="footer-sidebar">
+                <a class="about-link" onclick="location.href='../Aboutme/index.html'">ABOUT ME</a>
+                <p>✉ <a href="mailto:larafc@hotmail.es" style="color:inherit;text-decoration:none;">larafc@hotmail.es</a></p>
+                <p> <a href="https://instagram.com/bylara.frias" target="_blank" style="color:inherit;text-decoration:none;">INSTAGRAM</a></p>
+                <p style="margin-top: 15px; color: var(--ink); font-weight: 400; letter-spacing: 2px;">: CV</p>
+            </footer>
+        </aside>
+
+        <section class="main-content">
+            <div class="scroll-wrapper">
+                
+                <header class="header-meta">
+                    <h1 class="section-title">:My first collection/ <strong>Diplopía Creativa</strong></h1>
+                    <span class="date-tag">Feb-Jul 2023</span>
+                </header>
+
+                <p class="intro-p">
+                    In this section i am going to present and show what has been the end of my career, the most unique, personal and largest project that I have ever done and that perfectly summarizes my work, the projection of the future and justification of the past, this was my final project of university degree and I know that it will be a great tool in the future for my design.
+                </p>
+
+                <div class="img-placeholder hero-img">
+                    </div>
+
+                <div class="quote-block">
+                    "This project aims to explore double vision as a creative concept in fashion design. The motivation behind this collection relies in the personal experience of the designer, who suffered a stroke five years ago and has managed to adapt and use her double vision as a creative tool in fashion..."
                 </div>
-            </div>
-            <div class="img-placeholder hero-img"></div>
-        </section>
 
-        <section class="credits-area">
-            <a href="../BTS/index.html" class="bts-btn">BTS CLICK</a>
-            <div class="credits-list">
-                <p><strong>: MAGAZINE EDITORIAL</strong></p>
-                <p>Shot and edited: Júlia Gibert</p>
-                <p>Models: Anna Costal, Hannah Adib, Maria Ribas, Maria Gómez, Mariona Alcalde y Naiara Zunino</p>
-                <p>Art Director: Lara Frias</p>
-                <p>Garments designer: Lara Frias</p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div class="img-placeholder square-img"></div>
+                    <div class="img-placeholder square-img"></div>
+                    <div class="img-placeholder square-img"></div>
+                </div>
+
+                <h3 style="font-size: 10px; margin: 80px 0 25px; text-transform: uppercase; letter-spacing: 2px;">LINEUP COLECCIÓN_ 6 LOOKS (Orden definitivo)</h3>
+                <div class="img-placeholder lineup-img"></div>
+
+                <div class="abstract-grid">
+                    <div class="abstract-col">
+                        <h4>CAST</h4>
+                        <p>Este proyecto tiene como objetivo principal explorar la visión doble como concepto creativo en el diseño de moda. La motivación detrás de esta colección se basa en la experiencia personal de la diseñadora, quien sufrió un derrame cerebral hace cinco años...</p>
+                    </div>
+                    <div class="abstract-col">
+                        <h4>CAT</h4>
+                        <p>Aquest projecte té com a objectiu principal explorar la visió doble com a concepte creatiu en el disseny de moda. La motivació darrere d'aquesta col·lecció rau en l'experiència personal de la dissenyadora...</p>
+                    </div>
+                    <div class="abstract-col">
+                        <h4>ING</h4>
+                        <p>This project aims to explore double vision as a creative concept in fashion design. The motivation behind this collection relies in the personal experience of the designer, who suffered a stroke five years ago...</p>
+                    </div>
+                </div>
+
+                <section class="history-section">
+                    <div class="history-text">
+                        <h4>Mi historia: Qué pasó?</h4>
+                        <p>Yo estaba en la playa de noche con unas amigas teniendo una charla nocturna, debían ser alrededor de las 22:00h y se dio un latigazo en la cabeza, desde la frente hasta la nuca. Yo no me imaginaba que sería nada grave ni mucho menos, como acabó siendo, de hecho, yo les dije a mis amigas que me dolía la cabeza y que me quería ir a casa, al levantarme, me desplomé e inmediatamente perdí el equilibrio y el control sobre mi propio cuerpo...</p>
+                    </div>
+                    <div class="img-placeholder hero-img"></div>
+                </section>
+
+                <section class="credits-area">
+                    <a href="../BTS/index.html" class="bts-btn">BTS CLICK</a>
+                    <div class="credits-list">
+                        <p><strong>: MAGAZINE EDITORIAL</strong></p>
+                        <p>Shot and edited: Júlia Gibert</p>
+                        <p>Models: Anna Costal, Hannah Adib, Maria Ribas, Maria Gómez, Mariona Alcalde y Naiara Zunino</p>
+                        <p>Art Director: Lara Frias</p>
+                        <p>Garments designer: Lara Frias</p>
+                    </div>
+                </section>
+
+                <footer class="page-nav">
+                    <a href="../index.html">← Index</a>
+                    <a href="../Artisan/index.html">Next Project →</a>
+                </footer>
             </div>
         </section>
-
-        <footer class="page-nav">
-            <a href="../index.html" style="text-decoration:none; color:inherit;">Index</a>
-            <a href="../Artisan/index.html" style="text-decoration:none; color:inherit;">Next →</a>
-        </footer>
     </main>
 </div>
 
