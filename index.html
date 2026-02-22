@@ -22,121 +22,60 @@
             box-sizing: border-box; 
             -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale; 
-            text-rendering: optimizeLegibility;
         }
 
-        body, html { 
-            margin: 0; padding: 0; height: 100%; 
-            background: var(--bg); 
-            font-family: 'JetBrains Mono', monospace; 
-            overflow: hidden; 
-        }
-        
+        body, html { margin: 0; padding: 0; height: 100%; background: var(--bg); font-family: 'JetBrains Mono', monospace; overflow: hidden; }
         .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        
-        .card { 
-            width: min(1380px, 98%); 
-            height: min(850px, 92vh); 
-            background: var(--card); 
-            border-radius: 24px; 
-            display: grid; 
-            grid-template-columns: 320px 1fr; 
-            overflow: hidden; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
-        }
+        .card { width: min(1380px, 98%); height: min(850px, 92vh); background: var(--card); border-radius: 24px; display: grid; grid-template-columns: 320px 1fr; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.08); }
 
         /* --- SIDEBAR --- */
-        .sidebar { 
-            padding: 50px 45px; 
-            border-right: 1px solid rgba(0,0,0,0.05); 
-            display: flex; 
-            flex-direction: column; 
-            background: #fff; 
-            z-index: 100; 
-        }
-
-        .logo-hairline { 
-            font-family: 'Inter', sans-serif; 
-            font-size: 54px; 
-            font-weight: 100 !important; 
-            line-height: 0.72; 
-            letter-spacing: -3.5px; 
-            margin: 0 0 50px 0; 
-            text-transform: uppercase; 
-            color: var(--ink); 
-        }
-
-        .nav-menu ol { 
-            list-style: none; padding: 0; margin: 0;
-            font-size: 10.5px; font-weight: 100; color: var(--muted); 
-            line-height: 2.4; letter-spacing: 1px;
-        }
-
+        .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
+        .logo-hairline { font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); }
+        .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
         .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; }
         .nav-menu li:hover { color: var(--ink); }
-
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
-        
         .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
         .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; letter-spacing: 1px; }
 
-        /* --- SISTEMA EDITORIAL DE SCROLL --- */
+        /* --- CONTENIDO EDITORIAL (EL COLLAGE) --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
-        
         .scroll-wrapper { 
-            height: 100%; 
-            overflow-y: auto; 
-            scrollbar-width: none; 
-            display: grid;
-            grid-template-columns: repeat(12, 1fr); 
-            grid-auto-rows: min-content;
-            gap: 100px 0; /* Espacio vertical entre bloques de imágenes */
-            padding: 80px 0;
+            height: 100%; overflow-y: auto; scrollbar-width: none; 
+            display: grid; grid-template-columns: repeat(12, 1fr); 
+            grid-auto-rows: min-content; padding: 100px 0;
         }
-        
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* Bloques de Imagen individuales */
-        .img-block {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .img-block img {
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-        }
-
-        .caption {
-            font-size: 9px;
-            margin-top: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--muted);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
+        .img-block { display: flex; flex-direction: column; position: relative; z-index: 1; }
+        .img-block img { width: 100%; height: auto; border-radius: 12px; }
+        .caption { font-size: 9px; margin-top: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); }
         .caption.blue { color: var(--blue); font-weight: 500; }
 
-        /* MANDOS DE POSICIÓN (Fáciles de cambiar en el HTML) */
-        .col-left   { grid-column: 2 / 7; }  /* Ocupa la parte izquierda */
-        .col-right  { grid-column: 7 / 12; } /* Ocupa la parte derecha */
-        .col-center { grid-column: 4 / 10; } /* Centrada y elegante */
-        .col-wide   { grid-column: 2 / 12; } /* Casi toda la pantalla */
-        .col-slim   { grid-column: 8 / 11; } /* Estrecha para detalles */
+        /* POSICIONES BASADAS EN TUS CAPTURAS */
         
-        /* Efecto de solapamiento manual (opcional) */
-        .overlap-up { margin-top: -150px; z-index: 10; }
+        /* Hero 1: Firma izquierda, Imagen derecha */
+        .h1-sig { grid-column: 2 / 6; opacity: 0.15; padding-top: 50px; }
+        .h1-main { grid-column: 7 / 12; }
 
-        /* Marca de agua flotante */
-        .floating-sig {
-            grid-column: 3 / 6;
-            opacity: 0.15;
-            align-self: center;
-        }
+        /* Hero 2: Imagen pequeña solapada a la izquierda */
+        .h2-detail { grid-column: 2 / 7; margin-top: -120px; z-index: 2; width: 85%; }
+
+        /* Hero 3: Imagen panorámica completa */
+        .h3-wide { grid-column: 2 / 12; margin-top: 80px; }
+
+        /* Hero 4: Imagen centrada */
+        .h4-center { grid-column: 4 / 10; margin-top: 80px; }
+
+        /* Hero 5: Villains (Doble imagen asimétrica) */
+        .h5-left { grid-column: 2 / 6; margin-top: 50px; }
+        .h5-right { grid-column: 7 / 11; margin-top: 150px; }
+
+        /* Hero 7: Moodbored (Solapamiento triple) */
+        .h7-main { grid-column: 3 / 9; }
+        .h7-side { grid-column: 9 / 12; margin-top: -200px; z-index: 2; }
+        .h7-bottom { grid-column: 2 / 6; margin-top: -100px; }
 
     </style>
 </head>
@@ -145,7 +84,6 @@
     <main class="card">
         <aside class="sidebar">
             <h1 class="logo-hairline">LARA<br>FRIAS<br>CUMELLA</h1>
-            
             <nav class="nav-menu">
                 <ol>
                     <li onclick="location.href='./Diplopia/index.html'">1. DIPLOPIA COLLECTION</li>
@@ -158,11 +96,7 @@
                     <li onclick="location.href='./Bags/index.html'">8. BAGS</li>
                 </ol>
             </nav>
-
-            <div class="sig-sidebar">
-                <img src="images/signature_01.jpeg" alt="Signature">
-            </div>
-
+            <div class="sig-sidebar"><img src="images/signature_01.jpeg"></div>
             <footer class="footer-sidebar">
                 <a class="about-link" onclick="location.href='./Aboutme/index.html'">ABOUT ME</a>
                 <p>✉ <a href="mailto:larafc@hotmail.es" style="color:inherit;text-decoration:none;">larafc@hotmail.es</a></p>
@@ -172,40 +106,47 @@
         </aside>
 
         <section class="main-content">
-            <div class="scroll-wrapper" id="scroll-container">
+            <div class="scroll-wrapper">
                 
-                <div class="floating-sig">
-                    <img src="images/signature_02.jpeg" style="width:100%;">
-                </div>
-                <div class="img-block col-right">
-                    <img src="images/Diplopia_01.jpg" alt="Diplopia">
+                <div class="img-block h1-sig"><img src="images/signature_02.jpeg"></div>
+                <div class="img-block h1-main">
+                    <img src="images/Diplopia_01.jpg">
                     <p class="caption">Double collar jacket. Diplopia collection</p>
                 </div>
-
-                <div class="img-block col-left overlap-up">
+                <div class="img-block h2-detail">
                     <img src="images/Diplopia_02.jpg">
                     <p class="caption">Detail 01 / Artisan process</p>
                 </div>
 
-                <div class="img-block col-wide">
+                <div class="img-block h3-wide">
                     <img src="images/Diplopia_03.jpg">
                     <p class="caption blue">Diplopia Collection 2023 — Editorial</p>
                 </div>
 
-                <div class="img-block col-center">
+                <div class="img-block h4-center">
+                    <img src="images/Diplopia_04.jpg">
+                </div>
+
+                <div class="img-block h5-left">
                     <img src="images/image_07.jpg">
                     <p class="caption blue">Villains Collection 2022</p>
                 </div>
+                <div class="img-block h5-right">
+                    <img src="images/image_10.jpg">
+                </div>
 
-                <div class="img-block col-left">
+                <div class="img-block h7-main">
+                    <img src="images/image_22.jpg">
+                </div>
+                <div class="img-block h7-side">
+                    <img src="images/image_19.jpg">
+                    <p class="caption">Moodbored Swimwear</p>
+                </div>
+                <div class="img-block h7-bottom">
                     <img src="images/image_21.jpg">
                 </div>
-                <div class="img-block col-slim overlap-up">
-                    <img src="images/image_19.jpg">
-                    <p class="caption">Moodbored Swimwear Collection</p>
-                </div>
 
-                </div>
+            </div>
         </section>
     </main>
 </div>
