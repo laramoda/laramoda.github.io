@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
     
     <style>
         :root { 
@@ -45,96 +45,51 @@
             box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
         }
 
-        /* --- SIDEBAR UNIFICADO --- */
-        .sidebar { 
-            padding: 50px 45px; 
-            border-right: 1px solid rgba(0,0,0,0.05); 
-            display: flex; 
-            flex-direction: column; 
-            background: #fff; 
-            z-index: 100; 
-        }
-
-        .logo-hairline { 
-            font-family: 'Inter', sans-serif; 
-            font-size: 54px; 
-            font-weight: 100 !important; 
-            line-height: 0.72; 
-            letter-spacing: -3.5px; 
-            margin: 0 0 50px 0; 
-            text-transform: uppercase; 
-            color: var(--ink); 
-        }
-
-        .nav-menu ol { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0;
-            font-size: 10.5px; 
-            font-weight: 100;
-            color: var(--muted); 
-            line-height: 2.4; 
-            letter-spacing: 1px;
-        }
-
-        .nav-menu li { 
-            cursor: pointer; 
-            transition: color 0.3s; 
-            text-transform: uppercase;
-        }
-        
+        /* --- SIDEBAR --- */
+        .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
+        .logo-hairline { font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); cursor: pointer; }
+        .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
+        .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; margin-bottom: 2px; }
         .nav-menu li.active { color: var(--ink); font-weight: 400; }
         .nav-menu li:hover { color: var(--ink); }
 
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
-        
-        .footer-sidebar { 
-            margin-top: auto; 
-            font-size: 10px; 
-            color: var(--muted); 
-            font-weight: 100;
+        .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
+        .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; letter-spacing: 1px; }
+
+        /* --- CONTENIDO DINÁMICO --- */
+        .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
+        .main-content::-webkit-scrollbar { display: none; }
+
+        .home-nav { 
+            position: sticky; top: 30px; margin-left: auto; margin-right: 40px; 
+            color: var(--blue); font-size: 11px; font-style: italic; 
+            z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content;
         }
 
-        .about-link { 
-            color: var(--blue); 
-            font-weight: 500; 
-            cursor: pointer; 
-            text-decoration: none; 
-            display: block; 
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-
-        /* --- CONTENIDO PROJECTS --- */
-        .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
         .scroll-wrapper { 
-            height: 100%; 
-            overflow-y: auto; 
-            scrollbar-width: none; 
-            padding: 60px 80px;
+            display: grid; grid-template-columns: repeat(12, 1fr); 
+            gap: 25px 15px; padding: 60px 40px 150px; align-items: start;
         }
-        .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        .header-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 60px; }
-        .title-main { font-size: 18px; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; }
-        .intro-text { font-size: 12px; line-height: 1.8; text-align: justify; color: var(--muted); }
-
-        .project-block { margin-top: 80px; border-top: 1px solid #f2f2f2; padding-top: 60px; }
-        .project-meta { font-size: 12px; margin-bottom: 25px; letter-spacing: 2px; }
-        .project-desc { font-size: 12px; line-height: 1.8; margin-bottom: 40px; max-width: 850px; color: var(--muted); }
-
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .full-img { width: 100%; margin: 20px 0; border-radius: 12px; }
+        /* Sistema de Bloques Lara Frias */
+        .img-block { grid-column: var(--c, 1) / span var(--s, 4); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
+        .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
         
-        .tile img { width: 100%; border-radius: 12px; display: block; }
+        /* Textos y Estructura Original */
+        .text-full { grid-column: 1 / span 12; }
+        .header-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+        .title-main { font-size: 18px; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; font-weight: 200; }
+        .intro-text { font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; font-weight: 100; }
+
+        .project-meta { font-size: 12px; margin-bottom: 25px; letter-spacing: 2px; border-bottom: 1px solid #f2f2f2; padding-bottom: 10px; }
+        .project-desc { font-size: 12px; line-height: 1.8; margin-bottom: 40px; color: var(--muted); font-weight: 100; max-width: 850px; }
+        
         .caption { font-size: 9px; color: var(--muted); margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; }
 
-        .nav-footer { display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 80px; }
-        .nav-footer a { color: var(--muted); text-decoration: none; transition: color 0.3s; }
-        .nav-footer a:hover { color: var(--blue); }
-
+        .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 80px; }
+        .nav-footer a { color: var(--muted); text-decoration: none; }
     </style>
 </head>
 <body>
@@ -142,8 +97,7 @@
 <div class="stage">
     <main class="card">
         <aside class="sidebar">
-            <h1 class="logo-hairline">LARA<br>FRIAS<br>CUMELLA</h1>
-            
+            <h1 class="logo-hairline" onclick="location.href='../index.html'">LARA<br>FRIAS<br>CUMELLA</h1>
             <nav class="nav-menu">
                 <ol>
                     <li onclick="location.href='../Diplopia/index.html'">1. DIPLOPIA COLLECTION</li>
@@ -156,11 +110,7 @@
                     <li onclick="location.href='../Bags/index.html'">8. BAGS</li>
                 </ol>
             </nav>
-
-            <div class="sig-sidebar">
-                <img src="../images/signature_01.jpeg" alt="Signature">
-            </div>
-
+            <div class="sig-sidebar"><img src="../images/signature_01.jpeg"></div>
             <footer class="footer-sidebar">
                 <a class="about-link" onclick="location.href='../Aboutme/index.html'">ABOUT ME</a>
                 <p>✉ <a href="mailto:larafc@hotmail.es" style="color:inherit;text-decoration:none;">larafc@hotmail.es</a></p>
@@ -170,9 +120,11 @@
         </aside>
 
         <section class="main-content">
+            <div class="home-nav" onclick="location.href='../index.html'">: HOME</div>
+            
             <div class="scroll-wrapper">
                 
-                <header class="header-section">
+                <header class="text-full header-section">
                     <div class="title-main">
                         :Other projects<br>
                         <span style="font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: 0;">All since 2018</span>
@@ -182,74 +134,54 @@
                     </div>
                 </header>
 
-                <img src="../Images/4.1_main.jpg" class="full-img" alt="Evolution Project">
+                <div class="img-block" style="--c: 1; --s: 12; --t: 0px;">
+                    <img src="../Images/4.1_main.jpg" alt="Evolution Project">
+                </div>
 
-                <section class="project-block">
+                <div class="text-full" style="margin-top: 100px;">
                     <div class="project-meta"><strong>2023</strong></div>
                     <p class="project-desc">
                         First diplopia project for Stradivarius. Based on a Digitalworld i decided to grab the GLITCH concept as it is similar to double vision but in digital world.
                     </p>
-                    <div class="grid-3">
-                        <div class="tile"><img src="../Images/4.2_tricot1.jpg"><p class="caption">Tricot experimentation</p></div>
-                        <div class="tile"><img src="../Images/4.2_tricot2.jpg"></div>
-                        <div class="tile"><img src="../Images/4.2_tricot3.jpg"></div>
-                    </div>
-                </section>
+                </div>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="../Images/4.2_tricot1.jpg"><p class="caption">Tricot experimentation</p></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 40px;"><img src="../Images/4.2_tricot2.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: -20px;"><img src="../Images/4.2_tricot3.jpg"></div>
 
-                <section class="project-block">
-                    <div class="grid-3">
-                        <div class="tile"><img src="../Images/4.3_label.jpg"><p class="caption">First Label Creation</p></div>
-                        <div class="tile"><img src="../Images/4.3_polo.jpg"><p class="caption">Polo dress</p></div>
-                        <div class="tile"><img src="../Images/4.3_skirt.jpg"><p class="caption">Pleated skirt</p></div>
-                    </div>
-                </section>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 100px;"><img src="../Images/4.3_label.jpg"><p class="caption">First Label Creation</p></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 60px;"><img src="../Images/4.3_polo.jpg"><p class="caption">Polo dress</p></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 100px;"><img src="../Images/4.3_skirt.jpg"><p class="caption">Pleated skirt</p></div>
 
-                <section class="project-block">
-                    <div class="grid-2">
-                        <div class="tile"><img src="../Images/4.4_green.jpg"><p class="caption">Puffed Sleeve</p></div>
-                        <div class="tile">
-                            <img src="../Images/4.4_tech.jpg">
-                            <p class="caption" style="text-align: right; font-weight: 400; color: var(--ink);">LA FICHA TÉCNICA</p>
-                        </div>
-                    </div>
-                </section>
+                <div class="img-block" style="--c: 2; --s: 5; --t: 80px;"><img src="../Images/4.4_green.jpg"><p class="caption">Puffed Sleeve</p></div>
+                <div class="img-block" style="--c: 7; --s: 4; --t: 120px;">
+                    <img src="../Images/4.4_tech.jpg">
+                    <p class="caption" style="text-align: right; font-weight: 400; color: var(--ink);">LA FICHA TÉCNICA</p>
+                </div>
 
-                <section class="project-block">
+                <div class="text-full" style="margin-top: 100px;">
                     <p class="project-desc">
                         Material experimentation, in this case using crystals from an antique chandelier and sewing them onto a tulle base. also creating earring with the rest.
                     </p>
-                    <div class="grid-3">
-                        <div class="tile"><img src="../Images/4.5_park1.jpg"></div>
-                        <div class="tile"><img src="../Images/4.5_park2.jpg"></div>
-                        <div class="tile"><img src="../Images/4.5_park3.jpg"></div>
-                    </div>
-                </section>
+                </div>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="../Images/4.5_park1.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 40px;"><img src="../Images/4.5_park2.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: -20px;"><img src="../Images/4.5_park3.jpg"></div>
 
-                <section class="project-block">
-                    <div class="grid-3">
-                        <div class="tile"><img src="../Images/4.6_ski.jpg"><p class="caption">ski garment 01</p></div>
-                        <div class="tile"><img src="../Images/4.7_model1.jpg"><p class="caption">made by me</p></div>
-                        <div class="tile"><img src="../Images/4.7_model2.jpg"></div>
-                    </div>
-                </section>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 100px;"><img src="../Images/4.6_ski.jpg"><p class="caption">ski garment 01</p></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 100px;"><img src="../Images/4.7_model1.jpg"><p class="caption">made by me</p></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 100px;"><img src="../Images/4.7_model2.jpg"></div>
 
-                <section class="project-block">
-                    <div class="grid-3">
-                        <div class="tile">
-                            <img src="../Images/4.8_silver.jpg">
-                            <p class="caption">movement experimentation. First project ever. 2018</p>
-                        </div>
-                        <div class="tile"><img src="../Images/4.9_purple1.jpg"><p class="caption">collab: Emma Tarrats</p></div>
-                        <div class="tile"><img src="../Images/4.9_purple2.jpg"><p class="caption">Dress an coat</p></div>
-                    </div>
-                </section>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 80px;">
+                    <img src="../Images/4.8_silver.jpg">
+                    <p class="caption">movement experimentation. First project ever. 2018</p>
+                </div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 40px;"><img src="../Images/4.9_purple1.jpg"><p class="caption">collab: Emma Tarrats</p></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 80px;"><img src="../Images/4.9_purple2.jpg"><p class="caption">Dress an coat</p></div>
 
-                <section class="project-block">
-                    <div style="max-width: 600px; margin: 0 auto;">
-                        <img src="../Images/4.10_lypse.jpg" class="full-img">
-                        <p class="caption" style="text-align: center;">bau_bcn : Proyecto "Lypse"</p>
-                    </div>
-                </section>
+                <div class="img-block" style="--c: 4; --s: 6; --t: 120px;">
+                    <img src="../Images/4.10_lypse.jpg">
+                    <p class="caption" style="text-align: center;">bau_bcn : Proyecto "Lypse"</p>
+                </div>
 
                 <footer class="nav-footer">
                     <a href="../Collaborations/index.html">← Previous</a>
