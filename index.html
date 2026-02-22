@@ -29,16 +29,10 @@
 
         /* --- CONTENIDO EDITORIAL --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
-        
         .scroll-wrapper { 
-            height: 100%; 
-            overflow-y: auto; 
-            scrollbar-width: none; 
-            display: grid;
-            grid-template-columns: repeat(12, 1fr); /* 12 Columnas */
-            grid-auto-rows: min-content;
-            gap: 40px 20px; /* Espacio vertical y horizontal */
-            padding: 80px 0;
+            height: 100%; overflow-y: auto; scrollbar-width: none; 
+            display: grid; grid-template-columns: repeat(12, 1fr); 
+            grid-auto-rows: min-content; gap: 40px 20px; padding: 80px 0;
         }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
@@ -47,35 +41,16 @@
         .caption { font-size: 9px; margin-top: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); }
         .caption.blue { color: var(--blue); font-weight: 500; }
 
-        /* --- POSICIONES EXACTAS SEGÚN TU REFERENCIA (collage_ref.jpg) --- */
-        
-        /* 1. Arriba derecha, grande */
+        /* --- POSICIONES (Ajustadas para que no desaparezcan) --- */
         .pos-1 { grid-column: 6 / 13; }
-
-        /* 2. Arriba izquierda, solapa a la 1 */
-        .pos-2 { grid-column: 1 / 6; margin-top: 50px; z-index: 2; }
-
-        /* 3. Debajo de la 2 */
+        .pos-2 { grid-column: 1 / 6; margin-top: 50px; z-index: 2; } /* Bajada a 50px */
         .pos-3 { grid-column: 2 / 6; }
-
-        /* 4. Centro ancha */
         .pos-4 { grid-column: 3 / 11; margin-top: 40px; }
-
-        /* 5. Debajo de la 4, izquierda */
         .pos-5 { grid-column: 2 / 8; }
-
-        /* 6. Debajo de la 4, derecha, solapa a la 5 */
-        .pos-6 { grid-column: 9 / 13; margin-top: -200px; z-index: 2; }
-
-        /* 7. Abajo izquierda, grande */
+        .pos-6 { grid-column: 9 / 13; margin-top: -100px; z-index: 2; } /* Suavizado a -100px */
         .pos-7 { grid-column: 1 / 9; margin-top: 60px; }
-
-        /* 8. Abajo derecha, vertical, solapa mucho a la 7 */
-        .pos-8 { grid-column: 10 / 12; margin-top: -350px; z-index: 3; }
-
-        /* 9. Última, abajo centro, queda por debajo de la 7 */
-        .pos-9 { grid-column: 4 / 9; margin-top: -80px; z-index: 1; opacity: 0.8; }
-
+        .pos-8 { grid-column: 10 / 12; margin-top: -150px; z-index: 3; } /* Suavizado a -150px */
+        .pos-9 { grid-column: 4 / 9; margin-top: -40px; z-index: 1; opacity: 0.8; }
     </style>
 </head>
 <body>
@@ -106,52 +81,18 @@
 
         <section class="main-content">
             <div class="scroll-wrapper">
-                
-                <div class="img-block pos-1">
-                    <img src="images/Diplopia_01.jpg" alt="Ref 1"> <p class="caption">Caption for image 1</p>
-                </div>
-
-                <div class="img-block pos-2">
-                    <img src="images/image_02.jpg" alt="Ref 2">
-                    <p class="caption blue">Caption for image 2</p>
-                </div>
-
-                <div class="img-block pos-3">
-                    <img src="images/image_03.jpg" alt="Ref 3">
-                </div>
-
-                <div class="img-block pos-4">
-                    <img src="images/image_04.jpg" alt="Ref 4">
-                    <p class="caption blue">Wide caption for image 4</p>
-                </div>
-
-                <div class="img-block pos-5">
-                    <img src="images/image_05.jpg" alt="Ref 5">
-                    <p class="caption">Caption for image 5</p>
-                </div>
-
-                <div class="img-block pos-6">
-                    <img src="images/image_06.jpg" alt="Ref 6">
-                </div>
-
-                <div class="img-block pos-7">
-                    <img src="images/image_07.jpg" alt="Ref 7">
-                    <p class="caption blue">Large caption for image 7</p>
-                </div>
-
-                <div class="img-block pos-8">
-                    <img src="images/image_08.jpg" alt="Ref 8">
-                    <p class="caption">Vertical caption 8</p>
-                </div>
-
-                <div class="img-block pos-9">
-                    <img src="images/image_09.jpg" alt="Ref 9">
-                </div>
-
+                <div class="img-block pos-1"><img src="images/Diplopia_01.jpg"><p class="caption">Caption 1</p></div>
+                <div class="img-block pos-2"><img src="images/Diplopia_02.jpg"><p class="caption blue">Caption 2</p></div>
+                <div class="img-block pos-3"><img src="images/Diplopia_03.jpg"></div>
+                <div class="img-block pos-4"><img src="images/Diplopia_04.jpg"></div>
+                <div class="img-block pos-5"><img src="images/image_05.jpg"></div>
+                <div class="img-block pos-6"><img src="images/image_06.jpg"></div>
+                <div class="img-block pos-7"><img src="images/image_07.jpg"></div>
+                <div class="img-block pos-8"><img src="images/image_08.jpg"></div>
+                <div class="img-block pos-9"><img src="images/image_09.jpg"></div>
             </div>
         </section>
     </main>
 </div>
 </body>
-</html>
 </html>
