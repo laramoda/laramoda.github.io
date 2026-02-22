@@ -1,113 +1,54 @@
-<style>
-    :root {
-        --bg: #efefef;
-        --card: #ffffff;
-        --ink: #1a1a1a;
-        --muted: #b5b5b5;
-        --blue: #1f36ff;
-    }
+<section class="main-content">
+    <div class="home-nav"><span>:</span> HOME</div>
 
-    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-    
-    body, html { 
-        margin: 0; padding: 0; height: 100%; 
-        background-color: var(--bg); 
-        font-family: 'JetBrains Mono', monospace;
-        overflow: hidden;
-    }
+    <div class="scroll-wrapper">
+        
+        <div class="img-block" style="--c: 6; --s: 5; --t: 0px;">
+            <img src="images/Diplopia_01.jpg"><p class="caption">Diplopia 01</p>
+        </div>
+        <div class="img-block" style="--c: 2; --s: 3; --t: -40px;">
+            <img src="images/Diplopia_02.jpg">
+        </div>
+        <div class="img-block" style="--c: 6; --s: 1.5; --t: 20px;">
+            <img src="images/Diplopia_03.jpg">
+        </div>
+        <div class="img-block" style="--c: 8.5; --s: 3; --t: 40px;">
+            <img src="images/Diplopia_04.jpg">
+        </div>
 
-    .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        <div class="img-block" style="--c: 2; --s: 4; --t: 120px;">
+            <img src="images/Artisan_01.jpg"><p class="caption">Artisan 01</p>
+        </div>
+        <div class="img-block" style="--c: 7; --s: 2; --t: 140px;">
+            <img src="images/Artisan_02.jpg">
+        </div>
+        <div class="img-block" style="--c: 10; --s: 2; --t: 110px;">
+            <img src="images/Artisan_03.jpg">
+        </div>
+        <div class="img-block" style="--c: 7; --s: 3; --t: -20px; --z: 10;">
+            <img src="images/Artisan_04.jpg">
+        </div>
 
-    .card {
-        width: min(1380px, 98%);
-        height: min(850px, 92vh);
-        background: var(--card);
-        border-radius: 24px;
-        display: grid;
-        grid-template-columns: 320px 1fr;
-        overflow: hidden;
-        box-shadow: 0 40px 100px rgba(0,0,0,0.08);
-    }
+        <div class="img-block" style="--c: 2; --s: 3; --t: 100px;"><img src="images/Proj_02.jpg"></div>
+        <div class="img-block" style="--c: 8; --s: 4; --t: 120px;"><img src="images/Proj_07.jpg"></div>
+        
+        <div class="img-block" style="--c: 2; --s: 2; --t: 40px;"><img src="images/Proj_03.jpg"></div>
+        <div class="img-block" style="--c: 4; --s: 2; --t: 40px;"><img src="images/Proj_04.jpg"></div>
+        <div class="img-block" style="--c: 6; --s: 2; --t: 40px;"><img src="images/Proj_05.jpg"></div>
 
-    /* --- SIDEBAR (Tipografías Intactas) --- */
-    .sidebar { padding: 60px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; }
-    
-    .logo-hairline {
-        font-family: 'Inter', sans-serif;
-        font-size: 52px; 
-        font-weight: 100;
-        line-height: 0.5;
-        letter-spacing: -3.5px;
-        margin: 0 0 50px 0;
-        color: var(--ink); 
-        text-transform: uppercase;
-    }
+        <div class="img-block" style="--c: 4; --s: 8; --t: 100px; background: rgba(0,0,0,0.03); padding: 40px; border-radius: 8px;">
+            <div style="width: 80%; margin: 0 auto;"><img src="images/Proj_06.jpg"></div>
+            <p class="caption" style="text-align: center;">Proyecto 01</p>
+        </div>
 
-    .nav-menu ol { 
-        list-style: none; 
-        padding: 0; 
-        margin: 0; 
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px; 
-        font-weight: 100; 
-        color: var(--muted); 
-        line-height: 2.6; 
-        letter-spacing: 1px;
-    }
-    
-    .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; }
-    .nav-menu li:hover { color: var(--ink); }
+        <div class="img-block" style="--c: 2; --s: 4; --t: 150px;"><img src="images/Swim_04.jpg"></div>
+        <div class="img-block" style="--c: 7; --s: 1.5; --t: 200px;"><img src="images/Swim_03.jpg"></div>
+        <div class="img-block" style="--c: 9; --s: 3.5; --t: 150px;"><img src="images/Swim_01.jpg"></div>
 
-    .sig-sidebar { margin: 30px 0; width: 260px; align-self: center; } 
-    .sig-sidebar img { width: 100%; opacity: 0.8; }
+        <div class="img-block" style="--c: 2; --s: 4.5; --t: 80px;"><img src="images/Swim_06.jpg"></div>
+        <div class="img-block" style="--c: 5; --s: 3; --t: -100px; --z: 20;"><img src="images/Swim_05.jpg"></div>
+        
+        <div class="img-block" style="--c: 9; --s: 3; --t: 20px;"><img src="images/Swim_02.jpg"></div>
 
-    .footer-sidebar { margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); font-weight: 200; }
-    .footer-links { margin-bottom: 20px; }
-    .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; text-transform: uppercase; }
-    .footer-sidebar a { color: inherit; text-decoration: none; }
-    .about-link { color: var(--blue) !important; font-weight: 400; margin-bottom: 12px; display: block; font-size: 10px; letter-spacing: 1px; }
-    .cv-label { margin-top: 25px; font-weight: 400; color: var(--ink); letter-spacing: 2px; font-size: 10px; }
-
-    /* --- CONTENIDO Y GRID DE FOTOS --- */
-    .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
-    .main-content::-webkit-scrollbar { display: none; }
-
-    .scroll-wrapper { 
-        display: grid; 
-        grid-template-columns: repeat(12, 1fr); 
-        gap: 20px; 
-        padding: 60px 40px 150px; 
-        align-items: start;
-    }
-
-    /* Sistema Dinámico para Fotos */
-    .img-block { 
-        grid-column: var(--c, 1) / span var(--s, 4); 
-        margin-top: var(--t, 0px); 
-        position: relative;
-        z-index: var(--z, 1);
-    }
-    .img-block img { width: 100%; height: auto; border-radius: 4px; display: block; }
-    .caption { font-size: 8px; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
-
-    .home-nav { 
-        position: absolute; top: 30px; right: 40px; z-index: 100;
-        color: var(--blue); text-decoration: none; 
-        font-size: 11px; font-weight: 100; font-style: italic; cursor: pointer;
-        font-family: 'JetBrains Mono', monospace;
-        letter-spacing: 1.5px;
-    }
-
-    /* --- VISTA ABOUT ME --- */
-    #about-view { padding: 50px 60px; grid-column: 1 / span 12; }
-    .about-header { display: flex; justify-content: space-between; margin-bottom: 40px; align-items: baseline; }
-    .about-header .title { font-weight: 100; font-size: 16px; font-family: 'Inter', sans-serif; text-transform: lowercase; }
-    .about-header .author { color: var(--muted); font-size: 9px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 2px; }
-
-    .about-grid { display: grid; grid-template-columns: 1.6fr 300px; gap: 60px; }
-    .about-text { font-size: 12px; line-height: 1.8; color: var(--ink); font-weight: 100; font-family: 'Inter', sans-serif; }
-    .about-text p { margin-bottom: 25px; text-align: justify; }
-
-    .about-image img { width: 100%; border-radius: 4px; filter: grayscale(1); }
-    .location { margin-top: 20px; color: var(--muted); font-size: 9px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 3px; }
-</style>
+    </div>
+</section>
