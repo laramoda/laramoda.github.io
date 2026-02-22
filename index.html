@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -67,45 +67,21 @@
         }
 
         .nav-menu ol { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0;
-            font-size: 10.5px; 
-            font-weight: 100;
-            color: var(--muted); 
-            line-height: 2.4; 
-            letter-spacing: 1px;
+            list-style: none; padding: 0; margin: 0;
+            font-size: 10.5px; font-weight: 100; color: var(--muted); 
+            line-height: 2.4; letter-spacing: 1px;
         }
 
-        .nav-menu li { 
-            cursor: pointer; 
-            transition: color 0.3s; 
-            text-transform: uppercase;
-        }
-        
+        .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; }
         .nav-menu li:hover { color: var(--ink); }
 
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
         
-        .footer-sidebar { 
-            margin-top: auto; 
-            font-size: 10px; 
-            color: var(--muted); 
-            font-weight: 100;
-        }
+        .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
+        .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; letter-spacing: 1px; }
 
-        .about-link { 
-            color: var(--blue); 
-            font-weight: 500; 
-            cursor: pointer; 
-            text-decoration: none; 
-            display: block; 
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-
-        /* --- NUEVO SISTEMA DE SCROLL EDITORIAL --- */
+        /* --- SISTEMA EDITORIAL DE SCROLL --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
         
         .scroll-wrapper { 
@@ -113,15 +89,15 @@
             overflow-y: auto; 
             scrollbar-width: none; 
             display: grid;
-            grid-template-columns: repeat(12, 1fr); /* Cuadrícula de 12 */
+            grid-template-columns: repeat(12, 1fr); 
             grid-auto-rows: min-content;
-            gap: 80px 0; /* Espaciado entre bloques */
-            padding: 60px 0;
+            gap: 100px 0; /* Espacio vertical entre bloques de imágenes */
+            padding: 80px 0;
         }
         
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        /* Bloques de Imagen */
+        /* Bloques de Imagen individuales */
         .img-block {
             display: flex;
             flex-direction: column;
@@ -131,30 +107,34 @@
         .img-block img {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            /* Eliminamos el sombreado pesado para un look más limpio */
+            border-radius: 15px;
         }
 
         .caption {
             font-size: 9px;
-            margin-top: 12px;
+            margin-top: 15px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .caption.blue { color: var(--blue); font-weight: 500; }
 
-        /* Clases de Posicionamiento Rápido */
-        .col-left   { grid-column: 2 / 7; }
-        .col-right  { grid-column: 7 / 12; }
-        .col-center { grid-column: 4 / 10; }
-        .col-wide   { grid-column: 2 / 12; }
+        /* MANDOS DE POSICIÓN (Fáciles de cambiar en el HTML) */
+        .col-left   { grid-column: 2 / 7; }  /* Ocupa la parte izquierda */
+        .col-right  { grid-column: 7 / 12; } /* Ocupa la parte derecha */
+        .col-center { grid-column: 4 / 10; } /* Centrada y elegante */
+        .col-wide   { grid-column: 2 / 12; } /* Casi toda la pantalla */
+        .col-slim   { grid-column: 8 / 11; } /* Estrecha para detalles */
         
-        /* Ajuste manual para la firma flotante */
+        /* Efecto de solapamiento manual (opcional) */
+        .overlap-up { margin-top: -150px; z-index: 10; }
+
+        /* Marca de agua flotante */
         .floating-sig {
-            grid-column: 4 / 7;
-            opacity: 0.2;
+            grid-column: 3 / 6;
+            opacity: 0.15;
             align-self: center;
         }
 
@@ -194,13 +174,15 @@
         <section class="main-content">
             <div class="scroll-wrapper" id="scroll-container">
                 
-                <div class="floating-sig"><img src="images/signature_02.jpeg" style="width:100%;"></div>
+                <div class="floating-sig">
+                    <img src="images/signature_02.jpeg" style="width:100%;">
+                </div>
                 <div class="img-block col-right">
-                    <img src="images/Diplopia_01.jpg" alt="Diplopia Collection">
+                    <img src="images/Diplopia_01.jpg" alt="Diplopia">
                     <p class="caption">Double collar jacket. Diplopia collection</p>
                 </div>
 
-                <div class="img-block col-left" style="margin-top: -100px;">
+                <div class="img-block col-left overlap-up">
                     <img src="images/Diplopia_02.jpg">
                     <p class="caption">Detail 01 / Artisan process</p>
                 </div>
@@ -211,41 +193,19 @@
                 </div>
 
                 <div class="img-block col-center">
-                    <img src="images/Diplopia_04.jpg">
-                </div>
-
-                <div class="img-block col-right">
-                    <img src="images/image_05.jpg">
-                </div>
-
-                <div class="img-block col-left">
-                    <img src="images/image_06.jpg">
-                </div>
-
-                <div class="img-block col-center">
                     <img src="images/image_07.jpg">
                     <p class="caption blue">Villains Collection 2022</p>
                 </div>
 
-                <div class="img-block col-right"><img src="images/image_08.jpg"></div>
-                <div class="img-block col-left"><img src="images/image_09.jpg"></div>
-                <div class="img-block col-wide"><img src="images/image_10.jpg"></div>
-                <div class="img-block col-center"><img src="images/image_11.jpg"></div>
-                <div class="img-block col-right"><img src="images/image_12.jpg"></div>
-                <div class="img-block col-left"><img src="images/image_13.jpg"></div>
-                <div class="img-block col-center"><img src="images/image_14.jpg"></div>
-                <div class="img-block col-right"><img src="images/image_15.jpg"></div>
-                <div class="img-block col-left"><img src="images/image_16.jpg"></div>
-                <div class="img-block col-wide"><img src="images/image_17.jpg"></div>
-                <div class="img-block col-center"><img src="images/image_18.jpg"></div>
-                <div class="img-block col-right"><img src="images/image_19.jpg"></div>
-                <div class="img-block col-left"><img src="images/image_20.jpg"></div>
-                <div class="img-block col-center"><img src="images/image_21.jpg"></div>
-                <div class="img-block col-wide"><img src="images/image_22.jpg">
+                <div class="img-block col-left">
+                    <img src="images/image_21.jpg">
+                </div>
+                <div class="img-block col-slim overlap-up">
+                    <img src="images/image_19.jpg">
                     <p class="caption">Moodbored Swimwear Collection</p>
                 </div>
 
-            </div>
+                </div>
         </section>
     </main>
 </div>
