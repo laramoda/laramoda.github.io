@@ -1,164 +1,113 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lara Frias Cumella | Portfolio</title>
+<style>
+    :root {
+        --bg: #efefef;
+        --card: #ffffff;
+        --ink: #1a1a1a;
+        --muted: #b5b5b5;
+        --blue: #1f36ff;
+    }
+
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
+    body, html { 
+        margin: 0; padding: 0; height: 100%; 
+        background-color: var(--bg); 
+        font-family: 'JetBrains Mono', monospace;
+        overflow: hidden;
+    }
+
+    .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+
+    .card {
+        width: min(1380px, 98%);
+        height: min(850px, 92vh);
+        background: var(--card);
+        border-radius: 24px;
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        overflow: hidden;
+        box-shadow: 0 40px 100px rgba(0,0,0,0.08);
+    }
+
+    /* --- SIDEBAR (Tipografías Intactas) --- */
+    .sidebar { padding: 60px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; }
     
-    <style>
-        :root {
-            --bg: #efefef;
-            --card: #ffffff;
-            --ink: #1a1a1a;
-            --muted: #b5b5b5;
-            --blue: #1f36ff;
-        }
+    .logo-hairline {
+        font-family: 'Inter', sans-serif;
+        font-size: 52px; 
+        font-weight: 100;
+        line-height: 0.5;
+        letter-spacing: -3.5px;
+        margin: 0 0 50px 0;
+        color: var(--ink); 
+        text-transform: uppercase;
+    }
 
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        
-        body, html { 
-            margin: 0; padding: 0; height: 100%; 
-            background-color: var(--bg); 
-            font-family: 'JetBrains Mono', monospace;
-            overflow: hidden;
-        }
+    .nav-menu ol { 
+        list-style: none; 
+        padding: 0; 
+        margin: 0; 
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; 
+        font-weight: 100; 
+        color: var(--muted); 
+        line-height: 2.6; 
+        letter-spacing: 1px;
+    }
+    
+    .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; }
+    .nav-menu li:hover { color: var(--ink); }
 
-        .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .sig-sidebar { margin: 30px 0; width: 260px; align-self: center; } 
+    .sig-sidebar img { width: 100%; opacity: 0.8; }
 
-        .card {
-            width: min(1380px, 98%);
-            height: min(850px, 92vh);
-            background: var(--card);
-            border-radius: 24px;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.08);
-        }
+    .footer-sidebar { margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); font-weight: 200; }
+    .footer-links { margin-bottom: 20px; }
+    .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; text-transform: uppercase; }
+    .footer-sidebar a { color: inherit; text-decoration: none; }
+    .about-link { color: var(--blue) !important; font-weight: 400; margin-bottom: 12px; display: block; font-size: 10px; letter-spacing: 1px; }
+    .cv-label { margin-top: 25px; font-weight: 400; color: var(--ink); letter-spacing: 2px; font-size: 10px; }
 
-        /* --- SIDEBAR --- */
-        .sidebar { padding: 60px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; }
-        
-        /* LOGO: Recto, sin florituras, ultra fino */
-        .logo-hairline {
-            font-family: 'Inter', sans-serif;
-            font-size: 52px; 
-            font-weight: 100; /* El trazo más fino */
-            line-height: 0.5; /* Para que las líneas estén muy cerca */
-            letter-spacing: -3.5px; /* Para que las letras casi se toquen */
-            margin: 0 0 50px 0;
-            color: var(--ink); 
-            text-transform: uppercase;
-        }
+    /* --- CONTENIDO Y GRID DE FOTOS --- */
+    .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
+    .main-content::-webkit-scrollbar { display: none; }
 
-        /* MENÚ: Monospace técnico ultra ligero */
-        .nav-menu ol { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0; 
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px; 
-            font-weight: 100; 
-            color: var(--muted); 
-            line-height: 2.6; 
-            letter-spacing: 1px;
-        }
-        
-        .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; }
-        .nav-menu li:hover { color: var(--ink); }
+    .scroll-wrapper { 
+        display: grid; 
+        grid-template-columns: repeat(12, 1fr); 
+        gap: 20px; 
+        padding: 60px 40px 150px; 
+        align-items: start;
+    }
 
-        .sig-sidebar { margin: 30px 0; width: 260px; align-self: center; } 
-        .sig-sidebar img { width: 100%; opacity: 0.8; }
+    /* Sistema Dinámico para Fotos */
+    .img-block { 
+        grid-column: var(--c, 1) / span var(--s, 4); 
+        margin-top: var(--t, 0px); 
+        position: relative;
+        z-index: var(--z, 1);
+    }
+    .img-block img { width: 100%; height: auto; border-radius: 4px; display: block; }
+    .caption { font-size: 8px; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
 
-        .footer-sidebar { margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); font-weight: 200; }
-        .footer-links { margin-bottom: 20px; }
-        .contact-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; text-transform: uppercase; }
-        .footer-sidebar a { color: inherit; text-decoration: none; }
-        .about-link { color: var(--blue) !important; font-weight: 400; margin-bottom: 12px; display: block; font-size: 10px; letter-spacing: 1px; }
-        .cv-label { margin-top: 25px; font-weight: 400; color: var(--ink); letter-spacing: 2px; font-size: 10px; }
+    .home-nav { 
+        position: absolute; top: 30px; right: 40px; z-index: 100;
+        color: var(--blue); text-decoration: none; 
+        font-size: 11px; font-weight: 100; font-style: italic; cursor: pointer;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: 1.5px;
+    }
 
-        /* --- CONTENIDO --- */
-        .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
+    /* --- VISTA ABOUT ME --- */
+    #about-view { padding: 50px 60px; grid-column: 1 / span 12; }
+    .about-header { display: flex; justify-content: space-between; margin-bottom: 40px; align-items: baseline; }
+    .about-header .title { font-weight: 100; font-size: 16px; font-family: 'Inter', sans-serif; text-transform: lowercase; }
+    .about-header .author { color: var(--muted); font-size: 9px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 2px; }
 
-        .home-nav { 
-            position: absolute; top: 30px; right: 40px; z-index: 100;
-            color: var(--blue); text-decoration: none; 
-            font-size: 11px; font-weight: 100; font-style: italic; cursor: pointer;
-            font-family: 'JetBrains Mono', monospace;
-            letter-spacing: 1.5px;
-        }
+    .about-grid { display: grid; grid-template-columns: 1.6fr 300px; gap: 60px; }
+    .about-text { font-size: 12px; line-height: 1.8; color: var(--ink); font-weight: 100; font-family: 'Inter', sans-serif; }
+    .about-text p { margin-bottom: 25px; text-align: justify; }
 
-        /* --- ABOUT ME --- */
-        #about-view { padding: 50px 60px; }
-        .about-header { display: flex; justify-content: space-between; margin-bottom: 40px; align-items: baseline; }
-        .about-header .title { font-weight: 100; font-size: 16px; font-family: 'Inter', sans-serif; text-transform: lowercase; }
-        .about-header .author { color: var(--muted); font-size: 9px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 2px; }
-
-        .about-grid { display: grid; grid-template-columns: 1.6fr 300px; gap: 60px; }
-        .about-text { font-size: 12px; line-height: 1.8; color: var(--ink); font-weight: 100; font-family: 'Inter', sans-serif; }
-        .about-text p { margin-bottom: 25px; text-align: justify; }
-
-        .about-image img { width: 100%; border-radius: 4px; filter: grayscale(1); }
-        .location { margin-top: 20px; color: var(--muted); font-size: 9px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 3px; }
-    </style>
-</head>
-<body>
-    <div class="stage">
-        <main class="card">
-            <aside class="sidebar">
-                <h1 class="logo-hairline">LARA<br>FRIAS<br>CUMELLA</h1>
-                <nav class="nav-menu">
-                    <ol>
-                        <li>1. DIPLOPIA COLLECTION</li>
-                        <li>2. ARTISAN TAILORING</li>
-                        <li>3. COLLABORATIONS</li>
-                        <li>4. OTHER PROJECTS</li>
-                        <li>5. BTS</li>
-                        <li>6. WORK AT :</li>
-                        <li>7. KIDS</li>
-                        <li>8. BAGS</li>
-                    </ol>
-                </nav>
-                <div class="sig-sidebar">
-                    <img src="images/signature_01.jpeg" alt="Firma">
-                </div>
-                <footer class="footer-sidebar">
-                    <a href="#" class="about-link">ABOUT ME</a>
-                    <div class="footer-links">
-                        <div class="contact-row"><span>✉</span> <a href="mailto:larafc@hotmail.es">CONTACT</a></div>
-                        <div class="contact-row"><span></span> <a href="https://www.instagram.com/bylara.frias" target="_blank">INSTAGRAM</a></div>
-                    </div>
-                    <div class="cv-label">: CV</div>
-                </footer>
-            </aside>
-
-            <section class="main-content">
-                <div class="home-nav"><span>:</span> HOME</div>
-                <div id="about-view">
-                    <div class="about-header">
-                        <span class="title">: about me</span>
-                        <span class="author">BY LARA</span>
-                    </div>
-                    <div class="about-grid">
-                        <div class="about-text">
-                            <p>It's Lara, and i am a fashion designer, passionate about men and woman.s clothing. </p>
-                            <p>My journey into fashion has been deeply personal and transformative. After experiencing a cerebral stroke and undergoing a challenging surgical procedure that resulted in double vision, I chose to channel this unique perspective into my designs.</p>
-                            <p>This condition led me to a creative breakthrough: I began designing a wardrobe where every piece incorporates a "double" aesthetic. My clothing features mirrored details and duplications that reflect my own visual experience. This innovative approach has not only shaped my design methodology but has also become a hallmark of my personal style. By turning a significant challenge into a creative strength, I’ve developed a distinctive approach to fashion that blends functionality with artistic expression. Each piece I create tells a story of resilience and transformation, offering a fresh perspective on timeless fashion.</p>
-                        </div>
-                        <div class="about-right-col">
-                            <div class="about-image"><img src="images/Lara.jpg"></div>
-                            <p> Thank you for exploring my work, and I hope my designs inspire and resonate with you as much as they do with me. <p>
-
-                            <div class="location">Barcelona SPAIN</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
-</body>
-</html>
+    .about-image img { width: 100%; border-radius: 4px; filter: grayscale(1); }
+    .location { margin-top: 20px; color: var(--muted); font-size: 9px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 3px; }
+</style>
