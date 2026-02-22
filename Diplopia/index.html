@@ -19,7 +19,6 @@
             --pink: #ff0055;
         }
 
-        /* RESET Y MEJORA DE RENDERIZADO */
         * { 
             box-sizing: border-box; 
             -webkit-font-smoothing: antialiased; 
@@ -47,115 +46,63 @@
             box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
         }
 
-        /* --- SIDEBAR (IDÉNTICO AL INDEX) --- */
-        .sidebar { 
-            padding: 50px 45px; 
-            border-right: 1px solid rgba(0,0,0,0.05); 
-            display: flex; 
-            flex-direction: column; 
-            background: #fff; 
-            z-index: 100; 
-        }
-
-        .logo-hairline { 
-            font-family: 'Inter', sans-serif; 
-            font-size: 54px; 
-            font-weight: 100 !important; 
-            line-height: 0.72; 
-            letter-spacing: -3.5px; 
-            margin: 0 0 50px 0; 
-            text-transform: uppercase; 
-            color: var(--ink); 
-        }
-
-        .nav-menu ol { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0;
-            font-size: 10.5px; 
-            font-weight: 100;
-            color: var(--muted); 
-            line-height: 2.4; 
-            letter-spacing: 1px;
-        }
-
-        .nav-menu li { 
-            cursor: pointer; 
-            transition: color 0.3s; 
-            text-transform: uppercase;
-        }
-        
+        /* --- SIDEBAR ORIGINAL --- */
+        .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
+        .logo-hairline { font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); cursor: pointer; }
+        .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
+        .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; margin-bottom: 2px; }
         .nav-menu li.active { color: var(--ink); font-weight: 400; }
         .nav-menu li:hover { color: var(--ink); }
 
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
-        
-        .footer-sidebar { 
-            margin-top: auto; 
-            font-size: 10px; 
-            color: var(--muted); 
-            font-weight: 100;
+        .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
+        .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; letter-spacing: 1px; }
+
+        /* --- CONTENIDO DINÁMICO --- */
+        .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
+        .main-content::-webkit-scrollbar { display: none; }
+
+        .home-nav { 
+            position: sticky; top: 30px; margin-left: auto; margin-right: 40px; 
+            color: var(--blue); font-size: 11px; font-style: italic; 
+            z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content;
         }
 
-        .about-link { 
-            color: var(--blue); 
-            font-weight: 500; 
-            cursor: pointer; 
-            text-decoration: none; 
-            display: block; 
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-
-        /* --- CONTENIDO DE LA COLECCIÓN --- */
-        .main-content { position: relative; height: 100%; background: #fff; overflow: hidden; }
         .scroll-wrapper { 
-            height: 100%; 
-            overflow-y: auto; 
-            scrollbar-width: none; 
-            padding: 60px 80px;
+            display: grid; grid-template-columns: repeat(12, 1fr); 
+            gap: 25px 15px; padding: 60px 40px 150px; align-items: start;
         }
-        .scroll-wrapper::-webkit-scrollbar { display: none; }
 
-        .header-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-        .section-title { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
+        /* Sistema de Bloques de Imagen Lara Frias */
+        .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
+        .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
+        .caption { font-size: 8px; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+
+        /* Estilos de Texto Originales */
+        .text-full { grid-column: 1 / span 12; }
+        .header-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; border-bottom: 1px solid #f2f2f2; padding-bottom: 10px; }
+        .section-title { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; font-weight: 100; }
         .date-tag { font-size: 11px; color: var(--muted); }
         
         .intro-p { font-size: 13px; line-height: 1.8; text-align: justify; margin-bottom: 60px; color: var(--muted); max-width: 800px; }
+        .quote-block { grid-column: 2 / span 10; font-size: 14px; line-height: 1.8; font-style: italic; color: var(--muted); margin: 80px 0; border-left: 1px solid var(--blue); padding-left: 30px; }
 
-        /* BLOQUES DE IMAGEN */
-        .img-placeholder { background: #f8f8f8; width: 100%; margin-bottom: 40px; border-radius: 12px; }
-        .hero-img { aspect-ratio: 16 / 9; }
-        .lineup-img { aspect-ratio: 2 / 1; }
-        .square-img { aspect-ratio: 1 / 1; }
-
-        .quote-block { font-size: 14px; line-height: 1.8; font-style: italic; color: var(--muted); margin: 80px 0; border-left: 1px solid var(--blue); padding-left: 30px; }
-
-        .abstract-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 80px; font-size: 11px; line-height: 1.6; text-align: justify; color: var(--muted); }
+        .abstract-grid { grid-column: 1 / span 12; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 80px; font-size: 11px; line-height: 1.6; text-align: justify; color: var(--muted); }
         .abstract-col h4 { font-size: 10px; color: var(--ink); margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; letter-spacing: 2px; }
 
-        .history-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 100px; font-size: 11px; line-height: 1.8; }
-        .history-text { columns: 1; text-align: justify; color: var(--muted); }
-        .history-text h4 { color: var(--ink); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        .history-section { grid-column: 1 / span 12; display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; margin-top: 100px; }
+        .history-text { font-size: 11px; line-height: 1.8; text-align: justify; color: var(--muted); }
+        .history-text h4 { color: var(--ink); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; font-weight: 400; }
 
-        /* CRÉDITOS Y BTS */
-        .credits-area { margin-top: 100px; border-top: 1px solid #eee; padding-top: 60px; }
-        .bts-btn { 
-            background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; 
-            text-decoration: none; font-weight: 400; font-size: 10px; display: inline-block;
-            letter-spacing: 2px; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.15); margin-bottom: 40px;
-            transition: transform 0.3s;
-        }
+        .credits-area { grid-column: 1 / span 12; margin-top: 100px; border-top: 1px solid #eee; padding-top: 60px; }
+        .bts-btn { background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; text-decoration: none; font-size: 10px; display: inline-block; letter-spacing: 2px; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.15); margin-bottom: 40px; transition: 0.3s; }
         .bts-btn:hover { transform: translateY(-3px); }
         .credits-list { font-size: 11px; line-height: 2; color: var(--muted); }
-        .credits-list strong { color: var(--ink); font-weight: 400; letter-spacing: 1px; }
+        .credits-list strong { color: var(--ink); font-weight: 400; }
 
-        /* NAVEGACIÓN INFERIOR */
-        .page-nav { display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
-        .page-nav a { text-decoration: none; color: var(--muted); transition: color 0.3s; }
-        .page-nav a:hover { color: var(--blue); }
-
+        .page-nav { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
+        .page-nav a { text-decoration: none; color: var(--muted); }
     </style>
 </head>
 <body>
@@ -163,11 +110,10 @@
 <div class="stage">
     <main class="card">
         <aside class="sidebar">
-            <h1 class="logo-hairline">LARA<br>FRIAS<br>CUMELLA</h1>
-            
+            <h1 class="logo-hairline" onclick="location.href='../index.html'">LARA<br>FRIAS<br>CUMELLA</h1>
             <nav class="nav-menu">
                 <ol>
-                    <li class="active" onclick="location.href='index.html'">1. DIPLOPIA COLLECTION</li>
+                    <li class="active" onclick="location.href='../Diplopia/index.html'">1. DIPLOPIA COLLECTION</li>
                     <li onclick="location.href='../Artisan/index.html'">2. ARTISAN TAILORING</li>
                     <li onclick="location.href='../Collaborations/index.html'">3. COLLABORATIONS</li>
                     <li onclick="location.href='../Other/index.html'">4. OTHER PROJECTS</li>
@@ -177,11 +123,7 @@
                     <li onclick="location.href='../Bags/index.html'">8. BAGS</li>
                 </ol>
             </nav>
-
-            <div class="sig-sidebar">
-                <img src="../images/signature_01.jpeg" alt="Signature">
-            </div>
-
+            <div class="sig-sidebar"><img src="../images/signature_01.jpeg"></div>
             <footer class="footer-sidebar">
                 <a class="about-link" onclick="location.href='../Aboutme/index.html'">ABOUT ME</a>
                 <p>✉ <a href="mailto:larafc@hotmail.es" style="color:inherit;text-decoration:none;">larafc@hotmail.es</a></p>
@@ -191,32 +133,38 @@
         </aside>
 
         <section class="main-content">
+            <div class="home-nav" onclick="location.href='../index.html'">: HOME</div>
+            
             <div class="scroll-wrapper">
                 
-                <header class="header-meta">
-                    <h1 class="section-title">:My first collection/ <strong>Diplopía Creativa</strong></h1>
-                    <span class="date-tag">Feb-Jul 2023</span>
-                </header>
+                <div class="text-full">
+                    <header class="header-meta">
+                        <h1 class="section-title">:My first collection/ <strong>Diplopía Creativa</strong></h1>
+                        <span class="date-tag">Feb-Jul 2023</span>
+                    </header>
+                    <p class="intro-p">
+                        In this section i am going to present and show what has been the end of my career, the most unique, personal and largest project that I have ever done and that perfectly summarizes my work, the projection of the future and justification of the past, this was my final project of university degree and I know that it will be a great tool in the future for my design.
+                    </p>
+                </div>
 
-                <p class="intro-p">
-                    In this section i am going to present and show what has been the end of my career, the most unique, personal and largest project that I have ever done and that perfectly summarizes my work, the projection of the future and justification of the past, this was my final project of university degree and I know that it will be a great tool in the future for my design.
-                </p>
-
-                <div class="img-placeholder hero-img">
-                    </div>
+                <div class="img-block" style="--c: 1; --s: 12; --t: 0px;">
+                    <img src="../images/Diplopia_01.jpg">
+                </div>
 
                 <div class="quote-block">
                     "This project aims to explore double vision as a creative concept in fashion design. The motivation behind this collection relies in the personal experience of the designer, who suffered a stroke five years ago and has managed to adapt and use her double vision as a creative tool in fashion..."
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-                    <div class="img-placeholder square-img"></div>
-                    <div class="img-placeholder square-img"></div>
-                    <div class="img-placeholder square-img"></div>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="../images/Diplopia_02.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 40px;"><img src="../images/Diplopia_03.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: -20px;"><img src="../images/Diplopia_04.jpg"></div>
+
+                <div class="text-full">
+                    <h3 style="font-size: 10px; margin: 80px 0 25px; text-transform: uppercase; letter-spacing: 2px;">LINEUP COLECCIÓN_ 6 LOOKS (Orden definitivo)</h3>
                 </div>
 
-                <h3 style="font-size: 10px; margin: 80px 0 25px; text-transform: uppercase; letter-spacing: 2px;">LINEUP COLECCIÓN_ 6 LOOKS (Orden definitivo)</h3>
-                <div class="img-placeholder lineup-img"></div>
+                <div class="img-block" style="--c: 2; --s: 10; --t: 0px;">
+                    <img src="../images/Lineup.jpg"> </div>
 
                 <div class="abstract-grid">
                     <div class="abstract-col">
@@ -225,7 +173,7 @@
                     </div>
                     <div class="abstract-col">
                         <h4>CAT</h4>
-                        <p>Aquest projecte té com a objectiu principal explorar la visió doble com a concepte creatiu en el disseny de moda. La motivació darrere d'aquesta col·lecció rau en l'experiència personal de la dissenyadora...</p>
+                        <p>Aquest projecte té com a objectiu principal explorar la visió doble com a concepte creatiu en el disseny de moda. La motivació darrere d'aquesta col·lecció rau en l'experiència personal de la diseñadora...</p>
                     </div>
                     <div class="abstract-col">
                         <h4>ING</h4>
@@ -238,7 +186,8 @@
                         <h4>Mi historia: Qué pasó?</h4>
                         <p>Yo estaba en la playa de noche con unas amigas teniendo una charla nocturna, debían ser alrededor de las 22:00h y se dio un latigazo en la cabeza, desde la frente hasta la nuca. Yo no me imaginaba que sería nada grave ni mucho menos, como acabó siendo, de hecho, yo les dije a mis amigas que me dolía la cabeza y que me quería ir a casa, al levantarme, me desplomé e inmediatamente perdí el equilibrio y el control sobre mi propio cuerpo...</p>
                     </div>
-                    <div class="img-placeholder hero-img"></div>
+                    <div class="img-block" style="--c: 8; --s: 5; --t: 0px;">
+                        <img src="../images/History_Image.jpg"> </div>
                 </section>
 
                 <section class="credits-area">
