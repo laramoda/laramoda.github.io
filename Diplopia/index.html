@@ -32,52 +32,40 @@
         .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; margin-bottom: 2px; }
         .nav-menu li.active { color: var(--ink); font-weight: 400; }
         .nav-menu li:hover { color: var(--ink); }
-
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
         .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
         .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; letter-spacing: 1px; }
 
-        /* --- CONTENIDO DINÁMICO --- */
+        /* --- CONTENIDO --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
         .main-content::-webkit-scrollbar { display: none; }
-
-        .home-nav { 
-            position: sticky; top: 30px; margin-left: auto; margin-right: 40px; 
-            color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content;
-        }
-
+        .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content; }
         .scroll-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; padding: 60px 40px 150px; align-items: start; }
 
-        /* Sistema de Bloques Lara Frias */
+        /* Sistema de Bloques */
         .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
-        .caption { font-size: 8px; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-family: 'JetBrains Mono'; }
+        .caption { font-size: 8px; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
 
         .text-full { grid-column: 1 / span 12; }
         .header-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px; border-bottom: 1px solid #f2f2f2; padding-bottom: 15px; }
         .section-title { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; font-weight: 100; font-family: 'JetBrains Mono'; }
         .date-tag { font-size: 11px; color: var(--muted); }
-        
         .intro-p { font-size: 13px; line-height: 1.8; text-align: justify; margin-bottom: 40px; color: var(--muted); max-width: 850px; font-weight: 100; }
-        .quote-block { grid-column: 1 / span 10; font-size: 14px; line-height: 1.8; font-style: italic; color: var(--muted); margin: 60px 0; border-left: 1px solid var(--blue); padding-left: 30px; font-weight: 100; }
-
+        .quote-block { grid-column: 1 / span 10; font-size: 14px; line-height: 1.8; font-style: italic; color: var(--muted); margin: 80px 0; border-left: 1px solid var(--blue); padding-left: 30px; font-weight: 100; }
         .abstract-grid { grid-column: 1 / span 12; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; font-size: 11px; line-height: 1.6; text-align: justify; color: var(--muted); }
         .abstract-col h4 { font-size: 10px; color: var(--ink); margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; letter-spacing: 2px; }
-
         .history-text { grid-column: 1 / span 6; font-size: 11px; line-height: 1.8; text-align: justify; color: var(--muted); padding-right: 40px; font-weight: 100; }
         .history-text h4 { color: var(--ink); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; font-weight: 400; }
-
-        .credits-area { grid-column: 1 / span 12; margin-top: 80px; border-top: 1px solid #eee; padding-top: 60px; }
+        .credits-area { grid-column: 1 / span 12; margin-top: 80px; border-top: 1px solid #eee; padding-top: 60px; position: relative; }
         .bts-btn { background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; text-decoration: none; font-size: 10px; display: inline-block; letter-spacing: 2px; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.15); margin-bottom: 40px; transition: 0.3s; }
         .bts-btn:hover { transform: translateY(-3px); }
-        
         .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 60px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 60px; }
         .nav-footer a { color: var(--muted); text-decoration: none; }
     </style>
 </head>
 <body>
-
 <div class="stage">
     <main class="card">
         <aside class="sidebar">
@@ -105,18 +93,9 @@
 
         <section class="main-content">
             <div class="home-nav" onclick="location.href='../index.html'">: HOME</div>
-            
             <div class="scroll-wrapper">
                 
-                <div class="img-block" style="--c: 1; --s: 5; --t: 40px; opacity: 0.9;">
-                    <img src="../images/signature_02.jpeg">
-                </div>
-                <div class="img-block" style="--c: 6; --s: 7; --t: 0px;">
-                    <img src="Images/diplopia 1.jpg">
-                    <p class="caption">Diplopia 01 / Double collar detail</p>
-                </div>
-
-                <div class="text-full" style="margin-top: 60px;">
+                <div class="text-full">
                     <header class="header-meta">
                         <h1 class="section-title">:My first collection/ <strong>Diplopía Creativa</strong></h1>
                         <span class="date-tag">Feb-Jul 2023</span>
@@ -125,25 +104,27 @@
                         In this section i am going to present and show what has been the end of my career, the most unique, personal and largest project that I have ever done and that perfectly summarizes my work, the projection of the future and justification of the past, this was my final project of university degree and I know that it will be a great tool in the future for my design.
                     </p>
                 </div>
+                <div class="img-block" style="--c: 1; --s: 12; --t: 0px;">
+                    <img src="Images/diplopia 1.jpg">
+                </div>
 
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="Images/diplopia 2.jpeg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 80px;"><img src="Images/diplopia 3.jpeg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: -20px;"><img src="Images/diplopia 4.jpeg"></div>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 40px;"><img src="Images/diplopia 2.jpeg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 100px;"><img src="Images/diplopia 3.jpeg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 0px;"><img src="Images/diplopia 4.jpeg"></div>
 
                 <div class="quote-block">
                     "This project aims to explore double vision as a creative concept in fashion design. The motivation behind this collection relies in the personal experience of the designer, who suffered a stroke five years ago and has managed to adapt and use her double vision as a creative tool in fashion..."
                 </div>
-
                 <div class="img-block" style="--c: 1; --s: 5; --t: 0px;"><img src="Images/diplopia 5.png"></div>
-                <div class="img-block" style="--c: 7; --s: 5; --t: 40px;"><img src="Images/diplopia 6.png"></div>
+                <div class="img-block" style="--c: 7; --s: 5; --t: 60px;"><img src="Images/diplopia 6.png"></div>
 
                 <div class="abstract-grid">
-                    <div class="abstract-col"><h4>CAST</h4><p>Este proyecto tiene como objetivo principal explorar la visión doble como concepto creativo...</p></div>
-                    <div class="abstract-col"><h4>CAT</h4><p>Aquest projecte té com a objectiu principal explorar la visió doble...</p></div>
-                    <div class="abstract-col"><h4>ING</h4><p>This project aims to explore double vision as a creative concept...</p></div>
+                    <div class="abstract-col"><h4>CAST</h4><p>Este proyecto tiene como objetivo principal explorar la visión doble como concepto creativo en el diseño de moda. La motivación detrás de esta colección se basa en la experiencia personal de la diseñadora...</p></div>
+                    <div class="abstract-col"><h4>CAT</h4><p>Aquest projecte té com a objectiu principal explorar la visió doble com a concepte creatiu en el disseny de moda. La motivació darrere d'aquesta col·lecció rau en l'experiència personal...</p></div>
+                    <div class="abstract-col"><h4>ING</h4><p>This project aims to explore double vision as a creative concept in fashion design. The motivation behind this collection relies in the personal experience of the designer...</p></div>
                 </div>
 
-                <div class="text-full" style="margin-top: 80px;">
+                <div class="text-full" style="margin-top: 100px;">
                     <h3 style="font-size: 10px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px;">LINEUP COLECCIÓN_ 6 LOOKS</h3>
                 </div>
                 <div class="img-block" style="--c: 1; --s: 12; --t: 0px;"><img src="Images/diplopia 7.png"></div>
@@ -153,19 +134,19 @@
                     <p style="font-size: 11px; letter-spacing: 3px; font-weight: 100;">CLICK TO READ THE FULL RESEARCH ON ISSUU.COM</p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 12; --t: 100px;"><img src="Images/diplopia 9.png"><p class="caption"> Lancaster test and concept mapping research</p></div>
+                <div class="img-block" style="--c: 1; --s: 12; --t: 120px;"><img src="Images/diplopia 9.png"><p class="caption"> Lancaster test and concept mapping research</p></div>
 
-                <div class="text-full" style="margin-top: 120px;">
+                <div class="text-full" style="margin-top: 100px;">
                     <div style="display: grid; grid-template-columns: 1.2fr 1.5fr; gap: 40px;">
                         <div class="history-text">
                             <h4>Mi historia: Qué pasó?</h4>
-                            <p>Yo estaba en la playa de noche con unas amigas teniendo una charla nocturna...</p>
+                            <p>Yo estaba en la playa de noche con unas amigas teniendo una charla nocturna... al levantarme, me desplomé e inmediatamente perdí el equilibrio y el control sobre mi propio cuerpo...</p>
                         </div>
                         <div class="img-block" style="--s: 12; --t: 0px;"><img src="Images/diplopia 10.png"></div>
                     </div>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 12; --t: 40px;"><img src="Images/diplopia 11.png"><p class="caption">Textural experimentation and fabric research</p></div>
+                <div class="img-block" style="--c: 1; --s: 12; --t: 60px;"><img src="Images/diplopia 11.png"><p class="caption">Textural experimentation and fabric research</p></div>
 
                 <section class="credits-area">
                     <a href="../BTS/index.html" class="bts-btn">BTS CLICK</a>
@@ -185,6 +166,5 @@
         </section>
     </main>
 </div>
-
 </body>
 </html>
