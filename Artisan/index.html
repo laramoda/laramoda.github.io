@@ -7,79 +7,49 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
     
     <style>
-        :root { 
-            --bg: #efefef; 
-            --card: #ffffff; 
-            --ink: #1a1a1a; 
-            --muted: #b5b5b5; 
-            --blue: #1f36ff; 
-        }
+        :root { --bg: #efefef; --card: #ffffff; --ink: #1a1a1a; --muted: #b5b5b5; --blue: #1f36ff; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
 
-        * { 
-            box-sizing: border-box; 
-            -webkit-font-smoothing: antialiased; 
-            -moz-osx-font-smoothing: grayscale; 
-            text-rendering: optimizeLegibility;
-        }
-
-        body, html { 
-            margin: 0; padding: 0; height: 100%; 
-            background: var(--bg); 
-            font-family: 'JetBrains Mono', monospace; 
-            overflow: hidden; 
-        }
-        
+        body, html { margin: 0; padding: 0; height: 100%; background: var(--bg); font-family: 'JetBrains Mono', monospace; overflow: hidden; }
         .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        
-        .card { 
-            width: min(1380px, 98%); 
-            height: min(850px, 92vh); 
-            background: var(--card); 
-            border-radius: 24px; 
-            display: grid; 
-            grid-template-columns: 320px 1fr; 
-            overflow: hidden; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
-        }
+        .card { width: min(1380px, 98%); height: min(850px, 92vh); background: var(--card); border-radius: 24px; display: grid; grid-template-columns: 320px 1fr; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.08); }
 
-        /* --- SIDEBAR ORIGINAL --- */
+        /* --- SIDEBAR --- */
         .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
         .logo-hairline { font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); cursor: pointer; }
         .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
-        .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; }
+        .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; margin-bottom: 2px; }
         .nav-menu li.active { color: var(--ink); font-weight: 400; }
         .nav-menu li:hover { color: var(--ink); }
-
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
         .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
         .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; letter-spacing: 1px; }
 
-        /* --- CONTENIDO CON REJILLA DINÁMICA --- */
+        /* --- CONTENIDO --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
         .main-content::-webkit-scrollbar { display: none; }
+        .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content; }
+        .scroll-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; padding: 60px 40px 150px; align-items: start; }
 
-        .home-nav { 
-            position: sticky; top: 30px; margin-left: auto; margin-right: 40px; 
-            color: var(--blue); font-size: 11px; font-style: italic; 
-            z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content;
-        }
-
-        .scroll-wrapper { 
-            display: grid; grid-template-columns: repeat(12, 1fr); 
-            gap: 25px 15px; padding: 60px 40px 150px; align-items: start;
-        }
-
-        .img-block { 
-            grid-column: var(--c, 1) / span var(--s, 4); 
-            margin-top: var(--t, 0px); 
-            position: relative; z-index: var(--z, 1);
-        }
+        /* Sistema de Bloques */
+        .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
-        .caption { font-size: 8px; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+        .caption { font-size: 8px; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-family: 'JetBrains Mono'; }
+
+        .text-full { grid-column: 1 / span 12; }
+        .header-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px; border-bottom: 1px solid #f2f2f2; padding-bottom: 15px; }
+        .section-title { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; font-weight: 100; font-family: 'JetBrains Mono'; }
+        .date-tag { font-size: 11px; color: var(--muted); }
+        .intro-p { font-size: 12px; line-height: 1.8; text-align: justify; margin-bottom: 30px; color: var(--muted); max-width: 850px; font-weight: 100; }
+        
+        .sub-header { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 60px 0 20px; font-weight: 400; color: var(--ink); border-top: 1px solid #eee; padding-top: 40px; grid-column: 1 / span 12; }
+        
+        .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 60px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 60px; }
+        .nav-footer a { color: var(--muted); text-decoration: none; }
     </style>
 </head>
 <body>
@@ -90,7 +60,7 @@
             <nav class="nav-menu">
                 <ol>
                     <li onclick="location.href='../Diplopia/index.html'">1. DIPLOPIA COLLECTION</li>
-                    <li class="active" onclick="location.href='../Artisan/index.html'">2. ARTISAN TAILORING</li>
+                    <li class="active" onclick="location.href='index.html'">2. ARTISAN TAILORING</li>
                     <li onclick="location.href='../Collaborations/index.html'">3. COLLABORATIONS</li>
                     <li onclick="location.href='../Other/index.html'">4. OTHER PROJECTS</li>
                     <li onclick="location.href='../BTS/index.html'">5. BTS</li>
@@ -110,29 +80,79 @@
 
         <section class="main-content">
             <div class="home-nav" onclick="location.href='../index.html'">: HOME</div>
-            
             <div class="scroll-wrapper">
                 
-                <div class="img-block" style="--c: 2; --s: 4; --t: 20px;">
-                    <img src="../images/Artisan_01.jpg">
-                    <p class="caption">Artisan 01</p>
+                <div class="text-full">
+                    <header class="header-meta">
+                        <h1 class="section-title">:First touch w/ <strong>art of artisan tailoring</strong></h1>
+                        <span class="date-tag">Feb - Jun 2023</span>
+                    </header>
+                    <p class="intro-p">
+                        In 2022 during my degree in fashion design, specifically in the pattern making workshop during my third year...
+                    </p>
                 </div>
 
-                <div class="img-block" style="--c: 7; --s: 2.5; --t: 60px;">
-                    <img src="../images/Artisan_02.jpg">
-                    <p class="caption">Artisan 02</p>
+                <div class="img-block" style="--c: 1; --s: 3; --t: 0px;"><img src="images/artisan.png"></div>
+                <div class="img-block" style="--c: 4; --s: 3; --t: 0px;"><img src="images/artisan2.png"></div>
+                <div class="img-block" style="--c: 7; --s: 3; --t: 0px;"><img src="images/artisan3.jpg"></div>
+                <div class="img-block" style="--c: 10; --s: 3; --t: 0px;"><img src="images/artisan4.png"></div>
+                <div class="img-block" style="--c: 1; --s: 3; --t: 15px;"><img src="images/artisan5.png"></div>
+                <div class="img-block" style="--c: 4; --s: 3; --t: 15px;"><img src="images/artisan6.png"></div>
+                <div class="img-block" style="--c: 7; --s: 3; --t: 15px;"><img src="images/artisan7.png"></div>
+                <div class="img-block" style="--c: 10; --s: 3; --t: 15px;"><img src="images/artisan8.png"></div>
+
+                <h2 class="sub-header">INVESTIGACIÓN DE PATRONAJE</h2>
+                <div class="img-block" style="--c: 1; --s: 6; --t: 0px;"><img src="images/artisan9.jpg"></div>
+                <div class="img-block" style="--c: 8; --s: 5; --t: 40px;"><img src="images/artisan10.jpg"></div>
+
+                <div class="text-full" style="margin-top: 40px;">
+                    <p class="intro-p">En este apartado se exponen los intereses de investigación...</p>
                 </div>
 
-                <div class="img-block" style="--c: 10; --s: 2.5; --t: 0px;">
-                    <img src="../images/Artisan_03.jpg">
-                    <p class="caption">Artisan 03</p>
-                </div>
+                <h2 class="sub-header">EXPERIMENTACIÓN & FITTINGS</h2>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="images/artisan11.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 80px;"><img src="images/artisan12.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: -20px;"><img src="images/artisan13.jpg"></div>
+                <div class="img-block" style="--c: 2; --s: 8; --t: 100px;"><img src="images/artisan14.jpg"></div>
 
-                <div class="img-block" style="--c: 8; --s: 3; --t: -40px; --z: 10;">
-                    <img src="../images/Artisan_04.jpg">
-                    <p class="caption">Artisan 04 / Detail</p>
-                </div>
+                <h2 class="sub-header">Americana realizada meses antes con sistema de sastrería a medida artesanal</h2>
+                <div class="img-block" style="--c: 1; --s: 3; --t: 0px;"><img src="images/artisan15.jpg"></div>
+                <div class="img-block" style="--c: 4; --s: 3; --t: 0px;"><img src="images/artisan16.jpg"></div>
+                <div class="img-block" style="--c: 7; --s: 3; --t: 0px;"><img src="images/artisan17.jpg"></div>
+                <div class="img-block" style="--c: 10; --s: 3; --t: 0px;"><img src="images/artisan18.jpg"></div>
 
+                <div class="text-full" style="margin-top: 100px;">
+                    <h3 style="font-size: 11px; margin-bottom: 20px;">Improvement in Pattern Making and Fabrics from the First Blazer to the Second One</h3>
+                </div>
+                <div class="img-block" style="--c: 1; --s: 6; --t: 0px;"><img src="images/artisan19.jpg"></div>
+                <div class="img-block" style="--c: 7; --s: 6; --t: 0px;"><img src="images/artisan20.jpg"></div>
+
+                <h2 class="sub-header">PROCESO FINAL Y DETALLES</h2>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="images/artisan21.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 0px;"><img src="images/artisan22.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 0px;"><img src="images/artisan23.jpg"></div>
+
+                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/artisan24.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/artisan25.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/artisan27.jpg"></div>
+
+                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/artisan28.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/artisan29.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/artisan30.jpg"></div>
+
+                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/artisan31.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/artisan32.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/artisan33.jpg"></div>
+
+                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/artisan34.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/artisan35.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/artisan36.jpg"></div>
+
+                <footer class="nav-footer">
+                    <a href="../Diplopia/index.html">← Diplopia Collection</a>
+                    <a href="../index.html">Index</a>
+                    <a href="../Collaborations/index.html">Collaborations →</a>
+                </footer>
             </div>
         </section>
     </main>
