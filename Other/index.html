@@ -18,12 +18,7 @@
             --blue: #1f36ff; 
         }
 
-        * { 
-            box-sizing: border-box; 
-            -webkit-font-smoothing: antialiased; 
-            -moz-osx-font-smoothing: grayscale; 
-            text-rendering: optimizeLegibility;
-        }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
         body, html { 
             margin: 0; padding: 0; height: 100%; 
@@ -49,7 +44,7 @@
         .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
         .logo-hairline { font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); cursor: pointer; }
         .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
-        .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; margin-bottom: 2px; }
+        .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; }
         .nav-menu li.active { color: var(--ink); font-weight: 400; }
         .nav-menu li:hover { color: var(--ink); }
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
@@ -64,16 +59,32 @@
         
         .scroll-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; padding: 60px 40px 150px; align-items: start; }
 
-        .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; }
+        /* CARRUSEL OPS - CORREGIDO */
+        .image-carousel { 
+            grid-column: 1 / span 12; 
+            display: flex; 
+            overflow-x: auto; 
+            gap: 25px; 
+            scroll-snap-type: x mandatory; 
+            scrollbar-width: none; 
+            padding: 20px 0;
+            margin-bottom: 60px;
+        }
+        .image-carousel::-webkit-scrollbar { display: none; }
+        .image-carousel img { 
+            height: 550px; 
+            width: auto; 
+            border-radius: 12px; 
+            flex-shrink: 0; 
+            scroll-snap-align: center; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+        }
+
+        .img-block { grid-column: var(--c, 1) / span var(--s, 4); margin-top: var(--t, 0px); position: relative; }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
         
-        /* Visor Horizontal OPS */
-        .image-viewer { grid-column: 1 / span 12; display: flex; overflow-x: auto; gap: 15px; scrollbar-width: none; padding: 20px 0; margin-bottom: 60px; }
-        .image-viewer::-webkit-scrollbar { display: none; }
-        .image-viewer img { height: 500px; width: auto; border-radius: 12px; flex-shrink: 0; }
-
         .text-full { grid-column: 1 / span 12; margin-bottom: 40px; }
-        .header-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+        .header-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 40px; }
         .title-main { font-size: 18px; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2; font-weight: 200; }
         .intro-text { font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; font-weight: 100; }
 
@@ -114,31 +125,27 @@
             <div class="scroll-wrapper">
                 
                 <header class="text-full header-section">
-                    <div class="title-main">
-                        :Other projects<br>
-                        <span style="font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: 0;">All since 2018</span>
-                    </div>
-                    <div class="intro-text">
-                        I am not going to leave aside the rest of my projects, although they do not deserve a full section of their own because they do not stand out in depth and significance in my career, i would like to include the results at least since they are eye-catching and show my evolution.
-                    </div>
+                    <div class="title-main">:Other projects<br><span style="font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: 0;">All since 2018</span></div>
+                    <div class="intro-text">I am not going to leave aside the rest of my projects...</div>
                 </header>
 
-                <div class="image-viewer">
-                    <img src="images/OPS1.jpg"><img src="images/OPS2.jpg"><img src="images/OPS3.jpg"><img src="images/OPS4.jpg"><img src="images/OPS5.jpg"><img src="images/OPS6.jpg"><img src="images/OPS7.jpg"><img src="images/OPS8.jpg"><img src="images/OPS9.jpg"><img src="images/OPS10.jpg"><img src="images/OPS11.jpg">
+                <div class="image-carousel">
+                    <img src="images/OPS1.jpg"><img src="images/OPS2.jpg"><img src="images/OPS3.jpg">
+                    <img src="images/OPS4.jpg"><img src="images/OPS5.jpg"><img src="images/OPS6.jpg">
+                    <img src="images/OPS7.jpg"><img src="images/OPS8.jpg"><img src="images/OPS9.jpg">
+                    <img src="images/OPS10.jpg"><img src="images/OPS11.jpg">
                 </div>
 
                 <div class="text-full">
                     <div class="project-meta"><strong>2023</strong></div>
-                    <p style="font-size: 12px; color: var(--muted); line-height: 1.8;">First diplopia project for Stradivarius. Based on a Digitalworld i decided to grab the GLITCH concept as it is similar to double vision but in digital world.</p>
+                    <p style="font-size: 12px; color: var(--muted); line-height: 1.8;">First diplopia project for Stradivarius...</p>
                 </div>
                 <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="images/otherproj tricot.jpg"></div>
                 <div class="img-block" style="--c: 5; --s: 4; --t: 0px;"><img src="images/otherproj tricot 2.jpg"></div>
                 <div class="img-block" style="--c: 9; --s: 4; --t: 0px;"><img src="images/otherproj tricot 3.jpg"></div>
 
-                <div class="text-full" style="margin-top: 100px; border-top: 1px solid #eee; padding-top: 40px;">
-                    <div class="project-meta"><strong>PROJECT ARCHIVE</strong></div>
-                </div>
-
+                <div class="text-full" style="margin-top: 100px;"><div class="project-meta"><strong>PROJECT ARCHIVE</strong></div></div>
+                
                 <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="images/otherproj otros.jpg"></div>
                 <div class="img-block" style="--c: 5; --s: 4; --t: 0px;"><img src="images/otherproj otros2.jpg"></div>
                 <div class="img-block" style="--c: 9; --s: 4; --t: 0px;"><img src="images/otherproj otros3.jpg"></div>
@@ -146,26 +153,6 @@
                 <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/otherproj otros4.jpg"></div>
                 <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/otherproj otros5.jpg"></div>
                 <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/otherproj otros6.jpg"></div>
-
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/otherproj otros7.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/otherproj otros8.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/otherproj otros9.jpg"></div>
-
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/otherproj otros10.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/otherproj otros11.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/otherproj otros12.jpg"></div>
-
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/otherproj otros13.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/otherproj otros14.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/otherproj otros15.jpg"></div>
-
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/otherproj otros16.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/otherproj otros17.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/otherproj otros18.jpg"></div>
-
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/otherproj otros19.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/otherproj otros20.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/otherproj otros21.jpg"></div>
 
                 <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/otherproj otros22.jpg"></div>
                 <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/otherproj otros23.jpg"></div>
