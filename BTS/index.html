@@ -18,12 +18,7 @@
             --blue: #1f36ff; 
         }
 
-        * { 
-            box-sizing: border-box; 
-            -webkit-font-smoothing: antialiased; 
-            -moz-osx-font-smoothing: grayscale; 
-            text-rendering: optimizeLegibility;
-        }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
         body, html { 
             margin: 0; padding: 0; height: 100%; 
@@ -45,76 +40,43 @@
             box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
         }
 
-        /* --- SIDEBAR ORIGINAL RECUPERADO --- */
+        /* --- SIDEBAR --- */
         .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
-        
-        .logo-hairline { 
-            font-family: 'Inter', sans-serif; 
-            font-size: 54px; font-weight: 100 !important; 
-            line-height: 0.72; letter-spacing: -3.5px; 
-            margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); 
-            cursor: pointer;
-        }
-        
-        .nav-menu ol { 
-            list-style: none; padding: 0; margin: 0; 
-            font-size: 10.5px; font-weight: 100; color: var(--muted); 
-            line-height: 2.4; letter-spacing: 1px; 
-        }
-        
-        .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; margin-bottom: 2px; }
+        .logo-hairline { font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); cursor: pointer; }
+        .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
+        .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; }
         .nav-menu li.active { color: var(--ink); font-weight: 400; }
         .nav-menu li:hover { color: var(--ink); }
-        
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
-        
         .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
         .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; letter-spacing: 1px; }
 
         /* --- CONTENIDO BTS --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
         .main-content::-webkit-scrollbar { display: none; }
-
-        .home-nav { 
-            position: sticky; top: 30px; margin-left: auto; margin-right: 40px; 
-            color: var(--blue); font-size: 11px; font-style: italic; 
-            z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content;
-        }
-
+        .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content; }
+        
         .scroll-wrapper { padding: 60px 80px 150px; }
 
-        .header-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 80px; }
+        .header-section { margin-bottom: 80px; }
         .title-main { font-size: 18px; line-height: 1.2; text-transform: uppercase; letter-spacing: 1px; font-weight: 200; }
-        .intro-text { font-size: 12px; line-height: 1.8; text-align: justify; color: var(--muted); font-weight: 100; }
+        .intro-text { font-size: 12px; line-height: 1.8; text-align: justify; color: var(--muted); font-weight: 100; max-width: 800px; margin-top: 20px; }
 
-        .bts-block { margin-top: 100px; }
-        .collection-tag { font-size: 24px; text-transform: uppercase; margin-top: 25px; letter-spacing: 2px; font-weight: 200; }
+        /* CARRUSELES */
+        .image-carousel { display: flex; overflow-x: auto; gap: 20px; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 30px 0 60px; }
+        .image-carousel::-webkit-scrollbar { display: none; }
+        .image-carousel img { height: 500px; width: auto; border-radius: 12px; flex-shrink: 0; scroll-snap-align: center; }
+
+        .collection-tag { font-size: 24px; text-transform: uppercase; margin-top: 100px; letter-spacing: 2px; font-weight: 200; border-top: 1px solid #f2f2f2; padding-top: 40px; }
         .collection-tag span { font-weight: 100; font-style: italic; color: var(--muted); }
 
-        .hero-bts { width: 100%; border-radius: 12px; overflow: hidden; }
-        .hero-bts img { width: 100%; display: block; border-radius: 12px; }
-
-        .process-grid-header { font-size: 11px; margin: 120px 0 30px; text-transform: uppercase; letter-spacing: 2px; font-weight: 200; }
-        .process-grid-header span { color: var(--muted); font-size: 10px; margin-left: 10px; text-transform: none; letter-spacing: 0; }
-        
-        .grid-technical { 
-            display: grid; 
-            grid-template-columns: repeat(7, 1fr); 
-            gap: 12px; 
-            margin-bottom: 80px;
-        }
-        .tech-tile img { width: 100%; border-radius: 8px; aspect-ratio: 1/1.4; object-fit: cover; }
-
-        .details-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 60px; }
-        .detail-card img { width: 100%; border-radius: 12px; }
+        /* GRID FINAL */
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 40px; }
+        .process-grid img { width: 100%; border-radius: 8px; aspect-ratio: 1/1; object-fit: cover; }
 
         .nav-footer { display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 100px; }
-        .nav-footer a { color: var(--muted); text-decoration: none; transition: color 0.3s; }
-        .nav-footer a:hover { color: var(--blue); }
-
-        .footer-credits { display: flex; justify-content: center; gap: 40px; font-size: 9px; color: var(--muted); padding-bottom: 40px; text-transform: uppercase; letter-spacing: 1px; }
-
+        .nav-footer a { color: var(--muted); text-decoration: none; }
     </style>
 </head>
 <body>
@@ -135,73 +97,75 @@
                     <li onclick="location.href='../Bags/index.html'">8. BAGS</li>
                 </ol>
             </nav>
-            <div class="sig-sidebar">
-                <img src="../images/signature_01.jpeg" alt="Signature">
-            </div>
+            <div class="sig-sidebar"><img src="../images/signature_01.jpeg"></div>
             <footer class="footer-sidebar">
                 <a class="about-link" onclick="location.href='../Aboutme/index.html'">ABOUT ME</a>
-                <p>✉ <a href="mailto:larafc@hotmail.es" style="color:inherit;text-decoration:none;">larafc@hotmail.es</a></p>
-                <p> <a href="https://instagram.com/bylara.frias" target="_blank" style="color:inherit;text-decoration:none;">INSTAGRAM</a></p>
+                <p>✉ <a href="mailto:larafc@hotmail.es">larafc@hotmail.es</a></p>
+                <p> <a href="https://instagram.com/bylara.frias" target="_blank">INSTAGRAM</a></p>
                 <p style="margin-top: 15px; color: var(--ink); font-weight: 400; letter-spacing: 2px;">: CV</p>
             </footer>
         </aside>
 
         <section class="main-content">
             <div class="home-nav" onclick="location.href='../index.html'">: HOME</div>
-            
             <div class="scroll-wrapper">
                 
                 <header class="header-section">
                     <h1 class="title-main">:Behind the scenes process</h1>
                     <p class="intro-text">
-                        The record of the process is almost as important to me as the result, it explains my research and the purest reality of the work, it shows my involvement and creativity in the purest and most real way. It creates memories and highlights the work of everyone around me. In addition to adding value to it.
+                        The record of the process is almost as important to me as the result...
                     </p>
                 </header>
 
-                <section class="bts-block">
-                    <div class="hero-bts"><img src="../Images/5.1_shooting.jpg"></div>
-                    <h2 class="collection-tag">:DIPLOPÍA <span>COLLECTION</span></h2>
-                </section>
-
-                <section class="bts-block">
-                    <div class="hero-bts" style="max-width: 800px; margin: 0 auto;"><img src="../Images/5.3_moodbored.jpg"></div>
-                    <h2 class="collection-tag" style="text-align: right;">:MOOD_ BORED <span>SWIMWEAR COLLECTION</span></h2>
-                </section>
-
-                <section class="bts-block">
-                    <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 20px; align-items: end;">
-                        <img src="../Images/5.4_contact_sheet.jpg" style="width: 100%; border-radius: 12px;">
-                        <img src="../Images/5.5_doberman.jpg" style="width: 100%; border-radius: 12px;">
-                    </div>
-                    <h2 class="collection-tag">:VILLAINS <span>COLLECTION</span></h2>
-                </section>
-
-                <h3 class="process-grid-header">PROCESS IN THE MAKING <span>(patterns, fittings, digital & more)</span></h3>
-                <div class="grid-technical">
-                    <div class="tech-tile"><img src="../Images/p1.jpg"></div>
-                    <div class="tech-tile"><img src="../Images/p2.jpg"></div>
-                    <div class="tech-tile"><img src="../Images/p3.jpg"></div>
-                    <div class="tech-tile"><img src="../Images/p4.jpg"></div>
-                    <div class="tech-tile"><img src="../Images/p5.jpg"></div>
-                    <div class="tech-tile"><img src="../Images/p6.jpg"></div>
-                    <div class="tech-tile"><img src="../Images/p7.jpg"></div>
+                <div style="margin-bottom: 60px;">
+                    <img src="images/bts6.jpg" style="width: 100%; border-radius: 12px; margin-bottom: 20px;">
+                    <img src="images/bts2.jpg" style="width: 60%; border-radius: 12px;">
                 </div>
 
-                <div class="details-row">
-                    <div class="detail-card"><img src="../Images/5.7_detail1.jpg"></div>
-                    <div class="detail-card"><img src="../Images/5.7_detail2.jpg"></div>
-                    <div class="detail-card"><img src="../Images/5.7_detail3.jpg"></div>
+                <h2 class="collection-tag">:DIPLOPÍA <span>COLLECTION</span></h2>
+                <div class="image-carousel">
+                    <img src="images/bts22.jpg"><img src="images/bts23.jpg">
+                </div>
+
+                <h2 class="collection-tag">:MOOD_ BORED <span>SWIMWEAR COLLECTION</span></h2>
+                <div class="image-carousel">
+                    <img src="images/bts swim.jpg"><img src="images/bts swim2.jpg"><img src="images/bts swim3.jpg">
+                    <img src="images/bts swim4.jpg"><img src="images/bts swim5.jpg"><img src="images/bts swim6.jpg">
+                    <img src="images/bts swim7.jpg"><img src="images/bts swim8.jpg"><img src="images/bts swim9.jpg">
+                    <img src="images/bts swim10.jpg"><img src="images/bts swim11.jpg"><img src="images/bts swim12.jpg">
+                    <img src="images/bts swim13.jpg"><img src="images/bts swim14.jpg"><img src="images/bts swim15.jpg">
+                    <img src="images/bts swim16.jpg"><img src="images/bts swim17.jpg"><img src="images/bts swim18.jpg">
+                    <img src="images/bts swim19.jpg"><img src="images/bts swim20.jpg">
+                </div>
+
+                <h2 class="collection-tag">:VILLAINS <span>COLLECTION</span></h2>
+                <div class="image-carousel">
+                    <img src="images/bts villanos.jpg"><img src="images/bts villanos2.jpg"><img src="images/bts villanos3.jpg">
+                    <img src="images/bts villanos4.jpg"><img src="images/bts villanos5.jpg"><img src="images/bts villanos6.jpg">
+                    <img src="images/bts villanos7.jpg"><img src="images/bts villanos8.jpg"><img src="images/bts villanos9.jpg">
+                    <img src="images/bts villanos10.jpg"><img src="images/bts villanos11.jpg"><img src="images/bts villanos12.jpg">
+                    <img src="images/bts villanos13.jpg"><img src="images/bts villanos14.jpg"><img src="images/bts villanos15.jpg">
+                    <img src="images/bts villanos16.jpg"><img src="images/bts villanos17.jpg"><img src="images/bts villanos18.jpg">
+                    <img src="images/bts villanos19.jpg"><img src="images/bts villanos20.jpg"><img src="images/bts villanos21.jpg">
+                    <img src="images/bts villanos22.jpg"><img src="images/bts villanos23.jpg"><img src="images/bts villanos24.jpg">
+                    <img src="images/bts villanos25.jpg"><img src="images/bts villanos26.jpg"><img src="images/bts villanos27.jpg">
+                </div>
+
+                <h2 class="collection-tag">PROCESS IN THE MAKING <span>(patterns, fittings, digital & more)</span></h2>
+                <div class="process-grid">
+                    <img src="images/bts general.jpg"><img src="images/bts general2.jpg"><img src="images/bts general3.jpg"><img src="images/bts general4.jpg">
+                    <img src="images/bts general5.jpg"><img src="images/bts general6.jpg"><img src="images/bts general7.jpg"><img src="images/bts general8.jpg">
+                    <img src="images/bts general9.jpg"><img src="images/bts general10.jpg"><img src="images/bts general11.jpg"><img src="images/bts general12.jpg">
+                    <img src="images/bts general13.jpg"><img src="images/bts general14.jpg"><img src="images/bts general15.jpg"><img src="images/bts general16.jpg">
+                    <img src="images/bts general17.jpg"><img src="images/bts general18.jpg"><img src="images/bts general19.jpg"><img src="images/bts general20.jpg">
+                    <img src="images/bts general21.jpg"><img src="images/bts general22.jpg"><img src="images/bts general23.jpg"><img src="images/bts general24.jpg">
+                    <img src="images/bts general25.jpg"><img src="images/bts general26.jpg"><img src="images/bts general27.jpg">
                 </div>
 
                 <footer class="nav-footer">
                     <a href="../Other/index.html">← Index</a>
                     <a href="../Work/index.html">Next Project →</a>
                 </footer>
-
-                <div class="footer-credits">
-                    <span>@bylara.frias</span>
-                    <span>Larafc@hotmail.es</span>
-                </div>
             </div>
         </section>
     </main>
