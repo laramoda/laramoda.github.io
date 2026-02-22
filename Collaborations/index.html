@@ -10,50 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
     
     <style>
-        :root { 
-            --bg: #efefef; 
-            --card: #ffffff; 
-            --ink: #1a1a1a; 
-            --muted: #b5b5b5; 
-            --blue: #1f36ff; 
-            --pink: #ff0055;
-        }
+        :root { --bg: #efefef; --card: #ffffff; --ink: #1a1a1a; --muted: #b5b5b5; --blue: #1f36ff; --pink: #ff0055; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
 
-        * { 
-            box-sizing: border-box; 
-            -webkit-font-smoothing: antialiased; 
-            -moz-osx-font-smoothing: grayscale; 
-            text-rendering: optimizeLegibility;
-        }
-
-        body, html { 
-            margin: 0; padding: 0; height: 100%; 
-            background: var(--bg); 
-            font-family: 'JetBrains Mono', monospace; 
-            overflow: hidden; 
-        }
-        
+        body, html { margin: 0; padding: 0; height: 100%; background: var(--bg); font-family: 'JetBrains Mono', monospace; overflow: hidden; }
         .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        
-        .card { 
-            width: min(1380px, 98%); 
-            height: min(850px, 92vh); 
-            background: var(--card); 
-            border-radius: 24px; 
-            display: grid; 
-            grid-template-columns: 320px 1fr; 
-            overflow: hidden; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
-        }
+        .card { width: min(1380px, 98%); height: min(850px, 92vh); background: var(--card); border-radius: 24px; display: grid; grid-template-columns: 320px 1fr; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.08); }
 
-        /* --- SIDEBAR ORIGINAL --- */
+        /* --- SIDEBAR --- */
         .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
         .logo-hairline { font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); cursor: pointer; }
         .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
         .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; margin-bottom: 2px; }
         .nav-menu li.active { color: var(--ink); font-weight: 400; }
         .nav-menu li:hover { color: var(--ink); }
-
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
         .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
@@ -62,68 +32,29 @@
         /* --- CONTENIDO --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
         .main-content::-webkit-scrollbar { display: none; }
+        .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content; }
+        
+        .scroll-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; padding: 60px 40px 150px; align-items: start; }
 
-        .home-nav { 
-            position: sticky; top: 30px; margin-left: auto; margin-right: 40px; 
-            color: var(--blue); font-size: 11px; font-style: italic; 
-            z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content;
-        }
-
-        .scroll-wrapper { 
-            display: grid; grid-template-columns: repeat(12, 1fr); 
-            gap: 25px 15px; padding: 60px 40px 150px; align-items: start;
-        }
-
-        /* Bloque Lara Frias */
-        .img-block { grid-column: var(--c, 1) / span var(--s, 4); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
+        /* Estilos Especiales */
+        .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
+        .text-full { grid-column: 1 / span 12; margin-bottom: 40px; }
         
-        .text-full { grid-column: 1 / span 12; }
-        .main-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; border-bottom: 1px solid #f2f2f2; padding-bottom: 15px; }
-        .collab-title { font-size: 18px; text-transform: uppercase; letter-spacing: 1px; font-weight: 200; }
-        .collab-intro { font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; margin-bottom: 40px; font-weight: 100; }
+        /* Visores de Imágenes */
+        .image-viewer { grid-column: 1 / span 12; display: flex; overflow-x: auto; gap: 15px; scrollbar-width: none; padding-bottom: 10px; margin: 20px 0; cursor: grab; }
+        .image-viewer::-webkit-scrollbar { display: none; }
+        .image-viewer img { height: 400px; width: auto; border-radius: 12px; flex-shrink: 0; }
 
-        /* Mood Bored Components */
-        .project-tagline { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; font-weight: 200; }
-        .project-tagline span { font-weight: 100; font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: 0; }
-        
-        .ig-btn { 
-            display: inline-block; border: 1px solid var(--ink); padding: 8px 20px; 
-            margin-top: 20px; text-decoration: none; color: var(--ink); font-size: 10px; 
-            letter-spacing: 1px; transition: all 0.3s ease; font-family: 'JetBrains Mono';
-        }
-        .ig-btn:hover { background: var(--ink); color: #fff; }
+        /* Efecto Abanico Moodbored */
+        .fan-container { position: relative; height: 350px; width: 100%; }
+        .fan-img { position: absolute; width: 180px !important; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
 
-        .mood-logo-area { grid-column: 1 / span 12; display: flex; justify-content: center; margin: 80px 0; }
-        .circle-logo { 
-            width: 180px; height: 180px; border: 1px solid #eee; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; font-size: 14px; letter-spacing: 3px;
-            color: var(--ink); font-family: 'Inter', sans-serif; font-weight: 100; text-align: center;
-        }
-
-        .mood-text { font-size: 11px; line-height: 1.8; color: var(--muted); margin-bottom: 40px; text-align: justify; font-weight: 100; }
-
-        .location-label { 
-            position: absolute; bottom: -30px; right: 0; 
-            font-size: 10px; font-style: italic; color: var(--pink); text-transform: uppercase; letter-spacing: 1px;
-        }
-
-        .btn-bts { 
-            background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; 
-            text-decoration: none; font-size: 10px; display: inline-block;
-            letter-spacing: 2px; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.15); transition: 0.3s;
-        }
-        .btn-bts:hover { transform: translateY(-3px); }
-
-        .villains-section { grid-column: 1 / span 12; border-top: 1px solid #f2f2f2; padding-top: 100px; margin-top: 100px; }
-        .villains-grid-intro { display: grid; grid-template-columns: 320px 1fr; gap: 60px; margin-bottom: 60px; }
-
-        .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 80px; }
-        .nav-footer a { color: var(--muted); text-decoration: none; }
+        .btn-bts { background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; text-decoration: none; font-size: 10px; display: inline-block; letter-spacing: 2px; margin-bottom: 40px; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.15); }
+        .caption-red { font-size: 10px; color: var(--pink); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; font-weight: 500; }
     </style>
 </head>
 <body>
-
 <div class="stage">
     <main class="card">
         <aside class="sidebar">
@@ -151,69 +82,113 @@
 
         <section class="main-content">
             <div class="home-nav" onclick="location.href='../index.html'">: HOME</div>
-            
             <div class="scroll-wrapper">
                 
                 <div class="text-full">
-                    <header class="main-header">
-                        <h1 class="collab-title">:Collaborations</h1>
-                        <span style="color: var(--muted); font-size: 11px;">2018-PRESENT</span>
-                    </header>
-                    <p class="collab-intro">
-                        During my university career i have made projectors with many classmates and a different range of themes has come out of it but from each project I have learned and it has helped me to create my personal brand and style.
+                    <h1 style="font-size: 18px; text-transform: uppercase; letter-spacing: 1px;">:Collaborations</h1>
+                    <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 850px;">
+                        During my university career i have made projectors with many classmates...
                     </p>
                 </div>
 
-                <div class="text-full" style="margin-top: 40px;">
-                    <h2 class="project-tagline">MOODBORED SWIMWEAR COLLECTION <span>w/ EMMA TARRATS ESPINOSA</span></h2>
-                    <a href="https://instagram.com/mood_______boored" target="_blank" class="ig-btn">IG : @MOOD_______BORED</a>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="Images/ByLara.png"></div>
+                <div class="img-block" style="--c: 6; --s: 4; --t: 20px;"><img src="Images/moodbored logo.png"></div>
+
+                <div class="text-full" style="margin-top: 80px;">
+                    <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify;">This has been my first brand as a co-founder with Emma...</p>
                 </div>
 
-                <div class="mood-logo-area">
-                    <div class="circle-logo">MOOD<br>BORED</div>
+                <div class="img-block" style="--c: 1; --s: 6; --t: 0px;"><img src="Images/moodbored.png"></div>
+                <div class="img-block" style="--c: 7; --s: 6; --t: 0px;"><img src="Images/moodbored2.png"></div>
+
+                <div class="text-full" style="margin-top: 80px;">
+                    <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify;">Not only do we design them entirely... collaborations between artists and colleagues in the industry.</p>
                 </div>
 
-                <div class="text-full">
-                    <p class="mood-text">
-                        This has been my first brand as a co-founder with Emma, we created this swimwear brand with the need to touch the world of fashion during the pandemic and to continue learning and not stagnate since at university everything was paralyzed.
-                    </p>
+                <div class="img-block" style="--c: 1; --s: 5; --t: 0px;">
+                    <div class="fan-container">
+                        <img src="Images/moodbored4.png" class="fan-img" style="transform: rotate(-10deg); z-index: 1;">
+                        <img src="Images/moodbored5.png" class="fan-img" style="transform: rotate(-5deg); left: 20px; z-index: 2;">
+                        <img src="Images/moodbored6.png" class="fan-img" style="transform: rotate(5deg); left: 40px; z-index: 3;">
+                        <img src="Images/moodbored7.png" class="fan-img" style="transform: rotate(10deg); left: 60px; z-index: 4;">
+                    </div>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 7; --t: 0px;">
-                    <img src="../Images/3.5_italy.jpg">
-                    <span class="location-label">RIOMAGGIORE - ITALY</span>
+                <div class="img-block" style="--c: 7; --s: 6; --t: 0px;">
+                    <img src="Images/moodbored15.png"> <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                        <img src="Images/moodbored11.png" style="width: 100%; border-radius: 12px;">
+                        <img src="Images/moodbored10.png" style="width: 100%; border-radius: 12px;">
+                    </div>
                 </div>
 
-                <div class="img-block" style="--c: 8; --s: 5; --t: 80px;">
-                    <img src="../Images/3.6_philippines.jpg">
-                    <span class="location-label">PALAWAN - PHILIPPINES</span>
-                </div>
-
-                <div class="img-block" style="--c: 2; --s: 10; --t: 120px;">
-                    <img src="../Images/3.4_lineup.jpg">
-                    <p class="caption">Full Swimwear Lineup</p>
-                </div>
-
-                <div class="text-full" style="text-align: center; margin: 100px 0;">
+                <div class="text-full" style="text-align: center; margin-top: 60px;">
                     <a href="../BTS/index.html" class="btn-bts">BTS CLICK</a>
                 </div>
+                <div class="img-block" style="--c: 4; --s: 6; --t: 0px;"><img src="Images/moodbored14.png"></div>
+                <div class="img-block" style="--c: 4; --s: 6; --t: 20px;"><img src="Images/moodbored15.png"></div>
 
-                <section class="villains-section">
-                    <div class="villains-grid-intro">
-                        <div>
-                            <h3 style="text-transform: uppercase; font-size: 12px; letter-spacing: 1px; font-weight: 400;">Villains Collection</h3>
-                            <p style="font-size: 10px; color: var(--muted); margin-top: 10px;">2021-2022 DURING 3R YEAR DEGREE</p>
-                        </div>
-                        <p class="mood-text">
-                            This project was born with the exitment of making a collection between 4 colleagues... Villains refers to how we think the rest of our colleagues in university see us, fashion is a competitive world and as egocentrics we sometimes laugh thinking that they hate us.
-                        </p>
+                <div class="text-full" style="margin-top: 100px;">
+                    <span class="caption-red">RIOMAGGIORE - ITALY</span>
+                    <div class="image-viewer">
+                        <img src="Images/riomaggiore.png"><img src="Images/riomaggiore2.png"><img src="Images/riomaggiore3.png"><img src="Images/riomaggiore4.png"><img src="Images/riomaggiore5.png"><img src="Images/riomaggiore6.png"><img src="Images/riomaggiore7.png"><img src="Images/riomaggiore8.png">
                     </div>
 
-                    <div class="img-block" style="--c: 1; --s: 12; --t: 20px;">
-                        <img src="../Images/3.10_car.jpg">
-                        <p class="caption">Villains editorial shooting</p>
+                    <span class="caption-red">PALAWAN - PHILIPPINES</span>
+                    <div class="image-viewer">
+                        <img src="Images/palawan.png"><img src="Images/palawan2.png"><img src="Images/palawan3.png"><img src="Images/palawan4.png"><img src="Images/palawan5.png"><img src="Images/palawan6.png">
                     </div>
-                </section>
+
+                    <span class="caption-red">ZAKYNTHOS - GREECE</span>
+                    <div class="image-viewer">
+                        <img src="Images/zakynthos.png"><img src="Images/zakynthos2.png"><img src="Images/zakynthos3.png"><img src="Images/zakynthos4.png"><img src="Images/zakynthos5.png">
+                    </div>
+
+                    <span class="caption-red">SAINT TROPEZ - FRANCE</span>
+                    <div class="image-viewer">
+                        <img src="Images/sttropez.png"><img src="Images/sttropez2.png"><img src="Images/sttropez3.png"><img src="Images/sttropez4.png"><img src="Images/sttropez5.png">
+                    </div>
+
+                    <span class="caption-red">PANJIN - CHINA</span>
+                    <div class="image-viewer">
+                        <img src="Images/panjin.png"><img src="Images/panjin2.png"><img src="Images/panjin4.png"><img src="Images/panjin5.png"><img src="Images/panjin6.png"><img src="Images/panjin7.png"><img src="Images/panjin8.png">
+                    </div>
+
+                    <span class="caption-red">MAURITANIA - AFRICA</span>
+                    <div class="image-viewer">
+                        <img src="Images/mauri.png"><img src="Images/mauri2.png"><img src="Images/mauri3.png"><img src="Images/mauri4.png">
+                    </div>
+                </div>
+
+                <div class="villains-section">
+                    <div class="text-full">
+                        <h2 style="font-size: 16px; text-transform: uppercase; letter-spacing: 2px;">Villains Collection</h2>
+                        <p style="font-size: 11px; line-height: 1.8; color: var(--muted); text-align: justify; margin-top: 20px;">This project was born with the exitment...</p>
+                        <img src="Images/collab_villanos.jpg" style="width: 100%; border-radius: 12px; margin-top: 40px;">
+                    </div>
+
+                    <div class="text-full" style="margin-top: 40px;">
+                        <p style="font-size: 11px; line-height: 1.8; color: var(--muted); text-align: justify;">...involved in the purest way.</p>
+                    </div>
+
+                    <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="Images/colab_villlanos2A.jpg"></div>
+                    <div class="img-block" style="--c: 5; --s: 4; --t: 0px;"><img src="Images/colab_villlanos2B.jpg"></div>
+                    <div class="img-block" style="--c: 9; --s: 4; --t: 0px;"><img src="Images/colab_villlanos2C.jpg"></div>
+
+                    <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="Images/colab_villlanos3A.jpg"></div>
+                    <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="Images/colab_villlanos3B.jpg"></div>
+                    <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="Images/colab_villlanos3C.jpg"></div>
+
+                    <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="Images/colab_villlanos4A.jpg"></div>
+                    <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="Images/colab_villlanos4B.jpg"></div>
+                    <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="Images/colab_villlanos4C.jpg"></div>
+
+                    <div class="img-block" style="--c: 1; --s: 3; --t: 40px;"><img src="Images/colab_villlanos5.jpg"></div>
+                    <div class="img-block" style="--c: 5; --s: 5; --t: 40px;"><img src="Images/colab_villlanos6.jpg"></div>
+                    <div class="img-block" style="--c: 10; --s: 3; --t: 40px;"><img src="Images/colab_villlanos7.jpg"></div>
+                    <div class="img-block" style="--c: 2; --s: 4; --t: 40px;"><img src="Images/colab_villlanos8.jpg"></div>
+                    <div class="img-block" style="--c: 7; --s: 4; --t: 40px;"><img src="Images/colab_villlanos9.jpg"></div>
+                    <div class="img-block" style="--c: 1; --s: 12; --t: 40px;"><img src="Images/colab_villlanos17.jpg"></div>
+                </div>
 
                 <footer class="nav-footer">
                     <a href="../Artisan/index.html">← Artisan Tailoring</a>
@@ -224,6 +199,5 @@
         </section>
     </main>
 </div>
-
 </body>
 </html>
