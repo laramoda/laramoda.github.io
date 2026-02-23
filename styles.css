@@ -1,62 +1,62 @@
-<section class="main-content">
-    <div class="home-nav"><span>:</span> HOME</div>
+/* CONFIGURACIÓN BASE */
+:root { 
+    --bg: #efefef; --card: #ffffff; --ink: #1a1a1a; --muted: #b5b5b5; --blue: #1f36ff; 
+}
 
-    <div class="scroll-wrapper">
-        
-        <div class="img-block" style="--c: 1; --s: 5; --t: 40px; opacity: 0.8;">
-            <img src="images/signature_02.jpeg">
-        </div>
+* { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
-        <div class="img-block" style="--c: 6; --s: 7; --t: 0px;">
-            <img src="images/Diplopia_01.jpg">
-            <p class="caption">Diplopia 01</p>
-        </div>
+body, html { 
+    margin: 0; padding: 0; height: 100%; background: var(--bg); 
+    font-family: 'JetBrains Mono', monospace; overflow: hidden; 
+}
 
-        <div class="img-block" style="--c: 1; --s: 3; --t: 80px;">
-            <img src="images/Diplopia_02.jpg">
-        </div>
-        <div class="img-block" style="--c: 5; --s: 2.5; --t: 80px;">
-            <img src="images/Diplopia_03.jpg">
-        </div>
-        <div class="img-block" style="--c: 9; --s: 4; --t: 80px;">
-            <img src="images/Diplopia_04.jpg">
-        </div>
+/* ESTRUCTURA */
+.stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.card { 
+    width: min(1380px, 98%); height: min(850px, 92vh); 
+    background: var(--card); border-radius: 24px; 
+    display: grid; grid-template-columns: 320px 1fr; 
+    overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
+}
 
-        <div class="img-block" style="--c: 2; --s: 4; --t: 120px;">
-            <img src="images/Artisan_01.jpg"><p class="caption">Artisan 01</p>
-        </div>
-        
-        <div class="img-block" style="--c: 7; --s: 2.5; --t: 120px;">
-            <img src="images/Artisan_02.jpg">
-        </div>
-        <div class="img-block" style="--c: 10; --s: 2.5; --t: 120px;">
-            <img src="images/Artisan_03.jpg">
-        </div>
+/* SIDEBAR */
+.sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
+.logo-hairline { 
+    font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; 
+    line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); 
+}
+.nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
+.nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; }
+.nav-menu li:hover { color: var(--ink); }
+.sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
+.sig-sidebar img { width: 100%; opacity: 0.8; }
+.footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
+.about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; }
 
-        <div class="img-block" style="--c: 8; --s: 3; --t: -80px; --z: 10;">
-            <img src="images/Artisan_04.jpg">
-        </div>
+/* CONTENIDO PRINCIPAL */
+.main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
+.main-content::-webkit-scrollbar { display: none; }
 
-        <div class="img-block" style="--c: 2; --s: 3; --t: 100px;"><img src="images/Proj_02.jpg"></div>
-        <div class="img-block" style="--c: 8; --s: 4; --t: 100px;"><img src="images/Proj_07.jpg"></div>
-        
-        <div class="img-block" style="--c: 2; --s: 2; --t: 40px;"><img src="images/Proj_03.jpg"></div>
-        <div class="img-block" style="--c: 4.5; --s: 2; --t: 40px;"><img src="images/Proj_04.jpg"></div>
-        <div class="img-block" style="--c: 7; --s: 2; --t: 40px;"><img src="images/Proj_05.jpg"></div>
+.home-nav { 
+    position: sticky; top: 30px; margin-left: auto; margin-right: 40px; 
+    color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; 
+    text-align: right; width: fit-content; cursor: pointer;
+}
 
-        <div class="img-block" style="--c: 4; --s: 8; --t: 100px; background: rgba(0,0,0,0.02); padding: 40px; border-radius: 12px;">
-            <div style="width: 75%; margin: 0 auto;"><img src="images/Proj_06.jpg"></div>
-            <p class="caption" style="text-align: center;">Proyecto 01</p>
-        </div>
+/* EL MOTOR DEL COLLAGE */
+.scroll-wrapper { 
+    display: grid; grid-template-columns: repeat(12, 1fr); 
+    gap: 10px; padding: 20px 40px 300px; align-items: start; 
+}
 
-        <div class="img-block" style="--c: 2; --s: 4; --t: 120px;"><img src="images/Swim_04.jpg"></div>
-        <div class="img-block" style="--c: 7; --s: 1.5; --t: 120px;"><img src="images/Swim_03.jpg"></div>
-        <div class="img-block" style="--c: 9; --s: 3.5; --t: 120px;"><img src="images/Swim_01.jpg"></div>
+/* BLOQUE DE IMAGEN DINÁMICO */
+.img-block { 
+    grid-column: var(--c, 1) / span var(--s, 4); 
+    margin-top: var(--t, 0px); 
+    position: relative; 
+    z-index: var(--z, 1);
+    opacity: var(--o, 1);
+}
 
-        <div class="img-block" style="--c: 2; --s: 5; --t: 80px;"><img src="images/Swim_06.jpg"></div>
-        <div class="img-block" style="--c: 5; --s: 3.5; --t: -140px; --z: 20;"><img src="images/Swim_05.jpg"></div>
-        
-        <div class="img-block" style="--c: 9; --s: 3; --t: 20px;"><img src="images/Swim_02.jpg"></div>
-
-    </div>
-</section>
+.img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
+.caption { font-size: 8px; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); }
