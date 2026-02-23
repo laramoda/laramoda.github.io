@@ -18,22 +18,33 @@ body, html { margin: 0; padding: 0; height: 100%; background: var(--bg); font-fa
 .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
 .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; }
 
-/* ÁREA DE CONTENIDO (CON SCROLL) */
+/* ÁREA DE CONTENIDO */
 .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
 .main-content::-webkit-scrollbar { display: none; }
 .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; text-align: right; width: fit-content; cursor: pointer; }
 
-/* REJILLA DE 12 COLUMNAS */
-.scroll-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 15px; padding: 20px 40px 400px; align-items: start; }
+/* REJILLA */
+.scroll-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 15px; padding: 20px 40px 400px; align-items: start; position: relative; }
 
-/* BLOQUE DE IMAGEN DINÁMICO */
+/* BLOQUE DE IMAGEN ESTÁNDAR */
 .img-block { 
     grid-column: var(--c, 1) / span var(--s, 4); 
-    grid-row: var(--r, auto); /* ESTE MANDO EVITA QUE SE EMPUJEN */
     margin-top: var(--t, 0px); 
     position: relative; 
-    z-index: var(--z, 1);
-    opacity: var(--o, 1);
+    z-index: var(--z, 2);
 }
 .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
+
+/* CLASE ESPECIAL PARA LA FIRMA DE FONDO (Para que no desplace nada) */
+.bg-signature {
+    position: absolute; /* Esto hace que flote sin empujar a los demás */
+    left: 5%;
+    top: 250px;
+    width: 300px; /* Tamaño controlado para que no sea gigantesca */
+    opacity: 0.15;
+    z-index: 1; /* Por debajo de las fotos */
+    pointer-events: none; /* Para que no moleste al hacer clic */
+}
+
 .caption { font-size: 8px; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); }
+.caption.blue { color: var(--blue); font-weight: 500; }
