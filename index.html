@@ -23,7 +23,7 @@
             overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
         }
 
-        /* --- SIDEBAR IZQUIERDO --- */
+        /* --- SIDEBAR --- */
         .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
         .logo-hairline { font-family: 'Inter', sans-serif !important; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); }
         .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
@@ -34,34 +34,34 @@
         .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
         .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; }
 
-        /* --- CONTENIDO SCROLLABLE --- */
+        /* --- CONTENIDO --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
         .main-content::-webkit-scrollbar { display: none; }
         .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; text-align: right; width: fit-content; cursor: pointer; }
 
-        /* MOTOR DE REJILLA EDITORIAL */
+        /* REJILLA EDITORIAL */
         .scroll-wrapper { 
             display: grid; grid-template-columns: repeat(12, 1fr); 
-            gap: 20px; padding: 40px 40px 400px; 
+            gap: 20px; padding: 40px 40px 500px; 
             align-items: start; position: relative;
         }
 
-        /* FIRMA DE FONDO: Sacada del flujo (Absolute) para no mover el traje */
+        /* FIRMA DE FONDO FLOTANTE (Corregida posición) */
         .bg-signature-floating {
             position: absolute;
-            left: 5%;
-            top: 280px;
-            width: 280px; /* Tamaño pequeño y elegante */
+            left: 1%; /* Antes 5%, ahora 1% para moverla más a la izquierda */
+            top: 320px;
+            width: 280px;
             opacity: 0.12;
             z-index: 1;
             pointer-events: none;
         }
 
-        /* Bloque de imagen estándar */
+        /* Bloque de imagen */
         .img-block { 
             grid-column: var(--c, 1) / span var(--s, 4); 
             margin-top: var(--t, 0px); 
-            position: relative; z-index: 2; /* Por delante de la firma */
+            position: relative; z-index: 2;
         }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
         .caption { font-size: 8px; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); }
@@ -106,14 +106,14 @@
                     <p class="caption">Double collar jacket. Diplopia collection</p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 5; --t: 500px;">
+                <div class="img-block" style="--c: 1; --s: 5; --t: 750px;">
                     <img src="images/Diplopia_02.jpg">
                 </div>
-                <div class="img-block" style="--c: 7; --s: 2.5; --t: 600px;">
+                <div class="img-block" style="--c: 7; --s: 2.5; --t: 850px;">
                     <img src="images/Diplopia_03.jpg">
                     <p class="caption">double leather bag</p>
                 </div>
-                <div class="img-block" style="--c: 10; --s: 3; --t: 550px;">
+                <div class="img-block" style="--c: 10; --s: 3; --t: 800px;">
                     <img src="images/Diplopia_04.jpg">
                     <p class="caption blue">DIPLOPIA COLLECTION 2023</p>
                 </div>
