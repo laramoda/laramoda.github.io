@@ -22,7 +22,6 @@
             overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
         }
 
-        /* --- SIDEBAR --- */
         .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
         .logo-hairline { font-family: 'Inter', sans-serif !important; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); }
         .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
@@ -33,7 +32,6 @@
         .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
         .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; }
 
-        /* --- CONTENIDO --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
         .main-content::-webkit-scrollbar { display: none; }
         .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; text-align: right; width: fit-content; cursor: pointer; }
@@ -44,12 +42,12 @@
             align-items: start; position: relative;
         }
 
-        /* FIRMA FLOTANTE IZQUIERDA */
+        /* FIRMA: Ahora más a la izquierda y con posición fija */
         .bg-signature-floating {
             position: absolute;
-            left: -30px; 
-            top: 320px;
-            width: 300px;
+            left: -50px; 
+            top: 350px;
+            width: 320px;
             opacity: 0.12;
             z-index: 1;
             pointer-events: none;
@@ -98,19 +96,19 @@
                 
                 <img src="images/signature_02.jpeg" class="bg-signature-floating">
 
-                <div class="img-block" style="--c: 7; --s: 6; --t: 0px;">
+                <div class="img-block" style="--c: 6; --s: 7; --t: 0px;">
                     <img src="images/Diplopia_01.jpg">
                     <p class="caption">Double collar jacket. Diplopia collection</p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 4; --t: 1100px;">
+                <div class="img-block" style="--c: 1; --s: 4; --t: 900px;">
                     <img src="images/Diplopia_02.jpg">
                 </div>
-                <div class="img-block" style="--c: 6; --s: 2.5; --t: 1150px;">
+                <div class="img-block" style="--c: 6; --s: 2.2; --t: 900px;">
                     <img src="images/Diplopia_03.jpg">
                     <p class="caption">double leather bag</p>
                 </div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 1100px;">
+                <div class="img-block" style="--c: 9; --s: 4; --t: 900px;">
                     <img src="images/Diplopia_04.jpg">
                     <p class="caption blue">DIPLOPIA COLLECTION 2023</p>
                 </div>
@@ -123,7 +121,7 @@
                     <img src="images/Artisan_02.jpg">
                     <p class="caption blue">ARTISAN TAILORING 2023</p>
                 </div>
-                <div class="img-block" style="--c: 11; --s: 2; --t: 320px;">
+                <div class="img-block" style="--c: 11; --s: 2; --t: 300px;">
                     <img src="images/Artisan_03.jpg">
                 </div>
                 <div class="img-block" style="--c: 7.5; --s: 4; --t: -120px; z-index: 10;">
@@ -133,7 +131,7 @@
                 <div class="img-block" style="--c: 1; --s: 4; --t: 250px;"><img src="images/Oprojects_02.jpg"></div>
                 <div class="img-block" style="--c: 9; --s: 4; --t: 200px;"><img src="images/Oprojects_07.jpg"></div>
                 
-                <div class="img-block" style="--c: 4; --s: 8; --t: 120px; background: rgba(0,0,0,0.02); padding: 40px; border-radius: 20px;">
+                <div class="img-block" style="--c: 3; --s: 9; --t: 120px; background: rgba(0,0,0,0.02); padding: 40px; border-radius: 20px;">
                     <div style="width: 75%; margin: 0 auto;"><img src="images/Oprojects_06.jpg"></div>
                     <p class="caption blue" style="text-align: center;">VILLAINS COLLECTION 2022</p>
                 </div>
@@ -142,7 +140,7 @@
                 <div class="img-block" style="--c: 7; --s: 2; --t: 300px;"><img src="images/Swim_03.jpg"></div>
                 <div class="img-block" style="--c: 10; --s: 3; --t: 250px;"><img src="images/Swim_01.jpg"></div>
 
-                <div class="img-block" style="--c: 1; --s: 5.5; --t: 150px;"><img src="images/Swim_06.jpg"></div>
+                <div class="img-block" style="--c: 1.5; --s: 5; --t: 150px;"><img src="images/Swim_06.jpg"></div>
                 <div class="img-block" style="--c: 6; --s: 3.5; --t: -220px; z-index: 20;">
                     <img src="images/Swim_05.jpg">
                     <p class="caption blue">MOODBORED COLLECTION</p>
