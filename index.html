@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CONFIGURACIÓN BASE --- */
         :root { --bg: #efefef; --card: #ffffff; --ink: #1a1a1a; --muted: #b5b5b5; --blue: #1f36ff; }
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body, html { margin: 0; padding: 0; height: 100%; background: var(--bg); font-family: 'JetBrains Mono', monospace; overflow: hidden; }
@@ -39,25 +38,23 @@
         .main-content::-webkit-scrollbar { display: none; }
         .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; text-align: right; width: fit-content; cursor: pointer; }
 
-        /* REJILLA EDITORIAL */
         .scroll-wrapper { 
             display: grid; grid-template-columns: repeat(12, 1fr); 
-            gap: 20px; padding: 40px 40px 500px; 
+            gap: 20px; padding: 40px 40px 600px; 
             align-items: start; position: relative;
         }
 
-        /* FIRMA DE FONDO FLOTANTE (Corregida posición) */
+        /* FIRMA DE FONDO (Super a la izquierda) */
         .bg-signature-floating {
             position: absolute;
-            left: 1%; /* Antes 5%, ahora 1% para moverla más a la izquierda */
+            left: -30px; /* Sacada un poco hacia el sidebar para que no la tape el traje */
             top: 320px;
-            width: 280px;
+            width: 300px;
             opacity: 0.12;
             z-index: 1;
             pointer-events: none;
         }
 
-        /* Bloque de imagen */
         .img-block { 
             grid-column: var(--c, 1) / span var(--s, 4); 
             margin-top: var(--t, 0px); 
@@ -101,55 +98,57 @@
                 
                 <img src="images/signature_02.jpeg" class="bg-signature-floating">
 
-                <div class="img-block" style="--c: 5; --s: 8; --t: 0px;">
+                <div class="img-block" style="--c: 6; --s: 7; --t: 0px;">
                     <img src="images/Diplopia_01.jpg">
                     <p class="caption">Double collar jacket. Diplopia collection</p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 5; --t: 750px;">
+                <div class="img-block" style="--c: 1; --s: 4.5; --t: 850px;">
                     <img src="images/Diplopia_02.jpg">
                 </div>
-                <div class="img-block" style="--c: 7; --s: 2.5; --t: 850px;">
+                <div class="img-block" style="--c: 6; --s: 2.2; --t: 950px;">
                     <img src="images/Diplopia_03.jpg">
                     <p class="caption">double leather bag</p>
                 </div>
-                <div class="img-block" style="--c: 10; --s: 3; --t: 800px;">
+                <div class="img-block" style="--c: 9; --s: 4; --t: 880px;">
                     <img src="images/Diplopia_04.jpg">
                     <p class="caption blue">DIPLOPIA COLLECTION 2023</p>
                 </div>
 
-                <div class="img-block" style="--c: 2; --s: 6; --t: 300px;">
+                <div class="img-block" style="--c: 2; --s: 5; --t: 300px;">
                     <img src="images/Artisan_01.jpg">
                     <p class="caption">Artisan 01</p>
                 </div>
-                <div class="img-block" style="--c: 8.5; --s: 3; --t: 350px;">
+                <div class="img-block" style="--c: 8; --s: 2.5; --t: 350px;">
                     <img src="images/Artisan_02.jpg">
                     <p class="caption blue">ARTISAN TAILORING 2023</p>
                 </div>
-                <div class="img-block" style="--c: 11; --s: 2; --t: 300px;">
+                <div class="img-block" style="--c: 10; --s: 3; --t: 300px;">
                     <img src="images/Artisan_03.jpg">
                 </div>
-                <div class="img-block" style="--c: 8; --s: 4; --t: -100px; z-index: 10;">
+                <div class="img-block" style="--c: 7.5; --s: 4; --t: -120px; z-index: 10;">
                     <img src="images/Artisan_04.jpg">
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 4; --t: 250px;"><img src="images/Oprojects_02.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 200px;"><img src="images/Oprojects_07.jpg"></div>
+                <div class="img-block" style="--c: 1.5; --s: 3.5; --t: 250px;"><img src="images/Oprojects_02.jpg"></div>
+                <div class="img-block" style="--c: 8.5; --s: 4.5; --t: 200px;"><img src="images/Oprojects_07.jpg"></div>
                 
-                <div class="img-block" style="--c: 4; --s: 8; --t: 120px; background: rgba(0,0,0,0.02); padding: 40px; border-radius: 20px;">
+                <div class="img-block" style="--c: 3.5; --s: 9; --t: 150px; background: rgba(0,0,0,0.02); padding: 40px; border-radius: 20px;">
                     <div style="width: 75%; margin: 0 auto;"><img src="images/Oprojects_06.jpg"></div>
                     <p class="caption blue" style="text-align: center;">VILLAINS COLLECTION 2022</p>
                 </div>
 
                 <div class="img-block" style="--c: 2; --s: 4.5; --t: 250px;"><img src="images/Swim_04.jpg"></div>
                 <div class="img-block" style="--c: 7; --s: 2; --t: 300px;"><img src="images/Swim_03.jpg"></div>
-                <div class="img-block" style="--c: 10; --s: 3; --t: 220px;"><img src="images/Swim_01.jpg"></div>
+                <div class="img-block" style="--c: 10; --s: 3; --t: 250px;"><img src="images/Swim_01.jpg"></div>
 
-                <div class="img-block" style="--c: 1; --s: 5.5; --t: 150px;"><img src="images/Swim_06.jpg"></div>
+                <div class="img-block" style="--c: 1.5; --s: 5.5; --t: 150px;"><img src="images/Swim_06.jpg"></div>
+                
                 <div class="img-block" style="--c: 6; --s: 3.5; --t: -220px; z-index: 20;">
                     <img src="images/Swim_05.jpg">
                     <p class="caption blue">MOODBORED COLLECTION</p>
                 </div>
+                
                 <div class="img-block" style="--c: 10; --s: 3; --t: 40px;"><img src="images/Swim_02.jpg"></div>
 
             </div>
