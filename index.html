@@ -32,13 +32,17 @@
         .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
         .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; }
 
+        /* Estilo para el enlace del CV */
+        .cv-link { color: var(--ink); text-decoration: none; font-weight: 400; transition: opacity 0.3s; }
+        .cv-link:hover { opacity: 0.6; }
+
         .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
         .main-content::-webkit-scrollbar { display: none; }
         .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; text-align: right; width: fit-content; cursor: pointer; }
 
         .scroll-wrapper { 
             display: grid; 
-            grid-template-columns: repeat(24, 1fr); /* REJILLA DE 24 COLUMNAS ACTIVADA */
+            grid-template-columns: repeat(24, 1fr); 
             gap: 20px; padding: 40px 40px 600px; 
             align-items: start; position: relative;
         }
@@ -85,7 +89,9 @@
                 <a class="about-link" onclick="location.href='./Aboutme/index.html'">ABOUT ME</a>
                 <p>larafc@hotmail.es</p>
                 <p>INSTAGRAM</p>
-                <p style="margin-top: 15px; color: var(--ink); font-weight: 400;">: CV</p>
+                <p style="margin-top: 15px;">
+                    <a href="https://export-download.canva.com/sV7_A/DAGSzRsV7_A/64/0-767232876180354001.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260224%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260224T071149Z&X-Amz-Expires=26318&X-Amz-Signature=db34cb1a2c21d2a99419e4d3fc934a98598ae7e3a44d54c8deb64dc3340b1b18&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Copia%2520de%2520Lara%2520Fr%25C3%25ADas%2520Cumella.pdf&response-expires=Tue%2C%2024%20Feb%202026%2014%3A30%3A27%20GMT" target="_blank" class="cv-link">: CV</a>
+                </p>
             </footer>
         </aside>
 
@@ -134,8 +140,7 @@
                 <div class="img-block" style="--c: 9; --s: 7; --t: 5px;"><img src="images/Oprojects_04.jpg"></div>
                 <div class="img-block" style="--c: 17; --s: 7; --t: 5px;"><img src="images/Oprojects_05.jpg"></div>
 
-
-                 <div class="img-block" style="--c: 1; --s: 11; --t: 5px;"><img src="images/Oprojects_08.jpg"></div>.
+                 <div class="img-block" style="--c: 1; --s: 11; --t: 5px;"><img src="images/Oprojects_08.jpg"></div>
                  <div class="img-block" style="--c: 1; --s: 11; --t: 5px;"><img src="images/Oprojects_09.jpg"></div>
 
                 <div class="img-block" style="--c: 1; --s: 24; --t: 50px;">
