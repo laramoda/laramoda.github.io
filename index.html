@@ -37,12 +37,12 @@
         .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; text-align: right; width: fit-content; cursor: pointer; }
 
         .scroll-wrapper { 
-            display: grid; grid-template-columns: repeat(12, 1fr); 
+            display: grid; 
+            grid-template-columns: repeat(24, 1fr); /* REJILLA DE 24 COLUMNAS ACTIVADA */
             gap: 20px; padding: 40px 40px 600px; 
             align-items: start; position: relative;
         }
 
-        /* FIRMA: Ahora más a la izquierda y con posición fija */
         .bg-signature-floating {
             position: absolute;
             left: -50px; 
@@ -96,58 +96,58 @@
                 
                 <img src="images/signature_02.jpeg" class="bg-signature-floating">
 
-                <div class="img-block" style="--c: 12; --s: 10; --t: 0px;">
+                <div class="img-block" style="--c: 12; --s: 11; --t: 0px;">
                     <img src="images/Diplopia_01.jpg">
                     <p class="caption">Double collar jacket. Diplopia collection</p>
                 </div>
-                <div class="img-block" style="--c: 1; --s: 11; --t: 100px;">
+                <div class="img-block" style="--c: 1; --s: 10; --t: 100px;">
                     <img src="images/Diplopia_02.jpg">
                 </div>
                 <div class="img-block" style="--c: 12; --s: 5; --t: 100px;">
                     <img src="images/Diplopia_03.jpg">
                     <p class="caption">double leather bag</p>
                 </div>
-             <div class="img-block" style="--c: 18; --s: 5; --t: 100px;">
-                   <img src="images/Diplopia_04.jpg">
+                <div class="img-block" style="--c: 18; --s: 6; --t: 100px;">
+                    <img src="images/Diplopia_04.jpg">
                     <p class="caption blue">DIPLOPIA COLLECTION 2023</p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 11; --t: 5px;">
+                <div class="img-block" style="--c: 1; --s: 11; --t: 200px;">
                     <img src="images/Artisan_01.jpg">
                     <p class="caption">Artisan 01</p>
                 </div>
-                <div class="img-block" style="--c: 12; --s: 5; --t: 5px;">
+                <div class="img-block" style="--c: 13; --s: 5; --t: 200px;">
                     <img src="images/Artisan_02.jpg">
                     <p class="caption blue">ARTISAN TAILORING 2023</p>
                 </div>
-                <div class="img-block" style="--c: 18; --s: 5; --t: 5px;">
+                <div class="img-block" style="--c: 19; --s: 5; --t: 200px;">
                     <img src="images/Artisan_03.jpg">
                 </div>
-                <div class="img-block" style="--c: 12; --s: 5; --t: -50px;">
+                <div class="img-block" style="--c: 13; --s: 5; --t: 650px;">
                     <img src="images/Artisan_04.jpg">
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 11; --t: 5px;"><img src="images/Oprojects_02.jpg"></div>
-                <div class="img-block" style="--c: 17.5; --s: 5; --t: 5px;"><img src="images/Oprojects_07.jpg"></div>
+                <div class="img-block" style="--c: 1; --s: 11; --t: 300px;"><img src="images/Oprojects_02.jpg"></div>
+                <div class="img-block" style="--c: 18; --s: 6; --t: 250px;"><img src="images/Oprojects_07.jpg"></div>
                 
-               <div class="img-block" style="--c: 1; --s: 5; --t: 0px;"><img src="images/Oprojects_03.jpg"></div>
-                   <div class="img-block" style="--c: 6; --s: 5; --t: 0px;"><img src="images/Oprojects_04.jpg"></div>
-                       <div class="img-block" style="--c: 12; --s: 5; --t: 0px;"><img src="images/Oprojects_05.jpg">
-                
-                </div>
+                <div class="img-block" style="--c: 1; --s: 7; --t: 200px;"><img src="images/Oprojects_03.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 7; --t: 200px;"><img src="images/Oprojects_04.jpg"></div>
+                <div class="img-block" style="--c: 17; --s: 7; --t: 200px;"><img src="images/Oprojects_05.jpg"></div>
+
+                <div class="img-block" style="--c: 1; --s: 24; --t: 40px;">
                     <p class="caption blue" style="text-align: center;">VILLAINS COLLECTION 2022</p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 9; --t: 250px;"><img src="images/Swim_04.jpg"></div>
-                <div class="img-block" style="--c: 11; --s: 4; --t: 300px;"><img src="images/Swim_03.jpg"></div>
-                <div class="img-block" style="--c: 16; --s: 6; --t: 250px;"><img src="images/Swim_01.jpg"></div>
+                <div class="img-block" style="--c: 3; --s: 9; --t: 250px;"><img src="images/Swim_04.jpg"></div>
+                <div class="img-block" style="--c: 13; --s: 4; --t: 300px;"><img src="images/Swim_03.jpg"></div>
+                <div class="img-block" style="--c: 18; --s: 6; --t: 250px;"><img src="images/Swim_01.jpg"></div>
 
-                <div class="img-block" style="--c: 1; --s: 11; --t: 5px;"><img src="images/Swim_06.jpg"></div>
-                <div class="img-block" style="--c: 12; --s: 5; --t: 5px; z-index: 20;">
+                <div class="img-block" style="--c: 1; --s: 11; --t: 150px;"><img src="images/Swim_06.jpg"></div>
+                <div class="img-block" style="--c: 13; --s: 5; --t: 80px; z-index: 20;">
                     <img src="images/Swim_05.jpg">
                     <p class="caption blue">MOODBORED COLLECTION</p>
                 </div>
-                <div class="img-block" style="--c: 18; --s: 6; --t: 5px;"><img src="images/Swim_02.jpg"></div>
+                <div class="img-block" style="--c: 19; --s: 5; --t: 130px;"><img src="images/Swim_02.jpg"></div>
 
             </div>
         </section>
