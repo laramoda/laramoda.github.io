@@ -45,7 +45,7 @@
             box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
         }
 
-        /* --- SIDEBAR ORIGINAL --- */
+        /* --- SIDEBAR --- */
         .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
         .logo-hairline { font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); cursor: pointer; }
         .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
@@ -73,11 +73,9 @@
             gap: 25px 15px; padding: 60px 40px 150px; align-items: start;
         }
 
-        /* Bloque Lara Frias */
-        .img-block { grid-column: var(--c, 1) / span var(--s, 4); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
+        .img-block { grid-column: span 4; margin-top: 0px; position: relative; }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
         
-        /* Textos Originales */
         .text-full { grid-column: 1 / span 12; }
         .breadcrumb { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--ink); display: block; margin-bottom: 10px; }
         .date { font-size: 10px; color: var(--muted); display: block; margin-bottom: 30px; }
@@ -85,12 +83,7 @@
         .collab-tag { font-size: 11px; font-style: italic; color: var(--blue); margin-bottom: 15px; display: block; }
         .intro-text { font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; margin-bottom: 40px; font-weight: 100; }
 
-        .full-width-placeholder { 
-            grid-column: 1 / span 12; width: 100%; aspect-ratio: 16 / 9; 
-            background: #f8f8f8; border-radius: 15px; margin: 60px 0;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
-        }
+        .section-separator { grid-column: 1 / span 12; height: 1px; background: #f2f2f2; margin: 80px 0; }
 
         .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 80px; }
         .nav-footer a { color: var(--muted); text-decoration: none; }
@@ -133,45 +126,59 @@
                     <span class="date">2023-2025</span>
                     <h1 class="project-title">Leather Handbag Designs</h1>
                     <p class="intro-text">
-                        This selection of handbags was entirely designed and handcrafted by me, using locally sourced materials and created through the double methodology developed for my Diplopia Collection — the conceptual and design foundation of my final degree project.
-                    </p>
-                    <p class="intro-text">
-                        This process explores duality and layered perception in design, a creative approach that I have since applied to new pieces and continue to refine today. Each bag embodies precision, structure, and narrative, merging craftsmanship with an experimental, personal vision of contemporary design.
+                        This selection of handbags was entirely designed and handcrafted by me, using locally sourced materials and created through the double methodology developed for my Diplopia Collection.
                     </p>
                 </header>
 
-                <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="../images/bag_leather_01.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="../images/bag_leather_02.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: -10px;"><img src="../images/bag_leather_03.jpg"></div>
+                <script>
+                    for(let i=1; i<=43; i++) {
+                        document.write(`<div class="img-block"><img src="images/BagPiel${i}.jpeg"></div>`);
+                    }
+                </script>
 
-                <div class="text-full" style="margin-top: 100px;">
+                <div class="section-separator"></div>
+
+                <div class="text-full">
+                    <h2 class="project-title">Fur & Texture Selection</h2>
+                </div>
+
+                <script>
+                    for(let i=1; i<=6; i++) {
+                        document.write(`<div class="img-block"><img src="images/BagPelo${i}.jpeg"></div>`);
+                    }
+                </script>
+
+                <div class="section-separator"></div>
+
+                <div class="text-full">
                     <span class="collab-tag">collaboration with @archadeco</span>
                     <h2 class="project-title">Summer Tote Design</h2>
                     <p class="intro-text">
-                        This summer tote was designed and handcrafted with an integrated handle system entirely developed by us, seamlessly built into the structure of the bag itself. The piece combines functionality and elegance, reinterpreting traditional summer craftsmanship through innovative construction and contemporary aesthetics.
+                        This summer tote combines functionality and elegance, reinterpreting traditional summer craftsmanship.
                     </p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="../images/bag_tote_01.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: -30px;"><img src="../images/bag_tote_02.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 10px;"><img src="../images/bag_tote_03.jpg"></div>
+                <script>
+                    for(let i=1; i<=6; i++) {
+                        document.write(`<div class="img-block"><img src="images/Bagssum${i}.jpeg"></div>`);
+                    }
+                </script>
 
-                <div class="text-full" style="margin-top: 100px; border-top: 1px solid #f2f2f2; padding-top: 80px;">
+                <div class="section-separator"></div>
+
+                <div class="text-full">
                     <span class="collab-tag">collaboration with Emma Tarrats</span>
                     <h2 class="project-title">Maxxi Bag Project</h2>
                     <p class="intro-text">
-                        The Maxxi Bag was entirely designed, conceptualized, and handcrafted by us — from its creation to the art direction of its photoshoot. This oversized fur bag features a transformable handle that can also be worn as a scarf, merging functionality, playfulness, and bold aesthetics.
-                    </p>
-                    
-                    <h3 class="project-title" style="font-size: 13px; margin-top: 60px;">Creative Direction & Shooting Design</h3>
-                    <p class="intro-text">
-                        As part of our creative process, we also specialize in designing and producing concept-based shootings — from the initial idea and moodboard to full artistic direction and execution. This particular project represents a capsule campaign built around a single piece, conceived to highlight its identity through visual storytelling.
+                        The Maxxi Bag was entirely designed, conceptualized, and handcrafted by us — merging functionality, playfulness, and bold aesthetics.
                     </p>
                 </div>
 
-                <div class="full-width-placeholder">
-                    <img src="../images/maxxi_bag_hero.jpg" style="width:100%; border-radius:15px;">
-                </div>
+                <script>
+                    for(let i=1; i<=7; i++) {
+                        document.write(`<div class="img-block"><img src="images/Bagsmaxi${i}.jpeg"></div>`);
+                    }
+                </script>
 
                 <footer class="nav-footer">
                     <a href="../Kids/index.html">← Previous: Kids</a>
