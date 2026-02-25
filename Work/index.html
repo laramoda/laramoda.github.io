@@ -130,13 +130,21 @@
 
                 <div class="section-break">BEHIND THE SCENES RUNWAY SHOW</div>
                 <div class="grid-3">
-                    <script>
-                        for(let i=1; i<=36; i++) {
-                            let ext = (i === 30) ? 'png' : 'jpeg';
-                            document.write(`<img src="images/workat-bts${i}.${ext}">`);
-                        }
-                    </script>
-                </div>
+    <script>
+        for (let i = 1; i <= 36; i++) {
+            let ext = 'jpeg'; // Extensión por defecto para la mayoría
+            
+            // Definimos las excepciones según tus archivos reales
+            if (i === 30) {
+                ext = 'png';
+            } 
+            // Si detectas que alguna otra (ej. la 15) es .jpg sin 'e', añádela aquí:
+            // else if (i === 15) { ext = 'jpg'; }
+
+            document.write(`<img src="images/workat-bts${i}.${ext}">`);
+        }
+    </script>
+</div>
 
                 <div class="text-full">
                     <p class="work-header" style="text-transform: uppercase; border: 1px solid var(--ink); display: inline-block; padding: 5px 15px; margin-bottom: 20px;">PROFESSIONAL IMAGES DOWNLOAD</p>
