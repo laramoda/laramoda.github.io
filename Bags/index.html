@@ -90,9 +90,7 @@
                 </header>
 
                 <script>
-                    // Cotejo exacto con tu carpeta
                     for(let i=1; i<=43; i++) {
-                        // Excepción: 7 es .png, el resto .jpeg
                         let ext = (i === 7) ? 'png' : 'jpeg';
                         document.write(`<div class="img-block"><img src="images/BagPiel${i}.${ext}"></div>`);
                     }
@@ -105,8 +103,8 @@
                 </div>
 
                 <script>
-                    // Todas son .jpeg según tu carpeta
                     for(let i=1; i<=6; i++) {
+                        // Nombre corregido con P mayúscula: BagPelo
                         document.write(`<div class="img-block"><img src="images/BagPelo${i}.jpeg"></div>`);
                     }
                 </script>
@@ -119,7 +117,6 @@
                 </div>
 
                 <script>
-                    // Todas son .jpeg según tu carpeta
                     for(let i=1; i<=6; i++) {
                         document.write(`<div class="img-block"><img src="images/Bagssum${i}.jpeg"></div>`);
                     }
@@ -133,9 +130,7 @@
                 </div>
 
                 <script>
-                    // Cotejo exacto con tu carpeta
                     for(let i=1; i<=7; i++) {
-                        // Excepciones: 6 y 7 son .png, el resto .jpeg
                         let ext = (i >= 6) ? 'png' : 'jpeg';
                         document.write(`<div class="img-block"><img src="images/Bagsmaxi${i}.${ext}"></div>`);
                     }
