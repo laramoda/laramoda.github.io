@@ -11,7 +11,7 @@
     
     <style>
         :root { --bg: #efefef; --card: #ffffff; --ink: #1a1a1a; --muted: #b5b5b5; --blue: #1f36ff; }
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body, html { margin: 0; padding: 0; height: 100%; background: var(--bg); font-family: 'JetBrains Mono', monospace; overflow: hidden; }
         .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
         .card { width: min(1380px, 98%); height: min(850px, 92vh); background: var(--card); border-radius: 24px; display: grid; grid-template-columns: 320px 1fr; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.08); }
@@ -32,35 +32,34 @@
         .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
         .main-content::-webkit-scrollbar { display: none; }
         .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content; }
+        
         .scroll-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 25px 15px; padding: 60px 40px 150px; align-items: start; }
 
-        .img-block { grid-column: var(--c, 1) / span var(--s, 4); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
-        .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
-        .caption { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; }
-        
-        .text-full { grid-column: 1 / span 12; }
+        .text-full { grid-column: 1 / span 12; margin-top: 40px; }
         .work-header { font-size: 11px; font-style: italic; color: var(--ink); margin-bottom: 15px; }
-        .work-title { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; font-weight: 200; margin-bottom: 40px; }
-        .work-title strong { font-weight: 400; }
+        .work-title { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; font-weight: 200; margin-bottom: 20px; }
+        .section-break { grid-column: 1 / span 12; border-top: 1px solid #f2f2f2; margin: 60px 0 20px; padding-top: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
+        .blue-trend { color: var(--blue); font-weight: 500; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; }
 
-        .bullet-list { font-size: 11px; line-height: 2; color: var(--ink); list-style: none; padding: 0; margin-bottom: 60px; }
-        .bullet-list li::before { content: "• "; color: var(--muted); }
+        .img-block { grid-column: var(--c, 1) / span var(--s, 4); margin-top: var(--t, 0px); }
+        .img-block img { width: 100%; border-radius: 12px; display: block; }
         
-        .video-container { grid-column: 1 / span 12; aspect-ratio: 16 / 9; background: #000; border-radius: 12px; margin: 40px 0; overflow: hidden; }
-        .video-container iframe { width: 100%; height: 100%; border: none; }
-        .video-caption { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; }
+        .grid-3 { grid-column: 1 / span 12; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+        .grid-3 img { width: 100%; border-radius: 8px; display: block; }
 
-        .section-break { grid-column: 1 / span 12; border-top: 1px solid #f2f2f2; margin: 80px 0 40px; padding-top: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
+        /* Carruseles */
+        .slider-container { grid-column: 1 / span 12; width: 100%; position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 16 / 9; background: #f9f9f9; margin: 20px 0; }
+        .slides { display: flex; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); height: 100%; }
+        .slides img { width: 100%; flex-shrink: 0; object-fit: cover; }
 
-        /* Estilo para las filas de 3 imágenes de patronaje */
-        .patronaje-grid { grid-column: 1 / span 12; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .patronaje-grid img { width: 100%; height: auto; border-radius: 8px; }
+        .centered-img { grid-column: 3 / span 6; width: 100%; border-radius: 12px; margin: 40px 0; display: block; justify-self: center; }
 
         .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 80px; }
         .nav-footer a { color: var(--muted); text-decoration: none; }
     </style>
 </head>
 <body>
+
 <div class="stage">
     <main class="card">
         <aside class="sidebar">
@@ -80,9 +79,9 @@
             <div class="sig-sidebar"><img src="../images/signature_01.jpeg"></div>
             <footer class="footer-sidebar">
                 <a class="about-link" onclick="location.href='../Aboutme/index.html'">ABOUT ME</a>
-                <p>✉ <a href="mailto:larafc@hotmail.es" style="color:inherit;text-decoration:none;">larafc@hotmail.es</a></p>
-                <p> <a href="https://instagram.com/bylara.frias" target="_blank" style="color:inherit;text-decoration:none;">INSTAGRAM</a></p>
-                <p style="margin-top: 15px; color: var(--ink); font-weight: 400; letter-spacing: 2px;">: CV</p>
+                <p>larafc@hotmail.es</p>
+                <p>INSTAGRAM</p>
+                <p style="margin-top: 15px; color: var(--ink);">: CV</p>
             </footer>
         </aside>
 
@@ -90,44 +89,96 @@
             <div class="home-nav" onclick="location.href='../index.html'">: HOME</div>
             
             <div class="scroll-wrapper">
+                
                 <div class="text-full">
                     <p class="work-header">: Where have i worked at?</p>
                     <h1 class="work-title">1. DESIGN TEAM FOR / <strong>JNORIG</strong></h1>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 3; --t: 0px;"><img src="../images/llogojnorig.jpg"></div>
+                <div class="img-block" style="--c: 1; --s: 3;"><img src="../images/llogojnorig.jpg"></div>
                 
-                <div class="img-block" style="--c: 1; --s: 7; --t: 40px;">
-                    <img src="../images/W1.jpg">
-                    <p class="caption">2023-2024 JNORIG Madrid Fashion week</p>
-                </div>
-                <div class="img-block" style="--c: 8; --s: 5; --t: 120px;">
-                    <img src="../images/W2.jpg">
-                </div>
-
-                <div class="text-full" style="margin-top: 80px;">
-                    <ul class="bullet-list">
-                        <li>Design team</li>
-                        <li>Pattern making, textile selection, styling, fittings, garment prototyping and final pieces development for a full collection</li>
-                        <li>Trends research and many technical files of garments done</li>
-                    </ul>
-                </div>
-
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/kFEAh53mDOU" allowfullscreen></iframe>
-                </div>
-                <div class="text-full"><p class="video-caption">FULL RUNWAY SHOW ON VIDEO</p></div>
+                <div class="img-block" style="--c: 1; --s: 7; --t: 40px;"><img src="../images/W1.jpg"></div>
+                <div class="img-block" style="--c: 8; --s: 5; --t: 120px;"><img src="../images/W2.jpg"></div>
 
                 <div class="section-break">PATTERN AND PROTOTYPE MAKING</div>
+                <div class="grid-3">
+                    <script>
+                        for(let i=1; i<=52; i++) {
+                            document.write(`<img src="../images/workat-patronaje${i}.jpeg">`);
+                        }
+                    </script>
+                </div>
+
+                <div class="section-break">BEHIND THE SCENES RUNWAY SHOW</div>
+                <div class="grid-3">
+                    <script>
+                        for(let i=1; i<=36; i++) {
+                            let ext = (i === 30) ? 'png' : 'jpeg';
+                            document.write(`<img src="../images/workat-bts${i}.${ext}">`);
+                        }
+                    </script>
+                </div>
+
+                <div class="text-full">
+                    <p class="work-header">PROFESSIONAL IMAGES DOWNLOAD</p>
+                </div>
+
+                <div class="slider-container" id="prof-slider">
+                    <div class="slides">
+                        <script>
+                            for(let i=1; i<=14; i++) {
+                                let num = i.toString().padStart(4, '0');
+                                document.write(`<img src="../images/PF25_Ambiente_JNORIG_${num}.jpg">`);
+                            }
+                        </script>
+                    </div>
+                </div>
+
+                <div class="text-full" style="margin-top: 100px;">
+                    <h1 class="work-title">2. STUDIO ASSISTANT / <strong>ÖLEND AND LES MARÉES</strong></h1>
+                </div>
+
+                <div class="img-block" style="--c: 1; --s: 5;"><img src="../images/WO1.png"></div>
+                <div class="img-block" style="--c: 7; --s: 5; --t: 40px;"><img src="../images/WO2.png"></div>
+
+                <div class="text-full">
+                    <p>I interned there focusing on technical files, content creation and stock supervision.</p>
+                </div>
                 
-                <div class="patronaje-grid">
-                    <img src="../images/workat-patronaje1.jpeg">
-                    <img src="../images/workat-patronaje2.jpeg">
-                    <img src="../images/workat-patronaje3.jpeg">
-                    <img src="../images/workat-patronaje4.jpeg">
-                    <img src="../images/workat-patronaje5.jpeg">
-                    <img src="../images/workat-patronaje6.jpeg">
-                    <img src="../images/workat-patronaje52.jpeg">
+                <div class="img-block" style="--c: 1; --s: 4;"><img src="../images/WO3.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4;"><img src="../images/WO4.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4;"><img src="../images/WO3.png"></div>
+
+                <div class="section-break">LES MARÉES</div>
+                <div class="grid-3">
+                    <img src="../images/marees1.png">
+                    <img src="../images/marees2.png">
+                    <img src="../images/marees3.png">
+                    <img src="../images/marees4.png">
+                </div>
+
+                <div class="section-break">ÖLEND</div>
+                <img src="../images/Olend1.png" class="centered-img">
+                <div class="grid-3">
+                    <script>
+                        for(let i=2; i<=10; i++) {
+                            document.write(`<img src="../images/Olend${i}.png">`);
+                        }
+                    </script>
+                </div>
+
+                <div class="text-full">
+                    <p class="blue-trend">TREND RESEARCH</p>
+                </div>
+
+                <div class="slider-container" id="trend-slider">
+                    <div class="slides">
+                        <script>
+                            for(let i=1; i<=8; i++) {
+                                document.write(`<img src="../images/TREND${i}.png">`);
+                            }
+                        </script>
+                    </div>
                 </div>
 
                 <footer class="nav-footer">
@@ -135,9 +186,31 @@
                     <a href="../index.html">Index</a>
                     <a href="../Kids/index.html">Next: Kids →</a>
                 </footer>
+
             </div>
         </section>
     </main>
 </div>
+
+<script>
+    function startSlider(id) {
+        const slider = document.getElementById(id);
+        const slides = slider.querySelector('.slides');
+        const images = slides.querySelectorAll('img');
+        let index = 0;
+
+        setInterval(() => {
+            index++;
+            if (index >= images.length) index = 0;
+            slides.style.transform = `translateX(${-index * 100}%)`;
+        }, 2000);
+    }
+
+    window.onload = () => {
+        startSlider('prof-slider');
+        startSlider('trend-slider');
+    };
+</script>
+
 </body>
 </html>
