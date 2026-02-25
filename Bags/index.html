@@ -10,42 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
     
     <style>
-        :root { 
-            --bg: #efefef; 
-            --card: #ffffff; 
-            --ink: #1a1a1a; 
-            --muted: #b5b5b5; 
-            --blue: #1f36ff; 
-        }
-
-        * { 
-            box-sizing: border-box; 
-            -webkit-font-smoothing: antialiased; 
-            -moz-osx-font-smoothing: grayscale; 
-            text-rendering: optimizeLegibility;
-        }
-
-        body, html { 
-            margin: 0; padding: 0; height: 100%; 
-            background: var(--bg); 
-            font-family: 'JetBrains Mono', monospace; 
-            overflow: hidden; 
-        }
-        
+        :root { --bg: #efefef; --card: #ffffff; --ink: #1a1a1a; --muted: #b5b5b5; --blue: #1f36ff; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+        body, html { margin: 0; padding: 0; height: 100%; background: var(--bg); font-family: 'JetBrains Mono', monospace; overflow: hidden; }
         .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        
-        .card { 
-            width: min(1380px, 98%); 
-            height: min(850px, 92vh); 
-            background: var(--card); 
-            border-radius: 24px; 
-            display: grid; 
-            grid-template-columns: 320px 1fr; 
-            overflow: hidden; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.08); 
-        }
+        .card { width: min(1380px, 98%); height: min(850px, 92vh); background: var(--card); border-radius: 24px; display: grid; grid-template-columns: 320px 1fr; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.08); }
 
-        /* --- SIDEBAR --- */
         .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
         .logo-hairline { font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); cursor: pointer; }
         .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
@@ -58,20 +28,10 @@
         .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
         .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; letter-spacing: 1px; }
 
-        /* --- CONTENIDO --- */
         .main-content { position: relative; height: 100%; background: #fff; overflow-y: scroll; scrollbar-width: none; }
         .main-content::-webkit-scrollbar { display: none; }
-
-        .home-nav { 
-            position: sticky; top: 30px; margin-left: auto; margin-right: 40px; 
-            color: var(--blue); font-size: 11px; font-style: italic; 
-            z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content;
-        }
-
-        .scroll-wrapper { 
-            display: grid; grid-template-columns: repeat(12, 1fr); 
-            gap: 25px 15px; padding: 60px 40px 150px; align-items: start;
-        }
+        .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content; }
+        .scroll-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 25px 15px; padding: 60px 40px 150px; align-items: start; }
 
         .img-block { grid-column: span 4; margin-top: 0px; position: relative; }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
@@ -82,7 +42,6 @@
         .project-title { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; font-weight: 200; }
         .collab-tag { font-size: 11px; font-style: italic; color: var(--blue); margin-bottom: 15px; display: block; }
         .intro-text { font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; margin-bottom: 40px; font-weight: 100; }
-
         .section-separator { grid-column: 1 / span 12; height: 1px; background: #f2f2f2; margin: 80px 0; }
 
         .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 80px; }
@@ -126,14 +85,16 @@
                     <span class="date">2023-2025</span>
                     <h1 class="project-title">Leather Handbag Designs</h1>
                     <p class="intro-text">
-                        This selection of handbags was entirely designed and handcrafted by me, using locally sourced materials and created through the double methodology developed for my Diplopia Collection.
+                        This selection of handbags was entirely designed and handcrafted by me, using locally sourced materials.
                     </p>
                 </header>
 
                 <script>
-                    // Nombre corregido a "BagPiel" con mayúsculas exactas
-                    for(let i=1; i<=43; i++) {
-                        document.write(`<div class="img-block"><img src="images/BagPiel${i}.jpeg"></div>`);
+                    // Cotejo exacto con tu carpeta
+                    for(let i=1; i<=20; i++) {
+                        // Excepción: 7 es .png, el resto .jpeg
+                        let ext = (i === 7) ? 'png' : 'jpeg';
+                        document.write(`<div class="img-block"><img src="images/BagPiel${i}.${ext}"></div>`);
                     }
                 </script>
 
@@ -144,7 +105,7 @@
                 </div>
 
                 <script>
-                    // Nombre corregido a "BagPelo" con mayúsculas exactas
+                    // Todas son .jpeg según tu carpeta
                     for(let i=1; i<=6; i++) {
                         document.write(`<div class="img-block"><img src="images/BagPelo${i}.jpeg"></div>`);
                     }
@@ -155,12 +116,10 @@
                 <div class="text-full">
                     <span class="collab-tag">collaboration with @archadeco</span>
                     <h2 class="project-title">Summer Tote Design</h2>
-                    <p class="intro-text">
-                        This summer tote combines functionality and elegance, reinterpreting traditional summer craftsmanship.
-                    </p>
                 </div>
 
                 <script>
+                    // Todas son .jpeg según tu carpeta
                     for(let i=1; i<=6; i++) {
                         document.write(`<div class="img-block"><img src="images/Bagssum${i}.jpeg"></div>`);
                     }
@@ -171,14 +130,14 @@
                 <div class="text-full">
                     <span class="collab-tag">collaboration with Emma Tarrats</span>
                     <h2 class="project-title">Maxxi Bag Project</h2>
-                    <p class="intro-text">
-                        The Maxxi Bag was entirely designed, conceptualized, and handcrafted by us — merging functionality, playfulness, and bold aesthetics.
-                    </p>
                 </div>
 
                 <script>
+                    // Cotejo exacto con tu carpeta
                     for(let i=1; i<=7; i++) {
-                        document.write(`<div class="img-block"><img src="images/Bagsmaxi${i}.jpeg"></div>`);
+                        // Excepciones: 6 y 7 son .png, el resto .jpeg
+                        let ext = (i >= 6) ? 'png' : 'jpeg';
+                        document.write(`<div class="img-block"><img src="images/Bagsmaxi${i}.${ext}"></div>`);
                     }
                 </script>
 
