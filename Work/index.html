@@ -16,7 +16,7 @@
         .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
         .card { width: min(1380px, 98%); height: min(850px, 92vh); background: var(--card); border-radius: 24px; display: grid; grid-template-columns: 320px 1fr; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.08); }
 
-        /* --- SIDEBAR ORIGINAL --- */
+        /* --- SIDEBAR --- */
         .sidebar { padding: 50px 45px; border-right: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; background: #fff; z-index: 100; }
         .logo-hairline { font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); cursor: pointer; }
         .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
@@ -36,6 +36,7 @@
 
         .img-block { grid-column: var(--c, 1) / span var(--s, 4); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
+        .caption { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; }
         
         .text-full { grid-column: 1 / span 12; }
         .work-header { font-size: 11px; font-style: italic; color: var(--ink); margin-bottom: 15px; }
@@ -45,10 +46,15 @@
         .bullet-list { font-size: 11px; line-height: 2; color: var(--ink); list-style: none; padding: 0; margin-bottom: 60px; }
         .bullet-list li::before { content: "• "; color: var(--muted); }
         
-        .video-container { grid-column: 1 / span 12; aspect-ratio: 16 / 9; background: #000; border-radius: 12px; margin: 40px 0; overflow: hidden; position: relative; }
+        .video-container { grid-column: 1 / span 12; aspect-ratio: 16 / 9; background: #000; border-radius: 12px; margin: 40px 0; overflow: hidden; }
+        .video-container iframe { width: 100%; height: 100%; border: none; }
         .video-caption { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; }
 
         .section-break { grid-column: 1 / span 12; border-top: 1px solid #f2f2f2; margin: 80px 0 40px; padding-top: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Estilo para las filas de 3 imágenes de patronaje */
+        .patronaje-grid { grid-column: 1 / span 12; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .patronaje-grid img { width: 100%; height: auto; border-radius: 8px; }
 
         .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 80px; }
         .nav-footer a { color: var(--muted); text-decoration: none; }
@@ -89,9 +95,15 @@
                     <h1 class="work-title">1. DESIGN TEAM FOR / <strong>JNORIG</strong></h1>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 3; --t: 0px;"><img src="../images/jnorig_logo.jpg"></div>
-                <div class="img-block" style="--c: 1; --s: 7; --t: 40px;"><img src="../images/6.1_backstage.jpg"><p class="caption">2023-2024 JNORIG Madrid Fashion week</p></div>
-                <div class="img-block" style="--c: 8; --s: 5; --t: 120px;"><img src="../images/6.1_floor_work.jpg"></div>
+                <div class="img-block" style="--c: 1; --s: 3; --t: 0px;"><img src="../images/llogojnorig.jpg"></div>
+                
+                <div class="img-block" style="--c: 1; --s: 7; --t: 40px;">
+                    <img src="../images/W1.jpg">
+                    <p class="caption">2023-2024 JNORIG Madrid Fashion week</p>
+                </div>
+                <div class="img-block" style="--c: 8; --s: 5; --t: 120px;">
+                    <img src="../images/W2.jpg">
+                </div>
 
                 <div class="text-full" style="margin-top: 80px;">
                     <ul class="bullet-list">
@@ -102,22 +114,21 @@
                 </div>
 
                 <div class="video-container">
-                    <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:white;">JNORIG YŪGEN AW25/26 - MBFW Madrid</div>
+                    <iframe src="https://www.youtube.com/embed/kFEAh53mDOU" allowfullscreen></iframe>
                 </div>
                 <div class="text-full"><p class="video-caption">FULL RUNWAY SHOW ON VIDEO</p></div>
 
                 <div class="section-break">PATTERN AND PROTOTYPE MAKING</div>
                 
-                <div class="img-block" style="--c: 1; --s: 5; --t: 0px;"><img src="../images/6.3_sketch.jpg"></div>
-                <div class="img-block" style="--c: 7; --s: 3; --t: 20px;"><img src="../images/6.3_pattern_detail.jpg"></div>
-                <div class="img-block" style="--c: 10; --s: 3; --t: -20px;"><img src="../images/6.3_muslin.jpg"></div>
-                
-                <div class="img-block" style="--c: 2; --s: 4; --t: 60px;"><img src="../images/6.4_muslin_body.jpg"></div>
-                <div class="img-block" style="--c: 7; --s: 4; --t: 40px;"><img src="../images/6.5_pleats.jpg"></div>
-                <div class="img-block" style="--c: 1; --s: 6; --t: 80px;"><img src="../images/6.9_corset_white.jpg"></div>
-                <div class="img-block" style="--c: 8; --s: 5; --t: 20px;"><img src="../images/6.9_corset_black.jpg"></div>
-
-                <div class="img-block" style="--c: 4; --s: 5; --t: 100px;"><img src="../images/6.10_leather_jacket.jpg"></div>
+                <div class="patronaje-grid">
+                    <img src="../images/workat-patronaje1.jpeg">
+                    <img src="../images/workat-patronaje2.jpeg">
+                    <img src="../images/workat-patronaje3.jpeg">
+                    <img src="../images/workat-patronaje4.jpeg">
+                    <img src="../images/workat-patronaje5.jpeg">
+                    <img src="../images/workat-patronaje6.jpeg">
+                    <img src="../images/workat-patronaje52.jpeg">
+                </div>
 
                 <footer class="nav-footer">
                     <a href="../BTS/index.html">← Previous: BTS</a>
