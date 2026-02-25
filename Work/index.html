@@ -37,13 +37,18 @@
         .work-header { font-size: 11px; font-style: italic; color: var(--ink); margin-bottom: 15px; }
         .work-title { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; font-weight: 200; margin-bottom: 20px; }
         .section-break { grid-column: 1 / span 12; border-top: 1px solid #f2f2f2; margin: 60px 0 20px; padding-top: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
-        .blue-trend { color: var(--blue); font-weight: 500; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; }
+        
+        .bullet-list { font-size: 11px; line-height: 2; color: var(--ink); list-style: none; padding: 0; margin: 20px 0 40px; }
+        .bullet-list li::before { content: "• "; color: var(--muted); }
 
         .img-block { grid-column: var(--c, 1) / span var(--s, 4); margin-top: var(--t, 0px); }
         .img-block img { width: 100%; border-radius: 12px; display: block; }
         
         .grid-3 { grid-column: 1 / span 12; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
         .grid-3 img { width: 100%; border-radius: 8px; display: block; }
+
+        .video-container { grid-column: 1 / span 12; aspect-ratio: 16 / 9; background: #000; border-radius: 12px; margin: 40px 0; overflow: hidden; }
+        .video-container iframe { width: 100%; height: 100%; border: none; }
 
         .slider-container { grid-column: 1 / span 12; width: 100%; position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 16 / 9; background: #f9f9f9; margin: 20px 0; }
         .slides { display: flex; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); height: 100%; }
@@ -86,6 +91,7 @@
             <div class="home-nav" onclick="location.href='../index.html'">: HOME</div>
             
             <div class="scroll-wrapper">
+                
                 <div class="text-full">
                     <p class="work-header">: Where have i worked at?</p>
                     <h1 class="work-title">1. DESIGN TEAM FOR / <strong>JNORIG</strong></h1>
@@ -93,13 +99,29 @@
 
                 <div class="img-block" style="--c: 1; --s: 3;"><img src="images/logojnorig.jpg"></div>
                 
-                <div class="img-block" style="--c: 1; --s: 7; --t: 40px;"><img src="images/W1.jpeg"></div>
+                <div class="text-full">
+                    <p class="work-header" style="margin-top:20px;">2023-2024 JNORIG Madrid Fashion week</p>
+                </div>
+
+                <div class="img-block" style="--c: 1; --s: 7; --t: 0px;"><img src="images/W1.jpeg"></div>
                 <div class="img-block" style="--c: 8; --s: 5; --t: 120px;"><img src="images/W2.jpeg"></div>
+
+                <div class="text-full">
+                    <ul class="bullet-list">
+                        <li>Design team</li>
+                        <li>Pattern making, textile selecction, styling, fittings, garment prototyping and final pieces development for a full collection</li>
+                        <li>Trends reaserch and many technical files of garments done</li>
+                    </ul>
+                </div>
+
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/kFEAh53mDOU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="text-full"><p class="work-header" style="font-size:9px; margin-top:-30px;">FULL RUNWAY SHOW ON VIDEO</p></div>
 
                 <div class="section-break">PATTERN AND PROTOTYPE MAKING</div>
                 <div class="grid-3">
                     <script>
-                        // Actualizado al nuevo nombre de archivo "workat-ptr"
                         for(let i=1; i<=52; i++) {
                             document.write(`<img src="images/workat-ptr${i}.jpeg">`);
                         }
@@ -117,7 +139,7 @@
                 </div>
 
                 <div class="text-full">
-                    <p class="work-header">PROFESSIONAL IMAGES DOWNLOAD</p>
+                    <p class="work-header" style="text-transform: uppercase; border: 1px solid var(--ink); display: inline-block; padding: 5px 15px; margin-bottom: 20px;">PROFESSIONAL IMAGES DOWNLOAD</p>
                 </div>
 
                 <div class="slider-container" id="prof-slider">
@@ -133,13 +155,20 @@
 
                 <div class="text-full" style="margin-top: 100px;">
                     <h1 class="work-title">2. STUDIO ASSISTANT / <strong>ÖLEND AND LES MARÉES</strong></h1>
+                    <p style="font-size:11px; color:var(--ink); max-width:800px; margin-top:20px; text-transform: uppercase;">IN A STUDIO I WAS AN ASSISTANT FOR BOTH BRANDS OF THE SAME CREATOR, I WENT THERE FOR THE FIRST UNIVERSITY INTERNSHIPS IN THE INDUSTRY.</p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 5;"><img src="images/WO1.png"></div>
-                <div class="img-block" style="--c: 7; --s: 5; --t: 40px;"><img src="images/WO2.png"></div>
+                <div class="img-block" style="--c: 1; --s: 5; --t:40px;"><img src="images/WO1.png"></div>
+                <div class="img-block" style="--c: 8; --s: 4; --t: 120px;"><img src="images/WO2.png"></div>
 
                 <div class="text-full">
-                    <p>I interned there focusing on technical files, content creation and stock supervision.</p>
+                    <p class="work-header">I interened there focusing on :</p>
+                    <ul class="bullet-list" style="color: var(--muted);">
+                        <li>Stock and packaging supervisor</li>
+                        <li>Content creator for a Behind the Scenes shooting</li>
+                        <li>Help on the development of a sweater for Les Marees brand.</li>
+                        <li>Trends reaserch and many technical files of garments done.</li>
+                    </ul>
                 </div>
                 
                 <div class="img-block" style="--c: 1; --s: 4;"><img src="images/WO3.jpg"></div>
@@ -147,6 +176,7 @@
                 <div class="img-block" style="--c: 9; --s: 4;"><img src="images/WO3.png"></div>
 
                 <div class="section-break">LES MARÉES</div>
+                <div class="text-full"><p class="work-header" style="margin-bottom:20px;">HELP IN : “ Solstici Jumper” in collaboration with artist @guimtio</p></div>
                 <div class="grid-3">
                     <img src="images/marees1.png">
                     <img src="images/marees2.png">
@@ -155,6 +185,10 @@
                 </div>
 
                 <div class="section-break">ÖLEND</div>
+                <div class="text-full">
+                    <p style="font-size:10px; color:var(--muted); line-height:1.8; max-width:800px; margin-bottom:30px;">ÖLEND is a brand that began as a passion project between Adriana and Fran, who met while filming in Barcelona. From there, they discovered a DIY backpack course and started creating their own designs, which quickly caught the attention of friends and strangers alike. The demand for their products grew, and Ölend was born. Then Antonio and Juan -Fran’s childhood friends- became part of the company. <br><br> “ From our first backpack made in our living room to the showcases and streets where our products are sold today, we remain committed to creating the best possible experience for our clients.”</p>
+                    <p class="work-header" style="color:var(--blue);">Shooting for campaing: AIR BACKPACKS.</p>
+                </div>
                 <img src="images/Olend1.png" class="centered-img">
                 <div class="grid-3">
                     <script>
@@ -165,7 +199,7 @@
                 </div>
 
                 <div class="text-full">
-                    <p class="blue-trend">TREND RESEARCH</p>
+                    <p class="work-header" style="color:var(--blue); text-transform:uppercase;">TREND REASERCH</p>
                 </div>
 
                 <div class="slider-container" id="trend-slider">
@@ -191,6 +225,7 @@
 <script>
     function startSlider(id) {
         const slider = document.getElementById(id);
+        if(!slider) return;
         const slides = slider.querySelector('.slides');
         const images = slides.querySelectorAll('img');
         let index = 0;
