@@ -42,22 +42,16 @@
         .header-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
         .ig-badge { border: 1px solid var(--ink); padding: 8px 18px; border-radius: 6px; font-size: 10px; display: inline-block; margin: 15px 0 30px 0; box-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
 
-        /* Visores de Imágenes */
         .image-viewer { grid-column: 1 / span 12; display: flex; overflow-x: auto; gap: 15px; scrollbar-width: none; padding-bottom: 10px; margin: 20px 0; }
         .image-viewer::-webkit-scrollbar { display: none; }
         .image-viewer img { height: 450px; width: auto; border-radius: 12px; flex-shrink: 0; }
 
-        /* Efecto Abanico */
-        .fan-container { position: relative; height: 350px; width: 100%; }
-        .fan-img { position: absolute; width: 180px !important; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; border-radius: 4px; }
-
         .btn-bts { background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; text-decoration: none; font-size: 10px; display: inline-block; letter-spacing: 2px; margin-bottom: 40px; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.15); }
         .caption-red { font-size: 10px; color: var(--pink); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; font-weight: 500; }
-        .caption-green { font-size: 10px; color: #55ff00; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; font-weight: 500; }
 
-        /* Issuu Bar */
-        .issuu-bar { background: #1a1a1a; color: #fff; padding: 10px 20px; font-size: 10px; display: flex; justify-content: space-between; border-radius: 4px; margin: 40px 0 20px; grid-column: 1 / span 12; cursor: pointer; transition: opacity 0.3s; }
-        .issuu-bar:hover { opacity: 0.8; }
+        /* Issuu Container */
+        .issuu-container { grid-column: 1 / span 12; margin: 40px 0; position: relative; padding-top: 56.25%; width: 100%; }
+        .issuu-container iframe { position: absolute; border: none; width: 100%; height: 100%; left: 0; top: 0; border-radius: 12px; }
         
         .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 60px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 60px; }
         .nav-footer a { color: var(--muted); text-decoration: none; }
@@ -105,114 +99,59 @@
 
                 <div class="text-full">
                     <header class="header-meta">
-                        <h2 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">MOODBORED SWIMWEAR COLLECTION <span style="font-weight: 100; color: var(--muted); font-size: 10px;">w/ EMMA TARRATS ESPINOSA</span></h2>
-                        <span style="font-size: 11px; color: var(--muted);">2020 DURING COVID-19 PANDEMIC</span>
+                        <h2 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">MOODBORED SWIMWEAR COLLECTION</h2>
                     </header>
                     <div class="ig-badge">IG : @MOOD_______BORED</div>
                 </div>
 
-                <div class="img-block" style="--c: 3; --s: 4; --t: 0px;"><img src="../images/ByLara.png"></div>
-                <div class="img-block" style="--c: 7; --s: 4; --t: 0px;"><img src="../images/moodbored logo.png"></div>
-
-                <div class="text-full" style="margin-top: 60px;">
-                    <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 850px;">
-                        This has been my first brand as a co-founder with Emma, we created this swimwear brand with the need to touch the world of fashion during the pandemic and to continue learning and not stagnate since at university everything was paralyzed a lot during confinement and we hardly sewed and materialized any design, in addition to being able to create swimsuites pieces for ourselves for the summer when we could leave our homes.
-                    </p>
-                </div>
-
-                <div class="img-block" style="--c: 1; --s: 6; --t: 0px;"><img src="../images/moodbored.png"></div>
-                <div class="img-block" style="--c: 7; --s: 6; --t: 0px;"><img src="../images/moodbored2.png"></div>
-
-                <div class="text-full" style="margin-top: 60px;">
-                    <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 850px;">
-                        Not only do we design them entirely but we also confectionize them ourselves, with hardly any knowledge of carving and delicate elastic materials such as "lycra". We entered into corporate branding, instagram and brand packaging. We did photography shootings with models and photographers and despite happening during the pandemic it was extremely comfortable to collaborate and it has been one of the first contacts we had with collaborations between artists and colleagues in the industry.
-                    </p>
-                </div>
-
-                <div class="img-block" style="--c: 1; --s: 5; --t: 0px;">
-                    <div class="fan-container">
-                        <img src="../images/moodbored4.jpg" class="fan-img" style="transform: rotate(-15deg); z-index: 1;">
-                        <img src="../images/moodbored5.jpg" class="fan-img" style="transform: rotate(-8deg); left: 15px; z-index: 2;">
-                        <img src="../images/moodbored6.jpg" class="fan-img" style="transform: rotate(0deg); left: 30px; z-index: 3;">
-                        <img src="../images/moodbored7.jpg" class="fan-img" style="transform: rotate(8deg); left: 45px; z-index: 4;">
-                    </div>
-                </div>
-
-                <div class="img-block" style="--c: 7; --s: 6; --t: 0px;">
-                    <img src="../images/moodbored11.jpg"> </div>
+                <div class="img-block" style="--c: 3; --s: 4; --t: 0px;"><img src="images/ByLara.png"></div>
+                <div class="img-block" style="--c: 7; --s: 4; --t: 0px;"><img src="images/moodbored logo.png"></div>
 
                 <div class="text-full" style="text-align: center; margin-top: 60px;">
                     <a href="../BTS/index.html" class="btn-bts">BTS CLICK</a>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 12; --t: 20px;">
-                    <img src="../images/moodbored14.png"> </div>
-
-                <div class="img-block" style="--c: 1; --s: 12; --t: 20px;">
-                    <img src="../images/moodbored15.png"> </div>
-
-                <div class="text-full" style="margin-top: 80px;">
-                    <span class="caption-red">RIOMAGGIORE - ITALY</span>
-                    <div class="image-viewer">
-                        <img src="../images/moodbored8.jpg"><img src="../images/moodbored9.jpg"><img src="../images/moodbored10.jpg">
-                    </div>
-
-                    <span class="caption-red">PALAWAN - PHILIPPINES</span>
-                    <div class="image-viewer">
-                        <img src="../images/palawan.png"><img src="../images/palawan2.png"><img src="../images/palawan3.png">
-                    </div>
-
-                    <span class="caption-green">MAURITANIA - AFRICA</span>
-                    <div class="image-viewer">
-                        <img src="../images/mauri.png"><img src="../images/mauri2.png"><img src="../images/mauri3.png"><img src="../images/mauri4.png">
-                    </div>
-                </div>
+                <div class="img-block" style="--c: 1; --s: 12; --t: 20px;"><img src="images/moodbored14.png"></div>
+                <div class="img-block" style="--c: 1; --s: 12; --t: 20px;"><img src="images/moodbored15.png"></div>
 
                 <div class="text-full" style="margin-top: 100px; border-top: 1px solid #eee; padding-top: 60px;">
-                    <header class="header-meta">
-                        <h2 style="font-size: 16px; text-transform: uppercase; letter-spacing: 2px;">VILLAINS COLLECTION <span style="font-weight: 100; color: var(--muted); font-size: 10px;">w/ ANA CARRASCO, MARC CHRIS AND EMMA TARRATS</span></h2>
-                        <span style="font-size: 11px; color: var(--muted);">2021-2022 DURING 3R YEAR DEGREE</span>
-                    </header>
-                    
+                    <h2 style="font-size: 16px; text-transform: uppercase; letter-spacing: 2px;">VILLAINS COLLECTION</h2>
                     <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; margin-top: 30px; max-width: 850px;">
-                        This project was born with the exitment of making a collection between 4 colleagues, the 4 of them being very close friends and with similar tastes. Villains refers to how we think the rest of our colleagues in university see us, fashion is a competitive world and as egocentrics we sometimes laugh thinking that they hate us or see us as the bad guys in the movie since we close the circle of friends a lot. Seiemore we are the 4 always together and that is why we give our name to this collection. We wanted to base ourselves on popular villains from television and fiction novels and hybridize it with current trends in fashion.
+                        This project was born with the exitment of making a collection between 4 colleagues... Villains refers to how we think the rest of our colleagues in university see us.
                     </p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 12; --t: 40px;"><img src="../images/collab_villanos.jpg"></div>
+                <div class="img-block" style="--c: 1; --s: 12; --t: 40px;"><img src="images/collab_villanos.jpg"></div>
 
                 <div class="text-full" style="text-align: left; margin-top: 40px;">
                     <a href="../BTS/index.html" class="btn-bts">BTS CLICK</a>
                 </div>
 
-                <div class="img-block" style="--c: 5; --s: 4; --t: 0px;"><img src="../images/villains_portrait.jpg"></div>
-
-                <div class="issuu-bar" onclick="window.open('https://issuu.com/larafrias/docs/memoria_villanos_1_', '_blank')">
-                    <span>Flipbook created with <strong>issuu</strong></span>
-                    <a href="https://issuu.com/larafrias/docs/memoria_villanos_1_" target="_blank" style="color: #fff; text-decoration: none;">VIEW DOCUMENT</a>
+                <div class="issuu-container">
+                    <iframe allow="clipboard-write" allowfullscreen="true" src="https://e.issuu.com/embed.html?d=memoria_villanos_1_&u=larafrias"></iframe>
                 </div>
 
                 <div class="text-full">
-                    <p style="font-size: 12px; color: var(--muted); font-style: italic; letter-spacing: 0.5px;">
-                        We created a <strong>storyline</strong> that explainss who they are and why are they here. That is our concetual take on the photography shooting later on.
+                    <p style="font-size: 12px; color: var(--muted); font-style: italic;">
+                        We created a <strong>storyline</strong> that explainss who they are and why are they here.
                     </p>
                     <p style="font-size: 12px; color: var(--muted); margin-top: 15px;">
-                        Everything is designed and handmade by us, including the shooting images that are self produced/edited and the style work involved.
+                        Everything is designed and handmade by us, including the shooting images that are self produced/edited.
                     </p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 4; --t: 40px;"><img src="../images/collab_villlanos2A.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 40px;"><img src="../images/collab_villlanos2B.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 40px;"><img src="../images/collab_villlanos2C.jpg"></div>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 40px;"><img src="images/colab_villlanos2A.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 40px;"><img src="images/colab_villlanos2B.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 40px;"><img src="images/colab_villlanos2C.jpg"></div>
 
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="../images/collab_villlanos3A.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="../images/collab_villlanos3B.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="../images/collab_villlanos3C.jpg"></div>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/colab_villlanos3A.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/colab_villlanos3B.jpg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/colab_villlanos3C.jpg"></div>
 
                 <footer class="nav-footer">
-                    <a href="../Artisan/index.html">← Artisan Tailoring</a>
-                    <a href="../index.html">Index</a>
-                    <a href="../Other/index.html">Other Projects →</a>
+                    <a href="../Artisan/index.html">← ARTISAN TAILORING</a>
+                    <a href="../index.html">INDEX</a>
+                    <a href="../Other/index.html">OTHER PROJECTS →</a>
                 </footer>
             </div>
         </section>
