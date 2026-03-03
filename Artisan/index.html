@@ -39,6 +39,9 @@
         .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
         .caption { font-size: 8px; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-family: 'JetBrains Mono'; }
+        
+        /* Texto flotante sobre imágenes (anotaciones) */
+        .floating-note { position: absolute; bottom: 20px; left: 20px; font-size: 9px; color: #fff; font-weight: 400; text-shadow: 0 1px 3px rgba(0,0,0,0.3); pointer-events: none; }
 
         .text-full { grid-column: 1 / span 12; }
         .header-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px; border-bottom: 1px solid #f2f2f2; padding-bottom: 15px; }
@@ -88,7 +91,10 @@
                         <span class="date-tag">Feb - Jun 2023</span>
                     </header>
                     <p class="intro-p">
-                        In 2022 during my degree in fashion design, specifically in the pattern making workshop during my third year...
+                        In 2022 during my degree in fashion design, specifically in the pattern making workshop during my third year of fashion design, we went into discovering the craftsmanship behind tailoring and the whole meticulous and long process in the creation of a suit jacket.
+                    </p>
+                    <p class="intro-p">
+                        I designed and strated to investigate on applying my double vision into the pattern making and design. The pattern making was very hard but slowly i ganed skills and a personal methology to create it. That methodology was based on duplicating the pattern and placing it exactly where it was played by my vision. In this way the double vision of the pattern could reproduce and sew it as it is. Of course i had to make it work and apply tecniques they already existed in the fashion industry but the result was unique and reproducing my vision, no one else has.
                     </p>
                 </div>
 
@@ -96,57 +102,92 @@
                 <div class="img-block" style="--c: 4; --s: 3; --t: 0px;"><img src="images/artisan 2.png"></div>
                 <div class="img-block" style="--c: 7; --s: 3; --t: 0px;"><img src="images/artisan3.jpg"></div>
                 <div class="img-block" style="--c: 10; --s: 3; --t: 0px;"><img src="images/artisan4.png"></div>
-                <div class="img-block" style="--c: 1; --s: 3; --t: 15px;"><img src="images/artisan5.png"></div>
-                <div class="img-block" style="--c: 4; --s: 3; --t: 15px;"><img src="images/artisan6.png"></div>
-                <div class="img-block" style="--c: 7; --s: 3; --t: 15px;"><img src="images/artisan7.png"></div>
-                <div class="img-block" style="--c: 10; --s: 3; --t: 15px;"><img src="images/artisan8.png"></div>
 
-                <h2 class="sub-header">INVESTIGACIÓN DE PATRONAJE</h2>
+                <h2 class="sub-header">EXPERIMENTACIÓN / introducción</h2>
+                <div class="text-full">
+                    <p class="intro-p">
+                        En este apartado se exponen los intereses de investigación relacionados con materiales, técnicas y metodologías en los procesos de ideación, diseño y patronaje. Como se mencionó anteriormente, el principal enfoque de creación y desarrollo de la colección se basó en un ejercicio de calcar la imagen duplicada de las prendas, lo cual permitió diseñar y establecer un lineup provisional para la colección. Posteriormente, este lineup se digitalizó y se asignaron tejidos y colores finales a través de representaciones ficticias.
+                    </p>
+                    <p class="intro-p">
+                        Este ejercicio experimental sentó las bases del proceso, pero también fue importante realizar reinterpretaciones personales a partir de este lineup, especialmente en lo que respecta a los detalles. Se prestaron especial atención a elementos como fornituras, botones, formas de abrochar los ojales, funcionalidad de las prendas, cierres, entre otros. Estos detalles y reinterpretaciones serán desarrollados con mayor profundidad en los apartados correspondientes a cada look.
+                    </p>
+                    <p class="intro-p">
+                        En cuanto a los tejidos y las técnicas de patronaje se han aplicado considerando el grado de duplicidad presente en cada diseño. Las prendas más disociadas se construyeron mediante un sistema de superposición de piezas, como se evidencia en el primer look. A medida que el lineup evolucionaba y las líneas se iban unificando en el dibujo, se empleó un sistema de repetición de códigos en el cual únicamente se duplicaron cuellos, puños, fornituras y bolsillos, manteniendo la tensión. Por último, los looks al final del lineup juegan con la sutileza de las capas y la utilización de distintos materiales y colores.
+                    </p>
+                </div>
+
+                <h2 class="sub-header">investigación de patronaje</h2>
+                <div class="text-full">
+                    <p class="intro-p">
+                        El proceso de patronaje y creación de los patrones en esta colección ha sido fundamental para plasmar la visión doble en cada diseño. Se han utilizado diversas técnicas que han permitido materializar la dualidad y la interacción de las prendas de manera creativa y precisa. Una de las técnicas empleadas ha sido la superposición de las piezas, donde se ha confeccionado dos veces la misma prenda y se han unido mediante fornituras o puntadas a mano. Esta técnica ha permitido lograr una apariencia de prendas duplicadas, destacando visualmente la dualidad de la visión.
+                    </p>
+                    <p class="intro-p">
+                        Otro enfoque utilizado ha sido la repetición de códigos, como cuellos, bolsillos, puños y cinturas. Estos elementos han sido reproducidos en ambas capas de las prendas, generando una coherencia visual y reforzando la idea de duplicidad. La hibridación de ambos elementos, tanto en su reproducción como en su unión, ha creado diseños únicos y sorprendentes.
+                    </p>
+                    <p class="intro-p">
+                        La reproducción de botones, fornituras y costuras ha sido otro aspecto importante del proceso de patronaje. Se han duplicado elementos clave, como botones y cierres, para acentuar la duplicidad y la interacción entre las capas de las prendas. Además, se ha utilizado la costura como elemento visual para duplicar líneas de detalles muy importantes, añadiendo textura y volumen. En resumen, el proceso de patronaje ha sido una parte integral de la creación de esta colección, permitiendo plasmar la visión doble de manera creativa y precisa.
+                    </p>
+                </div>
+
                 <div class="img-block" style="--c: 1; --s: 6; --t: 0px;"><img src="images/artisan9.jpg"></div>
                 <div class="img-block" style="--c: 8; --s: 5; --t: 40px;"><img src="images/artisan10.jpg"></div>
 
-                <div class="text-full" style="margin-top: 40px;">
-                    <p class="intro-p">En este apartado se exponen los intereses de investigación...</p>
-                </div>
-
                 <h2 class="sub-header">EXPERIMENTACIÓN & FITTINGS</h2>
                 <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="images/artisan11.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 80px;"><img src="images/artisan12.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 40px;"><img src="images/artisan12.jpg"></div>
                 <div class="img-block" style="--c: 9; --s: 4; --t: -20px;"><img src="images/artisan13.jpg"></div>
-                <div class="img-block" style="--c: 2; --s: 8; --t: 100px;"><img src="images/artisan14.jpg"></div>
 
                 <h2 class="sub-header">Americana realizada meses antes con sistema de sastrería a medida artesanal</h2>
+                <div class="text-full">
+                    <p class="intro-p">
+                        El aprendizaje de esta asignatura y la confección de mi primera americana me sirvió para comprender cómo mejorarla, tomando estos errores y perfeccionándolos. Todo lo aprendido sobre construcción y códigos fue esencial para lograr hacer una buena americana a mano con cuello. El diseño final para mi trabajo de fin de grado duplica no solo el cuello, sino también los bolsillos, y además convierte uno de los cuellos en un smoking continuo usando un material distinto. Lo importante fue darme cuenta del error en cuanto al planteamiento de la vista y el segundo cuello, y del mal uso del corte delantero.
+                    </p>
+                </div>
+
                 <div class="img-block" style="--c: 1; --s: 3; --t: 0px;"><img src="images/artisan15.jpg"></div>
                 <div class="img-block" style="--c: 4; --s: 3; --t: 0px;"><img src="images/artisan16.jpg"></div>
                 <div class="img-block" style="--c: 7; --s: 3; --t: 0px;"><img src="images/artisan17.jpg"></div>
                 <div class="img-block" style="--c: 10; --s: 3; --t: 0px;"><img src="images/artisan18.jpg"></div>
 
                 <div class="text-full" style="margin-top: 100px;">
-                    <h3 style="font-size: 11px; margin-bottom: 20px;">Improvement in Pattern Making and Fabrics from the First Blazer to the Second One</h3>
+                    <h3 style="font-size: 11px; margin-bottom: 20px;">Improvement in Pattern Making and Fabrics from the First Blazer to the Second One in the Final Degree Project</h3>
                 </div>
                 <div class="img-block" style="--c: 1; --s: 6; --t: 0px;"><img src="images/artisan19.jpg"></div>
                 <div class="img-block" style="--c: 7; --s: 6; --t: 0px;"><img src="images/artisan20.jpg"></div>
 
                 <h2 class="sub-header">PROCESO FINAL Y DETALLES</h2>
-                <div class="img-block" style="--c: 1; --s: 4; --t: 0px;"><img src="images/artisan21.jpg"></div>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 0px;">
+                    <img src="images/artisan21.jpg">
+                    <span class="floating-note">Tomar medidas y patronar..</span>
+                </div>
                 <div class="img-block" style="--c: 5; --s: 4; --t: 0px;"><img src="images/artisan22.jpg"></div>
                 <div class="img-block" style="--c: 9; --s: 4; --t: 0px;"><img src="images/artisan23.jpg"></div>
 
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/artisan24.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/artisan25.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/artisan27.jpg"></div>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;">
+                    <img src="images/artisan24.jpg">
+                    <span class="floating-note">Calcar</span>
+                </div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;">
+                    <img src="images/artisan25.jpg">
+                    <span class="floating-note">Con punto flojo a mano</span>
+                </div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;">
+                    <img src="images/artisan27.jpg">
+                    <span class="floating-note">Añadir margen para trabajar</span>
+                </div>
 
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/artisan28.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/artisan29.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/artisan30.jpg"></div>
-
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/artisan31.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/artisan32.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/artisan33.jpg"></div>
-
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/artisan34.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/artisan35.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/artisan36.jpg"></div>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;">
+                    <img src="images/artisan28.jpg">
+                    <span class="floating-note">Montarla a mano mil veces</span>
+                </div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;">
+                    <img src="images/artisan29.jpg">
+                    <span class="floating-note">Para tener una primera impresión</span>
+                </div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;">
+                    <img src="images/artisan30.jpg">
+                    <span class="floating-note">Y cambios pequeños</span>
+                </div>
 
                 <footer class="nav-footer">
                     <a href="../Diplopia/index.html">← Diplopia Collection</a>
