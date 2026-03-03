@@ -56,7 +56,8 @@
         .caption-green { font-size: 10px; color: #55ff00; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; font-weight: 500; }
 
         /* Issuu Bar */
-        .issuu-bar { background: #1a1a1a; color: #fff; padding: 10px 20px; font-size: 10px; display: flex; justify-content: space-between; border-radius: 4px; margin: 40px 0 20px; grid-column: 1 / span 12; }
+        .issuu-bar { background: #1a1a1a; color: #fff; padding: 10px 20px; font-size: 10px; display: flex; justify-content: space-between; border-radius: 4px; margin: 40px 0 20px; grid-column: 1 / span 12; cursor: pointer; transition: opacity 0.3s; }
+        .issuu-bar:hover { opacity: 0.8; }
         
         .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 60px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 60px; }
         .nav-footer a { color: var(--muted); text-decoration: none; }
@@ -138,15 +139,19 @@
                 </div>
 
                 <div class="img-block" style="--c: 7; --s: 6; --t: 0px;">
-                    <img src="../images/moodbored14.png"> <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
-                        <img src="../images/moodbored15.png" style="width: 100%; border-radius: 12px;"> <img src="../images/moodbored11.jpg" style="width: 100%; border-radius: 12px;"> </div>
-                </div>
+                    <img src="../images/moodbored11.jpg"> </div>
 
                 <div class="text-full" style="text-align: center; margin-top: 60px;">
                     <a href="../BTS/index.html" class="btn-bts">BTS CLICK</a>
                 </div>
 
-                <div class="text-full">
+                <div class="img-block" style="--c: 1; --s: 12; --t: 20px;">
+                    <img src="../images/moodbored14.png"> </div>
+
+                <div class="img-block" style="--c: 1; --s: 12; --t: 20px;">
+                    <img src="../images/moodbored15.png"> </div>
+
+                <div class="text-full" style="margin-top: 80px;">
                     <span class="caption-red">RIOMAGGIORE - ITALY</span>
                     <div class="image-viewer">
                         <img src="../images/moodbored8.jpg"><img src="../images/moodbored9.jpg"><img src="../images/moodbored10.jpg">
@@ -155,11 +160,6 @@
                     <span class="caption-red">PALAWAN - PHILIPPINES</span>
                     <div class="image-viewer">
                         <img src="../images/palawan.png"><img src="../images/palawan2.png"><img src="../images/palawan3.png">
-                    </div>
-
-                    <span class="caption-red">ZAKYNTHOS - GREECE</span>
-                    <div class="image-viewer">
-                        <img src="../images/zakynthos.png"><img src="../images/zakynthos2.png"><img src="../images/zakynthos3.png">
                     </div>
 
                     <span class="caption-green">MAURITANIA - AFRICA</span>
@@ -185,11 +185,11 @@
                     <a href="../BTS/index.html" class="btn-bts">BTS CLICK</a>
                 </div>
 
-                <div class="img-block" style="--c: 5; --s: 5; --t: 0px;"><img src="../images/villains_portrait.jpg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 0px;"><img src="../images/villains_portrait.jpg"></div>
 
-                <div class="issuu-bar">
+                <div class="issuu-bar" onclick="window.open('https://issuu.com/larafrias/docs/memoria_villanos_1_', '_blank')">
                     <span>Flipbook created with <strong>issuu</strong></span>
-                    <a href="#" style="color: #fff; text-decoration: none;">Publish for free</a>
+                    <a href="https://issuu.com/larafrias/docs/memoria_villanos_1_" target="_blank" style="color: #fff; text-decoration: none;">VIEW DOCUMENT</a>
                 </div>
 
                 <div class="text-full">
