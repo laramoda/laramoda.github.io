@@ -130,41 +130,11 @@
 
                 <div class="section-break">BEHIND THE SCENES RUNWAY SHOW</div>
                 <div class="grid-3">
-                    <img src="images/workat-bts1.jpeg">
-                    <img src="images/workat-bts2.jpeg">
-                    <img src="images/workat-bts3.jpeg">
-                    <img src="images/workat-bts4.jpeg">
-                    <img src="images/workat-bts5.jpeg">
-                    <img src="images/workat-bts6.jpeg">
-                    <img src="images/workat-bts7.jpeg">
-                    <img src="images/workat-bts8.jpeg">
-                    <img src="images/workat-bts9.jpeg">
-                    <img src="images/workat-bts10.jpeg">
-                    <img src="images/workat-bts11.jpeg">
-                    <img src="images/workat-bts12.jpeg">
-                    <img src="images/workat-bts13.jpeg">
-                    <img src="images/workat-bts14.jpeg">
-                    <img src="images/workat-bts15.jpeg">
-                    <img src="images/workat-bts16.jpeg">
-                    <img src="images/workat-bts17.jpeg">
-                    <img src="images/workat-bts18.jpeg">
-                    <img src="images/workat-bts19.jpeg">
-                    <img src="images/workat-bts20.jpeg">
-                    <img src="images/workat-bts21.jpeg">
-                    <img src="images/workat-bts22.jpeg">
-                    <img src="images/workat-bts23.jpeg">
-                    <img src="images/workat-bts24.jpeg">
-                    <img src="images/workat-bts25.jpeg">
-                    <img src="images/workat-bts26.jpeg">
-                    <img src="images/workat-bts27.jpeg">
-                    <img src="images/workat-bts28.jpeg">
-                    <img src="images/workat-bts29.png">
-                    <img src="images/workat-bts30.png">
-                    <img src="images/workat-bts31.png">
-                    <img src="images/workat-bts32.jpeg">
-                    <img src="images/workat-bts33.jpeg">
-                    <img src="images/workat-bts34.jpeg">
-                    <img src="images/workat-bts35.jpeg">
+                    <script>
+                        for(let i=1; i<=35; i++) {
+                             document.write(`<img src="images/workat-bts${i}.jpeg">`);
+                        }
+                    </script>
                     <img src="images/workat-bts36.jpeg">
                     <img src="images/workat-bts37.png">
                 </div>
@@ -176,12 +146,11 @@
                 <div class="slider-container" id="prof-slider">
                     <div class="slides">
                         <script>
-    for(let i=1; i<=14; i++) {
-        // Usamos "i" directamente porque tus archivos no tienen ceros (1, 2, 3...)
-        // Añadimos "../" si las fotos están en la carpeta principal de imágenes
-        document.write(`<img src="../images/PF25_Ambiente_JNORIG_${i}.jpg">`);
-    }
-</script>
+                            for(let i=1; i<=14; i++) {
+                                // Nombre de archivo corregido segun tu lista (sin ceros extra)
+                                document.write(`<img src="images/PF25_Ambiente_JNORIG_${i}.jpg">`);
+                            }
+                        </script>
                     </div>
                 </div>
 
