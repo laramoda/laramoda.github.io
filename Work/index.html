@@ -132,12 +132,14 @@
 <div class="grid-3">
     <script>
         for(let i=1; i<=37; i++) {
-            // Definimos la extensión: .png para 29, 30 y 31; .jpeg para el resto
-            let extension = (i >= 1 && i <= 37) ? 'png' o 'jpeg';
-            document.write(`<img src="images/workat-bts${i}.${extension}">`);
+            // Intentamos cargar .jpeg por defecto
+            document.write(`
+                <img src="images/workat-bts${i}.jpeg" 
+                     onerror="if (this.src.endsWith('.jpeg')) { this.src = 'images/workat-bts${i}.png'; }">
+            `);
         }
     </script>
-    </div>
+</div>
 
                 <div class="text-full">
                     <p class="work-header" style="text-transform: uppercase; border: 1px solid var(--ink); display: inline-block; padding: 5px 15px; margin-bottom: 20px;">PROFESSIONAL IMAGES DOWNLOAD</p>
