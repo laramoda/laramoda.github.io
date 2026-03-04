@@ -91,13 +91,8 @@
                 <div class="img-block" style="--c: 5; --s: 4;"><img src="/images/diplopia 3.jpeg"></div>
                 <div class="img-block" style="--c: 9; --s: 4;"><img src="/images/diplopia 4.jpeg"></div>
 
-               <div class="carousel-container">
-<script>
-for(let i=1; i<=4; i++) {
-  document.write('<img src="/images/dipSlides' + i + '.png">');
-}
-</script>
-</div>
+                <!-- ✅ Carrusel 1 (corregido: sin document.write, mantiene /images/) -->
+                <div class="carousel-container" id="carousel-dipslides"></div>
 
                 <div class="text-full">
                     <p class="intro-text">"The resulting collection goes beyond the conventions of fashion, authentically capturing her visual reality. Through deconstruction, layering, and material selection, the visual duality has been represented in the garments of the collection. This work documents the design process and explores the different stages and techniques used to achieve this authentic representation of Diplopia. The collection is not only an artistic expression but also a symbol of personal growth and empowerment, demonstrating that double vision can be transformed into a powerful creative tool."</p>
@@ -126,15 +121,10 @@ for(let i=1; i<=4; i++) {
                 <div class="img-block" style="--c: 7; --s: 3;"><img src="/images/DD3.jpg"></div>
                 <div class="img-block" style="--c: 10; --s: 3;"><img src="/images/DD4.jpg"></div>
 
-                <div class="carousel-container">
-                    <script>
-                        for(let i=1; i<=23; i++) {
-                            // slideX.jpg sin espacio
-                            document.write(`<img src="/images/slide${i}.jpg">`);
-                        }
-                    </script>
-                </div>
+                <!-- ✅ Carrusel 2 (corregido: sin document.write, mantiene /images/) -->
+                <div class="carousel-container" id="carousel-slides"></div>
 
+                <!-- (se mantiene tal cual tu generador de imágenes) -->
                 <script>
                     for(let i=1; i<=80; i++) {
                         // dX.jpeg sin espacio
@@ -150,5 +140,31 @@ for(let i=1; i<=4; i++) {
         </section>
     </main>
 </div>
+
+<!-- ✅ Script único que rellena ambos carruseles (sin borrar nada y manteniendo /images/) -->
+<script>
+  function fillCarousel(containerId, { count, prefix, ext, basePath }) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+
+    for (let i = 1; i <= count; i++) {
+      const img = document.createElement('img');
+      img.src = `${basePath}${prefix}${i}${ext}`;
+      img.loading = 'lazy';
+      img.alt = `${prefix}${i}`;
+      img.onerror = () => console.warn('No se pudo cargar:', img.src);
+      el.appendChild(img);
+    }
+  }
+
+  const IMG_BASE = '/images/';
+
+  // dipSlides1.png ... dipSlides4.png
+  fillCarousel('carousel-dipslides', { count: 4,  prefix: 'dipSlides', ext: '.png', basePath: IMG_BASE });
+
+  // slide1.jpg ... slide23.jpg
+  fillCarousel('carousel-slides',    { count: 23, prefix: 'slide',     ext: '.jpg', basePath: IMG_BASE });
+</script>
+
 </body>
 </html>
