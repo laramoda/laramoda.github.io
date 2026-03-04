@@ -42,7 +42,7 @@
         .carousel-container::-webkit-scrollbar { display: none; }
         .carousel-container img { height: 450px; border-radius: 12px; flex-shrink: 0; }
 
-        /* ✅ Autoplay para el primer carrusel */
+        /* Autoplay carrusel 1 */
         .carousel-autoplay { overflow: hidden; }
         .carousel-track { display: flex; gap: 15px; will-change: transform; }
         .carousel-autoplay img { height: 450px; border-radius: 12px; flex-shrink: 0; }
@@ -96,7 +96,7 @@
                 <div class="img-block" style="--c: 5; --s: 4;"><img src="/images/diplopia 3.jpeg"></div>
                 <div class="img-block" style="--c: 9; --s: 4;"><img src="/images/diplopia 4.jpeg"></div>
 
-                <!-- ✅ Carrusel 1: automático con tus archivos reales dipSlide1.png..dipSlide3.png -->
+                <!-- ✅ Carrusel 1: automático. (dipSlide1..3 con extensión variable) -->
                 <div class="carousel-container carousel-autoplay" id="carousel-dipSlides">
                     <div class="carousel-track" id="carousel-dipSlides-track"></div>
                 </div>
@@ -128,16 +128,11 @@
                 <div class="img-block" style="--c: 7; --s: 3;"><img src="/images/DD3.jpg"></div>
                 <div class="img-block" style="--c: 10; --s: 3;"><img src="/images/DD4.jpg"></div>
 
-                <!-- ✅ Carrusel 2: scroll horizontal con slide1.jpg..slide23.jpg -->
+                <!-- ✅ Carrusel 2: scroll horizontal (slide1..23 con extensión variable) -->
                 <div class="carousel-container" id="carousel-slides"></div>
 
-                <!-- (se mantiene tal cual tu generador de imágenes) -->
-                <script>
-                    for(let i=1; i<=80; i++) {
-                        // dX.jpeg sin espacio
-                        document.write(`<div class="img-block" style="--c: ${((i-1)%3)*4 + 1}; --s: 4; --t: 20px;"><img src="/images/d${i}.jpeg"></div>`);
-                    }
-                </script>
+                <!-- ✅ Grid final: aquí se insertarán d1..d80 en columnas de 3 -->
+                <div id="d-grid-anchor"></div>
 
                 <footer class="nav-footer">
                     <a href="../index.html">← Index</a>
@@ -148,43 +143,65 @@
     </main>
 </div>
 
-<!-- ✅ Script: rellena carruseles (sin borrar nada y manteniendo /images/) -->
 <script>
-  function fillCarousel(containerId, { count, prefix, ext, basePath }) {
-    const el = document.getElementById(containerId);
-    if (!el) return;
+  const IMG_BASE = '/images/';
 
-    for (let i = 1; i <= count; i++) {
-      const img = document.createElement('img');
-      img.src = `${basePath}${prefix}${i}${ext}`;
-      img.loading = 'lazy';
-      img.alt = `${prefix}${i}`;
-      img.onerror = () => console.warn('No se pudo cargar:', img.src);
-      el.appendChild(img);
+  /**
+   * Crea una <img> que prueba varias extensiones (en orden).
+   * Ej: baseName = 'd1' -> intenta /images/d1.jpeg luego /images/d1.jpg luego /images/d1.png
+   */
+  function createImgWithFallback(baseName, exts, altText) {
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.alt = altText || baseName;
+
+    let idx = 0;
+    const tryNext = () => {
+      if (idx >= exts.length) {
+        console.warn('No se pudo cargar ninguna extensión para:', baseName, 'Probadas:', exts);
+        return;
+      }
+      img.src = `${IMG_BASE}${baseName}${exts[idx]}`;
+      idx++;
+    };
+
+    img.onerror = tryNext;
+    tryNext(); // primer intento
+    return img;
+  }
+
+  /**
+   * Rellena un contenedor con una secuencia de imágenes baseName + i + ext variable
+   */
+  function fillContainerSequence(containerEl, prefix, from, to, exts) {
+    for (let i = from; i <= to; i++) {
+      const baseName = `${prefix}${i}`;
+      const img = createImgWithFallback(baseName, exts, baseName);
+      containerEl.appendChild(img);
     }
   }
 
-  const IMG_BASE = '/images/';
-
-  // ✅ Carrusel 1: dipSlide1.png ... dipSlide3.png (AUTOPLAY)
-  (function(){
+  // =========================
+  // Carrusel 1 (AUTOPLAY)
+  // Archivos reales: dipSlide1.png, dipSlide2.png, dipSlide3.png
+  // Pero lo hago tolerante: prueba .png, .jpg, .jpeg
+  // =========================
+  (function initAutoplayDipSlides(){
     const track = document.getElementById('carousel-dipSlides-track');
     if (!track) return;
 
-    const count = 3;           // tienes 3 imágenes
-    const prefix = 'dipSlide'; // singular: dipSlide
+    // Primero limpiamos por si el navegador reinyecta/recarga raro
+    track.innerHTML = '';
 
-    for (let i = 1; i <= count; i++) {
-      const img = document.createElement('img');
-      img.src = `${IMG_BASE}${prefix}${i}.png`;
-      img.loading = 'lazy';
-      img.alt = `${prefix}${i}`;
-      img.onerror = () => console.warn('No se pudo cargar:', img.src);
-      track.appendChild(img);
+    // En tu caso: 1..3
+    fillContainerSequence(track, 'dipSlide', 1, 3, ['.png', '.jpg', '.jpeg']);
+
+    // Si alguna no carga, fallback lo intentará y quedará la que exista.
+
+    // Duplicamos para loop (solo si hay al menos 1 imagen)
+    if (track.children.length > 0) {
+      track.innerHTML += track.innerHTML;
     }
-
-    // Duplicamos para loop infinito suave
-    track.innerHTML += track.innerHTML;
 
     let x = 0;
     const speed = 0.35; // px por frame
@@ -192,15 +209,49 @@
     function step() {
       x += speed;
       const half = track.scrollWidth / 2;
-      if (x >= half) x = 0;
+      if (half > 0 && x >= half) x = 0;
       track.style.transform = `translateX(${-x}px)`;
       requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   })();
 
-  // ✅ Carrusel 2: slide1.jpg ... slide23.jpg
-  fillCarousel('carousel-slides', { count: 23, prefix: 'slide', ext: '.jpg', basePath: IMG_BASE });
+  // =========================
+  // Carrusel 2 (scroll)
+  // slide1..slide23 con extensión variable (.jpg / .jpeg / .png)
+  // =========================
+  (function initSlidesCarousel(){
+    const el = document.getElementById('carousel-slides');
+    if (!el) return;
+    el.innerHTML = '';
+    fillContainerSequence(el, 'slide', 1, 23, ['.jpg', '.jpeg', '.png']);
+  })();
+
+  // =========================
+  // Grid final d1..d80 en columnas de 3
+  // Tus archivos: d1.jpeg o d1.jpg (mezclados)
+  // =========================
+  (function initDGrid(){
+    const anchor = document.getElementById('d-grid-anchor');
+    if (!anchor) return;
+
+    // Insertamos 80 bloques con la misma lógica de tu grid (3 columnas)
+    for (let i = 1; i <= 80; i++) {
+      const colStart = ((i - 1) % 3) * 4 + 1;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'img-block';
+      wrapper.style.setProperty('--c', colStart);
+      wrapper.style.setProperty('--s', 4);
+      wrapper.style.setProperty('--t', '20px');
+
+      // Aquí probamos extensiones: primero .jpeg, luego .jpg, luego .png (por si acaso)
+      const img = createImgWithFallback(`d${i}`, ['.jpeg', '.jpg', '.png'], `d${i}`);
+      wrapper.appendChild(img);
+
+      anchor.appendChild(wrapper);
+    }
+  })();
 </script>
 
 </body>
