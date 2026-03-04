@@ -176,11 +176,12 @@
                 <div class="slider-container" id="prof-slider">
                     <div class="slides">
                         <script>
-                            for(let i=1; i<=14; i++) {
-                                let num = i.toString().padStart(14, '0');
-                                document.write(`<img src="images/PF25_Ambiente_JNORIG_${num}.jpg">`);
-                            }
-                        </script>
+    for(let i=1; i<=14; i++) {
+        // Usamos "i" directamente porque tus archivos no tienen ceros (1, 2, 3...)
+        // Añadimos "../" si las fotos están en la carpeta principal de imágenes
+        document.write(`<img src="../images/PF25_Ambiente_JNORIG_${i}.jpg">`);
+    }
+</script>
                     </div>
                 </div>
 
