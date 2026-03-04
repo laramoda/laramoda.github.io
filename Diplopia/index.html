@@ -42,6 +42,11 @@
         .carousel-container::-webkit-scrollbar { display: none; }
         .carousel-container img { height: 450px; border-radius: 12px; flex-shrink: 0; }
 
+        /* ✅ Autoplay para el primer carrusel */
+        .carousel-autoplay { overflow: hidden; }
+        .carousel-track { display: flex; gap: 15px; will-change: transform; }
+        .carousel-autoplay img { height: 450px; border-radius: 12px; flex-shrink: 0; }
+
         .issuu-container { grid-column: 1 / span 12; margin: 40px 0; position: relative; padding-top: 56.25%; width: 100%; }
         .issuu-container iframe { position: absolute; border: none; width: 100%; height: 100%; left: 0; top: 0; border-radius: 12px; }
 
@@ -91,8 +96,10 @@
                 <div class="img-block" style="--c: 5; --s: 4;"><img src="/images/diplopia 3.jpeg"></div>
                 <div class="img-block" style="--c: 9; --s: 4;"><img src="/images/diplopia 4.jpeg"></div>
 
-                <!-- ✅ Carrusel 1 (corregido: sin document.write, mantiene /images/) -->
-                <div class="carousel-container" id="carousel-dipSlides"></div>
+                <!-- ✅ Carrusel 1: automático con tus archivos reales dipSlide1.png..dipSlide3.png -->
+                <div class="carousel-container carousel-autoplay" id="carousel-dipSlides">
+                    <div class="carousel-track" id="carousel-dipSlides-track"></div>
+                </div>
 
                 <div class="text-full">
                     <p class="intro-text">"The resulting collection goes beyond the conventions of fashion, authentically capturing her visual reality. Through deconstruction, layering, and material selection, the visual duality has been represented in the garments of the collection. This work documents the design process and explores the different stages and techniques used to achieve this authentic representation of Diplopia. The collection is not only an artistic expression but also a symbol of personal growth and empowerment, demonstrating that double vision can be transformed into a powerful creative tool."</p>
@@ -121,7 +128,7 @@
                 <div class="img-block" style="--c: 7; --s: 3;"><img src="/images/DD3.jpg"></div>
                 <div class="img-block" style="--c: 10; --s: 3;"><img src="/images/DD4.jpg"></div>
 
-                <!-- ✅ Carrusel 2 (corregido: sin document.write, mantiene /images/) -->
+                <!-- ✅ Carrusel 2: scroll horizontal con slide1.jpg..slide23.jpg -->
                 <div class="carousel-container" id="carousel-slides"></div>
 
                 <!-- (se mantiene tal cual tu generador de imágenes) -->
@@ -141,7 +148,7 @@
     </main>
 </div>
 
-<!-- ✅ Script único que rellena ambos carruseles (sin borrar nada y manteniendo /images/) -->
+<!-- ✅ Script: rellena carruseles (sin borrar nada y manteniendo /images/) -->
 <script>
   function fillCarousel(containerId, { count, prefix, ext, basePath }) {
     const el = document.getElementById(containerId);
@@ -159,11 +166,41 @@
 
   const IMG_BASE = '/images/';
 
-  // dipSlides1.png ... dipSlides4.png
-  fillCarousel('carousel-dipslides', { count: 4,  prefix: 'dipSlides', ext: '.png', basePath: IMG_BASE });
+  // ✅ Carrusel 1: dipSlide1.png ... dipSlide3.png (AUTOPLAY)
+  (function(){
+    const track = document.getElementById('carousel-dipSlides-track');
+    if (!track) return;
 
-  // slide1.jpg ... slide23.jpg
-  fillCarousel('carousel-slides',    { count: 23, prefix: 'slide',     ext: '.jpg', basePath: IMG_BASE });
+    const count = 3;           // tienes 3 imágenes
+    const prefix = 'dipSlide'; // singular: dipSlide
+
+    for (let i = 1; i <= count; i++) {
+      const img = document.createElement('img');
+      img.src = `${IMG_BASE}${prefix}${i}.png`;
+      img.loading = 'lazy';
+      img.alt = `${prefix}${i}`;
+      img.onerror = () => console.warn('No se pudo cargar:', img.src);
+      track.appendChild(img);
+    }
+
+    // Duplicamos para loop infinito suave
+    track.innerHTML += track.innerHTML;
+
+    let x = 0;
+    const speed = 0.35; // px por frame
+
+    function step() {
+      x += speed;
+      const half = track.scrollWidth / 2;
+      if (x >= half) x = 0;
+      track.style.transform = `translateX(${-x}px)`;
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  })();
+
+  // ✅ Carrusel 2: slide1.jpg ... slide23.jpg
+  fillCarousel('carousel-slides', { count: 23, prefix: 'slide', ext: '.jpg', basePath: IMG_BASE });
 </script>
 
 </body>
