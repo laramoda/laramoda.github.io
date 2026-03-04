@@ -145,16 +145,19 @@
                     <p class="work-header" style="text-transform: uppercase; border: 1px solid var(--ink); display: inline-block; padding: 5px 15px; margin-bottom: 20px;">PROFESSIONAL IMAGES DOWNLOAD</p>
                 </div>
 
-                <div class="slider-container" id="prof-slider">
-                    <div class="slides">
-                        <script>
-                            for(let i=1; i<=14; i++) {
-                                // Nombre de archivo corregido segun tu lista (sin ceros extra)
-                                document.write(`<img src="images/PF25_Ambiente_JNORIG_${i}.jpg">`);
-                            }
-                        </script>
-                    </div>
-                </div>
+            <div class="slider-container" id="prof-slider">
+    <div class="slides">
+        <script>
+            for(let i=1; i<=14; i++) {
+                // Forzamos .jpg tal cual aparece en tu captura
+                document.write(`
+                    <img src="images/PF25_Ambiente_JNORIG_${i}.jpg" 
+                         onerror="if (this.src.endsWith('.jpg')) { this.src = 'images/PF25_Ambiente_JNORIG_${i}.jpeg'; }">
+                `);
+            }
+        </script>
+    </div>
+</div>
 
                 <div class="text-full" style="margin-top: 100px;">
                     <h1 class="work-title">2. STUDIO ASSISTANT / <strong>ÖLEND AND LES MARÉES</strong></h1>
