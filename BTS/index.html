@@ -63,10 +63,15 @@
         .title-main { font-size: 18px; line-height: 1.2; text-transform: uppercase; letter-spacing: 1px; font-weight: 200; }
         .intro-text { font-size: 12px; line-height: 1.8; text-align: justify; color: var(--muted); font-weight: 100; max-width: 800px; margin-top: 20px; }
 
-        /* CARRUSELES */
-        .image-carousel { display: flex; overflow-x: auto; gap: 20px; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 30px 0 60px; }
-        .image-carousel::-webkit-scrollbar { display: none; }
-        .image-carousel img { height: 500px; width: auto; border-radius: 12px; flex-shrink: 0; scroll-snap-align: center; }
+        /* CARRUSELES AUTOMÁTICOS */
+        .image-carousel { 
+            display: flex; 
+            overflow-x: hidden; /* Ocultamos scroll manual para que el auto sea fluido */
+            gap: 20px; 
+            margin: 30px 0 60px; 
+            white-space: nowrap;
+        }
+        .image-carousel img { height: 500px; width: auto; border-radius: 12px; flex-shrink: 0; }
 
         .collection-tag { font-size: 24px; text-transform: uppercase; margin-top: 100px; letter-spacing: 2px; font-weight: 200; border-top: 1px solid #f2f2f2; padding-top: 40px; }
         .collection-tag span { font-weight: 100; font-style: italic; color: var(--muted); }
@@ -119,16 +124,16 @@
 
                 <div style="margin-bottom: 60px;">
                     <img src="images/bts6.jpg" style="width: 100%; border-radius: 12px; margin-bottom: 20px;">
-                    <img src="images/bts2.jpeg" style="width: 60%; border-radius: 12px;">
+                    <img src="images/bts2.jpg" style="width: 60%; border-radius: 12px;">
                 </div>
 
                 <h2 class="collection-tag">:DIPLOPÍA <span>COLLECTION</span></h2>
-                <div class="image-carousel">
+                <div class="image-carousel" id="carousel-diplopia">
                     <img src="images/bts22.jpeg"><img src="images/bts23.jpeg">
                 </div>
 
                 <h2 class="collection-tag">:MOOD_ BORED <span>SWIMWEAR COLLECTION</span></h2>
-                <div class="image-carousel">
+                <div class="image-carousel" id="carousel-swimwear">
                     <img src="images/bts swim.jpg"><img src="images/bts swim2.jpg"><img src="images/bts swim3.jpg">
                     <img src="images/bts swim4.jpg"><img src="images/bts swim5.jpg"><img src="images/bts swim6.jpg">
                     <img src="images/bts swim7.jpg"><img src="images/bts swim8.jpg"><img src="images/bts swim9.jpg">
@@ -139,7 +144,7 @@
                 </div>
 
                 <h2 class="collection-tag">:VILLAINS <span>COLLECTION</span></h2>
-                <div class="image-carousel">
+                <div class="image-carousel" id="carousel-villains">
                     <img src="images/bts villanos.jpg"><img src="images/bts villanos2.jpg"><img src="images/bts villanos3.jpg">
                     <img src="images/bts villanos4.jpg"><img src="images/bts villanos5.jpg"><img src="images/bts villanos6.jpg">
                     <img src="images/bts villanos7.jpg"><img src="images/bts villanos8.jpg"><img src="images/bts villanos9.jpg">
@@ -170,5 +175,37 @@
         </section>
     </main>
 </div>
+
+<script>
+    function startAutoScroll(id) {
+        const slider = document.getElementById(id);
+        let isPaused = false;
+        
+        // Pausar al poner el ratón encima
+        slider.onmouseenter = () => isPaused = true;
+        slider.onmouseleave = () => isPaused = false;
+
+        function scroll() {
+            if (!isPaused) {
+                slider.scrollLeft += 1; // Velocidad del scroll (puedes subirlo a 2 para ir más rápido)
+                
+                // Si llegamos al final, volvemos al principio de forma invisible
+                if (slider.scrollLeft >= (slider.scrollWidth - slider.clientWidth)) {
+                    slider.scrollLeft = 0;
+                }
+            }
+            requestAnimationFrame(scroll);
+        }
+        scroll();
+    }
+
+    // Inicializamos los 3 apartados
+    window.onload = () => {
+        startAutoScroll('carousel-diplopia');
+        startAutoScroll('carousel-swimwear');
+        startAutoScroll('carousel-villains');
+    };
+</script>
+
 </body>
 </html>
