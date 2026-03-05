@@ -12,11 +12,10 @@
     <script>
         /**
          * Función global de gestión de errores. 
-         * Se define aquí arriba para que las imágenes puedan llamarla inmediatamente si fallan.
+         * Definida aquí para asegurar disponibilidad inmediata.
          */
         window.handleImgError = function(img, fileName) {
-            img.onerror = null; // Previene bucles infinitos
-            // En el simulador esto pondrá un placeholder. En tu PC se verá la imagen real de /images/
+            img.onerror = null; 
             img.src = `https://placehold.co/600x400?text=${encodeURIComponent(fileName)}`;
             img.classList.add('error-placeholder');
             console.log("Error cargando: " + fileName);
@@ -25,7 +24,7 @@
         const IMG_PATH = '/images/';
 
         /**
-         * Crea una imagen que intenta varias combinaciones de nombres (con/sin espacio) y extensiones.
+         * Crea una imagen intentando variaciones de nombre (con/sin espacio) y extensiones.
          */
         function createImgFlexible(prefix, num, exts) {
             const img = document.createElement('img');
@@ -140,7 +139,7 @@
                 <div class="img-block" style="--c: 5; --s: 4;"><img src="/images/diplopia 3.jpeg" onerror="handleImgError(this, 'diplopia 3.jpeg')"></div>
                 <div class="img-block" style="--c: 9; --s: 4;"><img src="/images/diplopia 4.jpeg" onerror="handleImgError(this, 'diplopia 4.jpeg')"></div>
 
-                <!-- Carrusel 1: dipSlide (Autoplay) -->
+                <!-- Carrusel 1: dipSlide (Autoplay) 1..3 -->
                 <div class="carousel-container carousel-autoplay" id="carousel-dipSlides">
                     <div class="carousel-track" id="carousel-dipSlides-track"></div>
                 </div>
@@ -186,13 +185,11 @@
 </div>
 
 <script>
-    /**
-     * Inicialización de carruseles y grids mediante bucles.
-     */
+    // Carrusel 1 (dipSlide 1 a 3)
     (function initDipSlides() {
         const track = document.getElementById('carousel-dipSlides-track');
         if (!track) return;
-        for (let i = 1; i <= 4; i++) {
+        for (let i = 1; i <= 3; i++) {
             track.appendChild(createImgFlexible('dipSlide', i, ['.png', '.jpg', '.jpeg']));
         }
         
@@ -213,6 +210,7 @@
         });
     })();
 
+    // Carrusel 2 (slide 1 a 23)
     (function initSlides() {
         const container = document.getElementById('carousel-slides');
         if (!container) return;
@@ -221,6 +219,7 @@
         }
     })();
 
+    // Grid Final d1 a d80 (según tu captura de archivos d1.jpg)
     (function initDGrid() {
         const grid = document.getElementById('content-grid');
         const footer = grid.querySelector('footer');
@@ -233,7 +232,8 @@
             block.style.setProperty('--c', col);
             block.style.setProperty('--s', 4);
             block.style.setProperty('--t', '20px');
-            block.appendChild(createImgFlexible('dd', i, ['.jpg', '.jpeg', '.png']));
+            // Usamos el prefijo 'd' basado en el listado de archivos d1, d2...
+            block.appendChild(createImgFlexible('d', i, ['.jpg', '.jpeg', '.png']));
             grid.insertBefore(block, footer);
         }
     })();
