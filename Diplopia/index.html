@@ -11,15 +11,46 @@
     
     <script>
         /**
-         * Definición global de la función de error.
-         * Debe estar en el head para que las imágenes del body puedan llamarla si fallan al cargar.
+         * Función global de gestión de errores. 
+         * Se define aquí arriba para que las imágenes puedan llamarla inmediatamente.
          */
-        function handleImgError(img, fileName) {
-            // Evitar bucles infinitos si el placeholder también falla
-            img.onerror = null;
-            // En el simulador esto pondrá un placeholder. En tu PC se verá la imagen real si existe en /images/
+        window.handleImgError = function(img, fileName) {
+            img.onerror = null; // Previene bucles infinitos
+            // Placeholder para el simulador; en tu web buscará el archivo real
             img.src = `https://placehold.co/600x400?text=${encodeURIComponent(fileName)}`;
             img.classList.add('error-placeholder');
+            console.log("Error cargando: " + fileName);
+        };
+
+        const IMG_PATH = '/images/';
+
+        /**
+         * Crea una imagen que intenta varias combinaciones de nombres y extensiones.
+         */
+        function createImgFlexible(prefix, num, exts) {
+            const img = document.createElement('img');
+            img.loading = 'lazy';
+            
+            // Generamos intentos: 'slide1.jpg', 'slide 1.jpg', etc.
+            let attempts = [];
+            exts.forEach(ext => {
+                attempts.push(`${prefix}${num}${ext}`);
+                attempts.push(`${prefix} ${num}${ext}`);
+            });
+
+            let idx = 0;
+            const tryNext = () => {
+                if (idx >= attempts.length) {
+                    if (window.handleImgError) window.handleImgError(img, prefix + num);
+                    return;
+                }
+                img.src = `${IMG_PATH}${attempts[idx]}`;
+                idx++;
+            };
+
+            img.onerror = tryNext;
+            tryNext();
+            return img;
         }
     </script>
 
@@ -37,7 +68,7 @@
         .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; margin-bottom: 2px; }
         .nav-menu li.active { color: var(--ink); font-weight: 400; }
         .nav-menu li:hover { color: var(--ink); }
-        .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
+        .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; min-height: 100px; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
         .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
         .about-link { color: var(--blue); font-weight: 500; cursor: pointer; text-decoration: none; display: block; margin-bottom: 12px; letter-spacing: 1px; }
@@ -47,25 +78,25 @@
         .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content; }
         .scroll-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; padding: 60px 40px 150px; align-items: start; }
 
-        .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; }
-        .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; min-height: 100px; background: #f0f0f0; }
+        .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; min-height: 100px; }
+        .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; background: #fafafa; }
         .text-full { grid-column: 1 / span 12; margin-bottom: 40px; }
         .intro-text { font-size: 13px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 900px; font-weight: 100; }
         
-        .carousel-container { grid-column: 1 / span 12; display: flex; gap: 15px; overflow-x: auto; scrollbar-width: none; margin: 30px 0; min-height: 300px; }
+        .carousel-container { grid-column: 1 / span 12; display: flex; gap: 15px; overflow-x: auto; scrollbar-width: none; margin: 30px 0; min-height: 350px; border-bottom: 1px solid #f0f0f0; }
         .carousel-container::-webkit-scrollbar { display: none; }
-        .carousel-container img { height: 450px; border-radius: 12px; flex-shrink: 0; background: #f5f5f5; }
+        .carousel-container img { height: 450px; border-radius: 12px; flex-shrink: 0; background: #f9f9f9; }
 
         .carousel-autoplay { overflow: hidden; position: relative; min-height: 450px; }
         .carousel-track { display: flex; gap: 15px; will-change: transform; }
 
-        .issuu-container { grid-column: 1 / span 12; margin: 40px 0; position: relative; padding-top: 56.25%; width: 100%; }
+        .issuu-container { grid-column: 1 / span 12; margin: 40px 0; position: relative; padding-top: 56.25%; width: 100%; min-height: 300px; }
         .issuu-container iframe { position: absolute; border: none; width: 100%; height: 100%; left: 0; top: 0; border-radius: 12px; background: #f9f9f9; }
 
         .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 60px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 60px; }
         .nav-footer a { color: var(--muted); text-decoration: none; }
         
-        img.error-placeholder { border: 1px solid #ddd; }
+        img.error-placeholder { border: 1px solid #eee; }
     </style>
 </head>
 <body>
@@ -99,18 +130,18 @@
             <div class="scroll-wrapper" id="content-grid">
                 
                 <div class="text-full">
-                    <p class="intro-text">In this section i am going to present and show what has been the end of my career, the most unique, personal and largest project that I have ever done...</p>
+                    <p class="intro-text">In this section i am going to present and show what has been the end of my career, the most unique, personal and largest project that I have ever done and that perfectly summarizes my work, the projection of the future and justification of the past, this was my final project of university degree and I know that it will be a great tool in the future for my design.</p>
                 </div>
                 <div class="img-block" style="--c: 1; --s: 12;"><img src="/images/diplopia 1.jpg" onerror="handleImgError(this, 'diplopia 1.jpg')"></div>
 
                 <div class="text-full" style="margin-top: 60px;">
-                    <p class="intro-text">"This project aims to explore double vision as a creative concept in fashion design..."</p>
+                    <p class="intro-text">"This project aims to explore double vision as a creative concept in fashion design. The motivation behind this collection relies in the personal experience of the designer, who suffered a stroke five years ago and has managed to adapt and use her double vision as a creative tool in fashion..."</p>
                 </div>
                 <div class="img-block" style="--c: 1; --s: 4;"><img src="/images/diplopia 2.jpeg" onerror="handleImgError(this, 'diplopia 2.jpeg')"></div>
                 <div class="img-block" style="--c: 5; --s: 4;"><img src="/images/diplopia 3.jpeg" onerror="handleImgError(this, 'diplopia 3.jpeg')"></div>
                 <div class="img-block" style="--c: 9; --s: 4;"><img src="/images/diplopia 4.jpeg" onerror="handleImgError(this, 'diplopia 4.jpeg')"></div>
 
-                <!-- Carrusel 1: dipSlide (Autoplay) -->
+                <!-- Carrusel 1: dipSlide 1..4 -->
                 <div class="carousel-container carousel-autoplay" id="carousel-dipSlides">
                     <div class="carousel-track" id="carousel-dipSlides-track"></div>
                 </div>
@@ -156,41 +187,12 @@
 </div>
 
 <script>
-    const IMG_PATH = '/images/';
-
-    /**
-     * Crea una imagen probando variaciones (con/sin espacio, extensiones)
-     */
-    function createImgFlexible(name, prefix, exts) {
-        const img = document.createElement('img');
-        img.loading = 'lazy';
-        
-        let attempts = [];
-        exts.forEach(ext => {
-            attempts.push(`${prefix}${name}${ext}`);
-            attempts.push(`${prefix} ${name}${ext}`);
-        });
-
-        let idx = 0;
-        const tryNext = () => {
-            if (idx >= attempts.length) {
-                handleImgError(img, prefix + name + exts[0]);
-                return;
-            }
-            img.src = `${IMG_PATH}${attempts[idx]}`;
-            idx++;
-        };
-        img.onerror = tryNext;
-        tryNext();
-        return img;
-    }
-
     // Inicialización del Carrusel 1 (dipSlide 1 a 4)
     (function initDipSlides() {
         const track = document.getElementById('carousel-dipSlides-track');
         if (!track) return;
         for (let i = 1; i <= 4; i++) {
-            track.appendChild(createImgFlexible(i, 'dipSlide', ['.png', '.jpg', '.jpeg']));
+            track.appendChild(createImgFlexible('dipSlide', i, ['.png', '.jpg', '.jpeg']));
         }
         
         window.addEventListener('load', () => {
@@ -201,7 +203,7 @@
                 const anim = () => {
                     pos += 0.6;
                     const half = track.scrollWidth / 2;
-                    if (pos >= half) pos = 0;
+                    if (half > 0 && pos >= half) pos = 0;
                     track.style.transform = `translateX(${-pos}px)`;
                     requestAnimationFrame(anim);
                 };
@@ -215,11 +217,11 @@
         const container = document.getElementById('carousel-slides');
         if (!container) return;
         for (let i = 1; i <= 23; i++) {
-            container.appendChild(createImgFlexible(i, 'slide', ['.jpg', '.jpeg', '.png']));
+            container.appendChild(createImgFlexible('slide', i, ['.jpg', '.jpeg', '.png']));
         }
     })();
 
-    // Grid Final dd1..dd80
+    // Grid Final dd1..dd80 (según captura dd1.jpg)
     (function initDGrid() {
         const grid = document.getElementById('content-grid');
         const footer = grid.querySelector('footer');
@@ -232,7 +234,7 @@
             block.style.setProperty('--c', col);
             block.style.setProperty('--s', 4);
             block.style.setProperty('--t', '20px');
-            block.appendChild(createImgFlexible(i, 'dd', ['.jpg', '.jpeg', '.png']));
+            block.appendChild(createImgFlexible('dd', i, ['.jpg', '.jpeg', '.png']));
             grid.insertBefore(block, footer);
         }
     })();
