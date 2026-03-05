@@ -9,55 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=JetBrains+Mono:wght@100;200&display=swap" rel="stylesheet">
     
-    <script>
-        /**
-         * GESTIÓN DE ERRORES Y CARGA FLEXIBLE
-         */
-        window.handleImgError = function(img, fileName) {
-            if (img.getAttribute('data-error-handled')) return;
-            img.setAttribute('data-error-handled', 'true');
-            img.onerror = null; 
-            // Si falla en tu web, mostrará un cuadro con el nombre para que sepas cuál falta.
-            img.src = `https://placehold.co/600x400?text=${encodeURIComponent(fileName)}`;
-            img.classList.add('error-placeholder');
-        };
-
-        const IMG_PATH = '/images/';
-
-        /**
-         * Crea una imagen intentando variaciones de nombre (espacios y extensiones).
-         */
-        function createImgFlexible(prefix, num, exts, preferNoSpace = false) {
-            const img = document.createElement('img');
-            img.loading = 'lazy';
-            
-            let attempts = [];
-            exts.forEach(ext => {
-                if (preferNoSpace) {
-                    attempts.push(`${prefix}${num}${ext}`); // d1.jpg
-                    attempts.push(`${prefix} ${num}${ext}`); // d 1.jpg
-                } else {
-                    attempts.push(`${prefix} ${num}${ext}`); // dipSlide 1.jpg
-                    attempts.push(`${prefix}${num}${ext}`); // dipSlide1.jpg
-                }
-            });
-
-            let idx = 0;
-            const tryNext = () => {
-                if (idx >= attempts.length) {
-                    window.handleImgError(img, prefix + num);
-                    return;
-                }
-                img.src = `${IMG_PATH}${attempts[idx]}`;
-                idx++;
-            };
-
-            img.onerror = tryNext;
-            tryNext();
-            return img;
-        }
-    </script>
-
     <style>
         :root { --bg: #efefef; --card: #ffffff; --ink: #1a1a1a; --muted: #b5b5b5; --blue: #1f36ff; --pink: #ff0055; }
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -82,25 +33,21 @@
         .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content; }
         .scroll-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; padding: 60px 40px 150px; align-items: start; }
 
-        .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; min-height: 100px; }
+        .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
         .text-full { grid-column: 1 / span 12; margin-bottom: 40px; }
         .intro-text { font-size: 13px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 900px; font-weight: 100; }
         
-        .carousel-container { grid-column: 1 / span 12; display: flex; gap: 15px; overflow-x: auto; scrollbar-width: none; margin: 30px 0; min-height: 350px; border-bottom: 1px solid #f0f0f0; }
-        .carousel-container::-webkit-scrollbar { display: none; }
-        .carousel-container img { height: 450px; border-radius: 12px; flex-shrink: 0; background: #f9f9f9; }
+        /* Sliders */
+        .slider-container { grid-column: 1 / span 12; width: 100%; position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 16 / 9; background: #f9f9f9; margin: 20px 0; }
+        .slides { display: flex; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); height: 100%; }
+        .slides img { width: 100%; flex-shrink: 0; object-fit: cover; display: inline-block; }
 
-        .carousel-autoplay { overflow: hidden; position: relative; min-height: 450px; }
-        .carousel-track { display: flex; gap: 15px; will-change: transform; }
+        .issuu-container { grid-column: 1 / span 12; margin: 40px 0; position: relative; padding-top: 56.25%; width: 100%; }
+        .issuu-container iframe { position: absolute; border: none; width: 100%; height: 100%; left: 0; top: 0; border-radius: 12px; }
 
-        .issuu-container { grid-column: 1 / span 12; margin: 40px 0; position: relative; padding-top: 56.25%; width: 100%; min-height: 300px; }
-        .issuu-container iframe { position: absolute; border: none; width: 100%; height: 100%; left: 0; top: 0; border-radius: 12px; background: #f9f9f9; }
-
-        .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 60px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 60px; }
+        .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 80px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 80px; }
         .nav-footer a { color: var(--muted); text-decoration: none; }
-        
-        img.error-placeholder { border: 1px solid #eee; background: #fdfdfd; }
     </style>
 </head>
 <body>
@@ -120,7 +67,7 @@
                     <li onclick="location.href='../Bags/index.html'">8. BAGS</li>
                 </ol>
             </nav>
-            <div class="sig-sidebar"><img src="/images/signature_01.jpeg" onerror="handleImgError(this, 'signature_01.jpeg')"></div>
+            <div class="sig-sidebar"><img src="/images/signature_01.jpeg"></div>
             <footer class="footer-sidebar">
                 <a class="about-link" onclick="location.href='../Aboutme/index.html'">ABOUT ME</a>
                 <p>✉ <a href="mailto:larafc@hotmail.es" style="color:inherit;text-decoration:none;">larafc@hotmail.es</a></p>
@@ -131,25 +78,41 @@
 
         <section class="main-content">
             <div class="home-nav" onclick="location.href='../index.html'">: HOME</div>
-            <div class="scroll-wrapper" id="content-grid">
+            <div class="scroll-wrapper" id="main-scroll-wrapper">
                 
                 <div class="text-full">
                     <p class="intro-text">In this section i am going to present and show what has been the end of my career, the most unique, personal and largest project that I have ever done and that perfectly summarizes my work, the projection of the future and justification of the past, this was my final project of university degree and I know that it will be a great tool in the future for my design.</p>
                 </div>
                 
-                <div class="img-block" style="--c: 1; --s: 12;"><img src="/images/diplopia 1.jpg" onerror="handleImgError(this, 'diplopia 1.jpg')"></div>
+                <div class="img-block" style="--c: 1; --s: 12;"><img src="/images/diplopia 1.jpg"></div>
 
                 <div class="text-full" style="margin-top: 60px;">
                     <p class="intro-text">"This project aims to explore double vision as a creative concept in fashion design. The motivation behind this collection relies in the personal experience of the designer, who suffered a stroke five years ago and has managed to adapt and use her double vision as a creative tool in fashion. By applying different design and pattern-making methodologies, a new design process has been developed to accurately express the designer’s unique double vision. The resuluting collection goes beyond the conventions of fashion, authentically capturing her visual reality. Through deconstruction, layering, and material selection, the visual duality has been represented in the garments of the collection. This work documents the design process and explores the different stages and techniques used to achieve this authentic representation of Diplopia. The collection is not only an artistic expression but also a symbol of personal growth and empowerment, demonstrating that double vision can be transformed into a powerful creative tool."</p>
                 </div>
                 
-                <div class="img-block" style="--c: 1; --s: 4;"><img src="/images/diplopia 2.jpeg" onerror="handleImgError(this, 'diplopia 2.jpeg')"></div>
-                <div class="img-block" style="--c: 5; --s: 4;"><img src="/images/diplopia 3.jpeg" onerror="handleImgError(this, 'diplopia 3.jpeg')"></div>
-                <div class="img-block" style="--c: 9; --s: 4;"><img src="/images/diplopia 4.jpeg" onerror="handleImgError(this, 'diplopia 4.jpeg')"></div>
+                <div class="img-block" style="--c: 1; --s: 4;"><img src="/images/diplopia 2.jpeg"></div>
+                <div class="img-block" style="--c: 5; --s: 4;"><img src="/images/diplopia 3.jpeg"></div>
+                <div class="img-block" style="--c: 9; --s: 4;"><img src="/images/diplopia 4.jpeg"></div>
 
-                <!-- Carrusel 1: dipSlide (Autoplay) 1..3 -->
-                <div class="carousel-container carousel-autoplay" id="carousel-dipSlides">
-                    <div class="carousel-track" id="carousel-dipSlides-track"></div>
+                <!-- Carrusel 1: dipSlide 1..3 -->
+                <div class="slider-container" id="dip-slider">
+                    <div class="slides">
+                        <script>
+                            (function() {
+                                const total = 3;
+                                const cont = document.querySelector('#dip-slider .slides');
+                                for(let i=1; i<=total; i++) {
+                                    const img = document.createElement('img');
+                                    img.src = `/images/dipSlide${i}.png`;
+                                    img.onerror = function() {
+                                        if (this.src.endsWith('.png')) this.src = `/images/dipSlide${i}.jpg`;
+                                        else if (this.src.endsWith('.jpg')) this.src = `/images/dipSlide${i}.jpeg`;
+                                    };
+                                    cont.appendChild(img);
+                                }
+                            })();
+                        </script>
+                    </div>
                 </div>
 
                 <div class="text-full">
@@ -160,14 +123,14 @@
                     <iframe allow="clipboard-write" allowfullscreen="true" src="https://e.issuu.com/embed.html?d=tfg_memoria_final&u=larafrias"></iframe>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 12; --t: 40px;"><img src="/images/diplopia 5.png" onerror="handleImgError(this, 'diplopia 5.png')"></div>
+                <div class="img-block" style="--c: 1; --s: 12; --t: 40px;"><img src="/images/diplopia 5.png"></div>
                 
-                <div class="img-block" style="--c: 1; --s: 6; --t: 20px;"><img src="/images/diplopia 6.png" onerror="handleImgError(this, 'diplopia 6.png')"></div>
-                <div class="img-block" style="--c: 7; --s: 6; --t: 20px;"><img src="/images/diplopia 7.png" onerror="handleImgError(this, 'diplopia 7.png')"></div>
-                <div class="img-block" style="--c: 1; --s: 6; --t: 20px;"><img src="/images/diplopia 8.png" onerror="handleImgError(this, 'diplopia 8.png')"></div>
-                <div class="img-block" style="--c: 7; --s: 6; --t: 20px;"><img src="/images/diplopia 9.png" onerror="handleImgError(this, 'diplopia 9.png')"></div>
-                <div class="img-block" style="--c: 1; --s: 6; --t: 20px;"><img src="/images/diplopia 10.png" onerror="handleImgError(this, 'diplopia 10.png')"></div>
-                <div class="img-block" style="--c: 7; --s: 6; --t: 20px;"><img src="/images/diplopia 11.png" onerror="handleImgError(this, 'diplopia 11.png')"></div>
+                <div class="img-block" style="--c: 1; --s: 6; --t: 20px;"><img src="/images/diplopia 6.png"></div>
+                <div class="img-block" style="--c: 7; --s: 6; --t: 20px;"><img src="/images/diplopia 7.png"></div>
+                <div class="img-block" style="--c: 1; --s: 6; --t: 20px;"><img src="/images/diplopia 8.png"></div>
+                <div class="img-block" style="--c: 7; --s: 6; --t: 20px;"><img src="/images/diplopia 9.png"></div>
+                <div class="img-block" style="--c: 1; --s: 6; --t: 20px;"><img src="/images/diplopia 10.png"></div>
+                <div class="img-block" style="--c: 7; --s: 6; --t: 20px;"><img src="/images/diplopia 11.png"></div>
 
                 <div class="text-full" style="margin-top: 80px;">
                     <p class="intro-text">Shot and edited: Júlia Gibert... Models: Anna Costal, Hannah Adib, Maria Ribas, Maria Gómez, Mariona Alcalde and Naiara Zunino... Art Director: Lara Frias... MUAS: Andrea Jordán and Estrella Serrano</p>
@@ -177,17 +140,57 @@
                     <iframe allow="clipboard-write" allowfullscreen="true" src="https://e.issuu.com/embed.html?d=editorial_revista_lara_sin_marcas_de_sangrado&u=larafrias"></iframe>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 3;"><img src="/images/DD1.jpg" onerror="handleImgError(this, 'DD1.jpg')"></div>
-                <div class="img-block" style="--c: 4; --s: 3;"><img src="/images/DD2.jpg" onerror="handleImgError(this, 'DD2.jpg')"></div>
-                <div class="img-block" style="--c: 7; --s: 3;"><img src="/images/DD3.jpg" onerror="handleImgError(this, 'DD3.jpg')"></div>
-                <div class="img-block" style="--c: 10; --s: 3;"><img src="/images/DD4.jpg" onerror="handleImgError(this, 'DD4.jpg')"></div>
+                <div class="img-block" style="--c: 1; --s: 3;"><img src="/images/DD1.jpg"></div>
+                <div class="img-block" style="--c: 4; --s: 3;"><img src="/images/DD2.jpg"></div>
+                <div class="img-block" style="--c: 7; --s: 3;"><img src="/images/DD3.jpg"></div>
+                <div class="img-block" style="--c: 10; --s: 3;"><img src="/images/DD4.jpg"></div>
 
                 <!-- Carrusel 2: slide 1..23 -->
-                <div class="carousel-container" id="carousel-slides"></div>
+                <div class="slider-container" id="main-slide">
+                    <div class="slides">
+                        <script>
+                            (function() {
+                                const total = 23;
+                                const cont = document.querySelector('#main-slide .slides');
+                                for(let i=1; i<=total; i++) {
+                                    const img = document.createElement('img');
+                                    img.src = `/images/slide${i}.jpg`;
+                                    img.onerror = function() {
+                                        if (this.src.endsWith('.jpg')) this.src = `/images/slide${i}.jpeg`;
+                                    };
+                                    cont.appendChild(img);
+                                }
+                            })();
+                        </script>
+                    </div>
+                </div>
 
-                <!-- Las 80 imágenes (d1 a d80) se inyectarán aquí -->
+                <!-- Grid 80 imágenes (d1 a d80) -->
+                <script>
+                    (function() {
+                        const total = 80;
+                        const wrapper = document.querySelector('#main-scroll-wrapper');
+                        for(let i=1; i<=total; i++) {
+                            const div = document.createElement('div');
+                            div.className = 'img-block';
+                            const col = ((i - 1) % 3) * 4 + 1;
+                            div.style.setProperty('--c', col);
+                            div.style.setProperty('--s', 4);
+                            div.style.setProperty('--t', '20px');
+                            
+                            const img = document.createElement('img');
+                            img.src = `/images/d${i}.jpg`;
+                            img.onerror = function() {
+                                if (this.src.endsWith('.jpg')) this.src = `/images/d${i}.jpeg`;
+                            };
+                            
+                            div.appendChild(img);
+                            wrapper.appendChild(div);
+                        }
+                    })();
+                </script>
 
-                <footer class="nav-footer" id="main-footer">
+                <footer class="nav-footer">
                     <a href="../index.html">← Index</a>
                     <a href="../Artisan/index.html">Artisan Tailoring →</a>
                 </footer>
@@ -197,60 +200,26 @@
 </div>
 
 <script>
-    // Inicialización del Carrusel 1 (dipSlide 1 a 3) - Autoplay
-    (function initDipSlides() {
-        const track = document.getElementById('carousel-dipSlides-track');
-        if (!track) return;
-        for (let i = 1; i <= 3; i++) {
-            // Intentamos SIN espacio según tu indicación
-            track.appendChild(createImgFlexible('dipSlide', i, ['.png', '.jpg', '.jpeg'], true));
-        }
-        
-        window.addEventListener('load', () => {
-            if (track.children.length > 0) {
-                const originalContent = track.innerHTML;
-                track.innerHTML += originalContent;
-                let pos = 0;
-                const anim = () => {
-                    pos += 0.6;
-                    const half = track.scrollWidth / 2;
-                    if (half > 0 && pos >= half) pos = 0;
-                    track.style.transform = `translateX(${-pos}px)`;
-                    requestAnimationFrame(anim);
-                };
-                anim();
-            }
-        });
-    })();
+    // Animación de los sliders
+    function startSlider(id) {
+        const slider = document.getElementById(id);
+        if(!slider) return;
+        const slides = slider.querySelector('.slides');
+        let index = 0;
 
-    // Inicialización del Carrusel 2 (slide 1 a 23)
-    (function initSlides() {
-        const container = document.getElementById('carousel-slides');
-        if (!container) return;
-        for (let i = 1; i <= 23; i++) {
-            container.appendChild(createImgFlexible('slide', i, ['.jpg', '.jpeg', '.png'], true));
-        }
-    })();
+        setInterval(() => {
+            const images = slides.querySelectorAll('img');
+            if (images.length === 0) return;
+            index++;
+            if (index >= images.length) index = 0;
+            slides.style.transform = `translateX(${-index * 100}%)`;
+        }, 2500);
+    }
 
-    // Grid Final d1 a d80 (Confirmado SIN espacios)
-    (function initDGrid() {
-        const grid = document.getElementById('content-grid');
-        const footer = document.getElementById('main-footer');
-        if (!grid || !footer) return;
-
-        for (let i = 1; i <= 80; i++) {
-            const block = document.createElement('div');
-            block.className = 'img-block';
-            const col = ((i - 1) % 3) * 4 + 1;
-            block.style.setProperty('--c', col);
-            block.style.setProperty('--s', 4);
-            block.style.setProperty('--t', '20px');
-            
-            // Priorizamos SIN ESPACIO (preferNoSpace = true) para d1, d2, etc.
-            block.appendChild(createImgFlexible('d', i, ['.jpg', '.jpeg', '.png'], true));
-            grid.insertBefore(block, footer);
-        }
-    })();
+    window.addEventListener('load', () => {
+        startSlider('dip-slider');
+        startSlider('main-slide');
+    });
 </script>
 </body>
 </html>
