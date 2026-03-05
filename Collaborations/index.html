@@ -11,7 +11,7 @@
     
     <style>
         :root { --bg: #efefef; --card: #ffffff; --ink: #1a1a1a; --muted: #b5b5b5; --blue: #1f36ff; --pink: #ff0055; }
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
         body, html { margin: 0; padding: 0; height: 100%; background: var(--bg); font-family: 'JetBrains Mono', monospace; overflow: hidden; }
         .stage { height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
@@ -38,25 +38,21 @@
         .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
         
-        /* Ajuste solicitado: Imagen ByLara más grande y con transparencia */
-        .img-bylara { 
-            opacity: 0.5; 
-            transform: scale(1.2); 
-            transform-origin: center;
-        }
-
+        .img-bylara { opacity: 0.5; transform: scale(1.2); }
         .text-full { grid-column: 1 / span 12; margin-bottom: 40px; }
         .header-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
         .ig-badge { border: 1px solid var(--ink); padding: 8px 18px; border-radius: 6px; font-size: 10px; display: inline-block; margin: 15px 0 30px 0; box-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
 
-        .fan-container { position: relative; height: 350px; width: 100%; }
-        .fan-img { position: absolute; width: 180px !important; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; border-radius: 4px; }
+        .fan-container { position: relative; height: 450px; width: 100%; }
+        .fan-img { position: absolute; width: 220px !important; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 4px; }
 
-        .btn-bts { background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; text-decoration: none; font-size: 10px; display: inline-block; letter-spacing: 2px; margin-bottom: 40px; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.15); }
+        .btn-bts { background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; text-decoration: none; font-size: 10px; display: inline-block; letter-spacing: 2px; margin: 20px 0 40px; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.15); cursor: pointer; }
 
         .issuu-container { grid-column: 1 / span 12; margin: 40px 0; position: relative; padding-top: 56.25%; width: 100%; }
         .issuu-container iframe { position: absolute; border: none; width: 100%; height: 100%; left: 0; top: 0; border-radius: 12px; }
-        
+
+        .location-tag { color: var(--pink); font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; text-align: center; width: 100%; grid-column: 1 / span 12; }
+
         .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 60px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 60px; }
         .nav-footer a { color: var(--muted); text-decoration: none; }
     </style>
@@ -79,7 +75,6 @@
                 </ol>
             </nav>
             <div class="sig-sidebar"><img src="../images/signature_01.jpeg"></div>
-            
             <footer class="footer-sidebar">
                 <a class="about-link" onclick="location.href='../Aboutme/index.html'">ABOUT ME</a>
                 <p>✉ <a href="mailto:larafc@hotmail.es" style="color:inherit;text-decoration:none;">larafc@hotmail.es</a></p>
@@ -98,16 +93,8 @@
                         <span style="font-size: 12px; color: var(--muted);">2018-</span>
                     </header>
                     <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 850px;">
-                        During my university career i have made projectors with many classmates and a different range of themes has come out of it but from each project I have learned and it has helped me to create my personal brand and style, that is why I would like to show these projects. There have been two that have marked me and for them I highlight them in this section of my portfolio archive.
+                        During my university career i have made projectors with many classmates and a different range of themes has come out of it but from each project I have learned and it has helped me to create my personal brand and style.
                     </p>
-                </div>
-
-                <div class="text-full">
-                    <header class="header-meta">
-                        <h2 style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">MOODBORED SWIMWEAR COLLECTION <span style="font-weight: 100; color: var(--muted); font-size: 10px;">w/ EMMA TARRATS ESPINOSA</span></h2>
-                        <span style="font-size: 11px; color: var(--muted);">2020 DURING COVID-19 PANDEMIC</span>
-                    </header>
-                    <div class="ig-badge">IG : @MOOD_______BORED</div>
                 </div>
 
                 <div class="img-block" style="--c: 2; --s: 5; --t: 0px;"><img src="images/ByLara.png" class="img-bylara"></div>
@@ -115,7 +102,7 @@
 
                 <div class="text-full" style="margin-top: 60px;">
                     <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 850px;">
-                        This has been my first brand as a co-founder with Emma, we created this swimwear brand with the need to touch the world of fashion during the pandemic and to continue learning and not stagnate since at university everything was paralyzed a lot during confinement and we hardly sewed and materialized any design.
+                        This has been my first brand as a co-founder with Emma, we created this swimwear brand with the need to touch the world of fashion during the pandemic.
                     </p>
                 </div>
 
@@ -124,57 +111,76 @@
 
                 <div class="text-full" style="margin-top: 60px;">
                     <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 850px;">
-                        Not only do we design them entirely but we also confectionize them ourselves, with hardly any knowledge of carving and delicate elastic materials such as "lycra". We entered into corporate branding, instagram and brand packaging. We did photography shootings with models and photographers and despite happening during the pandemic it was extremely comfortable to collaborate and it has been one of the first contacts we had with collaborations between artists and colleagues in the industry.
+                        Not only do we design them entirely but we also confectionize them ourselves...
                     </p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 5; --t: 0px;">
+                <div class="img-block" style="--c: 1; --s: 6;">
                     <div class="fan-container">
                         <img src="images/moodbored4.jpg" class="fan-img" style="transform: rotate(-15deg); z-index: 1;">
-                        <img src="images/moodbored5.jpg" class="fan-img" style="transform: rotate(-8deg); left: 15px; z-index: 2;">
-                        <img src="images/moodbored6.jpg" class="fan-img" style="transform: rotate(0deg); left: 30px; z-index: 3;">
-                        <img src="images/moodbored7.jpg" class="fan-img" style="transform: rotate(8deg); left: 45px; z-index: 4;">
+                        <img src="images/moodbored5.jpg" class="fan-img" style="transform: rotate(-8deg); left: 30px; z-index: 2;">
+                        <img src="images/moodbored6.jpg" class="fan-img" style="transform: rotate(0deg); left: 60px; z-index: 3;">
+                        <img src="images/moodbored7.jpg" class="fan-img" style="transform: rotate(8deg); left: 90px; z-index: 4;">
                     </div>
                 </div>
+                <div class="img-block" style="--c: 7; --s: 6;"><img src="images/moodbored11.jpg"></div>
 
-                <div class="img-block" style="--c: 7; --s: 6; --t: 0px;">
-                    <img src="images/moodbored11.jpg">
+                <div class="text-full" style="text-align: center;">
+                    <div class="btn-bts" onclick="location.href='../BTS/index.html'">BTS CLICK</div>
                 </div>
 
-                <div class="text-full" style="text-align: center; margin-top: 60px;">
-                    <a href="../BTS/index.html" class="btn-bts">BTS CLICK</a>
-                </div>
-
-                <div class="img-block" style="--c: 1; --s: 12; --t: 20px;"><img src="images/moodbored14.png"></div>
+                <div class="img-block" style="--c: 1; --s: 12; --t: 0px;"><img src="images/moodbored14.png"></div>
                 <div class="img-block" style="--c: 1; --s: 12; --t: 20px;"><img src="images/moodbored15.png"></div>
 
-                <div class="text-full" style="margin-top: 100px; border-top: 1px solid #eee; padding-top: 60px;">
+                <div class="text-full" style="margin-top: 80px;">
+                    <span class="location-tag">RIOMAGGIORE - ITALY</span>
+                </div>
+                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood1.jpg"></div> <div class="text-full" style="margin-top: 60px;">
+                    <span class="location-tag">PALAWAN - PHILIPPINES</span>
+                </div>
+                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood2.jpg"></div> <div class="text-full" style="margin-top: 60px;">
+                    <span class="location-tag">ZAKYNTHOS - GREECE</span>
+                </div>
+                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood3.jpg"></div> <div class="text-full" style="margin-top: 60px;">
+                    <span class="location-tag">SAINT TROPEZ - FRANCE</span>
+                </div>
+                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood4.jpg"></div> <div class="text-full" style="margin-top: 60px;">
+                    <span class="location-tag">PANJIN - CHINA</span>
+                </div>
+                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood5.jpg"></div> <div class="text-full" style="margin-top: 60px;">
+                    <span class="location-tag">MAURITANIA - AFRICA</span>
+                </div>
+                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood6.jpg"></div> <div class="text-full" style="margin-top: 100px; border-top: 1px solid #eee; padding-top: 60px;">
                     <header class="header-meta">
                         <h2 style="font-size: 16px; text-transform: uppercase; letter-spacing: 2px;">VILLAINS COLLECTION <span style="font-weight: 100; color: var(--muted); font-size: 10px;">w/ ANA CARRASCO, MARC CHRIS AND EMMA TARRATS</span></h2>
                         <span style="font-size: 11px; color: var(--muted);">2021-2022 DURING 3R YEAR DEGREE</span>
                     </header>
                     <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; margin-top: 30px; max-width: 850px;">
-                        This project was born with the exitment of making a collection between 4 colleagues, the 4 of them being very close friends and with similar tastes...
+                        This project was born with the exitment of making a collection between 4 colleagues...
                     </p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 12; --t: 40px;"><img src="images/collab_villanos.jpg"></div>
-
-                <div class="text-full" style="text-align: left; margin-top: 40px;">
-                    <a href="../BTS/index.html" class="btn-bts">BTS CLICK</a>
+                <div class="issuu-container">
+                    <iframe src="https://e.issuu.com/embed.html?d=memoria_villanos_1_&u=larafrias"></iframe>
                 </div>
 
-                <div class="issuu-container">
-                    <iframe allow="clipboard-write" allowfullscreen="true" src="https://e.issuu.com/embed.html?d=memoria_villanos_1_&u=larafrias"></iframe>
+                <div class="text-full">
+                    <p style="font-size: 12px; color: var(--muted);">We created a storyline that explainss who they are...</p>
                 </div>
 
                 <div class="img-block" style="--c: 1; --s: 4; --t: 40px;"><img src="images/colab_villlanos2A.jpg"></div>
                 <div class="img-block" style="--c: 5; --s: 4; --t: 40px;"><img src="images/colab_villlanos2B.jpg"></div>
                 <div class="img-block" style="--c: 9; --s: 4; --t: 40px;"><img src="images/colab_villlanos2C.jpg"></div>
 
+                <div class="issuu-container">
+                    <iframe src="https://e.issuu.com/embed.html?d=editorial_revista_lara_sin_marcas_de_sangrado&u=larafrias"></iframe>
+                </div>
+
                 <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/colab_villlanos3A.jpeg"></div>
                 <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/colab_villlanos3B.jpeg"></div>
                 <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/colab_villlanos3C.jpeg"></div>
+                
+                <div class="img-block" style="--c: 4; --s: 6; --t: 40px;"><img src="images/villains_shoe.jpg"></div>
 
                 <footer class="nav-footer">
                     <a href="../Artisan/index.html">← Artisan Tailoring</a>
