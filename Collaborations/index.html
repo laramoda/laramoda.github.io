@@ -22,8 +22,8 @@
         .logo-hairline { font-family: 'Inter', sans-serif; font-size: 54px; font-weight: 100 !important; line-height: 0.72; letter-spacing: -3.5px; margin: 0 0 50px 0; text-transform: uppercase; color: var(--ink); cursor: pointer; }
         .nav-menu ol { list-style: none; padding: 0; margin: 0; font-size: 10.5px; font-weight: 100; color: var(--muted); line-height: 2.4; letter-spacing: 1px; }
         .nav-menu li { cursor: pointer; transition: color 0.3s; text-transform: uppercase; margin-bottom: 2px; }
-        .nav-menu li.active { color: var(--ink); font-weight: 400; }
         .nav-menu li:hover { color: var(--ink); }
+        .nav-menu li.active { color: var(--ink); font-weight: 400; }
         .sig-sidebar { margin: 35px 0; width: 240px; align-self: center; } 
         .sig-sidebar img { width: 100%; opacity: 0.8; }
         .footer-sidebar { margin-top: auto; font-size: 10px; color: var(--muted); font-weight: 100; }
@@ -35,24 +35,29 @@
         .home-nav { position: sticky; top: 30px; margin-left: auto; margin-right: 40px; color: var(--blue); font-size: 11px; font-style: italic; z-index: 1000; cursor: pointer; letter-spacing: 1.5px; width: fit-content; }
         .scroll-wrapper { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; padding: 60px 40px 150px; align-items: start; }
 
-        .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
+        .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
         
         .img-bylara { opacity: 0.5; transform: scale(1.2); }
         .text-full { grid-column: 1 / span 12; margin-bottom: 40px; }
         .header-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-        .ig-badge { border: 1px solid var(--ink); padding: 8px 18px; border-radius: 6px; font-size: 10px; display: inline-block; margin: 15px 0 30px 0; box-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
+        
+        /* Estilos Slider */
+        .slider-container { grid-column: 1 / span 12; width: 100%; position: relative; overflow: hidden; margin: 40px 0; }
+        .slides { display: flex; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .slide-item { flex-shrink: 0; width: 100%; text-align: center; }
+        .slide-item img { width: 65%; margin: 0 auto; border-radius: 12px; }
+
+        .location-tag { color: var(--pink); font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: block; }
 
         .fan-container { position: relative; height: 450px; width: 100%; }
         .fan-img { position: absolute; width: 220px !important; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 4px; }
 
-        .btn-bts { background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; text-decoration: none; font-size: 10px; display: inline-block; letter-spacing: 2px; margin: 20px 0 40px; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.15); cursor: pointer; }
+        .btn-bts { background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; text-decoration: none; font-size: 10px; display: inline-block; letter-spacing: 2px; margin: 20px 0 40px; cursor: pointer; border: none; }
 
         .issuu-container { grid-column: 1 / span 12; margin: 40px 0; position: relative; padding-top: 56.25%; width: 100%; }
         .issuu-container iframe { position: absolute; border: none; width: 100%; height: 100%; left: 0; top: 0; border-radius: 12px; }
-
-        .location-tag { color: var(--pink); font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; text-align: center; width: 100%; grid-column: 1 / span 12; }
-
+        
         .nav-footer { grid-column: 1 / span 12; display: flex; justify-content: space-between; padding: 60px 0 40px; border-top: 1px solid #f2f2f2; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-top: 60px; }
         .nav-footer a { color: var(--muted); text-decoration: none; }
     </style>
@@ -97,8 +102,8 @@
                     </p>
                 </div>
 
-                <div class="img-block" style="--c: 2; --s: 5; --t: 0px;"><img src="images/ByLara.png" class="img-bylara"></div>
-                <div class="img-block" style="--c: 7; --s: 5; --t: 0px;"><img src="images/moodbored logo.png"></div>
+                <div class="img-block" style="--c: 2; --s: 5;"><img src="images/ByLara.png" class="img-bylara"></div>
+                <div class="img-block" style="--c: 7; --s: 5;"><img src="images/moodbored logo.png"></div>
 
                 <div class="text-full" style="margin-top: 60px;">
                     <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 850px;">
@@ -106,8 +111,8 @@
                     </p>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 6; --t: 0px;"><img src="images/moodbored.png"></div>
-                <div class="img-block" style="--c: 7; --s: 6; --t: 0px;"><img src="images/moodbored2.png"></div>
+                <div class="img-block" style="--c: 1; --s: 6;"><img src="images/moodbored.png"></div>
+                <div class="img-block" style="--c: 7; --s: 6;"><img src="images/moodbored2.png"></div>
 
                 <div class="text-full" style="margin-top: 60px;">
                     <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 850px;">
@@ -126,31 +131,42 @@
                 <div class="img-block" style="--c: 7; --s: 6;"><img src="images/moodbored11.jpg"></div>
 
                 <div class="text-full" style="text-align: center;">
-                    <div class="btn-bts" onclick="location.href='../BTS/index.html'">BTS CLICK</div>
+                    <button class="btn-bts" onclick="location.href='../BTS/index.html'">BTS CLICK</button>
                 </div>
 
-                <div class="img-block" style="--c: 1; --s: 12; --t: 0px;"><img src="images/moodbored14.png"></div>
+                <div class="img-block" style="--c: 1; --s: 12;"><img src="images/moodbored14.png"></div>
                 <div class="img-block" style="--c: 1; --s: 12; --t: 20px;"><img src="images/moodbored15.png"></div>
 
-                <div class="text-full" style="margin-top: 80px;">
-                    <span class="location-tag">RIOMAGGIORE - ITALY</span>
+                <div class="slider-container" id="mood-slider">
+                    <div class="slides">
+                        <div class="slide-item">
+                            <span class="location-tag">RIOMAGGIORE - ITALY</span>
+                            <img src="images/slide_mood1.jpg">
+                        </div>
+                        <div class="slide-item">
+                            <span class="location-tag">PALAWAN - PHILIPPINES</span>
+                            <img src="images/slide_mood2.jpg">
+                        </div>
+                        <div class="slide-item">
+                            <span class="location-tag">ZAKYNTHOS - GREECE</span>
+                            <img src="images/slide_mood3.jpg">
+                        </div>
+                        <div class="slide-item">
+                            <span class="location-tag">SAINT TROPEZ - FRANCE</span>
+                            <img src="images/slide_mood4.jpg">
+                        </div>
+                        <div class="slide-item">
+                            <span class="location-tag">PANJIN - CHINA</span>
+                            <img src="images/slide_mood5.jpg">
+                        </div>
+                        <div class="slide-item">
+                            <span class="location-tag">MAURITANIA - AFRICA</span>
+                            <img src="images/slide_mood6.jpg">
+                        </div>
+                    </div>
                 </div>
-                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood1.jpg"></div> <div class="text-full" style="margin-top: 60px;">
-                    <span class="location-tag">PALAWAN - PHILIPPINES</span>
-                </div>
-                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood2.jpg"></div> <div class="text-full" style="margin-top: 60px;">
-                    <span class="location-tag">ZAKYNTHOS - GREECE</span>
-                </div>
-                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood3.jpg"></div> <div class="text-full" style="margin-top: 60px;">
-                    <span class="location-tag">SAINT TROPEZ - FRANCE</span>
-                </div>
-                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood4.jpg"></div> <div class="text-full" style="margin-top: 60px;">
-                    <span class="location-tag">PANJIN - CHINA</span>
-                </div>
-                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood5.jpg"></div> <div class="text-full" style="margin-top: 60px;">
-                    <span class="location-tag">MAURITANIA - AFRICA</span>
-                </div>
-                <div class="img-block" style="--c: 3; --s: 7;"><img src="images/slide_mood6.jpg"></div> <div class="text-full" style="margin-top: 100px; border-top: 1px solid #eee; padding-top: 60px;">
+
+                <div class="text-full" style="margin-top: 100px; border-top: 1px solid #eee; padding-top: 60px;">
                     <header class="header-meta">
                         <h2 style="font-size: 16px; text-transform: uppercase; letter-spacing: 2px;">VILLAINS COLLECTION <span style="font-weight: 100; color: var(--muted); font-size: 10px;">w/ ANA CARRASCO, MARC CHRIS AND EMMA TARRATS</span></h2>
                         <span style="font-size: 11px; color: var(--muted);">2021-2022 DURING 3R YEAR DEGREE</span>
@@ -165,7 +181,7 @@
                 </div>
 
                 <div class="text-full">
-                    <p style="font-size: 12px; color: var(--muted);">We created a storyline that explainss who they are...</p>
+                    <p style="font-size: 12px; color: var(--muted);">We created a <i>storyline</i> that explainss who they are...</p>
                 </div>
 
                 <div class="img-block" style="--c: 1; --s: 4; --t: 40px;"><img src="images/colab_villlanos2A.jpg"></div>
@@ -191,5 +207,26 @@
         </section>
     </main>
 </div>
+
+<script>
+    function startSlider(id) {
+        const slider = document.getElementById(id);
+        if(!slider) return;
+        const slides = slider.querySelector('.slides');
+        let index = 0;
+
+        setInterval(() => {
+            const items = slides.querySelectorAll('.slide-item');
+            if (items.length === 0) return;
+            index++;
+            if (index >= items.length) index = 0;
+            slides.style.transform = `translateX(${-index * 100}%)`;
+        }, 3000);
+    }
+
+    window.addEventListener('load', () => {
+        startSlider('mood-slider');
+    });
+</script>
 </body>
 </html>
