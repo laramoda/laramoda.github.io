@@ -37,18 +37,23 @@
 
         .img-block { grid-column: var(--c, 1) / span var(--s, 12); margin-top: var(--t, 0px); position: relative; z-index: var(--z, 1); }
         .img-block img { width: 100%; height: auto; border-radius: 12px; display: block; }
-        .text-full { grid-column: 1 / span 12; margin-bottom: 40px; }
         
+        /* Ajuste solicitado: Imagen ByLara más grande y con transparencia */
+        .img-bylara { 
+            opacity: 0.5; 
+            transform: scale(1.2); 
+            transform-origin: center;
+        }
+
+        .text-full { grid-column: 1 / span 12; margin-bottom: 40px; }
         .header-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
         .ig-badge { border: 1px solid var(--ink); padding: 8px 18px; border-radius: 6px; font-size: 10px; display: inline-block; margin: 15px 0 30px 0; box-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
 
-        /* Efecto Abanico */
         .fan-container { position: relative; height: 350px; width: 100%; }
         .fan-img { position: absolute; width: 180px !important; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; border-radius: 4px; }
 
         .btn-bts { background: var(--pink); color: white; padding: 12px 35px; border-radius: 25px; text-decoration: none; font-size: 10px; display: inline-block; letter-spacing: 2px; margin-bottom: 40px; box-shadow: 0 10px 20px rgba(255, 0, 85, 0.15); }
 
-        /* Issuu Container */
         .issuu-container { grid-column: 1 / span 12; margin: 40px 0; position: relative; padding-top: 56.25%; width: 100%; }
         .issuu-container iframe { position: absolute; border: none; width: 100%; height: 100%; left: 0; top: 0; border-radius: 12px; }
         
@@ -74,6 +79,7 @@
                 </ol>
             </nav>
             <div class="sig-sidebar"><img src="../images/signature_01.jpeg"></div>
+            
             <footer class="footer-sidebar">
                 <a class="about-link" onclick="location.href='../Aboutme/index.html'">ABOUT ME</a>
                 <p>✉ <a href="mailto:larafc@hotmail.es" style="color:inherit;text-decoration:none;">larafc@hotmail.es</a></p>
@@ -104,7 +110,7 @@
                     <div class="ig-badge">IG : @MOOD_______BORED</div>
                 </div>
 
-                <div class="img-block" style="--c: 2; --s: 5; --t: 0px;"><img src="images/ByLara.png"></div>
+                <div class="img-block" style="--c: 2; --s: 5; --t: 0px;"><img src="images/ByLara.png" class="img-bylara"></div>
                 <div class="img-block" style="--c: 7; --s: 5; --t: 0px;"><img src="images/moodbored logo.png"></div>
 
                 <div class="text-full" style="margin-top: 60px;">
@@ -166,9 +172,9 @@
                 <div class="img-block" style="--c: 5; --s: 4; --t: 40px;"><img src="images/colab_villlanos2B.jpg"></div>
                 <div class="img-block" style="--c: 9; --s: 4; --t: 40px;"><img src="images/colab_villlanos2C.jpg"></div>
 
-                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/colab_villlanos3A.jpg"></div>
-                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/colab_villlanos3B.jpg"></div>
-                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/colab_villlanos3C.jpg"></div>
+                <div class="img-block" style="--c: 1; --s: 4; --t: 20px;"><img src="images/colab_villlanos3A.jpeg"></div>
+                <div class="img-block" style="--c: 5; --s: 4; --t: 20px;"><img src="images/colab_villlanos3B.jpeg"></div>
+                <div class="img-block" style="--c: 9; --s: 4; --t: 20px;"><img src="images/colab_villlanos3C.jpeg"></div>
 
                 <footer class="nav-footer">
                     <a href="../Artisan/index.html">← Artisan Tailoring</a>
