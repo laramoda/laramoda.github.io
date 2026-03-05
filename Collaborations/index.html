@@ -38,12 +38,13 @@
         .img-bylara { opacity: 0.5; transform: scale(1.2); }
         .text-full { grid-column: 1 / span 12; margin-bottom: 40px; }
         
-        /* Estilos del Slider */
-        .slider-container { grid-column: 1 / span 12; width: 100%; overflow: hidden; margin: 40px 0; }
-        .slides { display: flex; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .slide-item { flex-shrink: 0; width: 100%; text-align: center; }
-        .slide-item img { width: 70%; margin: 0 auto; border-radius: 12px; }
+        /* Estilos de los Sliders por Localización */
+        .location-section { grid-column: 1 / span 12; margin: 40px 0; text-align: center; }
         .location-tag { color: var(--pink); font-size: 10px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; display: block; }
+        .slider-container { width: 100%; overflow: hidden; border-radius: 12px; }
+        .slides { display: flex; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .slide-item { flex-shrink: 0; width: 100%; }
+        .slide-item img { width: 80%; margin: 0 auto; border-radius: 12px; }
 
         .fan-container { position: relative; height: 400px; width: 100%; }
         .fan-img { position: absolute; width: 200px !important; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 4px; }
@@ -99,20 +100,14 @@
                 <div class="img-block" style="--c: 1; --s: 6;"><img src="images/moodbored.png"></div>
                 <div class="img-block" style="--c: 7; --s: 6;"><img src="images/moodbored2.png"></div>
 
-                <div class="text-full" style="margin-top: 40px;">
-                    <p style="font-size: 12px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 850px;">
-                        Not only do we design them entirely but we also confectionize them ourselves...
-                    </p>
-                </div>
-
-                <div class="img-block" style="--c: 1; --s: 6;">
+                <div class="img-block" style="--c: 1; --s: 6; --t: 40px;">
                     <div class="fan-container">
                         <img src="images/moodbored4.jpg" class="fan-img" style="transform: rotate(-10deg); z-index: 1;">
                         <img src="images/moodbored5.jpg" class="fan-img" style="transform: rotate(-5deg); left: 30px; z-index: 2;">
                         <img src="images/moodbored6.jpg" class="fan-img" style="transform: rotate(5deg); left: 60px; z-index: 3;">
                     </div>
                 </div>
-                <div class="img-block" style="--c: 7; --s: 6;"><img src="images/moodbored11.jpg"></div>
+                <div class="img-block" style="--c: 7; --s: 6; --t: 40px;"><img src="images/moodbored11.jpg"></div>
 
                 <div class="text-full" style="text-align: center;">
                     <button class="btn-bts" onclick="location.href='../BTS/index.html'">BTS CLICK</button>
@@ -121,31 +116,34 @@
                 <div class="img-block" style="--c: 1; --s: 12;"><img src="images/moodbored14.png"></div>
                 <div class="img-block" style="--c: 1; --s: 12; --t: 20px;"><img src="images/moodbored15.png"></div>
 
-                <div class="slider-container" id="collab-slider">
-                    <div class="slides">
-                        <div class="slide-item">
-                            <span class="location-tag">RIOMAGGIORE - ITALY</span>
-                            <img src="images/riomaggiore.png">
+                <div class="location-section">
+                    <span class="location-tag">PANJIN - CHINA</span>
+                    <div class="slider-container" id="slider-panjin">
+                        <div class="slides">
+                            <div class="slide-item"><img src="images/panjin.png"></div>
+                            <div class="slide-item"><img src="images/panjin2.png"></div>
+                            <div class="slide-item"><img src="images/panjin3.png"></div>
                         </div>
-                        <div class="slide-item">
-                            <span class="location-tag">PALAWAN - PHILIPPINES</span>
-                            <img src="images/palawan.png">
+                    </div>
+                </div>
+
+                <div class="location-section">
+                    <span class="location-tag">PALAWAN - PHILIPPINES</span>
+                    <div class="slider-container" id="slider-palawan">
+                        <div class="slides">
+                            <div class="slide-item"><img src="images/palawan.png"></div>
+                            <div class="slide-item"><img src="images/palawan2.png"></div>
+                            <div class="slide-item"><img src="images/palawan3.png"></div>
                         </div>
-                        <div class="slide-item">
-                            <span class="location-tag">ZAKYNTHOS - GREECE</span>
-                            <img src="images/zakynthos.png">
-                        </div>
-                        <div class="slide-item">
-                            <span class="location-tag">SAINT TROPEZ - FRANCE</span>
-                            <img src="images/saint-tropez.png">
-                        </div>
-                        <div class="slide-item">
-                            <span class="location-tag">PANJIN - CHINA</span>
-                            <img src="images/panjin.png">
-                        </div>
-                        <div class="slide-item">
-                            <span class="location-tag">MAURITANIA - AFRICA</span>
-                            <img src="images/mauritania.png">
+                    </div>
+                </div>
+
+                <div class="location-section">
+                    <span class="location-tag">RIOMAGGIORE - ITALY</span>
+                    <div class="slider-container" id="slider-riomaggiore">
+                        <div class="slides">
+                            <div class="slide-item"><img src="images/riomaggiore.png"></div>
+                            <div class="slide-item"><img src="images/riomaggiore2.png"></div>
                         </div>
                     </div>
                 </div>
@@ -184,18 +182,23 @@
 </div>
 
 <script>
-    function runSlider(id) {
-        const container = document.getElementById(id);
-        if(!container) return;
-        const slides = container.querySelector('.slides');
-        let index = 0;
-        setInterval(() => {
-            const items = slides.querySelectorAll('.slide-item');
-            index = (index + 1) % items.length;
-            slides.style.transform = `translateX(${-index * 100}%)`;
-        }, 3000);
+    function setupSliders() {
+        const sliderIds = ['slider-panjin', 'slider-palawan', 'slider-riomaggiore'];
+        
+        sliderIds.forEach(id => {
+            const container = document.getElementById(id);
+            if(!container) return;
+            const slides = container.querySelector('.slides');
+            let index = 0;
+            
+            setInterval(() => {
+                const items = slides.querySelectorAll('.slide-item');
+                index = (index + 1) % items.length;
+                slides.style.transform = `translateX(${-index * 100}%)`;
+            }, 3000 + (Math.random() * 1000)); // Variación de tiempo para que no se muevan todos a la vez
+        });
     }
-    window.onload = () => runSlider('collab-slider');
+    window.onload = setupSliders;
 </script>
 </body>
 </html>
