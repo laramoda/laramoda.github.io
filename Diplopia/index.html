@@ -38,7 +38,7 @@
         .text-full { grid-column: 1 / span 12; margin-bottom: 40px; }
         .intro-text { font-size: 13px; line-height: 1.8; color: var(--muted); text-align: justify; max-width: 900px; font-weight: 100; }
         
-        /* Estilos de Sliders */
+        /* Sliders */
         .slider-container { grid-column: 1 / span 12; width: 100%; position: relative; overflow: hidden; border-radius: 12px; aspect-ratio: 16 / 9; background: #f9f9f9; margin: 20px 0; }
         .slides { display: flex; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); height: 100%; }
         .slides img { width: 100%; flex-shrink: 0; object-fit: cover; display: inline-block; }
@@ -97,20 +97,26 @@
                 <div class="img-block" style="--c: 5; --s: 4;"><img src="/images/diplopia 3.jpeg"></div>
                 <div class="img-block" style="--c: 9; --s: 4;"><img src="/images/diplopia 4.jpeg"></div>
 
-                <!-- Slider 1 (3 fotos) usando la lógica de "Works" -->
+                <!-- Slider 1 (3 fotos) -->
                 <div class="slider-container" id="dip-slider">
                     <div class="slides">
                         <script>
                             (function() {
-                                const total = 3;
+                                const totalImages = 3;
                                 const container = document.querySelector('#dip-slider .slides');
-                                for(let i=1; i<=total; i++) {
+
+                                for(let i=1; i<=totalImages; i++) {
                                     const img = document.createElement('img');
                                     img.style.display = "inline-block";
                                     img.src = `/images/dipSlide${i}.png`;
+                                    img.alt = `Slide ${i}`;
+                                    
                                     img.onerror = function() {
-                                        if (this.src.endsWith('.png')) this.src = `/images/dipSlide${i}.jpg`;
-                                        else if (this.src.endsWith('.jpg')) this.src = `/images/dipSlide${i}.jpeg`;
+                                        if (this.src.endsWith('.png')) {
+                                            this.src = `/images/dipSlide${i}.jpg`;
+                                        } else if (this.src.endsWith('.jpg')) {
+                                            this.src = `/images/dipSlide${i}.jpeg`;
+                                        }
                                     };
                                     container.appendChild(img);
                                 }
@@ -151,19 +157,23 @@
                 <div class="img-block" style="--c: 7; --s: 3;"><img src="/images/DD3.jpg"></div>
                 <div class="img-block" style="--c: 10; --s: 3;"><img src="/images/DD4.jpg"></div>
 
-                <!-- Slider 2 (23 fotos) usando la lógica de "Works" -->
+                <!-- Slider 2 (23 fotos) -->
                 <div class="slider-container" id="main-slide">
                     <div class="slides">
                         <script>
                             (function() {
-                                const total = 23;
+                                const totalImages = 23;
                                 const container = document.querySelector('#main-slide .slides');
-                                for(let i=1; i<=total; i++) {
+
+                                for(let i=1; i<=totalImages; i++) {
                                     const img = document.createElement('img');
                                     img.style.display = "inline-block";
                                     img.src = `/images/slide${i}.jpg`;
+                                    
                                     img.onerror = function() {
-                                        if (this.src.endsWith('.jpg')) this.src = `/images/slide${i}.jpeg`;
+                                        if (this.src.endsWith('.jpg')) {
+                                            this.src = `/images/slide${i}.jpeg`;
+                                        }
                                     };
                                     container.appendChild(img);
                                 }
@@ -172,30 +182,38 @@
                     </div>
                 </div>
 
-                <!-- Grid 80 imágenes (d1 a d80) insertadas antes del footer -->
+                <!-- Grid 80 imágenes (d1 a d80) en 3 columnas -->
                 <script>
                     (function() {
-                        const total = 80;
+                        const totalGridImages = 80;
                         const wrapper = document.querySelector('#main-scroll-wrapper');
                         const footer = wrapper.querySelector('.nav-footer');
-                        
-                        for(let i=1; i<=total; i++) {
+
+                        for(let i=1; i<=totalGridImages; i++) {
+                            // Creamos el contenedor del bloque
                             const div = document.createElement('div');
                             div.className = 'img-block';
-                            const col = ((i - 1) % 3) * 4 + 1;
-                            div.style.setProperty('--c', col);
+                            
+                            // Lógica de columnas para 3 columnas (span 4): 1, 5, 9
+                            const colStart = ((i - 1) % 3) * 4 + 1;
+                            div.style.setProperty('--c', colStart);
                             div.style.setProperty('--s', 4);
                             div.style.setProperty('--t', '20px');
                             
+                            // Creamos la imagen
                             const img = document.createElement('img');
                             img.src = `/images/d${i}.jpg`;
+                            
                             img.onerror = function() {
-                                if (this.src.endsWith('.jpg')) this.src = `/images/d${i}.jpeg`;
-                                else if (this.src.endsWith('.jpeg')) this.src = `/images/d${i}.png`;
+                                if (this.src.endsWith('.jpg')) {
+                                    this.src = `/images/d${i}.jpeg`;
+                                } else if (this.src.endsWith('.jpeg')) {
+                                    this.src = `/images/d${i}.png`;
+                                }
                             };
                             
                             div.appendChild(img);
-                            // Insertamos cada bloque antes del footer para que aparezcan en orden
+                            // Insertamos antes del footer
                             wrapper.insertBefore(div, footer);
                         }
                     })();
@@ -227,7 +245,6 @@
         }, 2500);
     }
 
-    // Iniciamos la animación cuando todo cargue
     window.addEventListener('load', () => {
         startSlider('dip-slider');
         startSlider('main-slide');
